@@ -105,14 +105,18 @@ with sync_playwright() as pw:
             for a in bars.first.locator("[data-share]").all():
                 assert a.bounding_box()["height"] >= 47.5, (path, "tap target too small")
             assert pg.evaluate("document.documentElement.scrollWidth") == 390, path + " overflows"
-    # reading result: share bar shows with the reading, and Instagram copies the link when there is no share sheet
+    # reading result: share bar shows with the reading, and Instagram copies the link and opens as a new-tab link like the others
     b2, pg2, _, errs2 = run(pw, (200, OK))
     pg2.wait_for_selector("#screen-result:not([hidden])")
     assert pg2.locator("#screen-result .sharebar").is_visible()
     for a in pg2.locator("#screen-result .sharebar [data-share]").all():
         assert a.bounding_box()["height"] >= 47.5
-    pg2.evaluate("Object.defineProperty(navigator, 'share', {value: undefined}); window.__copied = null; navigator.clipboard.writeText = (x) => { window.__copied = x; return Promise.resolve(); }")
-    pg2.click("#screen-result [data-share='instagram']"); pg2.wait_for_timeout(200)
+    ig = pg2.locator("#screen-result .sharebar [data-share='instagram']")
+    assert ig.get_attribute("target") == "_blank" and "instagram.com/direct/inbox" in ig.get_attribute("href")
+    pg2.evaluate("window.__copied = null; navigator.clipboard.writeText = (x) => { window.__copied = x; return Promise.resolve(); }")
+    with pg2.context.expect_page() as popup:
+        pg2.click("#screen-result [data-share='instagram']")
+    popup.value.close(); pg2.wait_for_timeout(200)
     assert pg2.evaluate("window.__copied") == "https://readmyspread.com/read/"
     assert "copied" in pg2.inner_text("#screen-result .sharebar__note")
     pg2.screenshot(path=str(SHOTS / "ok-result-share.png"), full_page=True)

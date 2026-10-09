@@ -1,8 +1,8 @@
 """Share bar markup, shared by scripts/build-learn.py and any hand-written page.
 
 Three buttons only: Threads, Facebook, Instagram. No Telegram. See DESIGN.md section 12.
-Threads and Facebook are plain links that work without JavaScript. Instagram has no web share
-link, so public/js/share.js uses the device share sheet, or copies the link, when it can.
+All three are plain new-tab links that work without JavaScript. Instagram has no web share
+link, so it opens Instagram's messages page (the app on phones) and public/js/share.js copies the link.
 """
 import html
 from urllib.parse import quote
@@ -29,7 +29,7 @@ def sharebar(url, text, *, heading="Share this page", uid="share-title"):
         f'  <ul class="sharebar__list">\n'
         f'    <li><a {link} data-share="threads" href="{threads}">Share on Threads</a></li>\n'
         f'    <li><a {link} data-share="facebook" href="{facebook}">Share on Facebook</a></li>\n'
-        f'    <li><a {link} data-share="instagram" href="https://www.instagram.com/">Share on Instagram</a></li>\n'
+        f'    <li><a {link} data-share="instagram" href="https://www.instagram.com/direct/inbox/">Share on Instagram</a></li>\n'
         f'  </ul>\n'
         f'  <p class="sharebar__note" role="status" aria-live="polite" hidden></p>\n'
         f'</section>'
