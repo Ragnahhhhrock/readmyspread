@@ -14,6 +14,7 @@
 - `public/read/`: the reading app (`js/app.js`, `css/app.css`).
 - `public/privacy/`: privacy page.
 - `functions/api/read.js`: the reading API.
+- `functions/metrics/[[path]].js`: first-party Google tag gateway (proxies gtag.js and GA4 hits under `/metrics`). `public/js/analytics.js` loads GA4 `G-5FRLHDRXTD` through it on every page.
 - `public/style-guide/`: live style guide page (noindex), built from the same tokens.
 - `DESIGN.md`: the design system and style guide (colour, type, components, voice, share images).
 - Contact email: contact@readmyspread.com.
