@@ -20,6 +20,7 @@
 - `public/style-guide/`: live style guide page (noindex), built from the same tokens.
 - `DESIGN.md`: the design system and style guide (colour, type, components, voice, share images).
 - Contact email: contact@readmyspread.com.
+- `public/js/share.js`, `scripts/sharebar.py`: share buttons (Threads, Facebook, Instagram) on every page. See DESIGN.md section 12.
 - `scripts/build-wheel.py`: regenerates the zodiac wheel and star-field SVGs. `scripts/build-assets.py`: regenerates icons and social images.
 - `tests/`: `node tests/read.test.mjs` (API), `python3 tests/ui.test.py` (browser flow with a mocked API; serve `public/` on port 8766 first).
 
@@ -41,6 +42,7 @@ Also add a Cloudflare rate limiting rule on `/api/read` (Security, WAF) so a bot
 - `image_submitted`: a photo is sent to be read (`has_question` 0/1).
 - `reading_completed`: a reading is shown (`spread`, `card_count`).
 - `reading_failed`: `reason` is `rate_limited`, `busy`, `server`, `no_cards`, `unreadable`.
+- `share`: a share button is tapped (`method` is `threads`, `facebook` or `instagram`).
 - `donation`: sent by the Stripe webhook with `value` and `currency`. Mark it as a key event in GA.
 
 Donation setup: in Stripe, add a webhook endpoint `https://readmyspread.com/api/stripe-webhook` for `checkout.session.completed`, and set `STRIPE_WEBHOOK_SECRET` (its `whsec_` signing secret) as a Pages secret. In GA (Admin, Data streams, Measurement Protocol) create an API secret and set it as `GA_API_SECRET`.

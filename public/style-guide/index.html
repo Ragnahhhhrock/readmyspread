@@ -42,6 +42,7 @@
     .dos ul { margin: var(--s-2) 0 0; padding-left: 1.2em; display: grid; gap: var(--s-2); color: var(--mist); }
   </style>
   <script defer src="/js/analytics.js"></script>
+  <script defer src="/js/share.js"></script>
 </head>
 <body>
   <main class="sg">
@@ -137,6 +138,18 @@
       <h3>Detected spread</h3>
       <div class="detected" style="max-width:28rem"><p class="detected__spread">Three-card spread</p><p class="detected__count">3 cards found</p></div>
 
+      <h3>Share bar</h3>
+      <p class="muted small">On every page, including reading results. Threads, Facebook and Instagram only, as secondary buttons: stacked and full width on mobile, three across from 40rem. Each is a 48px tap target. Never a second primary button.</p>
+      <section class="sharebar" aria-labelledby="sg-share-demo" data-share-url="https://readmyspread.com/style-guide/" data-share-text="Your tarot spread, read plainly. readmyspread">
+        <h2 class="sharebar__title" id="sg-share-demo">Share this page</h2>
+        <ul class="sharebar__list">
+          <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="threads" href="https://www.threads.com/intent/post?text=Your%20tarot%20spread%2C%20read%20plainly.%20readmyspread&amp;url=https%3A%2F%2Freadmyspread.com%2Fstyle-guide%2F">Share on Threads</a></li>
+          <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Freadmyspread.com%2Fstyle-guide%2F">Share on Facebook</a></li>
+          <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="instagram" href="https://www.instagram.com/">Share on Instagram</a></li>
+        </ul>
+        <p class="sharebar__note" role="status" aria-live="polite" hidden></p>
+      </section>
+
       <h3>Status</h3>
       <div class="status status--error" style="max-width:28rem"><strong>We couldn't read that photo</strong><p>Try again with the whole tarot spread in frame and good light.</p></div>
     </section>
@@ -164,6 +177,16 @@
     <section id="contact" aria-labelledby="ct-h">
       <h2 id="ct-h">Contact</h2>
       <p>Questions or feedback: <a href="mailto:contact@readmyspread.com">contact@readmyspread.com</a></p>
+    </section>
+
+    <section class="sharebar" aria-labelledby="share-title" data-share-url="https://readmyspread.com/style-guide/" data-share-text="Your tarot spread, read plainly. readmyspread">
+      <h2 class="sharebar__title" id="share-title">Share this page</h2>
+      <ul class="sharebar__list">
+        <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="threads" href="https://www.threads.com/intent/post?text=Your%20tarot%20spread%2C%20read%20plainly.%20readmyspread&amp;url=https%3A%2F%2Freadmyspread.com%2Fstyle-guide%2F">Share on Threads</a></li>
+        <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Freadmyspread.com%2Fstyle-guide%2F">Share on Facebook</a></li>
+        <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="instagram" href="https://www.instagram.com/">Share on Instagram</a></li>
+      </ul>
+      <p class="sharebar__note" role="status" aria-live="polite" hidden></p>
     </section>
 
     <footer class="site-footer">

@@ -26,6 +26,7 @@
   <script type="module" src="/js/app.js"></script>
   <script async src="https://js.stripe.com/v3/buy-button.js"></script>
   <script defer src="/js/analytics.js"></script>
+  <script defer src="/js/share.js"></script>
 </head>
 <body>
   <div class="wrap app">
@@ -50,6 +51,15 @@
         <input type="file" id="in-camera" accept="image/*" capture="environment" hidden>
         <input type="file" id="in-roll" accept="image/*" hidden>
         <p class="privacy-note">Your photo is sent to Claude, an AI from Anthropic, to read the cards. readmyspread doesn't save photos or readings. <a href="/privacy/">Privacy</a></p>
+        <section class="sharebar" aria-labelledby="share-title-home" data-share-url="https://readmyspread.com/read/" data-share-text="I had my tarot spread read plainly on readmyspread.">
+          <h2 class="sharebar__title" id="share-title-home">Share readmyspread</h2>
+          <ul class="sharebar__list">
+            <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="threads" href="https://www.threads.com/intent/post?text=I%20had%20my%20tarot%20spread%20read%20plainly%20on%20readmyspread.&amp;url=https%3A%2F%2Freadmyspread.com%2Fread%2F">Share on Threads</a></li>
+            <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Freadmyspread.com%2Fread%2F">Share on Facebook</a></li>
+            <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="instagram" href="https://www.instagram.com/">Share on Instagram</a></li>
+          </ul>
+          <p class="sharebar__note" role="status" aria-live="polite" hidden></p>
+        </section>
       </section>
 
       <section class="screen" id="screen-preview" hidden>
@@ -105,6 +115,15 @@
             <p class="small muted">A card wrong? <button class="linklike" type="button" id="btn-wrong">Retake the photo</button> with the cards flat and well lit.</p>
           </div>
           <article class="reading stack-lg" id="res-reading" aria-label="Your reading"></article>
+          <section class="sharebar" aria-labelledby="share-title-result" data-share-url="https://readmyspread.com/read/" data-share-text="I had my tarot spread read plainly on readmyspread.">
+            <h2 class="sharebar__title" id="share-title-result">Share readmyspread</h2>
+            <ul class="sharebar__list">
+              <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="threads" href="https://www.threads.com/intent/post?text=I%20had%20my%20tarot%20spread%20read%20plainly%20on%20readmyspread.&amp;url=https%3A%2F%2Freadmyspread.com%2Fread%2F">Share on Threads</a></li>
+              <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Freadmyspread.com%2Fread%2F">Share on Facebook</a></li>
+              <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="instagram" href="https://www.instagram.com/">Share on Instagram</a></li>
+            </ul>
+            <p class="sharebar__note" role="status" aria-live="polite" hidden></p>
+          </section>
           <aside class="tip" aria-label="Support readmyspread">
             <p class="tip__ask">Found it useful?</p>
             <p class="muted small">Readings stay free. A tip helps keep the site running.</p>

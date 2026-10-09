@@ -224,6 +224,18 @@ textarea.input { min-height: 6rem; resize: vertical; }
 .loading__orbit { width: 5rem; height: 5rem; animation: turn 18s linear infinite; }
 @keyframes turn { to { transform: rotate(360deg); } }
 
+/* ---------- Share bar (Threads, Facebook, Instagram) ---------- */
+.sharebar { display: grid; gap: var(--s-3); padding-top: var(--s-5); border-top: 1px solid var(--line-quiet); }
+.sharebar .sharebar__title {
+  font-family: var(--font-display); font-size: var(--step-2); line-height: 1.1;
+  margin: 0; padding: 0; border: 0;
+}
+.sharebar__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.sharebar__list .btn { width: 100%; }
+@media (min-width: 40rem) { .sharebar__list { grid-template-columns: repeat(3, 1fr); } }
+.sharebar__note { color: var(--mist); font-size: var(--step--1); overflow-wrap: anywhere; }
+.sharebar-wrap { width: 100%; max-width: 44rem; margin-inline: auto; padding-inline: var(--gutter); }
+
 /* ---------- Footer ---------- */
 .site-footer { padding-block: var(--s-7) var(--s-6); color: var(--mist); font-size: var(--step--1); display: grid; gap: var(--s-2); }
 

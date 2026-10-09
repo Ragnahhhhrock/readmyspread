@@ -35,6 +35,7 @@ def run(pw, reply, shot=None):
         status, body = reply
         route.fulfill(status=status, content_type="application/json", body=json.dumps(body))
     pg.route("**/api/read", handle)
+    pg.route("**/metrics/**", lambda r: r.fulfill(status=200, content_type="application/javascript", body=""))
     pg.route("https://js.stripe.com/**", lambda r: r.fulfill(status=200, content_type="application/javascript", body=""))
     pg.goto(BASE + "/read/"); pg.wait_for_timeout(300)
     if shot: pg.screenshot(path=str(SHOTS / f"{shot}-home.png"), full_page=True)
@@ -50,6 +51,7 @@ with sync_playwright() as pw:
         b = pw.chromium.launch(); pg = b.new_page(viewport={"width": w, "height": h}); errs = []
         pg.on("console", lambda m: errs.append(m.text) if m.type == "error" else None)
         pg.on("pageerror", lambda e: errs.append(str(e)))
+        pg.route("**/metrics/**", lambda r: r.fulfill(status=200, content_type="application/javascript", body=""))  # the gtag gateway only exists on Cloudflare
         pg.goto(BASE + "/"); pg.wait_for_timeout(500)
         assert "readmyspread" in pg.title()
         assert pg.locator("a[href='/read/']").count() >= 3
@@ -86,4 +88,33 @@ with sync_playwright() as pw:
     pg.wait_for_selector("#screen-result:not([hidden])")
     assert pg.is_visible("#res-care") and not pg.is_visible("#res-body") and not pg.is_visible("stripe-buy-button")
     pg.screenshot(path=str(SHOTS / "care.png")); b.close()
+
+    # share bars: every page has Threads, Facebook and Instagram, no Telegram, 48px taps, no overflow on mobile
+    PAGES = ["/", "/read/", "/privacy/", "/style-guide/", "/about-tarot/", "/learn-tarot/", "/learn-tarot/what-is-a-tarot-spread/"] + \
+        ["/learn-tarot/category/" + c + "/" for c in ["tarot-basics", "tarot-spreads", "tarot-history", "reading-tips", "major-arcana", "minor-arcana"]]
+    b = pw.chromium.launch(); pg = b.new_page(viewport={"width": 390, "height": 844})
+    for path in PAGES:
+        pg.goto(BASE + path); pg.wait_for_timeout(200)
+        bars = pg.locator(".sharebar")
+        assert bars.count() >= 1, path + " has no share bar"
+        assert pg.locator("[data-share='telegram'], a[href*='t.me'], a[href*='telegram']").count() == 0, path + " has Telegram"
+        for m, host in [("threads", "threads.com"), ("facebook", "facebook.com"), ("instagram", "instagram.com")]:
+            link = bars.first.locator(f"[data-share='{m}']")
+            assert link.count() == 1 and host in link.get_attribute("href"), (path, m)
+        if path != "/read/":
+            for a in bars.first.locator("[data-share]").all():
+                assert a.bounding_box()["height"] >= 47.5, (path, "tap target too small")
+            assert pg.evaluate("document.documentElement.scrollWidth") == 390, path + " overflows"
+    # reading result: share bar shows with the reading, and Instagram copies the link when there is no share sheet
+    b2, pg2, _, errs2 = run(pw, (200, OK))
+    pg2.wait_for_selector("#screen-result:not([hidden])")
+    assert pg2.locator("#screen-result .sharebar").is_visible()
+    for a in pg2.locator("#screen-result .sharebar [data-share]").all():
+        assert a.bounding_box()["height"] >= 47.5
+    pg2.evaluate("Object.defineProperty(navigator, 'share', {value: undefined}); window.__copied = null; navigator.clipboard.writeText = (x) => { window.__copied = x; return Promise.resolve(); }")
+    pg2.click("#screen-result [data-share='instagram']"); pg2.wait_for_timeout(200)
+    assert pg2.evaluate("window.__copied") == "https://readmyspread.com/read/"
+    assert "copied" in pg2.inner_text("#screen-result .sharebar__note")
+    pg2.screenshot(path=str(SHOTS / "ok-result-share.png"), full_page=True)
+    assert not errs2, errs2; b2.close(); b.close()
 print("ui tests passed")

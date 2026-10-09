@@ -19,6 +19,7 @@ PUB = ROOT / "public"
 CONTENT = ROOT / "content" / "learn-tarot"
 SITE = "https://readmyspread.com"
 sys.path.insert(0, str(ROOT / "scripts"))
+from sharebar import sharebar, share_text
 
 DEFAULT_OG = f"{SITE}/assets/og-image.png"
 DEFAULT_TW = f"{SITE}/assets/twitter-card.png"
@@ -34,6 +35,11 @@ e = html.escape
 def long_date(iso):
     d = datetime.fromisoformat(iso)
     return f"{d.day} {d.strftime('%B %Y')}"
+
+
+def share(path, title):
+    """Share bar for a generated page: Threads, Facebook, Instagram (DESIGN.md section 12)."""
+    return sharebar(f"{SITE}{path}", share_text(title + " | readmyspread")).replace("\n", "\n    ")
 
 
 def head(title, desc, path, *, og_type="website", og_img=DEFAULT_OG, tw_img=DEFAULT_TW, img_alt=DEFAULT_ALT, extra="", jsonld=None, robots="index, follow, max-image-preview:large"):
@@ -84,6 +90,7 @@ def head(title, desc, path, *, og_type="website", og_img=DEFAULT_OG, tw_img=DEFA
   <link rel="stylesheet" href="/css/landing.css">
   <link rel="stylesheet" href="/css/learn.css">{ld}
   <script defer src="/js/analytics.js"></script>
+  <script defer src="/js/share.js"></script>
 </head>
 <body class="landing">
   <div class="sky" aria-hidden="true"></div>
@@ -206,6 +213,7 @@ def main():
     </div>
     {chips(cats, counts)}
     <ul class="posts">{"".join(post_card(a, catname) for a in live)}</ul>
+    {share("/learn-tarot/", "Learn tarot: tarot spreads and card meanings")}
   </main>
 """ + FOOT
     (out / "index.html").write_text(page)
@@ -230,6 +238,7 @@ def main():
     </div>
     {chips(cats, counts, c["slug"])}
     {body_list}
+    {share(f"/learn-tarot/category/{c['slug']}/", f"{c['name']}: learn tarot")}
   </main>
 """ + FOOT
         (d / "index.html").write_text(page)
@@ -291,6 +300,7 @@ def main():
         </div>
       </footer>
     </article>
+    {share(f"/learn-tarot/{slug}/", a["title"])}
     {more_html}
   </main>
 """ + FOOT
@@ -326,6 +336,7 @@ def main():
         </div>
       </footer>
     </article>
+    {share("/about-tarot/", meta["title"] + ": tarot spreads, cards and how readings work")}
   </main>
 """ + FOOT
     (d / "index.html").write_text(page)

@@ -69,6 +69,7 @@
   }
   </script>
   <script defer src="/js/analytics.js"></script>
+  <script defer src="/js/share.js"></script>
 </head>
 <body class="landing">
   <div class="sky" aria-hidden="true"></div>
@@ -194,6 +195,18 @@
       <h2 id="close-title">Ready when your cards are.</h2>
       <a class="btn btn--primary" href="/read/">Read my cards</a>
     </section>
+
+    <div class="sharebar-wrap">
+      <section class="sharebar" aria-labelledby="share-title" data-share-url="https://readmyspread.com/" data-share-text="readmyspread: tarot spread readings, read plainly">
+        <h2 class="sharebar__title" id="share-title">Share this page</h2>
+        <ul class="sharebar__list">
+          <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="threads" href="https://www.threads.com/intent/post?text=readmyspread%3A%20tarot%20spread%20readings%2C%20read%20plainly&amp;url=https%3A%2F%2Freadmyspread.com%2F">Share on Threads</a></li>
+          <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Freadmyspread.com%2F">Share on Facebook</a></li>
+          <li><a class="btn btn--secondary" target="_blank" rel="noopener noreferrer" data-share="instagram" href="https://www.instagram.com/">Share on Instagram</a></li>
+        </ul>
+        <p class="sharebar__note" role="status" aria-live="polite" hidden></p>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">
