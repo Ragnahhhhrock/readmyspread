@@ -57,6 +57,7 @@ Line heights: tight 1.05 (headings), UI 1.45, reading 1.55. Reading column is 36
 
 - **Wordmark:** crescent plus four-point star, then "readmyspread" in Cormorant 600, always lower case, one word.
 - **Buttons:** `.btn--primary` (gold fill, night text), `.btn--secondary` (outlined with `--line`), disabled uses nebula. One primary per screen.
+- **Header menu:** `.site-nav` with `.menu-btn` on mobile (panel opens under the header), items inline from 52rem. Every item, the `.menu-link` links and the "Read my cards" action, uses the same outlined `.btn--secondary` look: `--line` border, 8px radius, Hanken 600, 48px tall and full width in the mobile panel, 40px inline on wide screens. The current page uses a nebula fill.
 - **Fields:** `.field`, `.input` on dusk with a `--line` border, hint text in mist.
 - **Upload zone:** `.upload`, dusk panel, gold border, faint zodiac wheel.
 - **Tarot card thumbnail:** `.tcard`, 7:12 face, gold border, 8px radius. Reversed cards rotate 180 degrees and are also labelled in text.
