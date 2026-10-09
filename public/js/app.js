@@ -125,8 +125,13 @@ function stopLoading() {
   loadingTimer = null;
 }
 
+function track(name, params) {
+  if (window.track) window.track(name, params);
+}
+
 async function read() {
   if (!photo) return;
+  track("image_submitted", { has_question: $("question").value.trim() ? 1 : 0 });
   startLoading();
   controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 70000);
@@ -138,12 +143,13 @@ async function read() {
       signal: controller.signal
     });
     stopLoading();
-    if (res.status === 429) return showError("rate_limited");
+    if (res.status === 429) return track("reading_failed", { reason: "rate_limited" }), showError("rate_limited");
     if (res.status === 503) {
       const err = await res.json().catch(() => ({}));
+      track("reading_failed", { reason: err.error === "busy" ? "busy" : "server" });
       return showError(err.error === "busy" ? "busy" : "server");
     }
-    if (!res.ok) return showError("server");
+    if (!res.ok) return track("reading_failed", { reason: "server" }), showError("server");
     const data = await res.json();
     render(data);
   } catch (err) {
@@ -155,7 +161,10 @@ async function read() {
 }
 
 function render(data) {
-  if (data.status === "no_cards" || data.status === "unreadable") return showError(data.status);
+  if (data.status === "no_cards" || data.status === "unreadable") {
+    track("reading_failed", { reason: data.status });
+    return showError(data.status);
+  }
 
   const care = $("res-care");
   const body = $("res-body");
@@ -205,6 +214,7 @@ function render(data) {
   void reading.offsetWidth; // restart the reveal
   reading.classList.add("reading-reveal");
 
+  track("reading_completed", { spread: String((data.spread && data.spread.name) || "").slice(0, 60), card_count: n });
   show("result");
 }
 

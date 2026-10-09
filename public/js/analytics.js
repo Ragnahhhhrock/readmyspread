@@ -11,3 +11,8 @@
   s.src = "/metrics/gtag/js?id=" + ID;
   document.head.appendChild(s);
 })();
+
+// Event helper. Never pass photos, questions or reading text.
+window.track = function (name, params) {
+  try { window.gtag("event", name, params || {}); } catch (e) {}
+};

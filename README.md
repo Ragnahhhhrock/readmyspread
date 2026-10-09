@@ -14,6 +14,7 @@
 - `public/read/`: the reading app (`js/app.js`, `css/app.css`).
 - `public/privacy/`: privacy page.
 - `functions/api/read.js`: the reading API.
+- `functions/api/stripe-webhook.js`: Stripe webhook that sends each paid tip to GA4 as a `donation` event with its value.
 - `functions/metrics/[[path]].js`: first-party Google tag gateway (proxies gtag.js and GA4 hits under `/metrics`). `public/js/analytics.js` loads GA4 `G-5FRLHDRXTD` through it on every page.
 - `public/style-guide/`: live style guide page (noindex), built from the same tokens.
 - `DESIGN.md`: the design system and style guide (colour, type, components, voice, share images).
@@ -33,6 +34,15 @@ Connect this repo to a Pages project named `readmyspread` with:
 - Custom domains: `readmyspread.com` and `www.readmyspread.com`
 
 Also add a Cloudflare rate limiting rule on `/api/read` (Security, WAF) so a bot can't run up the API bill.
+
+## Analytics events (GA4 `G-5FRLHDRXTD`)
+
+- `image_submitted`: a photo is sent to be read (`has_question` 0/1).
+- `reading_completed`: a reading is shown (`spread`, `card_count`).
+- `reading_failed`: `reason` is `rate_limited`, `busy`, `server`, `no_cards`, `unreadable`.
+- `donation`: sent by the Stripe webhook with `value` and `currency`. Mark it as a key event in GA.
+
+Donation setup: in Stripe, add a webhook endpoint `https://readmyspread.com/api/stripe-webhook` for `checkout.session.completed`, and set `STRIPE_WEBHOOK_SECRET` (its `whsec_` signing secret) as a Pages secret. In GA (Admin, Data streams, Measurement Protocol) create an API secret and set it as `GA_API_SECRET`.
 
 ## Tips
 
