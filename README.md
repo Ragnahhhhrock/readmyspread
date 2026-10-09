@@ -33,6 +33,10 @@ Connect this repo to a Pages project named `readmyspread` with:
 
 Also add a Cloudflare rate limiting rule on `/api/read` (Security, WAF) so a bot can't run up the API bill.
 
+## Tips
+
+The reading screen embeds a Stripe buy button (`stripe-buy-button` in `public/read/index.html`; the publishable key is public by design). `public/_headers` allows Stripe's script, frames and API in the CSP. The button's price and wording are set in the Stripe dashboard.
+
 ## Local preview
 
 `cd public && python3 -m http.server 8000`, then open http://localhost:8000/. The reading API needs `wrangler pages dev public` and an `ANTHROPIC_API_KEY` in `.dev.vars`.

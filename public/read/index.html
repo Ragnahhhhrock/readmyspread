@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="/css/components.css">
   <link rel="stylesheet" href="/css/app.css">
   <script type="module" src="/js/app.js"></script>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 <body>
   <div class="wrap app">
@@ -93,6 +94,14 @@
             <p class="small muted">A card wrong? <button class="linklike" type="button" id="btn-wrong">Retake the photo</button> with the cards flat and well lit.</p>
           </div>
           <article class="reading stack-lg" id="res-reading" aria-label="Your reading"></article>
+          <aside class="tip" aria-label="Support readmyspread">
+            <p class="tip__ask">Found it useful?</p>
+            <p class="muted small">Readings stay free. A tip helps keep the site running.</p>
+            <stripe-buy-button
+              buy-button-id="buy_btn_1UOTAs0oRIkfnEQLRVytp79s"
+              publishable-key="pk_live_51Tqvau0oRIkfnEQLf76BBFud3BpoOhCNNTBl21fOLj2Dszy5dYfg9JvX7KhdOfQgI0S2GxYEkZegllL1nLTuC0T100Z5yWrRa4">
+            </stripe-buy-button>
+          </aside>
         </div>
 
         <button class="btn btn--secondary btn--block" type="button" id="btn-again">Read another spread</button>
