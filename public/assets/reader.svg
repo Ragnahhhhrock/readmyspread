@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="reader-title">
+  <title id="reader-title">The readmyspread reader: a calm figure in gold linework on a night sky</title>
+  <defs>
+    <clipPath id="reader-clip"><circle cx="120" cy="120" r="119"/></clipPath>
+    <mask id="reader-moon"><rect width="64" height="64" fill="#fff"/><circle cx="41" cy="26" r="15" fill="#000"/></mask>
+  </defs>
+  <g clip-path="url(#reader-clip)">
+    <!-- sky: dusk with a nebula glow and a quiet dotted ring -->
+    <rect width="240" height="240" fill="#141a38"/>
+    <circle cx="120" cy="104" r="96" fill="#232b55" opacity="0.6"/>
+    <circle cx="120" cy="104" r="86" fill="none" stroke="#6b74a8" stroke-width="1" stroke-dasharray="2 7" stroke-linecap="round"/>
+    <g fill="#f3efe4">
+      <circle cx="34" cy="62" r="1.6"/><circle cx="58" cy="30" r="1.2"/><circle cx="206" cy="58" r="1.6"/>
+      <circle cx="188" cy="26" r="1.2"/><circle cx="24" cy="120" r="1.2"/><circle cx="216" cy="116" r="1.2"/>
+    </g>
+    <g fill="#e2c071">
+      <path d="M48 84l1.4 3.8 3.8 1.4-3.8 1.4L48 94.4l-1.4-3.8-3.8-1.4 3.8-1.4Z"/>
+      <path d="M194 90l1.4 3.8 3.8 1.4-3.8 1.4-1.4 3.8-1.4-3.8-3.8-1.4 3.8-1.4Z"/>
+    </g>
+
+    <!-- hair, behind the shoulders -->
+    <path d="M120 52c-30 0-48 22-48 52 0 30 6 56 14 84h68c8-28 14-54 14-84 0-30-18-52-48-52z" fill="#0b1024" stroke="#e2c071" stroke-width="2" stroke-linejoin="round"/>
+    <!-- shoulders -->
+    <path d="M26 240c2-34 22-52 56-58l22-8h32l22 8c34 6 54 24 56 58z" fill="#232b55" stroke="#e2c071" stroke-width="2" stroke-linejoin="round"/>
+    <!-- neck and neckline -->
+    <path d="M104 148v28l16 16 16-16v-28z" fill="#141a38" stroke="#e2c071" stroke-width="2" stroke-linejoin="round"/>
+    <!-- face -->
+    <path d="M120 62c-22 0-34 18-34 40 0 26 14 46 34 46s34-20 34-46c0-22-12-40-34-40z" fill="#141a38" stroke="#e2c071" stroke-width="2" stroke-linejoin="round"/>
+    <!-- centre-parted hair over the brow -->
+    <path d="M84 102c0-24 14-42 36-42s36 18 36 42c-12-6-24-20-36-38-12 18-24 32-36 38z" fill="#0b1024" stroke="#e2c071" stroke-width="2" stroke-linejoin="round"/>
+    <!-- calm eyes, nose, mouth -->
+    <g fill="none" stroke="#e2c071" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M101 106q6 5 12 0M127 106q6 5 12 0"/>
+      <path d="M120 110v10q-3 3-6 1" stroke-width="1.5"/>
+      <path d="M112 132q8 6 16 0"/>
+    </g>
+
+    <!-- the site mark as a brooch -->
+    <g transform="translate(104 198) scale(0.5)">
+      <circle cx="30" cy="34" r="19" fill="#e2c071" mask="url(#reader-moon)"/>
+      <path d="M46 9l1.8 5.2L53 16l-5.2 1.8L46 23l-1.8-5.2L39 16l5.2-1.8Z" fill="#e2c071"/>
+    </g>
+  </g>
+  <circle cx="120" cy="120" r="119" fill="none" stroke="#e2c071" stroke-width="2"/>
+</svg>

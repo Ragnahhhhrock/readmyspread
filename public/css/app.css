@@ -25,6 +25,10 @@
 }
 .linklike:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: var(--r-ui); }
 
+/* Loading: the reader inside a slowly turning zodiac wheel. */
+.loading__figure { position: relative; width: 9rem; height: 9rem; display: grid; place-items: center; }
+.loading__figure .loading__orbit { position: absolute; inset: 0; width: 100%; height: 100%; }
+.loading__figure .reader-avatar { position: relative; width: 6rem; height: 6rem; }
 .loading[hidden] { display: none; }
 .loading p[aria-live] { min-height: 1.4em; }
 

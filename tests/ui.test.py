@@ -25,8 +25,10 @@ OK = {"status": "ok", "needs_care": False, "spread": {"name": "Three-card spread
               {"card": "The Tower, reversed", "position": "Future", "text": "A change is being resisted or delayed, and the pressure is likely to build until it is faced."}],
  "close": "What would you let go of first?"}
 
-def run(pw, reply, shot=None):
-    b = pw.chromium.launch(); ctx = b.new_context(viewport={"width": 390, "height": 844}); pg = ctx.new_page()
+def run(pw, reply, shot=None, init=None):
+    b = pw.chromium.launch(); ctx = b.new_context(viewport={"width": 390, "height": 844})
+    if init: ctx.add_init_script(init)
+    pg = ctx.new_page()
     errs = []; pg.on("console", lambda m: errs.append(m.text) if m.type == "error" else None)
     pg.on("pageerror", lambda e: errs.append(str(e)))
     sent = {}
@@ -87,6 +89,49 @@ with sync_playwright() as pw:
     pg.wait_for_selector("#screen-result:not([hidden])")
     assert pg.is_visible("#res-care") and not pg.is_visible("#res-body") and not pg.is_visible("#btn-tip")
     pg.screenshot(path=str(SHOTS / "care.png")); b.close()
+
+    # audio version: offered with a reading, never on the care screen, speaks the reading, stops on demand
+    SPEECH = """
+    window.__spoken = []; window.__cancelled = 0; window.__delay = 30;
+    const synth = {
+      getVoices: () => [{ lang: 'en-US', localService: true, name: 'US' }, { lang: 'en-AU', localService: true, name: 'AU' }],
+      speak(u) { window.__spoken.push({ text: u.text, lang: u.lang, voice: u.voice && u.voice.lang }); setTimeout(() => u.onend && u.onend({}), window.__delay); },
+      cancel() { window.__cancelled++; }
+    };
+    Object.defineProperty(window, 'speechSynthesis', { value: synth, configurable: true });
+    window.SpeechSynthesisUtterance = function (t) { this.text = t; };
+    """
+    b, pg, _, errs = run(pw, (200, OK), init=SPEECH)
+    pg.wait_for_selector("#screen-result:not([hidden])")
+    panel = pg.locator("#reader"); btn = pg.locator("#btn-listen")
+    assert panel.is_visible() and "Listen to this reading" in btn.inner_text()
+    assert btn.bounding_box()["height"] >= 47.5 and abs(btn.bounding_box()["width"] - panel.bounding_box()["width"] + 48) < 2, "button not full width with 48px tap"
+    assert "btn--secondary" in btn.get_attribute("class") and "btn--primary" not in btn.get_attribute("class")
+    assert pg.locator("#reader .reader-avatar").count() == 1 and pg.evaluate("document.documentElement.scrollWidth") == 390
+    pg.screenshot(path=str(SHOTS / "ok-result-audio.png"), full_page=True)
+    btn.click(); pg.wait_for_timeout(700)
+    spoken = pg.evaluate("window.__spoken")
+    assert spoken[0]["text"].startswith("Three-card spread. A spread about loss"), spoken[0]
+    assert any(x["text"].startswith("Five of Cups, Past.") for x in spoken) and spoken[-1]["text"] == "What would you let go of first?"
+    assert all(x["lang"] == "en-AU" and x["voice"] == "en-AU" for x in spoken), "should prefer the Australian voice"
+    assert "Listen to this reading" in btn.inner_text(), "button resets when the reading finishes"
+    assert pg.locator(".is-speaking").count() == 0 and not pg.evaluate("document.getElementById('reader').classList.contains('reader--speaking')")
+    # stop mid-reading
+    pg.evaluate("window.__delay = 5000; window.__spoken = []"); btn.click(); pg.wait_for_timeout(150)
+    assert "Stop listening" in btn.inner_text() and pg.evaluate("document.getElementById('reader').classList.contains('reader--speaking')")
+    assert pg.locator(".is-speaking").count() == 1 and "Reading aloud" in pg.inner_text("#listen-note")
+    pg.screenshot(path=str(SHOTS / "ok-result-speaking.png"), full_page=True)
+    c0 = pg.evaluate("window.__cancelled"); btn.click(); pg.wait_for_timeout(100)
+    assert pg.evaluate("window.__cancelled") > c0 and "Listen to this reading" in btn.inner_text() and pg.locator(".is-speaking").count() == 0
+    n = len(pg.evaluate("window.__spoken")); pg.wait_for_timeout(300); assert len(pg.evaluate("window.__spoken")) == n, "kept speaking after stop"
+    assert not errs, errs; b.close()
+    # browsers that cannot speak do not see the offer
+    b, pg, _, errs = run(pw, (200, OK), init="delete window.speechSynthesis;")
+    pg.wait_for_selector("#screen-result:not([hidden])"); assert not pg.is_visible("#reader") and pg.is_visible("#res-reading")
+    assert not errs, errs; b.close()
+    # care screen never offers audio
+    b, pg, _, _ = run(pw, (200, {"status": "ok", "needs_care": True, "verdict": "Let's put the cards down."}), init=SPEECH)
+    pg.wait_for_selector("#screen-result:not([hidden])"); assert not pg.is_visible("#reader"); b.close()
 
     # share bars: every page has Threads, Facebook and Instagram, no Telegram, 48px taps, no overflow on mobile
     PAGES = ["/", "/read/", "/privacy/", "/style-guide/", "/about-tarot/", "/learn-tarot/", "/learn-tarot/what-is-a-tarot-spread/"] + \

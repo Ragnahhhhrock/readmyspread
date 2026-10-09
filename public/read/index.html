@@ -20,12 +20,12 @@
 
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261010">
-  <link rel="stylesheet" href="/css/components.css?v=20261010">
-  <link rel="stylesheet" href="/css/app.css?v=20261010">
-  <script type="module" src="/js/app.js?v=20261010"></script>
-  <script defer src="/js/analytics.js?v=20261010"></script>
-  <script defer src="/js/share.js?v=20261010"></script>
+  <link rel="stylesheet" href="/css/tokens.css?v=20261010b">
+  <link rel="stylesheet" href="/css/components.css?v=20261010b">
+  <link rel="stylesheet" href="/css/app.css?v=20261010b">
+  <script type="module" src="/js/app.js?v=20261010b"></script>
+  <script defer src="/js/analytics.js?v=20261010b"></script>
+  <script defer src="/js/share.js?v=20261010b"></script>
 </head>
 <body>
   <div class="wrap app">
@@ -87,7 +87,10 @@
 
       <section class="screen" id="screen-loading" hidden>
         <div class="loading" role="status">
-          <img class="loading__orbit" src="/assets/zodiac-wheel.svg" alt="" width="80" height="80" aria-hidden="true">
+          <div class="loading__figure" aria-hidden="true">
+            <img class="loading__orbit" src="/assets/zodiac-wheel.svg" alt="" width="144" height="144">
+            <img class="reader-avatar" src="/assets/reader.svg" alt="" width="96" height="96">
+          </div>
           <div>
             <h2 class="display-italic" tabindex="-1" style="font-size:var(--step-2)">Reading your tarot spread</h2>
             <p class="muted small" id="loading-line" aria-live="polite">Looking over your layout.</p>
@@ -113,6 +116,20 @@
             <ul class="cards" id="res-cards"></ul>
             <p class="small muted">A card wrong? <button class="linklike" type="button" id="btn-wrong">Retake the photo</button> with the cards flat and well lit.</p>
           </div>
+          <section class="reader" id="reader" aria-labelledby="reader-title" hidden>
+            <div class="reader__head">
+              <div class="reader__figure"><img class="reader-avatar" src="/assets/reader.svg" alt="" width="72" height="72"></div>
+              <div>
+                <h3 class="reader__title" id="reader-title">Prefer to listen?</h3>
+                <p class="reader__note">Hear this tarot spread reading read aloud.</p>
+              </div>
+            </div>
+            <button class="btn btn--secondary" type="button" id="btn-listen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+              <span id="listen-label">Listen to this reading</span>
+            </button>
+            <p class="reader__note" id="listen-note" role="status" aria-live="polite">Read aloud by your device. readmyspread doesn't record or save audio.</p>
+          </section>
           <article class="reading stack-lg" id="res-reading" aria-label="Your reading"></article>
           <section class="sharebar" aria-labelledby="share-title-result" data-share-url="https://readmyspread.com/read/" data-share-text="I had my tarot spread read plainly on readmyspread.">
             <h2 class="sharebar__title" id="share-title-result">Share readmyspread</h2>

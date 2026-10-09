@@ -208,6 +208,30 @@ textarea.input { min-height: 6rem; resize: vertical; }
 .reading-reveal { animation: reveal var(--t-reveal) var(--ease) both; }
 @keyframes reveal { from { opacity: 0; transform: translateY(0.5rem); } to { opacity: 1; transform: none; } }
 
+/* ---------- Reader avatar and audio offer ---------- */
+.reader-avatar { display: block; width: 4.5rem; height: 4.5rem; border-radius: 50%; }
+.reader {
+  display: grid; gap: var(--s-4);
+  padding: var(--s-5);
+  background: var(--dusk);
+  border-radius: var(--r-panel);
+  max-width: var(--measure);
+}
+.reader__head { display: flex; align-items: center; gap: var(--s-4); }
+.reader__figure { position: relative; flex: none; }
+.reader__figure::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid var(--gold); opacity: 0; pointer-events: none;
+}
+.reader--speaking .reader__figure::after { animation: listen-ring 2.4s var(--ease) infinite; }
+@keyframes listen-ring { 0% { opacity: 0.8; transform: scale(1); } 100% { opacity: 0; transform: scale(1.35); } }
+.reader .reader__title { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.1; }
+.reader__note { color: var(--mist); font-size: var(--step--1); }
+.reader .btn { width: 100%; }
+
+/* The card being read aloud gets a gold rule. */
+.reading .is-speaking { border-left: 3px solid var(--gold); padding-left: var(--s-4); }
+
 /* ---------- Status: loading, error, empty ---------- */
 .status {
   display: grid; gap: var(--s-2);

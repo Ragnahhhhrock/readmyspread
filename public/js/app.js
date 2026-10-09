@@ -1,6 +1,8 @@
 // readmyspread front end. No dependencies, no storage, no tracking.
 // Photos are resized in the browser, sent to /api/read, and never saved.
 
+import { canSpeak, speak, stop as stopSpeech } from "/js/audio.js?v=20261010b";
+
 const $ = (id) => document.getElementById(id);
 
 const screens = ["home", "preview", "loading", "result", "error"];
@@ -202,20 +204,66 @@ function render(data) {
   const reading = $("res-reading");
   reading.replaceChildren();
   reading.classList.remove("reading-reveal");
-  if (data.verdict) reading.append(el("p", "reading__verdict", data.verdict));
+  script = [];
+  if (data.verdict) {
+    const verdict = el("p", "reading__verdict", data.verdict);
+    reading.append(verdict);
+    script.push({ text: `${data.spread.name}. ${data.verdict}`, el: verdict });
+  }
   for (const s of data.sections || []) {
     const sec = el("section", "stack");
     const head = el("header", "reading__position");
     head.append(el("h3", "", s.card), el("span", "where", s.position));
     sec.append(head, el("p", "", s.text));
     reading.append(sec);
+    script.push({ text: `${s.card}, ${s.position}. ${s.text}`, el: sec });
   }
-  if (data.close) reading.append(el("p", "reading__verdict reading__close", data.close));
+  if (data.close) {
+    const close = el("p", "reading__verdict reading__close", data.close);
+    reading.append(close);
+    script.push({ text: data.close, el: close });
+  }
   void reading.offsetWidth; // restart the reveal
   reading.classList.add("reading-reveal");
 
+  // Offer the reading as audio where the browser can speak it.
+  setListening(false);
+  $("reader").hidden = !canSpeak() || script.length === 0;
+
   track("reading_completed", { spread: String((data.spread && data.spread.name) || "").slice(0, 60), card_count: n });
   show("result");
+}
+
+// ---------- Audio version ----------
+
+const LISTEN_NOTE = "Read aloud by your device. readmyspread doesn't record or save audio.";
+let script = []; // [{ text, el }] for the reading on screen
+let listening = false;
+
+function mark(index) {
+  for (const item of script) item.el.classList.remove("is-speaking");
+  if (index !== null && script[index]) script[index].el.classList.add("is-speaking");
+}
+
+function setListening(on, note = LISTEN_NOTE) {
+  listening = on;
+  $("reader").classList.toggle("reader--speaking", on);
+  $("listen-label").textContent = on ? "Stop listening" : "Listen to this reading";
+  $("listen-note").textContent = on ? "Reading aloud." : note;
+  if (!on) mark(null);
+}
+
+function toggleListening() {
+  if (listening) {
+    stopSpeech();
+    return setListening(false);
+  }
+  track("audio_started", { spread: String($("res-spread").textContent || "").slice(0, 60) });
+  setListening(true);
+  speak(script, {
+    onItem: mark,
+    onEnd: (failed) => setListening(false, failed ? "Audio isn't working on this device. You can still read it here." : LISTEN_NOTE)
+  });
 }
 
 // ---------- Question pills ----------
@@ -230,6 +278,8 @@ function setQuestion(text) {
 function reset() {
   if (controller) controller.abort();
   stopLoading();
+  stopSpeech();
+  setListening(false);
   if (photo) URL.revokeObjectURL(photo.objectUrl);
   photo = null;
   setQuestion("");
@@ -253,5 +303,7 @@ $("btn-wrong").addEventListener("click", reset);
 $("btn-again").addEventListener("click", reset);
 $("btn-error-retry").addEventListener("click", reset);
 $("btn-care-again").addEventListener("click", reset);
+$("btn-listen").addEventListener("click", toggleListening);
+window.addEventListener("pagehide", stopSpeech);
 
 show("home", false);

@@ -13,8 +13,8 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261010">
-  <link rel="stylesheet" href="/css/components.css?v=20261010">
+  <link rel="stylesheet" href="/css/tokens.css?v=20261010b">
+  <link rel="stylesheet" href="/css/components.css?v=20261010b">
   <style>
     .sg { max-width: 56rem; margin-inline: auto; padding: var(--s-6) var(--gutter) var(--s-8); display: grid; gap: var(--s-8); }
     .sg section { display: grid; gap: var(--s-5); }
@@ -41,8 +41,8 @@
     @media (min-width: 40rem) { .dos { grid-template-columns: 1fr 1fr; } }
     .dos ul { margin: var(--s-2) 0 0; padding-left: 1.2em; display: grid; gap: var(--s-2); color: var(--mist); }
   </style>
-  <script defer src="/js/analytics.js?v=20261010"></script>
-  <script defer src="/js/share.js?v=20261010"></script>
+  <script defer src="/js/analytics.js?v=20261010b"></script>
+  <script defer src="/js/share.js?v=20261010b"></script>
 </head>
 <body>
   <main class="sg">
@@ -137,6 +137,23 @@
 
       <h3>Detected spread</h3>
       <div class="detected" style="max-width:28rem"><p class="detected__spread">Three-card spread</p><p class="detected__count">3 cards found</p></div>
+
+      <h3>Reader avatar and audio offer</h3>
+      <p class="muted small">The reader is a nameless figure in gold linework on the night sky, a calm illustration with no character voice. It appears inside the turning zodiac wheel while a reading is made, and on the reading screen beside the audio offer. The offer is one secondary button, 48px tall and full width on mobile, never gold. The avatar ring pulses while audio plays, and the card being read gets a gold rule. All motion stops under reduced motion.</p>
+      <section class="reader" aria-labelledby="sg-reader-title">
+        <div class="reader__head">
+          <div class="reader__figure"><img class="reader-avatar" src="/assets/reader.svg" alt="" width="72" height="72"></div>
+          <div>
+            <h3 class="reader__title" id="sg-reader-title">Prefer to listen?</h3>
+            <p class="reader__note">Hear this tarot spread reading read aloud.</p>
+          </div>
+        </div>
+        <button class="btn btn--secondary" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          <span>Listen to this reading</span>
+        </button>
+        <p class="reader__note">Read aloud by your device. readmyspread doesn't record or save audio.</p>
+      </section>
 
       <h3>Share bar</h3>
       <p class="muted small">On every page, including reading results. Threads, Facebook and Instagram only, as secondary buttons: stacked and full width on mobile, three across from 40rem. Each is a 48px tap target. Never a second primary button.</p>

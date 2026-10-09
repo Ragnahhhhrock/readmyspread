@@ -11,7 +11,8 @@ readmyspread reads tarot card spreads from a photo. The look is a generic astrol
 2. **Legible first.** Every text pairing meets WCAG AA. Touch targets are at least 48px.
 3. **Tarot is always named.** Public copy, titles and share images say "tarot" or "tarot spread" so nobody has to guess what the site does.
 4. **One source of truth.** Tokens live in `public/css/tokens.css`. Change them there and nowhere else.
-5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file.
+5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file. A second change on the same day adds a letter (`?v=20261010b`). `js/audio.js` is imported by `js/app.js` with the same version.
+6. **Mobile first.** Design and check at 390px wide before anything wider. Every control is a tap target of at least 48px and reads without zooming.
 
 ## 2. Colour (tokens in `public/css/tokens.css`)
 
@@ -65,6 +66,7 @@ Line heights: tight 1.05 (headings), UI 1.45, reading 1.55. Reading column is 36
 - **Reading:** `.reading` in Cormorant at reading size, verdict in italic, one section per card position with a quiet divider.
 - **Status:** `.status` panel with a left rule; errors use gold, never red.
 - **Focus:** 3px violet outline, 3px offset, on every interactive element.
+- **Reader and audio offer:** `.reader`, see section 14.
 - **Share bar:** `.sharebar`, see section 12.
 - **Tip panel:** `.tip`, dusk panel with 20px radius, Cormorant heading (step-2), mist copy, one full-width `.btn--primary` (the only gold action on the result screen) linking to the Stripe payment link in a new tab, with a mist step--1 note. No embedded third-party widgets: they cannot follow the design system.
 
@@ -77,7 +79,7 @@ Line heights: tight 1.05 (headings), UI 1.45, reading 1.55. Reading column is 36
 
 ## 7. Voice and copy
 
-Plain, warm, even-handed. No persona, no jokes at the reader's expense. Australian spelling (recognises, colour). Sentence case headings. No exclamation marks.
+Plain, warm, even-handed. No persona (the reader avatar in section 14 is a picture, not a character: no name, no backstory, no first-person voice), no jokes at the reader's expense. Australian spelling (recognises, colour). Sentence case headings. No exclamation marks.
 
 - **Tagline:** "Your tarot spread, read plainly."
 - **Eyebrow / category label:** "Tarot spread readings"
@@ -146,3 +148,19 @@ Images are built by `python3 scripts/build-facebook.py` into `public/assets/face
 | `post-how-it-works-1080x1350.png` | 1080 x 1350 (4:5) | `.row` panels on dusk, 20px radius, moon phases for the three steps. |
 
 Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower-case wordmark, no exclamation marks.
+
+## 14. Reader avatar and audio version (`public/assets/reader.svg`, `.reader` in `components.css`, `public/js/audio.js`)
+
+**The avatar.** A calm head-and-shoulders figure in the site's gold linework: dusk sky with a nebula glow and a dotted ring, hair in night, shoulders in nebula, every outline in gold at 2px, the crescent and four-point star mark as a brooch. Closed eyes, a quiet mouth, no hood, crystal ball or props. No skin tone is used, so the figure is not tied to any one person. It is a picture, not a persona: no name, no backstory, no first-person lines. The reading text keeps the plain voice in section 7. `reader.svg` is hand-authored from tokens (hex values match `tokens.css`); alt text is empty where it sits beside text that says the same thing.
+
+**Where it appears**
+- **Loading screen:** 6rem avatar inside the 9rem zodiac wheel, which turns slowly. Decorative, so `aria-hidden`.
+- **Reading screen:** `.reader` panel above the reading: 4.5rem avatar, "Prefer to listen?", one line of support, then the audio button.
+
+**Audio version.** Offered on every finished reading except the care screen. It uses the browser's own speech (`speechSynthesis`), so nothing is recorded, uploaded or stored and no new service is involved. The panel stays hidden where the browser cannot speak.
+- **Button:** one `.btn--secondary`, full width, 48px, speaker icon. Label "Listen to this reading", then "Stop listening" while playing. Never gold, because the page's one primary action keeps that.
+- **Voice:** Australian English first, then other English, preferring on-device voices. Rate 0.95. Spoken text is the spread name and verdict, each card and position with its text, then the closing line.
+- **While playing:** the avatar ring pulses (`.reader--speaking`), the card being read gets a gold left rule (`.is-speaking`), and the note under the button says "Reading aloud." The status line is `aria-live="polite"`.
+- **Stops:** on Stop, on "Read another spread", on leaving the page.
+- **Failure:** "Audio isn't working on this device. You can still read it here."
+- **Analytics:** GA4 `audio_started` with `spread`. Never the reading text.
