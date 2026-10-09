@@ -14,7 +14,9 @@
 - `public/read/`: the reading app (`js/app.js`, `css/app.css`).
 - `public/privacy/`: privacy page.
 - `functions/api/read.js`: the reading API.
-- `DESIGN.md`: palette, type and motifs.
+- `public/style-guide/`: live style guide page (noindex), built from the same tokens.
+- `DESIGN.md`: the design system and style guide (colour, type, components, voice, share images).
+- Contact email: contact@readmyspread.com.
 - `scripts/build-wheel.py`: regenerates the zodiac wheel and star-field SVGs. `scripts/build-assets.py`: regenerates icons and social images.
 - `tests/`: `node tests/read.test.mjs` (API), `python3 tests/ui.test.py` (browser flow with a mocked API; serve `public/` on port 8766 first).
 

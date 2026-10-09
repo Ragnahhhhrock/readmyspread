@@ -27,11 +27,12 @@ body {{ width: {w}px; height: {h}px; overflow: hidden; position: relative; color
 .stars {{ position: absolute; inset: 0; background: url("{sa}"), url("{sb}"); }}
 .wheel {{ position: absolute; right: -150px; top: 50%; width: {wd}px; height: {wd}px; transform: translateY(-50%); opacity: .95; }}
 .copy {{ position: absolute; left: 76px; top: 50%; transform: translateY(-50%); width: 640px; }}
+.eyebrow {{ font-family: "Hanken Grotesk"; font-weight: 600; font-size: 22px; letter-spacing: .18em; text-transform: uppercase; color: #aeb4d3; margin-bottom: 22px; }}
 .name {{ font-family: "Cormorant Garamond"; font-weight: 600; font-size: 108px; line-height: 1; letter-spacing: .005em; }}
 .tag {{ font-family: "Cormorant Garamond"; font-style: italic; font-size: 52px; color: #e2c071; margin-top: 18px; }}
 .sub {{ font-family: "Hanken Grotesk"; font-size: 27px; line-height: 1.4; color: #aeb4d3; margin-top: 26px; width: 520px; }}
 .url {{ position: absolute; left: 76px; bottom: 46px; font-family: "Hanken Grotesk"; font-weight: 600; font-size: 25px; letter-spacing: .06em; color: #e2c071; }}
-</style><div class="stars"></div><img class="wheel" src="{wheel}"><div class="copy"><div class="name">readmyspread</div><div class="tag">Your spread, read plainly.</div><div class="sub">Photograph your tarot spread and get a clear reading, card by card.</div></div><div class="url">readmyspread.com</div>"""
+</style><div class="stars"></div><img class="wheel" src="{wheel}"><div class="copy"><div class="eyebrow">Tarot spread readings</div><div class="name">readmyspread</div><div class="tag">Your tarot spread, read plainly.</div><div class="sub">Photograph your tarot card spread and get a clear reading, card by card.</div></div><div class="url">readmyspread.com</div>"""
 
 with sync_playwright() as p:
     b = p.chromium.launch()

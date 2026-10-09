@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Style guide | readmyspread</title>
+  <meta name="description" content="Design system and style guide for readmyspread, tarot spread readings: colour, type, components, voice and share images.">
+  <link rel="canonical" href="https://readmyspread.com/style-guide/">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#0b1024">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    .sg { max-width: 56rem; margin-inline: auto; padding: var(--s-6) var(--gutter) var(--s-8); display: grid; gap: var(--s-8); }
+    .sg section { display: grid; gap: var(--s-5); }
+    .sg h2 { font-size: var(--step-3); padding-top: var(--s-5); border-top: 1px solid var(--line-quiet); }
+    .sg h3 { font-size: var(--step-2); }
+    .sg .eyebrow { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+    .sg code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.875em; color: var(--mist); }
+    .sg-nav { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); font-size: var(--step--1); }
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); gap: var(--s-3); }
+    .swatch { background: var(--dusk); border: 1px solid var(--line-quiet); border-radius: var(--r-ui); overflow: hidden; display: grid; }
+    .swatch__chip { height: 4.5rem; border-bottom: 1px solid var(--line-quiet); }
+    .swatch__meta { padding: var(--s-3); display: grid; gap: var(--s-1); font-size: var(--step--1); }
+    .swatch__meta strong { font-size: var(--step-0); }
+    .specimen { display: grid; gap: var(--s-2); padding-block: var(--s-3); border-top: 1px solid var(--line-quiet); }
+    .specimen small { color: var(--mist); font-size: var(--step--1); }
+    .row { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; }
+    .panel { background: var(--dusk); border-radius: var(--r-panel); padding: var(--s-5); display: grid; gap: var(--s-4); }
+    .space { display: grid; gap: var(--s-2); }
+    .space div { display: flex; align-items: center; gap: var(--s-3); font-size: var(--step--1); color: var(--mist); }
+    .space i { display: block; height: 0.75rem; background: var(--gold); border-radius: 2px; }
+    .share { display: grid; gap: var(--s-4); }
+    .share img { width: 100%; height: auto; border-radius: var(--r-ui); border: 1px solid var(--line-quiet); }
+    .dos { display: grid; gap: var(--s-4); }
+    @media (min-width: 40rem) { .dos { grid-template-columns: 1fr 1fr; } }
+    .dos ul { margin: var(--s-2) 0 0; padding-left: 1.2em; display: grid; gap: var(--s-2); color: var(--mist); }
+  </style>
+</head>
+<body>
+  <main class="sg">
+    <header class="stack">
+      <a class="wordmark" href="/" aria-label="readmyspread, home">
+        <svg class="wordmark__mark" viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="mk-sg"><rect width="64" height="64" fill="#fff"/><circle cx="41" cy="26" r="15" fill="#000"/></mask></defs><circle cx="30" cy="34" r="19" fill="#e2c071" mask="url(#mk-sg)"/><path d="M46 9l1.8 5.2L53 16l-5.2 1.8L46 23l-1.8-5.2L39 16l5.2-1.8Z" fill="#e2c071"/></svg>
+        readmyspread
+      </a>
+      <p class="eyebrow">Design system and style guide</p>
+      <h1>Your tarot spread, read plainly.</h1>
+      <p class="reading muted">How readmyspread looks and sounds. Everything here is built from <code>tokens.css</code> and <code>components.css</code>, so what you see is what the site uses.</p>
+      <nav class="sg-nav" aria-label="Sections">
+        <a href="#principles">Principles</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#space">Space and shape</a><a href="#components">Components</a><a href="#voice">Voice</a><a href="#share">Share images</a><a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="principles" aria-labelledby="p-h">
+      <h2 id="p-h">Principles</h2>
+      <div class="dos">
+        <div class="panel"><h3>Plain over mystical</h3><p class="muted">Clear reading, no act, no fog. A deep night sky and gold linework, calm and legible.</p></div>
+        <div class="panel"><h3>Legible first</h3><p class="muted">Every text pairing meets WCAG AA. Touch targets are 48px or larger. Motion respects reduced-motion settings.</p></div>
+        <div class="panel"><h3>Tarot is always named</h3><p class="muted">Titles, descriptions, the hero and share images say tarot or tarot spread, so the purpose is never a guess.</p></div>
+        <div class="panel"><h3>One source of truth</h3><p class="muted">Change a token in <code>tokens.css</code>, nowhere else. Never use raw hex in a component.</p></div>
+      </div>
+    </section>
+
+    <section id="colour" aria-labelledby="c-h">
+      <h2 id="c-h">Colour</h2>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch__chip" style="background:var(--night)"></div><div class="swatch__meta"><strong>night</strong><code>#0b1024</code><span class="muted">Page background</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--dusk)"></div><div class="swatch__meta"><strong>dusk</strong><code>#141a38</code><span class="muted">Cards, panels</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--nebula)"></div><div class="swatch__meta"><strong>nebula</strong><code>#232b55</code><span class="muted">Raised surfaces, dividers</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--starlight)"></div><div class="swatch__meta"><strong>starlight</strong><code>#f3efe4</code><span class="muted">Primary text, 16.2:1</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--mist)"></div><div class="swatch__meta"><strong>mist</strong><code>#aeb4d3</code><span class="muted">Secondary text, 9.0:1</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--gold)"></div><div class="swatch__meta"><strong>gold</strong><code>#e2c071</code><span class="muted">Primary fill, edging, 10.3:1 with night text</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--gold-deep)"></div><div class="swatch__meta"><strong>gold-deep</strong><code>#cfa94f</code><span class="muted">Gold hover</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--violet)"></div><div class="swatch__meta"><strong>violet</strong><code>#b4a8ff</code><span class="muted">Links, focus ring, 8.7:1</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--line)"></div><div class="swatch__meta"><strong>line</strong><code>#6b74a8</code><span class="muted">UI boundaries, 3:1 or more</span></div></div>
+      </div>
+      <p class="muted small">Gold is for the one primary action per screen and for card edging. Violet is for links and focus only. Errors use gold, never red. Dark theme only.</p>
+    </section>
+
+    <section id="type" aria-labelledby="t-h">
+      <h2 id="t-h">Type</h2>
+      <p class="muted">Display: Cormorant Garamond (400, 400 italic, 600). UI: Hanken Grotesk (variable). Both self-hosted, SIL OFL.</p>
+      <div class="specimen"><small>step-4 hero, Cormorant 400</small><p style="font-family:var(--font-display);font-size:var(--step-4);line-height:var(--lh-tight)">Clear <em>readings</em></p></div>
+      <div class="specimen"><small>step-3 screen title, Cormorant 400</small><p style="font-family:var(--font-display);font-size:var(--step-3);line-height:var(--lh-tight)">What we found</p></div>
+      <div class="specimen"><small>step-2 card name, Cormorant 400</small><p style="font-family:var(--font-display);font-size:var(--step-2);line-height:1.1">The Star, upright</p></div>
+      <div class="specimen"><small>step-1 reading text, Cormorant 400, line height 1.55</small><p class="reading__body" style="font-family:var(--font-display);font-size:var(--step-1);line-height:var(--lh-reading);max-width:var(--measure)">In the centre of a three-card tarot spread, the card asks you to notice what you have been putting off.</p></div>
+      <div class="specimen"><small>step-0 UI, Hanken Grotesk</small><p>Photograph your tarot spread. Whole spread in frame, good light, cards flat.</p></div>
+      <div class="specimen"><small>step--1 caption, Hanken Grotesk</small><p class="small muted">For entertainment only. Not medical, legal or financial advice.</p></div>
+    </section>
+
+    <section id="space" aria-labelledby="s-h">
+      <h2 id="s-h">Space and shape</h2>
+      <div class="space" aria-label="Space scale">
+        <div><i style="width:var(--s-1)"></i>s-1 0.25rem</div>
+        <div><i style="width:var(--s-2)"></i>s-2 0.5rem</div>
+        <div><i style="width:var(--s-3)"></i>s-3 0.75rem</div>
+        <div><i style="width:var(--s-4)"></i>s-4 1rem</div>
+        <div><i style="width:var(--s-5)"></i>s-5 1.5rem</div>
+        <div><i style="width:var(--s-6)"></i>s-6 2rem</div>
+        <div><i style="width:var(--s-7)"></i>s-7 3rem</div>
+        <div><i style="width:var(--s-8)"></i>s-8 4.5rem</div>
+      </div>
+      <p class="muted small">Radius: 8px for buttons, inputs and tarot card thumbnails; 20px for panels and the upload zone. Touch target 3rem. Reading column 36rem. Motion: 160ms for hover, 480ms for reveals.</p>
+    </section>
+
+    <section id="components" aria-labelledby="k-h">
+      <h2 id="k-h">Components</h2>
+
+      <h3>Buttons</h3>
+      <div class="row">
+        <a class="btn btn--primary" href="/read/">Read my cards</a>
+        <a class="btn btn--secondary" href="#components">How it works</a>
+        <button class="btn" type="button" disabled>Disabled</button>
+      </div>
+
+      <h3>Field</h3>
+      <div class="field" style="max-width:28rem">
+        <label for="sg-q">Ask a question</label>
+        <textarea class="input" id="sg-q" rows="3" placeholder="What should I focus on this month?"></textarea>
+        <span class="hint">Optional. A specific question gets a more specific reading.</span>
+      </div>
+
+      <h3>Tarot card thumbnails</h3>
+      <ul class="cards" style="max-width:24rem">
+        <li class="tcard"><div class="tcard__face">&#10022;</div><p class="tcard__name">The Star</p><p class="tcard__meta">Upright</p></li>
+        <li class="tcard tcard--reversed"><div class="tcard__face">&#10022;</div><p class="tcard__name">The Tower</p><p class="tcard__meta">Reversed</p></li>
+        <li class="tcard"><div class="tcard__face">&#10022;</div><p class="tcard__name">Ace of Cups</p><p class="tcard__meta">Upright</p></li>
+      </ul>
+
+      <h3>Detected spread</h3>
+      <div class="detected" style="max-width:28rem"><p class="detected__spread">Three-card spread</p><p class="detected__count">3 cards found</p></div>
+
+      <h3>Status</h3>
+      <div class="status status--error" style="max-width:28rem"><strong>We couldn't read that photo</strong><p>Try again with the whole tarot spread in frame and good light.</p></div>
+    </section>
+
+    <section id="voice" aria-labelledby="v-h">
+      <h2 id="v-h">Voice and copy</h2>
+      <p class="reading muted">Plain, warm, even-handed. No persona, no jokes at the reader's expense. Australian spelling. Sentence case headings. No exclamation marks.</p>
+      <div class="dos">
+        <div class="panel"><h3>Say</h3><ul><li>Your tarot spread, read plainly.</li><li>Lay out your tarot spread. Get a clear reading.</li><li>Read my cards</li><li>Tarot spread readings</li></ul></div>
+        <div class="panel"><h3>Avoid</h3><ul><li>Your spread, read plainly. (does not say tarot)</li><li>Predictions about health, money or legal matters</li><li>Mystical claims, "the cards know"</li><li>Red error styling or alarming language</li></ul></div>
+      </div>
+      <p class="muted small">Every page footer carries: For entertainment only. Not medical, legal or financial advice.</p>
+    </section>
+
+    <section id="share" aria-labelledby="sh-h">
+      <h2 id="sh-h">Share images</h2>
+      <p class="muted">Built by <code>python3 scripts/build-assets.py</code>. Do not edit the PNGs by hand.</p>
+      <div class="share">
+        <div><img src="/assets/og-image.png" width="1200" height="630" alt="Open Graph image: readmyspread, tarot spread readings, with a gold zodiac wheel on a night sky"><p class="small muted">Open Graph, 1200 x 630 (1.91:1)</p></div>
+        <div><img src="/assets/twitter-card.png" width="1200" height="600" alt="Twitter card image: readmyspread, tarot spread readings, with a gold zodiac wheel on a night sky"><p class="small muted">Twitter / X summary_large_image, 1200 x 600 (2:1)</p></div>
+      </div>
+      <p class="muted small">Both use the eyebrow "Tarot spread readings", the wordmark, the tagline in gold italic, one support line and the URL, with the wheel bleeding off the right edge. Text stays inside a 76px left margin.</p>
+    </section>
+
+    <section id="contact" aria-labelledby="ct-h">
+      <h2 id="ct-h">Contact</h2>
+      <p>Questions or feedback: <a href="mailto:contact@readmyspread.com">contact@readmyspread.com</a></p>
+    </section>
+
+    <footer class="site-footer">
+      <p>For entertainment only. Not medical, legal or financial advice.</p>
+      <p><a href="/">Home</a> &nbsp; <a href="/read/">Read my cards</a> &nbsp; <a href="/privacy/">Privacy</a> &nbsp; <a href="mailto:contact@readmyspread.com">Contact</a></p>
+    </footer>
+  </main>
+</body>
+</html>
