@@ -1,14 +1,5 @@
 /* Learn tarot section (/learn-tarot/, /about-tarot/). Requires tokens.css, components.css and landing.css (sky, .wide, .nav, .eyebrow, footer). Tokens only, no raw colours. */
 
-.nav__links { display: flex; align-items: center; gap: var(--s-4); }
-.nav__links .btn, .nav__link { white-space: nowrap; }
-@media (max-width: 30rem) { .nav__links .nav__link { display: none; } }
-.nav__link {
-  display: inline-flex; align-items: center; min-height: var(--tap);
-  color: var(--starlight); font-weight: 500; text-decoration: none;
-}
-.nav__link:hover, .nav__link[aria-current="page"] { color: var(--gold); text-decoration: underline; text-underline-offset: 0.3em; }
-@media (max-width: 34rem) { .nav__link--optional { display: none; } }
 
 .col { width: 100%; max-width: 44rem; margin-inline: auto; padding-inline: var(--gutter); }
 .learn-main { padding-block: var(--s-5) var(--s-8); display: grid; gap: var(--s-7); }
@@ -84,4 +75,12 @@
 .cta { display: grid; gap: var(--s-4); justify-items: start; padding: var(--s-5); background: var(--dusk); border: 1px solid var(--line-quiet); border-radius: var(--r-panel); }
 .cta h2 { font-size: var(--step-2); }
 .cta p { color: var(--mist); }
-@media (max-width: 22rem) { .nav .wordmark { font-size: var(--step-1); } .nav .btn { padding-inline: var(--s-3); } }
+
+/* ---------- Contact form ---------- */
+.form { display: grid; gap: var(--s-5); max-width: 36rem; }
+.form .field > label { font-size: var(--step-0); }
+.field__error { color: var(--gold); font-size: var(--step--1); font-weight: 600; }
+.input[aria-invalid="true"] { border-color: var(--gold); border-width: 2px; }
+.trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+#form-status { max-width: 36rem; }
+#form-status p { color: var(--mist); }

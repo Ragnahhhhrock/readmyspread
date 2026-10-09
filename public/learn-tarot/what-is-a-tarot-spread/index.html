@@ -52,15 +52,18 @@
   </script>
   <script defer src="/js/analytics.js"></script>
   <script defer src="/js/share.js"></script>
+  <script defer src="/js/menu.js"></script>
 </head>
 <body class="landing">
   <div class="sky" aria-hidden="true"></div>
 
-  <header class="wide nav">
+  <header class="site-nav">
     <a class="wordmark" href="/" aria-label="readmyspread, home"><svg class="wordmark__mark" viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="mk-nav"><rect width="64" height="64" fill="#fff"/><circle cx="41" cy="26" r="15" fill="#000"/></mask></defs><circle cx="30" cy="34" r="19" fill="#e2c071" mask="url(#mk-nav)"/><path d="M46 9l1.8 5.2L53 16l-5.2 1.8L46 23l-1.8-5.2L39 16l5.2-1.8Z" fill="#e2c071"/></svg>readmyspread</a>
-    <nav class="nav__links" aria-label="Main">
-      <a class="nav__link" href="/learn-tarot/" aria-current="page">Learn tarot</a>
-      <a class="nav__link nav__link--optional" href="/about-tarot/">About tarot</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu"><svg class="menu-btn__bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="menu-btn__x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="menu-btn__label">Menu</span></button>
+    <nav id="site-menu" class="site-menu" aria-label="Main">
+      <a class="menu-link" href="/learn-tarot/" aria-current="page">Learn tarot</a>
+      <a class="menu-link" href="/about-tarot/">About tarot</a>
+      <a class="menu-link" href="/contact/">Contact</a>
       <a class="btn btn--secondary" href="/read/">Read my cards</a>
     </nav>
   </header>
@@ -135,7 +138,8 @@
   <footer class="site-footer">
     <div class="wide">
       <p>For entertainment only. Not medical, legal or financial advice.</p>
-      <p><a href="/read/">Read my cards</a> &nbsp; <a href="/learn-tarot/">Learn tarot</a> &nbsp; <a href="/about-tarot/">About tarot</a> &nbsp; <a href="/privacy/">Privacy</a> &nbsp; <a href="mailto:contact@readmyspread.com">Contact</a></p>
+      <p><a href="/read/">Read my cards</a> &nbsp; <a href="/learn-tarot/">Learn tarot</a> &nbsp; <a href="/about-tarot/">About tarot</a> &nbsp; <a href="/contact/">Contact</a> &nbsp; <a href="/privacy/">Privacy</a></p>
+      <p><a href="mailto:contact@readmyspread.com">contact@readmyspread.com</a></p>
     </div>
   </footer>
 </body>

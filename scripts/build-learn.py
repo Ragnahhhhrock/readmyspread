@@ -42,7 +42,7 @@ def share(path, title):
     return sharebar(f"{SITE}{path}", share_text(title + " | readmyspread")).replace("\n", "\n    ")
 
 
-def head(title, desc, path, *, og_type="website", og_img=DEFAULT_OG, tw_img=DEFAULT_TW, img_alt=DEFAULT_ALT, extra="", jsonld=None, robots="index, follow, max-image-preview:large"):
+def head(title, desc, path, *, og_type="website", og_img=DEFAULT_OG, tw_img=DEFAULT_TW, img_alt=DEFAULT_ALT, extra="", jsonld=None, robots="index, follow, max-image-preview:large", scripts=""):
     url = f"{SITE}{path}"
     ld = f'\n  <script type="application/ld+json">\n  {json.dumps(jsonld, ensure_ascii=False)}\n  </script>' if jsonld else ""
     return f"""<!doctype html>
@@ -91,31 +91,55 @@ def head(title, desc, path, *, og_type="website", og_img=DEFAULT_OG, tw_img=DEFA
   <link rel="stylesheet" href="/css/learn.css">{ld}
   <script defer src="/js/analytics.js"></script>
   <script defer src="/js/share.js"></script>
+  <script defer src="/js/menu.js"></script>{scripts}
 </head>
 <body class="landing">
   <div class="sky" aria-hidden="true"></div>
 """
 
 
+BARS = '<svg class="menu-btn__bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+CROSS = '<svg class="menu-btn__x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+
+
 def nav(current=""):
+    """The site header. Hand-written pages carry the same markup between <!--nav--> markers, rewritten by sync_static_nav()."""
     def cur(k): return ' aria-current="page"' if current == k else ""
     return f"""
-  <header class="wide nav">
+  <header class="site-nav">
     <a class="wordmark" href="/" aria-label="readmyspread, home">{MARK}readmyspread</a>
-    <nav class="nav__links" aria-label="Main">
-      <a class="nav__link" href="/learn-tarot/"{cur('learn')}>Learn tarot</a>
-      <a class="nav__link nav__link--optional" href="/about-tarot/"{cur('about')}>About tarot</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu">{BARS}{CROSS}<span class="menu-btn__label">Menu</span></button>
+    <nav id="site-menu" class="site-menu" aria-label="Main">
+      <a class="menu-link" href="/learn-tarot/"{cur('learn')}>Learn tarot</a>
+      <a class="menu-link" href="/about-tarot/"{cur('about')}>About tarot</a>
+      <a class="menu-link" href="/contact/"{cur('contact')}>Contact</a>
       <a class="btn btn--secondary" href="/read/">Read my cards</a>
     </nav>
   </header>
 """
 
 
+STATIC_NAV_PAGES = {"index.html": "", "privacy/index.html": ""}
+
+
+def sync_static_nav():
+    """Rewrite the header between <!--nav--> and <!--/nav--> in the hand-written pages."""
+    for rel, cur in STATIC_NAV_PAGES.items():
+        f = PUB / rel
+        if not f.exists():
+            continue
+        t = f.read_text()
+        new = re.sub(r"<!--nav-->.*?<!--/nav-->", lambda m: "<!--nav-->" + nav(cur) + "  <!--/nav-->", t, flags=re.S)
+        if new != t:
+            f.write_text(new)
+
+
 FOOT = """
   <footer class="site-footer">
     <div class="wide">
       <p>For entertainment only. Not medical, legal or financial advice.</p>
-      <p><a href="/read/">Read my cards</a> &nbsp; <a href="/learn-tarot/">Learn tarot</a> &nbsp; <a href="/about-tarot/">About tarot</a> &nbsp; <a href="/privacy/">Privacy</a> &nbsp; <a href="mailto:contact@readmyspread.com">Contact</a></p>
+      <p><a href="/read/">Read my cards</a> &nbsp; <a href="/learn-tarot/">Learn tarot</a> &nbsp; <a href="/about-tarot/">About tarot</a> &nbsp; <a href="/contact/">Contact</a> &nbsp; <a href="/privacy/">Privacy</a></p>
+      <p><a href="mailto:contact@readmyspread.com">contact@readmyspread.com</a></p>
     </div>
   </footer>
 </body>
@@ -341,8 +365,64 @@ def main():
 """ + FOOT
     (d / "index.html").write_text(page)
 
+    # ---------------- contact (fixed pages)
+    cdesc = "Contact readmyspread with a question about your tarot spread reading, a card that was misread, or the Learn tarot guides. We reply by email."
+    ld = {"@context": "https://schema.org", "@type": "ContactPage", "name": "Contact readmyspread", "url": f"{SITE}/contact/", "description": cdesc, "inLanguage": "en-AU",
+          "isPartOf": {"@type": "WebSite", "name": "readmyspread", "url": SITE + "/"}}
+    d = PUB / "contact"
+    (d / "sent").mkdir(parents=True, exist_ok=True)
+    page = head("Contact: questions about tarot spread readings", cdesc, "/contact/", jsonld=ld, scripts='\n  <script defer src="/js/contact.js"></script>') + nav("contact")
+    page += """
+  <main id="main" class="col learn-main">
+    <div class="page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
+      <p class="eyebrow">Contact</p>
+      <h1>Get in touch.</h1>
+      <p class="lede">A question about your tarot spread reading, a card that was misread, or one of the guides? Send a message and we will reply by email.</p>
+    </div>
+
+    <div id="form-status" class="status" role="status" aria-live="polite" tabindex="-1" hidden></div>
+
+    <form id="contact-form" class="form" method="post" action="/api/contact">
+      <div class="field">
+        <label for="c-name">Your name</label>
+        <input class="input" id="c-name" name="name" type="text" autocomplete="name" maxlength="80" required>
+        <p class="field__error" id="c-name-err" hidden></p>
+      </div>
+      <div class="field">
+        <label for="c-email">Your email</label>
+        <input class="input" id="c-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="120" required aria-describedby="c-email-hint">
+        <p class="hint" id="c-email-hint">So we can reply. Nothing else is done with it.</p>
+        <p class="field__error" id="c-email-err" hidden></p>
+      </div>
+      <div class="field">
+        <label for="c-message">Message</label>
+        <textarea class="input" id="c-message" name="message" rows="7" maxlength="4000" required></textarea>
+        <p class="field__error" id="c-message-err" hidden></p>
+      </div>
+      <div class="trap" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn btn--primary btn--block" type="submit" id="contact-send">Send message</button>
+      <p class="muted small">Your message is emailed to contact@readmyspread.com. See the <a href="/privacy/">privacy page</a>. Prefer email? Write to <a href="mailto:contact@readmyspread.com">contact@readmyspread.com</a>.</p>
+    </form>
+  </main>
+""" + FOOT
+    (d / "index.html").write_text(page)
+
+    page = head("Message sent", "Thanks for contacting readmyspread, the tarot spread reading site.", "/contact/sent/", robots="noindex, follow") + nav("contact")
+    page += """
+  <main id="main" class="col learn-main">
+    <div class="page-head">
+      <p class="eyebrow">Contact</p>
+      <h1>Message sent.</h1>
+      <p class="lede">Thank you. We will reply to the email address you gave.</p>
+    </div>
+    <p><a class="btn btn--secondary" href="/learn-tarot/">Keep reading: Learn tarot</a></p>
+  </main>
+""" + FOOT
+    (d / "sent" / "index.html").write_text(page)
+
     # ---------------- sitemap
-    urls = [("/", None), ("/read/", None), ("/privacy/", None), ("/about-tarot/", None)]
+    urls = [("/", None), ("/read/", None), ("/privacy/", None), ("/about-tarot/", None), ("/contact/", None)]
     latest = live[0]["publish"] if live else None
     urls.append(("/learn-tarot/", latest))
     for c in cats:
@@ -356,6 +436,8 @@ def main():
         sm += f"  <url><loc>{SITE}{path}</loc>" + (f"<lastmod>{last}</lastmod>" if last else "") + "</url>\n"
     sm += "</urlset>\n"
     (PUB / "sitemap.xml").write_text(sm)
+
+    sync_static_nav()
 
     for s in sorted(live_slugs - previous):
         print("NEW:", s)
