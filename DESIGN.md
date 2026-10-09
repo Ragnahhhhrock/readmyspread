@@ -11,6 +11,7 @@ readmyspread reads tarot card spreads from a photo. The look is a generic astrol
 2. **Legible first.** Every text pairing meets WCAG AA. Touch targets are at least 48px.
 3. **Tarot is always named.** Public copy, titles and share images say "tarot" or "tarot spread" so nobody has to guess what the site does.
 4. **One source of truth.** Tokens live in `public/css/tokens.css`. Change them there and nowhere else.
+5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file.
 
 ## 2. Colour (tokens in `public/css/tokens.css`)
 
