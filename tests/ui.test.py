@@ -36,7 +36,6 @@ def run(pw, reply, shot=None):
         route.fulfill(status=status, content_type="application/json", body=json.dumps(body))
     pg.route("**/api/read", handle)
     pg.route("**/metrics/**", lambda r: r.fulfill(status=200, content_type="application/javascript", body=""))
-    pg.route("https://js.stripe.com/**", lambda r: r.fulfill(status=200, content_type="application/javascript", body=""))
     pg.goto(BASE + "/read/"); pg.wait_for_timeout(300)
     if shot: pg.screenshot(path=str(SHOTS / f"{shot}-home.png"), full_page=True)
     pg.set_input_files("#in-roll", IMG); pg.wait_for_selector("#screen-preview:not([hidden])")
@@ -68,7 +67,7 @@ with sync_playwright() as pw:
     assert pg.inner_text("#res-spread") == "Three-card spread"
     assert pg.locator("#res-cards li").count() == 3
     assert "not sure" in pg.inner_text("#res-cards")
-    assert pg.locator("stripe-buy-button[buy-button-id]").count() == 1
+    assert pg.locator("a#btn-tip.btn--primary[href^='https://buy.stripe.com/']").count() == 1 and pg.locator("#btn-tip").bounding_box()["height"] >= 48
     assert pg.evaluate("document.documentElement.scrollWidth") == 390
     pg.screenshot(path=str(SHOTS / "ok-result.png"), full_page=True)
     pg.click("#btn-again"); assert pg.is_visible("#screen-home")
@@ -86,7 +85,7 @@ with sync_playwright() as pw:
     # care
     b, pg, _, _ = run(pw, (200, {"status": "ok", "needs_care": True, "verdict": "Let's put the cards down. I'm glad you said it."}))
     pg.wait_for_selector("#screen-result:not([hidden])")
-    assert pg.is_visible("#res-care") and not pg.is_visible("#res-body") and not pg.is_visible("stripe-buy-button")
+    assert pg.is_visible("#res-care") and not pg.is_visible("#res-body") and not pg.is_visible("#btn-tip")
     pg.screenshot(path=str(SHOTS / "care.png")); b.close()
 
     # share bars: every page has Threads, Facebook and Instagram, no Telegram, 48px taps, no overflow on mobile

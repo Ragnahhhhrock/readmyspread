@@ -50,7 +50,7 @@ Donation setup: in Stripe, add a webhook endpoint `https://readmyspread.com/api/
 
 ## Tips
 
-The reading screen embeds a Stripe buy button (`stripe-buy-button` in `public/read/index.html`; the publishable key is public by design). `public/_headers` allows Stripe's script, frames and API in the CSP. The button's price and wording are set in the Stripe dashboard.
+The reading screen has a native tip panel (`.tip` in `public/read/index.html`, styled in `public/css/app.css`) with a design-system primary button linking to the Stripe payment link, which opens in a new tab so the reading stays on screen. Price and wording of the checkout page are set in the Stripe dashboard. Stripe's embedded buy button is not used because its iframe cannot follow the design system.
 
 ## Local preview
 

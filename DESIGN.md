@@ -66,6 +66,7 @@ Line heights: tight 1.05 (headings), UI 1.45, reading 1.55. Reading column is 36
 - **Status:** `.status` panel with a left rule; errors use gold, never red.
 - **Focus:** 3px violet outline, 3px offset, on every interactive element.
 - **Share bar:** `.sharebar`, see section 12.
+- **Tip panel:** `.tip`, dusk panel with 20px radius, Cormorant heading (step-2), mist copy, one full-width `.btn--primary` (the only gold action on the result screen) linking to the Stripe payment link in a new tab, with a mist step--1 note. No embedded third-party widgets: they cannot follow the design system.
 
 ## 6. Motifs
 

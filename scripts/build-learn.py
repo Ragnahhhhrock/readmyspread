@@ -85,13 +85,13 @@ def head(title, desc, path, *, og_type="website", og_img=DEFAULT_OG, tw_img=DEFA
 
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261009">
-  <link rel="stylesheet" href="/css/components.css?v=20261009">
-  <link rel="stylesheet" href="/css/landing.css?v=20261009">
-  <link rel="stylesheet" href="/css/learn.css?v=20261009">{ld}
-  <script defer src="/js/analytics.js?v=20261009"></script>
-  <script defer src="/js/share.js?v=20261009"></script>
-  <script defer src="/js/menu.js?v=20261009"></script>{scripts}
+  <link rel="stylesheet" href="/css/tokens.css?v=20261010">
+  <link rel="stylesheet" href="/css/components.css?v=20261010">
+  <link rel="stylesheet" href="/css/landing.css?v=20261010">
+  <link rel="stylesheet" href="/css/learn.css?v=20261010">{ld}
+  <script defer src="/js/analytics.js?v=20261010"></script>
+  <script defer src="/js/share.js?v=20261010"></script>
+  <script defer src="/js/menu.js?v=20261010"></script>{scripts}
 </head>
 <body class="landing">
   <div class="sky" aria-hidden="true"></div>
@@ -371,7 +371,7 @@ def main():
           "isPartOf": {"@type": "WebSite", "name": "readmyspread", "url": SITE + "/"}}
     d = PUB / "contact"
     (d / "sent").mkdir(parents=True, exist_ok=True)
-    page = head("Contact: questions about tarot spread readings", cdesc, "/contact/", jsonld=ld, scripts='\n  <script defer src="/js/contact.js?v=20261009"></script>') + nav("contact")
+    page = head("Contact: questions about tarot spread readings", cdesc, "/contact/", jsonld=ld, scripts='\n  <script defer src="/js/contact.js?v=20261010"></script>') + nav("contact")
     page += """
   <main id="main" class="col learn-main">
     <div class="page-head">

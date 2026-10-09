@@ -20,13 +20,12 @@
 
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261009">
-  <link rel="stylesheet" href="/css/components.css?v=20261009">
-  <link rel="stylesheet" href="/css/app.css?v=20261009">
-  <script type="module" src="/js/app.js?v=20261009"></script>
-  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-  <script defer src="/js/analytics.js?v=20261009"></script>
-  <script defer src="/js/share.js?v=20261009"></script>
+  <link rel="stylesheet" href="/css/tokens.css?v=20261010">
+  <link rel="stylesheet" href="/css/components.css?v=20261010">
+  <link rel="stylesheet" href="/css/app.css?v=20261010">
+  <script type="module" src="/js/app.js?v=20261010"></script>
+  <script defer src="/js/analytics.js?v=20261010"></script>
+  <script defer src="/js/share.js?v=20261010"></script>
 </head>
 <body>
   <div class="wrap app">
@@ -124,13 +123,11 @@
             </ul>
             <p class="sharebar__note" role="status" aria-live="polite" hidden></p>
           </section>
-          <aside class="tip" aria-label="Support readmyspread">
-            <p class="tip__ask">Found it useful?</p>
-            <p class="muted small">Readings stay free. A tip helps keep the site running.</p>
-            <stripe-buy-button
-              buy-button-id="buy_btn_1UOTAs0oRIkfnEQLRVytp79s"
-              publishable-key="pk_live_51Tqvau0oRIkfnEQLf76BBFud3BpoOhCNNTBl21fOLj2Dszy5dYfg9JvX7KhdOfQgI0S2GxYEkZegllL1nLTuC0T100Z5yWrRa4">
-            </stripe-buy-button>
+          <aside class="tip" aria-labelledby="tip-title">
+            <h2 class="tip__ask" id="tip-title">Found it useful?</h2>
+            <p class="tip__copy">Readings stay free. A tip helps keep the site running.</p>
+            <a class="btn btn--primary btn--block" id="btn-tip" href="https://buy.stripe.com/cNi9AL2TT0hD4gUauMaAw03" target="_blank" rel="noopener noreferrer">Tip A$5</a>
+            <p class="tip__note">Opens Stripe's secure checkout in a new tab.</p>
           </aside>
         </div>
 
