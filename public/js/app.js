@@ -139,7 +139,10 @@ async function read() {
     });
     stopLoading();
     if (res.status === 429) return showError("rate_limited");
-    if (res.status === 503) return showError("busy");
+    if (res.status === 503) {
+      const err = await res.json().catch(() => ({}));
+      return showError(err.error === "busy" ? "busy" : "server");
+    }
     if (!res.ok) return showError("server");
     const data = await res.json();
     render(data);
