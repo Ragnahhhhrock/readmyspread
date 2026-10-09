@@ -90,6 +90,7 @@ Built by `python3 scripts/build-assets.py` (Playwright and Pillow). Do not edit 
 | --- | --- | --- |
 | `assets/og-image.png` | 1200 x 630 (1.91:1) | `og:image` |
 | `assets/twitter-card.png` | 1200 x 600 (2:1) | `twitter:image`, `twitter:card` = `summary_large_image` |
+| `assets/linkedin-card.png` | 1200 x 627 (1.91:1) | LinkedIn post image (attach to a post; not referenced by the site) |
 
 Layout (same on both): night sky with soft indigo and violet glows and the star field; zodiac wheel bleeding off the right edge; left column holds the eyebrow "Tarot spread readings" (Hanken 600, mist, tracked caps), the wordmark (Cormorant 600, starlight), the tagline (Cormorant italic, gold), one sentence of support (Hanken, mist), and the URL (Hanken 600, gold) bottom left. All text stays inside a 76px left margin and clear of the wheel, so it survives cropping. Keep alt text in the page head in step with the image copy.
 

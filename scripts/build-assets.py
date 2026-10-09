@@ -36,8 +36,9 @@ body {{ width: {w}px; height: {h}px; overflow: hidden; position: relative; color
 
 with sync_playwright() as p:
     b = p.chromium.launch()
-    # Open Graph 1.91:1 (1200x630) and Twitter summary_large_image 2:1 (1200x600)
-    for name, w, h in [("og-image", 1200, 630), ("twitter-card", 1200, 600)]:
+    # Open Graph 1.91:1 (1200x630), Twitter summary_large_image 2:1 (1200x600),
+    # LinkedIn post image 1.91:1 (1200x627)
+    for name, w, h in [("og-image", 1200, 630), ("twitter-card", 1200, 600), ("linkedin-card", 1200, 627)]:
         page = b.new_page(viewport={"width": w, "height": h})
         html = CARD.format(fonts=FONTS, wheel=WHEEL, sa=STARS_A, sb=STARS_B, w=w, h=h, wd=h - 10)
         # file:// assets need a file page, so write a temp file (git-ignored) and open it
