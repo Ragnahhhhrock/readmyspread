@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>readmyspread: tarot spread readings, read plainly</title>
+  <meta name="description" content="Photograph your tarot spread and get a clear, balanced reading. readmyspread identifies the spread and every card, then reads each position in plain language. Free, no account.">
+  <link rel="canonical" href="https://readmyspread.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="readmyspread">
+  <meta name="application-name" content="readmyspread">
+  <meta name="apple-mobile-web-app-title" content="readmyspread">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#0b1024">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="readmyspread">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:url" content="https://readmyspread.com/">
+  <meta property="og:title" content="readmyspread: your spread, read plainly">
+  <meta property="og:description" content="Photograph your tarot spread and get a clear reading. Spread and cards identified automatically.">
+  <meta property="og:image" content="https://readmyspread.com/assets/og-image.png">
+  <meta property="og:image:secure_url" content="https://readmyspread.com/assets/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A gold zodiac wheel on a deep blue night sky beside the words readmyspread. Your spread, read plainly.">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="readmyspread: your spread, read plainly">
+  <meta name="twitter:description" content="Photograph your tarot spread and get a clear reading.">
+  <meta name="twitter:image" content="https://readmyspread.com/assets/twitter-card.png">
+  <meta name="twitter:image:alt" content="A gold zodiac wheel on a deep blue night sky beside the words readmyspread. Your spread, read plainly.">
+
+  <!-- Icons and manifest -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Fonts and styles -->
+  <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/landing.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "readmyspread",
+    "url": "https://readmyspread.com/",
+    "description": "Photograph a tarot spread and get a clear, balanced reading. The app identifies the spread and each card.",
+    "applicationCategory": "EntertainmentApplication",
+    "operatingSystem": "Any, web browser",
+    "inLanguage": "en-AU",
+    "image": "https://readmyspread.com/assets/og-image.png",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" }
+  }
+  </script>
+</head>
+<body class="landing">
+  <div class="sky" aria-hidden="true"></div>
+
+  <header class="wide nav">
+    <a class="wordmark" href="/" aria-label="readmyspread, home">
+      <svg class="wordmark__mark" viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="mk-nav"><rect width="64" height="64" fill="#fff"/><circle cx="41" cy="26" r="15" fill="#000"/></mask></defs><circle cx="30" cy="34" r="19" fill="#e2c071" mask="url(#mk-nav)"/><path d="M46 9l1.8 5.2L53 16l-5.2 1.8L46 23l-1.8-5.2L39 16l5.2-1.8Z" fill="#e2c071"/></svg>
+      readmyspread
+    </a>
+    <a class="btn btn--secondary" href="/read/">Read my cards</a>
+  </header>
+
+  <main>
+    <section class="wide hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Tarot, read plainly</p>
+        <h1 id="hero-title">Lay out your spread. Get a <em>clear</em> reading.</h1>
+        <p class="lede">Take a photo of your tarot spread. readmyspread names the spread, identifies every card, and reads each position in plain, balanced language.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="/read/">Read my cards</a>
+          <a class="btn btn--secondary" href="#how">How it works</a>
+        </div>
+        <p class="hero__note small muted">Free. No account. Your photo isn't saved.</p>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <img class="wheel" src="/assets/zodiac-wheel.svg" alt="" width="600" height="600">
+      </div>
+    </section>
+
+    <section class="wide section" id="how" aria-labelledby="how-title">
+      <div class="section__head">
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-title">Three steps, no sign-up.</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <svg class="step__moon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="20" stroke="#6b74a8" stroke-width="1.5"/><path d="M24 4A20 20 0 0 1 24 44A11 20 0 0 0 24 4Z" fill="#e2c071"/></svg>
+          <p class="step__n">Step one</p>
+          <h3>Photograph</h3>
+          <p>Lay the cards flat, get the whole spread in frame, and take a photo or choose one from your camera roll.</p>
+        </li>
+        <li class="step">
+          <svg class="step__moon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="20" stroke="#6b74a8" stroke-width="1.5"/><path d="M24 4A20 20 0 0 1 24 44Z" fill="#e2c071"/></svg>
+          <p class="step__n">Step two</p>
+          <h3>Identify</h3>
+          <p>readmyspread recognises the spread and every card, including which are reversed, and shows you what it found so you can check it.</p>
+        </li>
+        <li class="step">
+          <svg class="step__moon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="#e2c071" stroke="#e2c071" stroke-width="1.5"/></svg>
+          <p class="step__n">Step three</p>
+          <h3>Read</h3>
+          <p>You get a summary of the spread, then a reading for each card in its position. Add a question if you want the reading to keep it in view.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="signs" aria-hidden="true">
+      <div class="wide">
+        <ul>
+          <li>Aries</li><li>Taurus</li><li>Gemini</li><li>Cancer</li><li>Leo</li><li>Virgo</li>
+          <li>Libra</li><li>Scorpio</li><li>Sagittarius</li><li>Capricorn</li><li>Aquarius</li><li>Pisces</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="wide section" aria-labelledby="get-title">
+      <div class="section__head">
+        <p class="eyebrow">What you get</p>
+        <h2 id="get-title">A reading you can follow.</h2>
+        <p>No act and no fog. Each reading is written to be read once, clearly, and thought about afterwards.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <h3>The spread, recognised</h3>
+          <p>Single card, three-card, Celtic Cross, horseshoe and more. A freeform layout is described as it is.</p>
+        </div>
+        <div class="feature">
+          <h3>Every card, named</h3>
+          <p>Upright or reversed, with its position in the spread. Cards that are hard to make out are flagged, not guessed silently.</p>
+        </div>
+        <div class="feature">
+          <h3>A reading by position</h3>
+          <p>A short summary of the whole spread, then two or three sentences for each card, specific to where it sits.</p>
+        </div>
+        <div class="feature">
+          <h3>Your question, if you have one</h3>
+          <p>Ask something specific and the reading keeps it in view. Leave it blank and you get a general reading.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wide section" aria-labelledby="faq-title">
+      <div class="section__head">
+        <p class="eyebrow">Questions</p>
+        <h2 id="faq-title">Good to know.</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Does it cost anything?</summary>
+          <p>No. Readings are free, with no account or sign-up.</p>
+        </details>
+        <details>
+          <summary>Are my photos saved?</summary>
+          <p>No. Your photo is shrunk in your browser and sent to Claude, an AI model from Anthropic, to read the cards. readmyspread doesn't store photos, questions or readings. The <a href="/privacy/">privacy page</a> has the detail.</p>
+        </details>
+        <details>
+          <summary>What if it misreads a card?</summary>
+          <p>Good light, cards laid flat and the whole spread in frame give the best results. Cards the reader isn't sure about are marked, and you can retake the photo at any time.</p>
+        </details>
+        <details>
+          <summary>Which decks does it work with?</summary>
+          <p>Most standard 78-card decks. Heavily stylised or unusual decks can be harder to read.</p>
+        </details>
+        <details>
+          <summary>Is this fortune telling?</summary>
+          <p>No. Tarot is a tool for reflection, and readings are for entertainment only. They don't predict health, money or legal outcomes, and they aren't advice.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="wide closing" aria-labelledby="close-title">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="mk-close"><rect width="64" height="64" fill="#fff"/><circle cx="41" cy="26" r="15" fill="#000"/></mask></defs><circle cx="30" cy="34" r="19" fill="#e2c071" mask="url(#mk-close)"/><path d="M46 9l1.8 5.2L53 16l-5.2 1.8L46 23l-1.8-5.2L39 16l5.2-1.8Z" fill="#e2c071"/></svg>
+      <h2 id="close-title">Ready when your cards are.</h2>
+      <a class="btn btn--primary" href="/read/">Read my cards</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wide">
+      <p>For entertainment only. Not medical, legal or financial advice.</p>
+      <p><a href="/read/">Read my cards</a> &nbsp; <a href="/privacy/">Privacy</a></p>
+    </div>
+  </footer>
+</body>
+</html>

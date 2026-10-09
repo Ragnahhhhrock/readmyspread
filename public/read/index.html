@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Read my cards | readmyspread</title>
+  <meta name="description" content="Photograph your tarot spread and get a clear reading. readmyspread identifies the spread and every card, then reads each position.">
+  <link rel="canonical" href="https://readmyspread.com/read/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b1024">
+  <meta name="color-scheme" content="dark">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+  <div class="wrap app">
+    <header class="app-head">
+      <a class="wordmark" href="/" aria-label="readmyspread, home">
+        <svg class="wordmark__mark" viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="mk-app"><rect width="64" height="64" fill="#fff"/><circle cx="41" cy="26" r="15" fill="#000"/></mask></defs><circle cx="30" cy="34" r="19" fill="#e2c071" mask="url(#mk-app)"/><path d="M46 9l1.8 5.2L53 16l-5.2 1.8L46 23l-1.8-5.2L39 16l5.2-1.8Z" fill="#e2c071"/></svg>
+        readmyspread
+      </a>
+      <p class="app-head__tag">Your spread, read plainly.</p>
+    </header>
+
+    <main class="screens">
+      <noscript><p class="status"><strong>readmyspread needs JavaScript</strong> Turn it on to photograph your spread.</p></noscript>
+
+      <section class="screen" id="screen-home">
+        <div class="upload">
+          <h1 class="upload__title" tabindex="-1">Lay out your spread and take a photo.</h1>
+          <p class="muted small">Whole spread in frame, good light, cards flat.</p>
+          <button class="btn btn--primary" type="button" id="btn-camera">Take a photo</button>
+          <button class="btn btn--secondary" type="button" id="btn-roll">Choose from camera roll</button>
+        </div>
+        <input type="file" id="in-camera" accept="image/*" capture="environment" hidden>
+        <input type="file" id="in-roll" accept="image/*" hidden>
+        <p class="privacy-note">Your photo is sent to Claude, an AI from Anthropic, to read the cards. readmyspread doesn't save photos or readings. <a href="/privacy/">Privacy</a></p>
+      </section>
+
+      <section class="screen" id="screen-preview" hidden>
+        <h2 tabindex="-1">Is that your spread?</h2>
+        <div class="preview"><img id="preview-img" alt="Your photo of the tarot spread"></div>
+        <div class="field">
+          <label for="question">Ask a question</label>
+          <textarea class="input" id="question" rows="3" maxlength="300" placeholder="What should I focus on this month?"></textarea>
+          <span class="hint">Optional. A specific question gets a more specific reading.</span>
+        </div>
+        <div class="actions">
+          <button class="btn btn--primary" type="button" id="btn-read">Read my cards</button>
+          <button class="btn btn--secondary" type="button" id="btn-retake">Choose a different photo</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-loading" hidden>
+        <div class="loading" role="status">
+          <img class="loading__orbit" src="/assets/zodiac-wheel.svg" alt="" width="80" height="80" aria-hidden="true">
+          <div>
+            <h2 class="display-italic" tabindex="-1" style="font-size:var(--step-2)">Reading your spread</h2>
+            <p class="muted small" id="loading-line" aria-live="polite">Looking over your layout.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-result" hidden>
+        <h2 id="result-title" tabindex="-1">What we found</h2>
+
+        <div class="care" id="res-care" hidden>
+          <p class="care__msg" id="res-care-msg"></p>
+          <p>If you're in danger right now, call your local emergency number (000 in Australia). If you want to talk to someone, Lifeline in Australia is 13 11 14, any time.</p>
+          <button class="btn btn--secondary" type="button" id="btn-care-again" style="justify-self:start">Start again</button>
+        </div>
+
+        <div class="stack-lg" id="res-body">
+          <div class="stack">
+            <div class="detected">
+              <p class="detected__spread" id="res-spread"></p>
+              <p class="detected__count" id="res-count"></p>
+            </div>
+            <ul class="cards" id="res-cards"></ul>
+            <p class="small muted">A card wrong? <button class="linklike" type="button" id="btn-wrong">Retake the photo</button> with the cards flat and well lit.</p>
+          </div>
+          <article class="reading stack-lg" id="res-reading" aria-label="Your reading"></article>
+        </div>
+
+        <button class="btn btn--secondary btn--block" type="button" id="btn-again">Read another spread</button>
+      </section>
+
+      <section class="screen" id="screen-error" hidden>
+        <div class="status status--error" role="alert">
+          <h2 id="error-title" tabindex="-1" style="font-size:var(--step-0);font-family:var(--font-ui);font-weight:600"></h2>
+          <p id="error-body"></p>
+        </div>
+        <button class="btn btn--primary btn--block" type="button" id="btn-error-retry">Try again</button>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>For entertainment only. Not medical, legal or financial advice.</p>
+      <p><a href="/">Home</a> &nbsp; <a href="/privacy/">Privacy</a></p>
+    </footer>
+  </div>
+</body>
+</html>

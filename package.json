@@ -1,0 +1,10 @@
+{
+  "name": "readmyspread",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "readmyspread.com: photograph a tarot spread, get a clear reading.",
+  "scripts": {
+    "test": "node tests/read.test.mjs"
+  }
+}

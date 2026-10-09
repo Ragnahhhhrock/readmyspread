@@ -1,0 +1,50 @@
+/* App screens (/read/). Requires tokens.css and components.css. */
+
+.app { padding-block: var(--s-5) var(--s-4); min-height: 100dvh; display: flex; flex-direction: column; }
+.app > main, .app .screens { flex: 1; }
+
+.app-head { display: grid; gap: var(--s-2); padding-bottom: var(--s-5); }
+.app-head__tag { font-family: var(--font-display); font-style: italic; font-size: var(--step-1); color: var(--gold); }
+
+.screen[hidden] { display: none; }
+.screen { display: grid; gap: var(--s-5); align-content: start; }
+[tabindex="-1"]:focus, [tabindex="-1"]:focus-visible { outline: none; } /* headings take focus for screen readers only */
+
+.preview {
+  background: var(--dusk);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+.preview img { width: 100%; max-height: 55dvh; object-fit: contain; margin-inline: auto; }
+
+.actions { display: grid; gap: var(--s-3); }
+
+.linklike {
+  all: unset; cursor: pointer; color: var(--violet);
+  text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px;
+}
+.linklike:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: var(--r-ui); }
+
+.loading[hidden] { display: none; }
+.loading p[aria-live] { min-height: 1.4em; }
+
+.care {
+  display: grid; gap: var(--s-3);
+  padding: var(--s-5);
+  background: var(--dusk);
+  border-radius: var(--r-ui);
+  border-left: 4px solid var(--care);
+}
+.care__msg { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.2; }
+
+.tcard__face--short { font-size: var(--step-1); }
+.tag-unsure { color: var(--gold); }
+
+.privacy-note { color: var(--mist); font-size: var(--step--1); }
+
+@media (min-width: 40rem) {
+  .app { padding-block: var(--s-6) var(--s-5); }
+  .actions { grid-template-columns: 1fr 1fr; }
+}
+
+.reading__close { font-size: var(--step-2); }

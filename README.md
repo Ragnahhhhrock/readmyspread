@@ -1,0 +1,36 @@
+# readmyspread
+
+[readmyspread.com](https://readmyspread.com): photograph a tarot spread, get a clear, balanced reading. A straight-reading sibling of tarotgoth, with no character and a generic astrological look.
+
+## How it works
+
+1. The browser shrinks the photo and posts it to `/api/read`.
+2. A Cloudflare Pages Function (`functions/api/read.js`) sends it to Claude with plain-reading instructions and a structured tool schema.
+3. The spread, cards and reading come back as JSON and the page renders them. Nothing is stored.
+
+## Layout
+
+- `public/index.html`: landing page (`css/landing.css`, no JavaScript).
+- `public/read/`: the reading app (`js/app.js`, `css/app.css`).
+- `public/privacy/`: privacy page.
+- `functions/api/read.js`: the reading API.
+- `DESIGN.md`: palette, type and motifs.
+- `scripts/build-wheel.py`: regenerates the zodiac wheel and star-field SVGs. `scripts/build-assets.py`: regenerates icons and social images.
+- `tests/`: `node tests/read.test.mjs` (API), `python3 tests/ui.test.py` (browser flow with a mocked API; serve `public/` on port 8766 first).
+
+## Deploy (Cloudflare Pages)
+
+Connect this repo to a Pages project named `readmyspread` with:
+
+- Build command: none
+- Build output directory: `public`
+- Environment variable (secret): `ANTHROPIC_API_KEY`
+- Optional: `ANTHROPIC_MODEL` (default `claude-sonnet-5-5`)
+- Optional but recommended: a KV namespace bound as `RATE` (caps readings per visitor per day and in total; see `functions/api/read.js`)
+- Custom domains: `readmyspread.com` and `www.readmyspread.com`
+
+Also add a Cloudflare rate limiting rule on `/api/read` (Security, WAF) so a bot can't run up the API bill.
+
+## Local preview
+
+`cd public && python3 -m http.server 8000`, then open http://localhost:8000/. The reading API needs `wrangler pages dev public` and an `ANTHROPIC_API_KEY` in `.dev.vars`.
