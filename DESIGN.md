@@ -164,3 +164,15 @@ Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower
 - **Stops:** on Stop, on "Read another spread", on leaving the page.
 - **Failure:** "Audio isn't working on this device. You can still read it here."
 - **Analytics:** GA4 `audio_started` with `spread`. Never the reading text.
+
+## 15. Instagram profile
+
+Images are built by `python3 scripts/build-instagram.py` into `public/assets/instagram/` (do not edit by hand). Page copy, post captions and the setup checklist are in `docs/instagram-setup.md`. The homepage footer links to https://www.instagram.com/readmyspread with a `.btn--secondary` beside the Facebook link.
+
+| File | Size | Notes |
+| --- | --- | --- |
+| `profile-1080.png` | 1080 x 1080 | Mark only, inside the central 55% so the circular crop never clips it. |
+| `highlight-*.png` (read, how-it-works, learn-tarot, privacy) | 1080 x 1920 (9:16) | No text: Instagram prints the highlight name. One gold motif inside the central 600px so the circular crop keeps it: tarot card outline, three moon phases, three-card fan, crescent and star inside a dotted ring. |
+| `post-launch-1080x1350.png`, `post-how-it-works-1080x1350.png`, `post-photo-tips-1080x1350.png` | 1080 x 1350 (4:5) | Same layout rules as sections 8 and 13. Copy keeps a 90px margin so the 3:4 profile-grid crop never cuts it. |
+
+Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower-case wordmark, no exclamation marks.
