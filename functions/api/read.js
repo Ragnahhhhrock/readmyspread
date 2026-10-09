@@ -3,7 +3,7 @@
 // Returns the spread, the cards and the reading as JSON. Nothing is stored.
 //
 // Environment:
-//   ANTHROPIC_API_KEY  (secret, required)
+//   mal-api-key  (secret, required; ANTHROPIC_API_KEY also accepted)
 //   ANTHROPIC_MODEL    (optional, default below)
 //   RATE               (optional KV namespace binding; enables per-visitor and daily caps)
 //   DAILY_PER_VISITOR  (optional, default 8)
@@ -170,7 +170,8 @@ export function cleanResult(input) {
 
 export async function onRequestPost({ request, env }) {
   if (!originAllowed(request)) return json({ error: "forbidden" }, 403);
-  if (!env.ANTHROPIC_API_KEY) return json({ error: "not_configured" }, 503);
+  const apiKey = env["mal-api-key"] || env.ANTHROPIC_API_KEY;
+  if (!apiKey) return json({ error: "not_configured" }, 503);
 
   let body;
   try {
@@ -198,7 +199,7 @@ export async function onRequestPost({ request, env }) {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        "x-api-key": env.ANTHROPIC_API_KEY,
+        "x-api-key": apiKey,
         "anthropic-version": "2023-06-01"
       },
       body: JSON.stringify({

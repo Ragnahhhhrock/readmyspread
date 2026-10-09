@@ -26,7 +26,7 @@ Connect this repo to a Pages project named `readmyspread` with:
 
 - Build command: none
 - Build output directory: `public`
-- Environment variable (secret): `ANTHROPIC_API_KEY`
+- Environment variable (secret): `mal-api-key` (`ANTHROPIC_API_KEY` also accepted)
 - Optional: `ANTHROPIC_MODEL` (default `claude-sonnet-5-5`)
 - Optional but recommended: a KV namespace bound as `RATE` (caps readings per visitor per day and in total; see `functions/api/read.js`)
 - Custom domains: `readmyspread.com` and `www.readmyspread.com`
@@ -39,4 +39,4 @@ The reading screen embeds a Stripe buy button (`stripe-buy-button` in `public/re
 
 ## Local preview
 
-`cd public && python3 -m http.server 8000`, then open http://localhost:8000/. The reading API needs `wrangler pages dev public` and an `ANTHROPIC_API_KEY` in `.dev.vars`.
+`cd public && python3 -m http.server 8000`, then open http://localhost:8000/. The reading API needs `wrangler pages dev public` and a `mal-api-key` in `.dev.vars`.
