@@ -205,12 +205,21 @@ function render(data) {
   show("result");
 }
 
+// ---------- Question pills ----------
+
+function setQuestion(text) {
+  $("question").value = text;
+  for (const p of document.querySelectorAll("#question-pills .pill")) {
+    p.setAttribute("aria-pressed", String(text !== "" && p.textContent === text));
+  }
+}
+
 function reset() {
   if (controller) controller.abort();
   stopLoading();
   if (photo) URL.revokeObjectURL(photo.objectUrl);
   photo = null;
-  $("question").value = "";
+  setQuestion("");
   show("home");
 }
 
@@ -221,6 +230,11 @@ $("btn-roll").addEventListener("click", () => $("in-roll").click());
 $("in-camera").addEventListener("change", (e) => onPicked(e.target));
 $("in-roll").addEventListener("change", (e) => onPicked(e.target));
 $("btn-read").addEventListener("click", read);
+$("question-pills").addEventListener("click", (e) => {
+  const pill = e.target.closest(".pill");
+  if (!pill) return;
+  setQuestion(pill.getAttribute("aria-pressed") === "true" ? "" : pill.textContent);
+});
 $("btn-retake").addEventListener("click", reset);
 $("btn-wrong").addEventListener("click", reset);
 $("btn-again").addEventListener("click", reset);

@@ -40,7 +40,7 @@ def run(pw, reply, shot=None):
     if shot: pg.screenshot(path=str(SHOTS / f"{shot}-home.png"), full_page=True)
     pg.set_input_files("#in-roll", IMG); pg.wait_for_selector("#screen-preview:not([hidden])")
     if shot: pg.screenshot(path=str(SHOTS / f"{shot}-preview.png"), full_page=True)
-    pg.fill("#question", "What should I focus on?")
+    pg.click("#question-pills .pill:has-text('What should I focus on this month?')")
     pg.click("#btn-read"); pg.wait_for_timeout(700)
     return b, pg, sent, errs
 
@@ -62,7 +62,7 @@ with sync_playwright() as pw:
     # happy path
     b, pg, sent, errs = run(pw, (200, OK), "ok")
     pg.wait_for_selector("#screen-result:not([hidden])")
-    assert sent["body"]["mediaType"] == "image/jpeg" and len(sent["body"]["image"]) > 1000 and sent["body"]["question"] == "What should I focus on?"
+    assert sent["body"]["mediaType"] == "image/jpeg" and len(sent["body"]["image"]) > 1000 and sent["body"]["question"] == "What should I focus on this month?"
     assert pg.inner_text("#res-spread") == "Three-card spread"
     assert pg.locator("#res-cards li").count() == 3
     assert "not sure" in pg.inner_text("#res-cards")

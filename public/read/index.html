@@ -54,10 +54,20 @@
       <section class="screen" id="screen-preview" hidden>
         <h2 tabindex="-1">Is that your tarot spread?</h2>
         <div class="preview"><img id="preview-img" alt="Your photo of the tarot spread"></div>
-        <div class="field">
-          <label for="question">Ask a question</label>
-          <textarea class="input" id="question" rows="3" maxlength="300" placeholder="What should I focus on this month?"></textarea>
-          <span class="hint">Optional. A specific question gets a more specific reading.</span>
+        <div class="field" role="group" aria-labelledby="question-label">
+          <span class="field__label" id="question-label">Ask a question</span>
+          <div class="pills" id="question-pills">
+            <button type="button" class="pill" aria-pressed="false">What should I focus on this month?</button>
+            <button type="button" class="pill" aria-pressed="false">What am I not seeing?</button>
+            <button type="button" class="pill" aria-pressed="false">What do I need to let go of?</button>
+            <button type="button" class="pill" aria-pressed="false">What's holding me back?</button>
+            <button type="button" class="pill" aria-pressed="false">What should I do next?</button>
+            <button type="button" class="pill" aria-pressed="false">What does my love life need?</button>
+            <button type="button" class="pill" aria-pressed="false">Which way should my career go?</button>
+            <button type="button" class="pill" aria-pressed="false">What's coming up for me?</button>
+          </div>
+          <input type="hidden" id="question" value="">
+          <span class="hint">Optional. Tap one, or tap it again to skip.</span>
         </div>
         <div class="actions">
           <button class="btn btn--primary" type="button" id="btn-read">Read my cards</button>
