@@ -1,0 +1,21 @@
+{
+  "description": "How tarot grew from a fifteenth-century Italian card game into the deck used for tarot spread readings, from Visconti-Sforza to Rider-Waite-Smith.",
+  "lede": "Tarot began as a card game in northern Italy. Its use for reading came centuries later.",
+  "figures": {
+    "timeline": {
+      "file": "a-short-history-of-tarot-where-the-cards-came-from-timeline.png",
+      "alt": "A horizontal timeline of tarot with seven dates: 1440s, first tarot cards in northern Italy; 1500s, the name tarocchi in use; 1700s, the Marseille pattern in France; 1781, Court de Gébelin's Egypt claim; 1783, Etteilla's guide to tarot fortune telling; 1909, the Rider-Waite-Smith deck; and today.",
+      "caption": "Key dates in tarot's history. The early dates are approximate, because few records survive."
+    },
+    "pack": {
+      "file": "a-short-history-of-tarot-where-the-cards-came-from-pack.png",
+      "alt": "Diagram of the standard 78-card tarot pack. Four suit cards labelled Wands, Cups, Swords and Pentacles, 14 cards each, make 56 suit cards. A stack of 21 numbered trumps and The Fool make 22 major arcana. 56 plus 22 equals 78 cards.",
+      "caption": "The standard 78-card tarot pack: 56 suit cards, 21 numbered trumps and The Fool."
+    },
+    "game-to-reading": {
+      "file": "a-short-history-of-tarot-where-the-cards-came-from-game-to-reading.png",
+      "alt": "Three panels with arrows between them showing how tarot's use changed. Card game, 1440s to 1700s. Occult interpretation, 1780s to 1800s. Reading and reflection, 1900s to today.",
+      "caption": "Three stages in tarot's use: first a card game, then an object of occult theory, then a tool for reading and reflection."
+    }
+  }
+}

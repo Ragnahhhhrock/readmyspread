@@ -1,0 +1,580 @@
+{
+  "categories": [
+    {
+      "slug": "tarot-basics",
+      "name": "Tarot basics",
+      "description": "How tarot works: decks, positions, reversals and the words you will meet."
+    },
+    {
+      "slug": "tarot-spreads",
+      "name": "Tarot spreads",
+      "description": "Layouts from one card to the Celtic Cross, with what each position asks."
+    },
+    {
+      "slug": "major-arcana",
+      "name": "Major arcana",
+      "description": "The 22 trump cards, from The Fool to The World."
+    },
+    {
+      "slug": "minor-arcana",
+      "name": "Minor arcana",
+      "description": "The 56 suit cards: wands, cups, swords and pentacles."
+    },
+    {
+      "slug": "reading-tips",
+      "name": "Reading tips",
+      "description": "Practical ways to get more from a tarot spread, and from a photo of one."
+    },
+    {
+      "slug": "tarot-history",
+      "name": "Tarot history",
+      "description": "Where the cards came from and how their use has changed."
+    }
+  ],
+  "articles": [
+    {
+      "n": 1,
+      "title": "What is a tarot spread?",
+      "slug": "what-is-a-tarot-spread",
+      "categories": [
+        "tarot-basics",
+        "tarot-spreads"
+      ],
+      "covers": "What a spread is, why cards sit in positions, and how it differs from a single draw.",
+      "images": [
+        "A tarot spread: cards laid in numbered positions",
+        "Single draw versus tarot spread"
+      ],
+      "publish": "2026-10-09T11:03:00+08:00"
+    },
+    {
+      "n": 2,
+      "title": "A short history of tarot: where the cards came from",
+      "slug": "a-short-history-of-tarot-where-the-cards-came-from",
+      "categories": [
+        "tarot-history"
+      ],
+      "covers": "From fifteenth-century Italian card game to the Rider-Waite-Smith deck and modern reading.",
+      "images": [
+        "Tarot timeline from the 1440s to today",
+        "The standard 78-card tarot pack",
+        "From card game to modern reading"
+      ],
+      "publish": "2026-10-10T17:23:00+08:00"
+    },
+    {
+      "n": 3,
+      "title": "How to read a tarot spread, step by step",
+      "slug": "how-to-read-a-tarot-spread-step-by-step",
+      "categories": [
+        "reading-tips",
+        "tarot-basics"
+      ],
+      "covers": "Question, positions, each card, then the whole spread read together.",
+      "images": [
+        "Reading a tarot spread in four steps"
+      ],
+      "publish": "2026-10-11T19:20:00+08:00"
+    },
+    {
+      "n": 4,
+      "title": "Tarot card positions and what they change",
+      "slug": "tarot-card-positions-and-what-they-change",
+      "categories": [
+        "tarot-basics"
+      ],
+      "covers": "How the same card shifts meaning depending on its position.",
+      "images": [
+        "One card in three tarot spread positions"
+      ],
+      "publish": "2026-10-12T09:24:00+08:00"
+    },
+    {
+      "n": 5,
+      "title": "Reversed tarot cards and how to read them",
+      "slug": "reversed-tarot-cards-and-how-to-read-them",
+      "categories": [
+        "tarot-basics",
+        "reading-tips"
+      ],
+      "covers": "Upright versus reversed, three ways to approach reversals, and when to skip them.",
+      "images": [
+        "Upright and reversed tarot card side by side"
+      ],
+      "publish": "2026-10-13T20:17:00+08:00"
+    },
+    {
+      "n": 6,
+      "title": "Major and minor arcana in tarot, explained",
+      "slug": "major-and-minor-arcana-in-tarot-explained",
+      "categories": [
+        "tarot-basics",
+        "major-arcana",
+        "minor-arcana"
+      ],
+      "covers": "The 78 cards, 22 major and 56 minor, and how each group is read.",
+      "images": [
+        "The 78 tarot cards: major and minor arcana"
+      ],
+      "publish": "2026-10-14T13:52:00+08:00"
+    },
+    {
+      "n": 7,
+      "title": "The one-card tarot spread",
+      "slug": "the-one-card-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "When a single card is enough, how to phrase a question, a worked example.",
+      "images": [
+        "One-card tarot spread layout"
+      ],
+      "publish": "2026-10-15T08:22:00+08:00"
+    },
+    {
+      "n": 8,
+      "title": "The three-card tarot spread",
+      "slug": "the-three-card-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "Past, present, future and situation, action, outcome: two ways to read three cards.",
+      "images": [
+        "Three-card tarot spread layout",
+        "Three-card spread: two ways to read the positions"
+      ],
+      "publish": "2026-10-16T11:42:00+08:00"
+    },
+    {
+      "n": 9,
+      "title": "The Celtic Cross tarot spread explained",
+      "slug": "the-celtic-cross-tarot-spread-explained",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "Ten cards, the cross and the staff, and when this spread suits a question.",
+      "images": [
+        "Celtic Cross tarot spread layout"
+      ],
+      "publish": "2026-10-17T07:25:00+08:00"
+    },
+    {
+      "n": 10,
+      "title": "Celtic Cross tarot spread positions, one by one",
+      "slug": "celtic-cross-tarot-spread-positions-one-by-one",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "What each of the ten positions asks, with reading tips.",
+      "images": [
+        "Celtic Cross positions numbered one to ten"
+      ],
+      "publish": "2026-10-18T09:17:00+08:00"
+    },
+    {
+      "n": 11,
+      "title": "The Fool to the Hierophant: tarot card meanings",
+      "slug": "the-fool-to-the-hierophant-tarot-card-meanings",
+      "categories": [
+        "major-arcana"
+      ],
+      "covers": "Major arcana 0 to V, upright and reversed.",
+      "images": [
+        "The Fool; The Magician; The High Priestess; The Empress; The Emperor; The Hierophant (card faces)"
+      ],
+      "publish": "2026-10-19T17:20:00+08:00"
+    },
+    {
+      "n": 12,
+      "title": "The horseshoe tarot spread",
+      "slug": "the-horseshoe-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "Seven cards arched like a horseshoe: past, present, hidden influences, obstacles, others, advice, outcome.",
+      "images": [
+        "Horseshoe tarot spread layout"
+      ],
+      "publish": "2026-10-20T15:08:00+08:00"
+    },
+    {
+      "n": 13,
+      "title": "The relationship tarot spread",
+      "slug": "the-relationship-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "A balanced layout for any relationship: partner, family, friend or colleague.",
+      "images": [
+        "Relationship tarot spread layout"
+      ],
+      "publish": "2026-10-21T20:04:00+08:00"
+    },
+    {
+      "n": 14,
+      "title": "The Lovers to the Hermit: tarot card meanings",
+      "slug": "the-lovers-to-the-hermit-tarot-card-meanings",
+      "categories": [
+        "major-arcana"
+      ],
+      "covers": "Major arcana VI to IX, upright and reversed.",
+      "images": [
+        "The Lovers; The Chariot; Strength; The Hermit (card faces)"
+      ],
+      "publish": "2026-10-22T09:56:00+08:00"
+    },
+    {
+      "n": 15,
+      "title": "The two-path decision tarot spread",
+      "slug": "the-two-path-decision-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "Comparing two options side by side without asking the cards to choose for you.",
+      "images": [
+        "Two-path decision tarot spread layout"
+      ],
+      "publish": "2026-10-23T07:37:00+08:00"
+    },
+    {
+      "n": 16,
+      "title": "The yes or no tarot spread",
+      "slug": "the-yes-or-no-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "How to frame a yes or no question, what the cards can and can't answer, a three-card method.",
+      "images": [
+        "Yes or no tarot spread layout"
+      ],
+      "publish": "2026-10-24T17:34:00+08:00"
+    },
+    {
+      "n": 17,
+      "title": "The Wheel of Fortune to Temperance: tarot card meanings",
+      "slug": "the-wheel-of-fortune-to-temperance-tarot-card-meanings",
+      "categories": [
+        "major-arcana"
+      ],
+      "covers": "Major arcana X to XIV, upright and reversed.",
+      "images": [
+        "Wheel of Fortune; Justice; The Hanged Man; Death; Temperance (card faces)"
+      ],
+      "publish": "2026-10-25T19:29:00+08:00"
+    },
+    {
+      "n": 18,
+      "title": "The year-ahead tarot spread",
+      "slug": "the-year-ahead-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "Twelve cards, one per month, plus an overview card.",
+      "images": [
+        "Year-ahead tarot spread layout"
+      ],
+      "publish": "2026-10-26T17:22:00+08:00"
+    },
+    {
+      "n": 19,
+      "title": "The astrological twelve-house tarot spread",
+      "slug": "the-astrological-twelve-house-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "Twelve cards mapped to the astrological houses and what each house covers.",
+      "images": [
+        "Twelve-house tarot spread layout"
+      ],
+      "publish": "2026-10-27T10:24:00+08:00"
+    },
+    {
+      "n": 20,
+      "title": "The Devil to the Moon: tarot card meanings",
+      "slug": "the-devil-to-the-moon-tarot-card-meanings",
+      "categories": [
+        "major-arcana"
+      ],
+      "covers": "Major arcana XV to XVIII, upright and reversed.",
+      "images": [
+        "The Devil; The Tower; The Star; The Moon (card faces)"
+      ],
+      "publish": "2026-10-28T11:49:00+08:00"
+    },
+    {
+      "n": 21,
+      "title": "The Tree of Life tarot spread",
+      "slug": "the-tree-of-life-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "Ten cards on the Kabbalistic tree, read from the root upward.",
+      "images": [
+        "Tree of Life tarot spread layout"
+      ],
+      "publish": "2026-10-29T15:10:00+08:00"
+    },
+    {
+      "n": 22,
+      "title": "The moon phase tarot spread",
+      "slug": "the-moon-phase-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "Eight cards, one for each phase of the lunar cycle.",
+      "images": [
+        "Moon phase tarot spread layout"
+      ],
+      "publish": "2026-10-30T12:36:00+08:00"
+    },
+    {
+      "n": 23,
+      "title": "The Sun to the World: tarot card meanings",
+      "slug": "the-sun-to-the-world-tarot-card-meanings",
+      "categories": [
+        "major-arcana"
+      ],
+      "covers": "Major arcana XIX to XXI, upright and reversed.",
+      "images": [
+        "The Sun; Judgement; The World (card faces)"
+      ],
+      "publish": "2026-10-31T14:03:00+08:00"
+    },
+    {
+      "n": 24,
+      "title": "The pyramid tarot spread",
+      "slug": "the-pyramid-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "Six cards in a triangle that build from foundation to outcome.",
+      "images": [
+        "Pyramid tarot spread layout"
+      ],
+      "publish": "2026-11-01T16:57:00+08:00"
+    },
+    {
+      "n": 25,
+      "title": "The mind, body and spirit tarot spread",
+      "slug": "the-mind-body-and-spirit-tarot-spread",
+      "categories": [
+        "tarot-spreads"
+      ],
+      "covers": "Three cards for a quick check-in on how you're doing.",
+      "images": [
+        "Mind, body and spirit tarot spread layout"
+      ],
+      "publish": "2026-11-02T21:13:00+08:00"
+    },
+    {
+      "n": 26,
+      "title": "The four tarot suits and their elements",
+      "slug": "the-four-tarot-suits-and-their-elements",
+      "categories": [
+        "tarot-basics",
+        "minor-arcana"
+      ],
+      "covers": "Wands, cups, swords and pentacles: element, themes, and how suits shape a spread.",
+      "images": [
+        "The four tarot suits and their elements"
+      ],
+      "publish": "2026-11-03T06:34:00+08:00"
+    },
+    {
+      "n": 27,
+      "title": "Wands in tarot: Ace to Five meanings",
+      "slug": "wands-in-tarot-ace-to-five-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Ace to Five of Wands, upright and reversed.",
+      "images": [
+        "Ace to Five of Wands (five card faces)"
+      ],
+      "publish": "2026-11-04T20:54:00+08:00"
+    },
+    {
+      "n": 28,
+      "title": "Wands in tarot: Six to Ten meanings",
+      "slug": "wands-in-tarot-six-to-ten-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Six to Ten of Wands, upright and reversed.",
+      "images": [
+        "Six to Ten of Wands (five card faces)"
+      ],
+      "publish": "2026-11-05T15:01:00+08:00"
+    },
+    {
+      "n": 29,
+      "title": "Wands in tarot: court card meanings",
+      "slug": "wands-in-tarot-court-card-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Page, Knight, Queen and King of Wands.",
+      "images": [
+        "Page, Knight, Queen and King of Wands (four card faces)"
+      ],
+      "publish": "2026-11-06T13:57:00+08:00"
+    },
+    {
+      "n": 30,
+      "title": "Cups in tarot: Ace to Five meanings",
+      "slug": "cups-in-tarot-ace-to-five-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Ace to Five of Cups, upright and reversed.",
+      "images": [
+        "Ace to Five of Cups (five card faces)"
+      ],
+      "publish": "2026-11-07T12:53:00+08:00"
+    },
+    {
+      "n": 31,
+      "title": "Cups in tarot: Six to Ten meanings",
+      "slug": "cups-in-tarot-six-to-ten-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Six to Ten of Cups, upright and reversed.",
+      "images": [
+        "Six to Ten of Cups (five card faces)"
+      ],
+      "publish": "2026-11-08T09:26:00+08:00"
+    },
+    {
+      "n": 32,
+      "title": "Cups in tarot: court card meanings",
+      "slug": "cups-in-tarot-court-card-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Page, Knight, Queen and King of Cups.",
+      "images": [
+        "Page, Knight, Queen and King of Cups (four card faces)"
+      ],
+      "publish": "2026-11-09T13:41:00+08:00"
+    },
+    {
+      "n": 33,
+      "title": "Swords in tarot: Ace to Five meanings",
+      "slug": "swords-in-tarot-ace-to-five-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Ace to Five of Swords, upright and reversed.",
+      "images": [
+        "Ace to Five of Swords (five card faces)"
+      ],
+      "publish": "2026-11-10T09:15:00+08:00"
+    },
+    {
+      "n": 34,
+      "title": "Swords in tarot: Six to Ten meanings",
+      "slug": "swords-in-tarot-six-to-ten-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Six to Ten of Swords, upright and reversed.",
+      "images": [
+        "Six to Ten of Swords (five card faces)"
+      ],
+      "publish": "2026-11-11T15:47:00+08:00"
+    },
+    {
+      "n": 35,
+      "title": "Swords in tarot: court card meanings",
+      "slug": "swords-in-tarot-court-card-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Page, Knight, Queen and King of Swords.",
+      "images": [
+        "Page, Knight, Queen and King of Swords (four card faces)"
+      ],
+      "publish": "2026-11-12T20:28:00+08:00"
+    },
+    {
+      "n": 36,
+      "title": "Pentacles in tarot: Ace to Five meanings",
+      "slug": "pentacles-in-tarot-ace-to-five-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Ace to Five of Pentacles, upright and reversed.",
+      "images": [
+        "Ace to Five of Pentacles (five card faces)"
+      ],
+      "publish": "2026-11-13T10:37:00+08:00"
+    },
+    {
+      "n": 37,
+      "title": "Pentacles in tarot: Six to Ten meanings",
+      "slug": "pentacles-in-tarot-six-to-ten-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Six to Ten of Pentacles, upright and reversed.",
+      "images": [
+        "Six to Ten of Pentacles (five card faces)"
+      ],
+      "publish": "2026-11-14T19:59:00+08:00"
+    },
+    {
+      "n": 38,
+      "title": "Pentacles in tarot: court card meanings",
+      "slug": "pentacles-in-tarot-court-card-meanings",
+      "categories": [
+        "minor-arcana"
+      ],
+      "covers": "Page, Knight, Queen and King of Pentacles.",
+      "images": [
+        "Page, Knight, Queen and King of Pentacles (four card faces)"
+      ],
+      "publish": "2026-11-15T17:10:00+08:00"
+    },
+    {
+      "n": 39,
+      "title": "Numbers in tarot and what they signal",
+      "slug": "numbers-in-tarot-and-what-they-signal",
+      "categories": [
+        "minor-arcana",
+        "tarot-basics"
+      ],
+      "covers": "What Ace to Ten tend to suggest across all four suits.",
+      "images": [
+        "Numbers Ace to Ten across the four tarot suits"
+      ],
+      "publish": "2026-11-16T18:46:00+08:00"
+    },
+    {
+      "n": 40,
+      "title": "How to photograph your tarot spread for a reading",
+      "slug": "how-to-photograph-your-tarot-spread-for-a-reading",
+      "categories": [
+        "reading-tips"
+      ],
+      "covers": "Lighting, angle, spacing and framing so every card is legible, with a link to Read my cards.",
+      "images": [
+        "A well-framed tarot spread photo: do and don't"
+      ],
+      "publish": "2026-11-17T11:47:00+08:00"
+    },
+    {
+      "n": 41,
+      "title": "Tarot terms glossary: spreads, cards and jargon",
+      "slug": "tarot-terms-glossary-spreads-cards-and-jargon",
+      "categories": [
+        "tarot-basics"
+      ],
+      "covers": "Plain definitions of common tarot terms.",
+      "images": [
+        "Tarot terms at a glance"
+      ],
+      "publish": "2026-11-18T20:38:00+08:00"
+    }
+  ]
+}

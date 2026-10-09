@@ -1,0 +1,87 @@
+/* Learn tarot section (/learn-tarot/, /about-tarot/). Requires tokens.css, components.css and landing.css (sky, .wide, .nav, .eyebrow, footer). Tokens only, no raw colours. */
+
+.nav__links { display: flex; align-items: center; gap: var(--s-4); }
+.nav__links .btn, .nav__link { white-space: nowrap; }
+@media (max-width: 30rem) { .nav__links .nav__link { display: none; } }
+.nav__link {
+  display: inline-flex; align-items: center; min-height: var(--tap);
+  color: var(--starlight); font-weight: 500; text-decoration: none;
+}
+.nav__link:hover, .nav__link[aria-current="page"] { color: var(--gold); text-decoration: underline; text-underline-offset: 0.3em; }
+@media (max-width: 34rem) { .nav__link--optional { display: none; } }
+
+.col { width: 100%; max-width: 44rem; margin-inline: auto; padding-inline: var(--gutter); }
+.learn-main { padding-block: var(--s-5) var(--s-8); display: grid; gap: var(--s-7); }
+
+/* ---------- Breadcrumb ---------- */
+.crumbs { font-size: var(--step--1); color: var(--mist); display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; }
+.crumbs a { display: inline-flex; align-items: center; min-height: 2rem; }
+.crumbs span[aria-hidden] { color: var(--line); }
+
+/* ---------- Page head ---------- */
+.page-head { display: grid; gap: var(--s-4); }
+.page-head h1 { font-size: var(--step-3); line-height: var(--lh-tight); }
+@media (min-width: 40rem) { .page-head h1 { font-size: var(--step-4); } }
+.page-head .lede { margin-top: 0; }
+
+/* ---------- Category chips (links) ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: var(--s-2); list-style: none; margin: 0; padding: 0; }
+.chip {
+  display: inline-flex; align-items: center; min-height: var(--tap);
+  padding: var(--s-2) var(--s-4);
+  background: var(--dusk); color: var(--starlight);
+  border: 1px solid var(--line); border-radius: 999px;
+  font: 500 var(--step-0)/1.2 var(--font-ui);
+  text-decoration: none;
+  transition: background-color var(--t-quick) var(--ease), border-color var(--t-quick) var(--ease);
+}
+.chip:hover { border-color: var(--starlight); }
+.chip[aria-current="true"] { background: var(--gold); border-color: var(--gold); color: var(--night); font-weight: 600; }
+
+/* ---------- Article list ---------- */
+.posts { display: grid; gap: var(--s-4); list-style: none; margin: 0; padding: 0; }
+.post {
+  display: grid; gap: var(--s-3);
+  padding: var(--s-5);
+  background: var(--dusk); border: 1px solid var(--line-quiet); border-radius: var(--r-panel);
+}
+.post__cats { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); }
+.post h2, .post h3 { font-size: var(--step-2); line-height: 1.1; }
+.post h2 a, .post h3 a { color: var(--starlight); text-decoration: none; }
+.post h2 a:hover, .post h3 a:hover { color: var(--gold); text-decoration: underline; text-underline-offset: 0.2em; }
+.post p { color: var(--mist); }
+.post__date { font-size: var(--step--1); color: var(--mist); }
+.empty { color: var(--mist); }
+
+/* ---------- Article ---------- */
+.article { display: grid; gap: var(--s-6); }
+.article__head { display: grid; gap: var(--s-4); }
+.article__head h1 { font-size: var(--step-3); line-height: var(--lh-tight); }
+@media (min-width: 40rem) { .article__head h1 { font-size: var(--step-4); } }
+.article__meta { font-size: var(--step--1); color: var(--mist); display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); }
+.article__lede { font-family: var(--font-display); font-style: italic; font-size: var(--step-2); line-height: 1.2; text-wrap: balance; }
+
+.prose { max-width: var(--measure); }
+.prose > * + * { margin-top: var(--s-4); }
+.prose h2 { font-size: var(--step-2); line-height: 1.1; margin-top: var(--s-7); padding-top: var(--s-5); border-top: 1px solid var(--line-quiet); }
+.prose h3 { font-size: var(--step-1); margin-top: var(--s-5); }
+.prose p, .prose li { font-family: var(--font-display); font-size: var(--step-1); line-height: var(--lh-reading); text-wrap: pretty; }
+.prose ul, .prose ol { padding-left: var(--s-5); display: grid; gap: var(--s-2); }
+.prose strong { font-weight: 600; }
+.prose .note {
+  padding: var(--s-4); background: var(--dusk); border-left: 4px solid var(--line); border-radius: var(--r-ui);
+}
+.prose .note p { font-family: var(--font-ui); font-size: var(--step-0); line-height: var(--lh-ui); color: var(--mist); }
+
+/* ---------- Figures ---------- */
+.figure { margin: var(--s-6) 0 0; max-width: 100%; }
+.figure img { width: 100%; height: auto; border-radius: var(--r-panel); border: 1px solid var(--line-quiet); }
+.figure figcaption { margin-top: var(--s-3); font-size: var(--step--1); color: var(--mist); line-height: var(--lh-ui); max-width: var(--measure); }
+
+/* ---------- Article footer ---------- */
+.article__foot { display: grid; gap: var(--s-4); padding-top: var(--s-5); border-top: 1px solid var(--line-quiet); }
+.article__foot h2 { font-size: var(--step-2); }
+.cta { display: grid; gap: var(--s-4); justify-items: start; padding: var(--s-5); background: var(--dusk); border: 1px solid var(--line-quiet); border-radius: var(--r-panel); }
+.cta h2 { font-size: var(--step-2); }
+.cta p { color: var(--mist); }
+@media (max-width: 22rem) { .nav .wordmark { font-size: var(--step-1); } .nav .btn { padding-inline: var(--s-3); } }

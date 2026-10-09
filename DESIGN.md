@@ -105,3 +105,14 @@ Layout (same on both): night sky with soft indigo and violet glows and the star 
 3. Canonical URL, `og:` and `twitter:` tags with the shared images and matching alt text.
 4. `lang="en-AU"`, one `h1`, visible focus, 48px targets.
 5. Footer with the disclaimer, privacy link and contact link.
+
+## 11. Learn tarot section (`public/css/learn.css`)
+
+Generated, not hand-written: `python3 scripts/build-learn.py` builds `/learn-tarot/`, category pages, articles and `/about-tarot/` from `content/learn-tarot/`. It links `tokens.css`, `components.css`, `landing.css` (sky, `.wide`, `.nav`, `.eyebrow`, footer) then `learn.css`.
+
+- **URLs:** `/learn-tarot/` hub, `/learn-tarot/<title-as-stub>/` articles, `/learn-tarot/category/<category-stub>/` categories, `/about-tarot/` fixed page.
+- **Components:** `.chip` (category link, 48px, gold fill when current), `.post` (article card on dusk, 20px radius), `.prose` (article body, Cormorant reading size, 36rem measure), `.figure` with `figcaption` (Hanken, mist, step--1), `.note` (status-style aside), `.cta` (one `.btn--primary` per article).
+- **Article images:** built by `scripts/learn_images.py` at 1600 x 900: night sky, gold linework, 7:12 gold-edged card outlines with the four-point star, lining numerals, Cormorant headings, Hanken labels. Every image has alt text and a caption in `content/learn-tarot/articles/<slug>.json`.
+- **Article share images:** `assets/learn/og-<slug>.png` (1200 x 630) and `twitter-<slug>.png` (1200 x 600). Same layout as section 8 with the eyebrow "Learn tarot" and the article title in place of the wordmark. Category and hub pages use the site-wide share images.
+- **Every article has:** title and meta description naming tarot, canonical URL, `og:` and `twitter:` tags with alt text, Article and BreadcrumbList JSON-LD, one `h1`, category chips, the standard footer.
+- **Publishing:** `content/learn-tarot/schedule.json` holds one article per day at a randomised time. Articles not yet due are not written to `public/`. Links to articles that are not live are rendered as plain text.

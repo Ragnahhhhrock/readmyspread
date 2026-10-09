@@ -1,0 +1,16 @@
+{
+  "description": "A tarot spread is a layout where each card position has its own meaning. Learn how spreads work and how they differ from a single draw.",
+  "lede": "A tarot spread is a set of cards laid out in a pattern, where each position in the pattern asks its own question.",
+  "figures": {
+    "positions": {
+      "file": "what-is-a-tarot-spread-positions.png",
+      "alt": "Three tarot cards in a row on a dark blue background, numbered 1, 2 and 3 above and labelled Past, Present and Next below, under the heading A three-card tarot spread.",
+      "caption": "A three-card tarot spread. The number above each card is its position, and the position tells you what the card is answering."
+    },
+    "single-vs-spread": {
+      "file": "what-is-a-tarot-spread-single-vs-spread.png",
+      "alt": "Two panels side by side. The left panel shows one tarot card labelled Single draw, one card, one message. The right panel shows three numbered tarot cards labelled Tarot spread, each position asks its own question.",
+      "caption": "A single draw gives you one card to think about. A spread gives you several cards, each in a position with its own job."
+    }
+  }
+}
