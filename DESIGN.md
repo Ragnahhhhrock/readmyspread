@@ -11,7 +11,7 @@ readmyspread reads tarot card spreads from a photo. The look is a generic astrol
 2. **Legible first.** Every text pairing meets WCAG AA. Touch targets are at least 48px.
 3. **Tarot is always named.** Public copy, titles and share images say "tarot" or "tarot spread" so nobody has to guess what the site does.
 4. **One source of truth.** Tokens live in `public/css/tokens.css`. Change them there and nowhere else.
-5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file. A second change on the same day adds a letter (`?v=20261010b`). `js/audio.js` is imported by `js/app.js` with the same version.
+5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file. A second change on the same day adds a letter (`?v=20261010c`). `js/audio.js` is imported by `js/app.js` with the same version.
 6. **Mobile first.** Design and check at 390px wide before anything wider. Every control is a tap target of at least 48px and reads without zooming.
 
 ## 2. Colour (tokens in `public/css/tokens.css`)
@@ -76,6 +76,7 @@ Line heights: tight 1.05 (headings), UI 1.45, reading 1.55. Reading column is 36
 - Moon phases for the three steps; crescent and four-point star as the mark.
 - Star-field tiles (`assets/stars-a.svg`, `stars-b.svg`) with a slow twinkle.
 - Tarot card outlines (7:12, gold edge) for anything that stands in for a card.
+- **Hero card deal** (`.deal` in `landing.css`, inside `.hero__art`): three 7:12 cards laid out on the turning zodiac wheel with the labels "Past", "Present" and "Future". Cards are dusk with a 1.5px gold edge, an inset hairline and an 8px radius. The back is a dotted ring with a four-point star. The faces are original gold linework (crescent and star, four-point star, sun), not any published deck. Motion plays once, about 3s: cards deal in (480ms, staggered 360ms), flip face up, then the labels fade in. The resting state is the base style, so reduced motion, no motion and no JS all show the finished spread. Decorative, so `aria-hidden`. Labels sit on a night pill (Hanken 600, mist, step--1, caps) so the wheel lines never cross them.
 
 ## 7. Voice and copy
 
