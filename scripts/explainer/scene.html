@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>readmyspread explainer scene</title>
+<!-- Rendered frame by frame by scripts/build-video.py. Tokens and fonts come from the site, so the video follows the design system. -->
+<link rel="stylesheet" href="../../public/css/tokens.css">
+<style>
+  html, body { margin: 0; background: var(--night); }
+  #stage {
+    position: relative; width: 540px; height: 675px; overflow: hidden;
+    font-family: var(--font-ui); color: var(--starlight);
+    background:
+      radial-gradient(560px 360px at 88% -6%, rgba(46, 56, 150, 0.55) 0%, transparent 62%),
+      radial-gradient(480px 340px at -6% 96%, rgba(70, 44, 140, 0.4) 0%, transparent 60%),
+      var(--night);
+    -webkit-font-smoothing: antialiased;
+  }
+  .abs { position: absolute; }
+  .stars { position: absolute; inset: -40px; background-size: 240px 240px; }
+  #starsA { background-image: url("../../public/assets/stars-a.svg"); }
+  #starsB { background-image: url("../../public/assets/stars-b.svg"); }
+  #scrim { left: -60px; right: -60px; top: 250px; height: 250px; background: radial-gradient(closest-side, rgba(11,16,36,0.92), rgba(11,16,36,0.7) 55%, transparent); }
+  #wheel { left: 20px; top: -35px; width: 500px; height: 500px; }
+  .disp { font-family: var(--font-display); }
+  .center { left: 0; right: 0; text-align: center; }
+  .eyebrow { font-size: 15px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+  img { display: block; }
+
+  /* Intro */
+  #glow { left: 170px; top: 120px; width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(226,192,113,0.28), transparent); }
+  #mark { left: 243px; top: 140px; width: 54px; height: 96px; }
+  #introEyebrow { top: 266px; }
+  #wordmark { top: 294px; font-weight: 600; font-size: 70px; line-height: 1; letter-spacing: 0.01em; }
+  #wordmark span { display: inline-block; }
+  #tagline { top: 382px; font-style: italic; font-size: 32px; color: var(--gold); }
+  #introNote { top: 440px; font-size: 19px; color: var(--mist); }
+
+  /* Title */
+  #tEyebrow { top: 92px; }
+  #tHead { top: 122px; left: 40px; right: 40px; font-size: 50px; line-height: 1.05; }
+  #tSub { top: 250px; font-size: 20px; color: var(--mist); }
+  .tile { top: 312px; width: 148px; height: 196px; border-radius: var(--r-panel);
+    background: rgba(20, 26, 56, 0.85); border: 1px solid var(--nebula);
+    display: grid; justify-items: center; align-content: center; gap: 10px; text-align: center; }
+  .tile img { width: 60px; height: 60px; }
+  .tile .n { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+  .tile .h { font-family: var(--font-display); font-size: 27px; line-height: 1; }
+
+  /* Step bar */
+  #bar { top: 26px; left: 30px; right: 30px; display: flex; gap: 10px; justify-content: center; }
+  .pill { position: relative; flex: 1; height: 44px; border: 1.5px solid var(--line); border-radius: var(--r-ui);
+    display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 16px; font-weight: 600; }
+  .pill .hl { position: absolute; inset: -1.5px; border: 2px solid var(--gold); border-radius: var(--r-ui); background: var(--nebula); }
+  .pill .num, .pill .lbl { position: relative; }
+  .pill .num { color: var(--gold); }
+
+  /* Captions */
+  .cap { left: 34px; right: 34px; top: 506px; text-align: center; }
+  .cap h2 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 37px; line-height: 1.08; text-wrap: balance; }
+  .cap h2 em { color: var(--gold); }
+  .cap p { margin: 12px 0 0; font-size: 19px; line-height: 1.4; color: var(--mist); text-wrap: balance; }
+
+  /* Step one */
+  #table { left: 40px; top: 120px; width: 460px; height: 300px; border-radius: var(--r-panel);
+    background: rgba(20, 26, 56, 0.9); border: 1px solid var(--nebula); }
+  .tcard { position: absolute; width: 84px; height: 144px; }
+  .tcard img { width: 100%; height: 100%; filter: drop-shadow(0 8px 14px rgba(11,16,36,0.6)); }
+  #phone { left: 165px; top: 88px; width: 210px; height: 396px; border-radius: 32px;
+    border: 2.5px solid var(--gold); box-shadow: 0 20px 50px rgba(11,16,36,0.75), 0 0 0 6px rgba(11,16,36,0.55); overflow: hidden; }
+  #phone .notch { position: absolute; top: 10px; left: 80px; width: 50px; height: 5px; border-radius: 3px; background: var(--line); }
+  .br { position: absolute; width: 26px; height: 26px; border-color: var(--gold); border-style: solid; border-width: 0; }
+  .br.tl { border-top-width: 2.5px; border-left-width: 2.5px; border-top-left-radius: 6px; }
+  .br.tr { border-top-width: 2.5px; border-right-width: 2.5px; border-top-right-radius: 6px; }
+  .br.bl { border-bottom-width: 2.5px; border-left-width: 2.5px; border-bottom-left-radius: 6px; }
+  .br.brr { border-bottom-width: 2.5px; border-right-width: 2.5px; border-bottom-right-radius: 6px; }
+  #shutter { left: 82px; bottom: 18px; width: 42px; height: 42px; border-radius: 50%; border: 2.5px solid var(--starlight); }
+  #shutter::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--starlight); }
+  #flash { inset: 0; background: var(--starlight); }
+  #screen { inset: 0; background: var(--night); }
+  #app { left: 16px; right: 16px; top: 34px; }
+  #app .ttl { font-family: var(--font-display); font-size: 22px; line-height: 1.1; margin-bottom: 10px; }
+  #shot { position: relative; height: 104px; border-radius: var(--r-card); border: 1.5px solid var(--gold); background: var(--dusk); overflow: hidden; }
+  #shot img { position: absolute; top: 16px; width: 40px; height: 69px; }
+  #app .lab { font-size: 13px; font-weight: 600; color: var(--starlight); margin: 14px 0 6px; }
+  #field { height: 42px; border-radius: var(--r-ui); border: 1.5px solid var(--line); background: var(--dusk);
+    font-size: 13.5px; display: flex; align-items: center; padding: 0 10px; white-space: nowrap; overflow: hidden; }
+  #caret { display: inline-block; width: 1.5px; height: 16px; background: var(--violet); margin-left: 1px; }
+  #go { position: relative; margin-top: 14px; height: 48px; border-radius: var(--r-ui); background: var(--gold); color: var(--night);
+    font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+  #tap { width: 46px; height: 46px; border-radius: 50%; border: 2.5px solid var(--starlight); background: rgba(243,239,228,0.18); }
+
+  /* Step two */
+  #loader { left: 170px; top: 130px; width: 200px; height: 200px; }
+  #loader .av { position: absolute; left: 55px; top: 55px; width: 90px; height: 90px; }
+  #ring { position: absolute; inset: 0; }
+  #ring img { position: absolute; width: 28px; height: 48px; }
+  #loadTxt { top: 350px; font-family: var(--font-display); font-style: italic; font-size: 26px; color: var(--mist); }
+  .big { position: absolute; top: 170px; width: 108px; height: 185px; perspective: 700px; }
+  .flip { position: absolute; inset: 0; transform-style: preserve-3d; }
+  .side { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .side img { width: 100%; height: 100%; filter: drop-shadow(0 10px 16px rgba(11,16,36,0.65)); }
+  .face { transform: rotateY(180deg); }
+  .rev img { transform: rotate(180deg); }
+  .badge { position: absolute; right: -10px; top: -10px; width: 30px; height: 30px; border-radius: 50%; background: var(--gold);
+    display: grid; place-items: center; box-shadow: 0 0 0 3px var(--night); }
+  .badge svg { width: 16px; height: 16px; }
+  .cname { position: absolute; top: 196px; left: -20px; right: -20px; text-align: center; font-family: var(--font-display); font-size: 23px; line-height: 1.1; }
+  .cname small { display: block; font-family: var(--font-ui); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .pos { position: absolute; top: -38px; left: 50%; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mist); background: var(--night); border-radius: var(--r-ui); padding: 4px 9px; white-space: nowrap; }
+  #scan { top: 150px; width: 3px; height: 225px; border-radius: 2px; background: var(--gold); box-shadow: 0 0 18px 4px rgba(226,192,113,0.55); }
+  #spreadName { top: 84px; font-family: var(--font-display); font-style: italic; font-size: 32px; color: var(--gold); }
+
+  /* Step three */
+  #clip { left: 0; right: 0; top: 84px; height: 420px; overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18px, #000 402px, transparent 420px); }
+  #col { left: 0; right: 0; top: 0; height: 700px; }
+  #panel { left: 40px; width: 460px; top: 98px; padding: 18px 24px; border-radius: var(--r-panel); background: var(--dusk); border: 1px solid var(--nebula); box-sizing: border-box; }
+  #verdict { font-family: var(--font-display); font-style: italic; font-size: 27px; line-height: 1.15; margin-bottom: 10px; }
+  .sec { position: relative; padding: 9px 0 9px 14px; border-top: 1px solid var(--nebula); }
+  .sec .rule { position: absolute; left: 0; top: 9px; bottom: 9px; width: 3px; border-radius: 2px; background: var(--gold); }
+  .sec .k { font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 7px; }
+  .bar { height: 8px; border-radius: 4px; background: var(--mist); opacity: 0.55; margin-top: 7px; transform-origin: left center; }
+  #reader { left: 40px; width: 460px; top: 390px; padding: 16px 20px; border-radius: var(--r-panel); background: var(--dusk); border: 1px solid var(--nebula); box-sizing: border-box; }
+  #reader .row { display: flex; align-items: center; gap: 16px; }
+  #avWrap { position: relative; width: 68px; height: 68px; flex: none; }
+  #avWrap img { width: 68px; height: 68px; }
+  .pulse { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gold); }
+  #reader .q { font-family: var(--font-display); font-size: 27px; line-height: 1.1; }
+  #reader .s { font-size: 15px; color: var(--mist); margin-top: 4px; }
+  #listen { position: relative; margin-top: 14px; height: 50px; border-radius: var(--r-ui); border: 1.5px solid var(--line);
+    display: flex; align-items: center; justify-content: center; gap: 9px; font-size: 17px; font-weight: 600; }
+  #listen svg { width: 20px; height: 20px; }
+  #tap2 { width: 46px; height: 46px; border-radius: 50%; border: 2.5px solid var(--starlight); background: rgba(243,239,228,0.18); }
+
+  /* Outro */
+  .ocard { position: absolute; top: 96px; width: 96px; height: 165px; }
+  .ocard img { width: 100%; height: 100%; filter: drop-shadow(0 10px 16px rgba(11,16,36,0.65)); }
+  .ocard .pos { top: auto; bottom: -38px; }
+  #oWord { top: 318px; display: flex; justify-content: center; align-items: center; gap: 14px; font-family: var(--font-display); font-weight: 600; font-size: 52px; line-height: 1; }
+  #oWord svg { width: 29px; height: 52px; }
+  #oTag { top: 384px; font-family: var(--font-display); font-style: italic; font-size: 30px; color: var(--gold); }
+  #oBtn { left: 120px; width: 300px; top: 446px; height: 60px; border-radius: var(--r-ui); background: var(--gold); color: var(--night);
+    font-size: 21px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+  #oUrl { top: 530px; font-size: 24px; font-weight: 600; color: var(--starlight); letter-spacing: 0.02em; }
+  #oNote { top: 574px; font-size: 17px; color: var(--mist); }
+  #oFine { top: 610px; font-size: 15px; color: var(--mist); }
+  #fade { inset: 0; background: var(--night); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="stars" id="starsA"></div>
+  <div class="stars" id="starsB"></div>
+  <img id="wheel" class="abs" src="../../public/assets/zodiac-wheel.svg" alt="">
+  <div id="scrim" class="abs"></div>
+
+  <!-- Intro -->
+  <div id="glow" class="abs"></div>
+  <svg id="mark" class="abs" viewBox="14 0 36 64"><path id="markPath" fill="#e2c071" stroke="#e2c071" stroke-width="0.7" fill-rule="evenodd" d="M20.75 5H43.25A4.5 4.5 0 0 1 47.75 9.5V54.5A4.5 4.5 0 0 1 43.25 59H20.75A4.5 4.5 0 0 1 16.25 54.5V9.5A4.5 4.5 0 0 1 20.75 5ZM41.89 30.19A11.2 11.2 0 1 1 31.38 14.8A9.4 9.4 0 1 0 41.89 30.19ZM32 37.1L33.78 43.72L40.4 45.5L33.78 47.28L32 53.9L30.22 47.28L23.6 45.5L30.22 43.72Z"/></svg>
+  <div id="introEyebrow" class="abs center eyebrow">Tarot spread readings</div>
+  <div id="wordmark" class="abs center disp"></div>
+  <div id="tagline" class="abs center disp">Your tarot spread, read plainly.</div>
+  <div id="introNote" class="abs center">How to use it, in under a minute</div>
+
+  <!-- Title -->
+  <div id="tEyebrow" class="abs center eyebrow">How it works</div>
+  <div id="tHead" class="abs disp" style="text-align:center">Get your tarot spread read in three steps</div>
+  <div id="tSub" class="abs center">Free. No account. No sign-up.</div>
+  <div class="tile abs" id="tile0" style="left:38px"><img src="../../public/assets/tarot/icons/photograph.svg" alt=""><div class="n">Step one</div><div class="h">Photograph</div></div>
+  <div class="tile abs" id="tile1" style="left:196px"><img src="../../public/assets/tarot/icons/third-eye.svg" alt=""><div class="n">Step two</div><div class="h">Identify</div></div>
+  <div class="tile abs" id="tile2" style="left:354px"><img src="../../public/assets/tarot/icons/card-fan.svg" alt=""><div class="n">Step three</div><div class="h">Read</div></div>
+
+  <!-- Step bar -->
+  <div id="bar" class="abs">
+    <div class="pill"><span class="hl" id="hl0"></span><span class="num">1</span><span class="lbl">Photograph</span></div>
+    <div class="pill"><span class="hl" id="hl1"></span><span class="num">2</span><span class="lbl">Identify</span></div>
+    <div class="pill"><span class="hl" id="hl2"></span><span class="num">3</span><span class="lbl">Read</span></div>
+  </div>
+
+  <!-- Step one: photograph -->
+  <div id="s1" class="abs" style="inset:0; clip-path: inset(0 0 186px 0)">
+    <div id="tableWrap" class="abs" style="inset:0">
+      <div id="table" class="abs"></div>
+      <div class="tcard" id="tc0"><img src="../../public/assets/tarot/card-back.svg" alt=""></div>
+      <div class="tcard" id="tc1"><img src="../../public/assets/tarot/card-back.svg" alt=""></div>
+      <div class="tcard" id="tc2"><img src="../../public/assets/tarot/card-back.svg" alt=""></div>
+    </div>
+    <div id="phone" class="abs">
+      <div id="screen" class="abs"></div>
+      <div id="vf" class="abs" style="inset:0">
+        <div class="br tl" id="b0"></div><div class="br tr" id="b1"></div><div class="br bl" id="b2"></div><div class="br brr" id="b3"></div>
+        <div id="shutter" class="abs"></div>
+      </div>
+      <div id="app" class="abs">
+        <div class="ttl">Your tarot spread</div>
+        <div id="shot">
+          <img src="../../public/assets/tarot/card-back.svg" alt="" style="left:33px">
+          <img src="../../public/assets/tarot/card-back.svg" alt="" style="left:79px">
+          <img src="../../public/assets/tarot/card-back.svg" alt="" style="left:125px">
+        </div>
+        <div class="lab">Your question (optional)</div>
+        <div id="field"><span id="typed"></span><span id="caret"></span></div>
+        <div id="go">Read my cards</div>
+      </div>
+      <div id="flash" class="abs"></div>
+      <div class="notch"></div>
+    </div>
+    <div id="tap" class="abs"></div>
+  </div>
+
+  <!-- Step two: identify -->
+  <div id="loader" class="abs">
+    <div id="ring"></div>
+    <img class="av" src="../../public/assets/reader.svg" alt="">
+  </div>
+  <div id="loadTxt" class="abs center">Reading your cards</div>
+  <div id="spreadName" class="abs center">A three-card spread</div>
+  <div id="scan" class="abs"></div>
+
+  <!-- Step three shares the cards above, inside a clipped column -->
+  <div id="clip" class="abs">
+    <div id="col" class="abs">
+      <div id="panel" class="abs">
+        <div id="verdict">A steady path towards a fresh start.</div>
+        <div class="sec" id="sec0"><span class="rule"></span><div class="k">Past · The Star</div><div class="bar"></div><div class="bar" style="width:74%"></div></div>
+        <div class="sec" id="sec1"><span class="rule"></span><div class="k">Present · The Moon</div><div class="bar"></div><div class="bar" style="width:62%"></div></div>
+        <div class="sec" id="sec2"><span class="rule"></span><div class="k">Future · The Sun, reversed</div><div class="bar"></div><div class="bar" style="width:80%"></div></div>
+      </div>
+      <div id="reader" class="abs">
+        <div class="row">
+          <div id="avWrap"><span class="pulse" id="p0"></span><span class="pulse" id="p1"></span><img src="../../public/assets/reader.svg" alt=""></div>
+          <div><div class="q">Prefer to listen?</div><div class="s">Hear this reading read aloud.</div></div>
+        </div>
+        <div id="listen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f3efe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9Z"/><path id="w1" d="M16 9.5a3.5 3.5 0 0 1 0 5"/><path id="w2" d="M18.5 7a7 7 0 0 1 0 10"/></svg>
+          <span id="lA">Listen to this reading</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="cards" class="abs" style="inset:0">
+    <div class="big" id="bc0"><span class="pos">Past</span><div class="flip"><div class="side"><img src="../../public/assets/tarot/card-back.svg" alt=""></div><div class="side face"><img src="../../public/assets/tarot/card-star.svg" alt=""></div></div><span class="badge"><svg viewBox="0 0 16 16" fill="none" stroke="#0b1024" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg></span><div class="cname">The Star</div></div>
+    <div class="big" id="bc1"><span class="pos">Present</span><div class="flip"><div class="side"><img src="../../public/assets/tarot/card-back.svg" alt=""></div><div class="side face"><img src="../../public/assets/tarot/card-moon.svg" alt=""></div></div><span class="badge"><svg viewBox="0 0 16 16" fill="none" stroke="#0b1024" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg></span><div class="cname">The Moon</div></div>
+    <div class="big" id="bc2"><span class="pos">Future</span><div class="flip"><div class="side"><img src="../../public/assets/tarot/card-back.svg" alt=""></div><div class="side face rev"><img src="../../public/assets/tarot/card-sun.svg" alt=""></div></div><span class="badge"><svg viewBox="0 0 16 16" fill="none" stroke="#0b1024" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg></span><div class="cname">The Sun<small>Reversed</small></div></div>
+  </div>
+  <div id="tap2" class="abs"></div>
+
+  <!-- Captions -->
+  <div class="cap abs" id="c0"><h2>Lay your cards flat and take a photo.</h2><p>Good light, with the whole spread in frame.</p></div>
+  <div class="cap abs" id="c1"><h2>Add a question if you like.</h2><p>Then tap <span style="color:var(--starlight);font-weight:600">Read my cards</span>.</p></div>
+  <div class="cap abs" id="c2"><h2>Every card is named, <em>reversed</em> ones too.</h2><p>Cards it can't make out are flagged, not guessed.</p></div>
+  <div class="cap abs" id="c3"><h2>The spread is recognised.</h2><p>Single card, three-card, Celtic Cross and more.</p></div>
+  <div class="cap abs" id="c4"><h2>Read it, card by card.</h2><p>A summary of the spread, then each card in its place.</p></div>
+  <div class="cap abs" id="c5"><h2>Prefer to listen? Tap to hear it.</h2><p>Read aloud by your own device. Nothing is recorded.</p></div>
+
+  <!-- Outro -->
+  <div class="ocard" id="oc0"><img src="../../public/assets/tarot/card-star.svg" alt=""><span class="pos">Past</span></div>
+  <div class="ocard" id="oc1"><img src="../../public/assets/tarot/card-moon.svg" alt=""><span class="pos">Present</span></div>
+  <div class="ocard" id="oc2"><img src="../../public/assets/tarot/card-sun.svg" alt=""><span class="pos">Future</span></div>
+  <div id="oWord" class="abs center"><svg viewBox="14 0 36 64"><path fill="#e2c071" fill-rule="evenodd" d="M20.75 5H43.25A4.5 4.5 0 0 1 47.75 9.5V54.5A4.5 4.5 0 0 1 43.25 59H20.75A4.5 4.5 0 0 1 16.25 54.5V9.5A4.5 4.5 0 0 1 20.75 5ZM41.89 30.19A11.2 11.2 0 1 1 31.38 14.8A9.4 9.4 0 1 0 41.89 30.19ZM32 37.1L33.78 43.72L40.4 45.5L33.78 47.28L32 53.9L30.22 47.28L23.6 45.5L30.22 43.72Z"/></svg>readmyspread</div>
+  <div id="oTag" class="abs center">Your tarot spread, read plainly.</div>
+  <div id="oBtn" class="abs">Read my cards</div>
+  <div id="oUrl" class="abs center">readmyspread.com</div>
+  <div id="oNote" class="abs center">Free. No account. Your photo isn't saved.</div>
+  <div id="oFine" class="abs center">For entertainment only.</div>
+
+  <div id="fade" class="abs"></div>
+</div>
+
+<script>
+const DURATION = 56;
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+
+// The site's motion curve: cubic-bezier(0.2, 0.7, 0.2, 1)
+function bezier(x1, y1, x2, y2) {
+  const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+  const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+  return (x) => {
+    if (x <= 0) return 0; if (x >= 1) return 1;
+    let t = x;
+    for (let i = 0; i < 10; i++) {
+      const xt = ((ax * t + bx) * t + cx) * t - x;
+      const d = (3 * ax * t + 2 * bx) * t + cx;
+      if (Math.abs(xt) < 1e-6 || Math.abs(d) < 1e-6) break;
+      t = clamp(t - xt / d);
+    }
+    return ((ay * t + by) * t + cy) * t;
+  };
+}
+const E = bezier(0.2, 0.7, 0.2, 1);
+const IO = bezier(0.45, 0, 0.25, 1);              // in-out for camera moves
+const p = (t, a, b) => E(clamp((t - a) / (b - a)));
+const q = (t, a, b) => IO(clamp((t - a) / (b - a)));
+const win = (t, a, b, fi = 0.5, fo = 0.45) => (t < a || t > b) ? 0 : Math.min(p(t, a, a + fi), 1 - q(t, b - fo, b));
+function S(el, o, tr) {
+  el.style.opacity = o.toFixed(4);
+  el.style.visibility = o <= 0.001 ? "hidden" : "visible";
+  if (tr !== undefined) el.style.transform = tr;
+}
+
+// Build the wordmark letters and the loader ring
+const word = "readmyspread";
+$("wordmark").innerHTML = [...word].map((c) => `<span>${c}</span>`).join("");
+const letters = [...$("wordmark").children];
+for (let i = 0; i < 3; i++) $("ring").insertAdjacentHTML("beforeend", '<img src="../../public/assets/tarot/card-back.svg" alt="">');
+const ringCards = [...$("ring").children];
+const markPath = $("markPath");
+const markLen = markPath.getTotalLength();
+markPath.style.strokeDasharray = markLen;
+
+function caption(id, t, a, b) {
+  const o = win(t, a, b, 0.6, 0.45);
+  const rise = (1 - p(t, a, a + 0.7)) * 16 - q(t, b - 0.45, b) * 10;
+  S($(id), o, `translateY(${rise}px)`);
+}
+
+window.render = function (t) {
+  // Sky
+  $("starsA").style.opacity = 0.85;
+  $("starsA").style.transform = `translate(${-t * 0.6}px, ${-t * 0.25}px)`;
+  $("starsB").style.opacity = (0.55 + 0.35 * Math.sin(t * 0.9)).toFixed(3);
+  $("starsB").style.transform = `translate(${-t * 1.1}px, ${-t * 0.4}px)`;
+  let wo = 0.4 * p(t, 0, 1.8);
+  wo = lerp(wo, 0.1, q(t, 5.6, 7));
+  wo = lerp(wo, 0.4, q(t, 46.6, 48.4));
+  const ws = lerp(1, 1.12, q(t, 5.6, 7)) * lerp(1, 1 / 1.12, q(t, 46.6, 48.4));
+  const wy = -40 * q(t, 46.6, 48.4);
+  S($("wheel"), wo, `translateY(${wy}px) rotate(${t * 2.2}deg) scale(${ws * lerp(1, 0.66, q(t, 46.6, 48.4))})`);
+  S($("scrim"), Math.max(1 - q(t, 5.4, 6.2), q(t, 47.6, 48.8)));
+
+  // Intro 0 to 6.2
+  const introOut = q(t, 5.4, 6.2);
+  const io = 1 - introOut, iy = -introOut * 30;
+  S($("glow"), (0.4 + 0.6 * p(t, 0.6, 2.2)) * io * (0.85 + 0.15 * Math.sin(t * 2)), `translateY(${iy}px) scale(${0.7 + 0.3 * p(t, 0.4, 2)})`);
+  markPath.style.strokeDashoffset = (markLen * (1 - q(t, 0.3, 1.7))).toFixed(2);
+  markPath.style.fillOpacity = p(t, 1.3, 2.1).toFixed(3);
+  S($("mark"), p(t, 0.25, 0.5) * io, `translateY(${iy + (1 - p(t, 0.3, 1.6)) * 10}px) scale(${lerp(0.88, 1, p(t, 0.3, 1.8))})`);
+  S($("introEyebrow"), p(t, 1.6, 2.2) * io, `translateY(${iy + (1 - p(t, 1.6, 2.3)) * 10}px)`);
+  letters.forEach((el, i) => {
+    const a = 1.9 + i * 0.055;
+    S(el, p(t, a, a + 0.5), `translateY(${(1 - p(t, a, a + 0.6)) * 18}px)`);
+  });
+  S($("wordmark"), io, `translateY(${iy}px)`);
+  S($("tagline"), p(t, 2.9, 3.5) * io, `translateY(${iy + (1 - p(t, 2.9, 3.6)) * 12}px)`);
+  S($("introNote"), p(t, 3.6, 4.2) * io, `translateY(${iy + (1 - p(t, 3.6, 4.3)) * 10}px)`);
+
+  // Title 6.2 to 10.2
+  S($("tEyebrow"), win(t, 6.3, 10.1), `translateY(${(1 - p(t, 6.3, 7)) * 12}px)`);
+  S($("tHead"), win(t, 6.45, 10.1), `translateY(${(1 - p(t, 6.45, 7.2)) * 16}px)`);
+  S($("tSub"), win(t, 6.8, 10.1), `translateY(${(1 - p(t, 6.8, 7.5)) * 12}px)`);
+  for (let i = 0; i < 3; i++) {
+    const a = 7.2 + i * 0.22;
+    const o = win(t, a, 10.2 - (2 - i) * 0.06, 0.55, 0.5);
+    const y = (1 - p(t, a, a + 0.7)) * 40 - q(t, 9.6, 10.2) * 20;
+    const sc = lerp(0.9, 1, p(t, a, a + 0.7));
+    // Each tile glows gold in turn, previewing the three steps
+    const hi = win(t, 8.3 + i * 0.45, 8.3 + i * 0.45 + 0.9, 0.25, 0.4);
+    $("tile" + i).style.borderColor = hi > 0.01 ? `rgba(226,192,113,${hi})` : "var(--nebula)";
+    S($("tile" + i), o, `translateY(${y}px) scale(${sc})`);
+  }
+
+  // Step bar 10 to 47
+  S($("bar"), win(t, 9.9, 47.1, 0.6, 0.5), `translateY(${(1 - p(t, 9.9, 10.6)) * -14}px)`);
+  const act = [win(t, 9.9, 22.2, 0.6, 0.35), win(t, 21.95, 33.2, 0.4, 0.35), win(t, 32.95, 47.2, 0.4, 0.4)];
+  act.forEach((a, i) => { $("hl" + i).style.opacity = a.toFixed(3); });
+
+  // Step one 10 to 22
+  const s1o = win(t, 10, 22.1, 0.3, 0.6);
+  S($("s1"), s1o);
+  if (s1o > 0) {
+    S($("table"), p(t, 10, 10.6), `scale(${lerp(0.94, 1, p(t, 10, 10.8))})`);
+    const xs = [96, 228, 360];
+    for (let i = 0; i < 3; i++) {
+      const a = 10.4 + i * 0.32;
+      const k = p(t, a, a + 0.6);
+      const el = $("tc" + i);
+      el.style.left = xs[i] + "px"; el.style.top = "198px";
+      S(el, clamp(k * 2.5), `translate(${(1 - k) * (174 - xs[i])}px, ${(1 - k) * 160}px) rotate(${(1 - k) * -12 + (i - 1) * 3 * k}deg)`);
+    }
+    // Camera pull-back as the phone frames the spread
+    const pull = q(t, 12, 13.3);
+    $("tableWrap").style.transformOrigin = "270px 286px";
+    $("tableWrap").style.transform = `scale(${lerp(1, 0.5, pull)})`;
+    const ph = q(t, 11.9, 13.2);
+    S($("phone"), clamp(ph * 3), `translateY(${(1 - ph) * 460}px) rotate(${(1 - ph) * 8}deg)`);
+    const focus = q(t, 13.2, 14.1);
+    const ins = lerp(16, 30, focus) + Math.sin(clamp((t - 13.2) / 0.9) * Math.PI) * 4;
+    const insY = lerp(80, 106, focus);
+    $("b0").style.cssText = `left:${ins}px;top:${insY}px`;
+    $("b1").style.cssText = `right:${ins}px;top:${insY}px`;
+    $("b2").style.cssText = `left:${ins}px;bottom:${insY}px`;
+    $("b3").style.cssText = `right:${ins}px;bottom:${insY}px`;
+    const shot = 14.8;
+    S($("vf"), 1 - p(t, shot + 0.3, shot + 0.6));
+    $("shutter").style.transform = `scale(${1 - 0.18 * win(t, shot - 0.15, shot + 0.2, 0.08, 0.15)})`;
+    S($("flash"), 0.85 * win(t, shot, shot + 0.55, 0.05, 0.45));
+    S($("screen"), lerp(0.08, 1, p(t, shot + 0.25, shot + 0.6)));
+    const ap = p(t, shot + 0.4, shot + 1.1);
+    S($("app"), ap, `translateY(${(1 - ap) * 14}px)`);
+    // Typing the optional question
+    const msg = "What should I focus on?";
+    const n = Math.floor(clamp((t - 16.7) / 1.3) * msg.length);
+    $("typed").textContent = msg.slice(0, n);
+    $("caret").style.opacity = (t > 16.3 && t < 18.6 && (Math.floor(t * 2.6) % 2 === 0 || (t > 16.7 && t < 18.0))) ? 1 : 0;
+    $("field").style.borderColor = (t > 16.3 && t < 18.6) ? "var(--violet)" : "var(--line)";
+    // Tap the gold button
+    const tp = 19.0;
+    const tapO = win(t, tp - 0.45, tp + 0.55, 0.25, 0.3);
+    S($("tap"), tapO, `translate(0,0) scale(${lerp(1.3, 0.85, p(t, tp - 0.45, tp)) + p(t, tp, tp + 0.5) * 0.6})`);
+    $("tap").style.left = "247px"; $("tap").style.top = "336px";
+    $("go").style.transform = `scale(${1 - 0.04 * win(t, tp - 0.05, tp + 0.25, 0.05, 0.2)})`;
+    $("go").style.background = (t > tp - 0.05 && t < tp + 0.25) ? "var(--gold-deep)" : "var(--gold)";
+    // Leave: phone lifts away
+    const out = q(t, 21.3, 22.1);
+    $("phone").style.transform += ` translateY(${-out * 60}px) scale(${1 - out * 0.08})`;
+  }
+  caption("c0", t, 10.2, 16.2);
+  caption("c1", t, 16.3, 22.0);
+
+  // Step two 22 to 33: loader
+  const lo = win(t, 22.2, 25.0, 0.45, 0.45);
+  S($("loader"), lo, `scale(${lerp(0.9, 1, p(t, 22.2, 22.9))})`);
+  S($("loadTxt"), lo);
+  ringCards.forEach((el, i) => {
+    const ang = t * 1.4 + i * (Math.PI * 2 / 3);
+    const r = 92;
+    el.style.left = (100 + Math.cos(ang) * r - 14) + "px";
+    el.style.top = (100 + Math.sin(ang) * r - 24) + "px";
+    el.style.transform = `rotate(${ang * 57.3 + 90}deg)`;
+  });
+
+  // Cards: identify (24.8 to 33), then shrink to the reading header (33 to 47)
+  const xs2 = [76, 216, 356];
+  const toThumb = q(t, 33.0, 33.9);
+  const scroll = q(t, 40.0, 40.9) * 152;
+  const cardsO = win(t, 24.8, 47.0, 0.5, 0.5) * (1 - q(t, 40.0, 40.7));
+  S($("cards"), cardsO);
+  const scanX = lerp(40, 500, q(t, 25.9, 27.6));
+  S($("scan"), win(t, 25.8, 27.8, 0.15, 0.3), `translateX(${scanX}px)`);
+  for (let i = 0; i < 3; i++) {
+    const el = $("bc" + i);
+    const a = 24.8 + i * 0.16;
+    const k = p(t, a, a + 0.6);
+    const cx = xs2[i] + 54;
+    const flipAt = 26.15 + i * 0.52;               // when the scan line passes the card
+    const fk = q(t, flipAt, flipAt + 0.48);
+    el.style.left = xs2[i] + "px";
+    // Thumbnail target: small row centred at y = 130 inside the reading view
+    const tx = lerp(0, (270 + (i - 1) * 62) - cx, toThumb);
+    const ty = lerp((1 - k) * 30, 136 - 262.5, toThumb);
+    const sc = lerp(1, 0.42, toThumb);
+    el.style.opacity = clamp(k * 2).toFixed(3);
+    el.style.transformOrigin = "54px 92px";
+    el.style.transform = `translate(${tx}px, ${ty - (toThumb > 0 ? 0 : 0)}px) scale(${sc})`;
+    el.querySelector(".flip").style.transform = `rotateY(${fk * 180}deg) scale(${1 + Math.sin(fk * Math.PI) * 0.06})`;
+    const bk = p(t, flipAt + 0.5, flipAt + 0.85);
+    S(el.querySelector(".badge"), bk * (1 - p(t, 32.6, 33.1)), `scale(${lerp(0.4, 1, bk)})`);
+    const nk = p(t, flipAt + 0.6, flipAt + 1.1);
+    S(el.querySelector(".cname"), nk * (1 - p(t, 32.6, 33.1)), `translateY(${(1 - nk) * 8}px)`);
+    const pk = p(t, 28.9 + i * 0.2, 29.5 + i * 0.2);
+    S(el.querySelector(".pos"), pk * (1 - p(t, 32.6, 33.1)), `translate(-50%, ${(1 - pk) * 8}px)`);
+  }
+  S($("spreadName"), win(t, 29.6, 33.0, 0.6, 0.45), `translateY(${(1 - p(t, 29.6, 30.3)) * 10}px)`);
+  caption("c2", t, 25.0, 29.3);
+  caption("c3", t, 29.4, 32.9);
+
+  // Step three 33 to 47: the reading
+  const ro = win(t, 33.3, 47.0, 0.6, 0.5);
+  S($("clip"), ro);
+  $("col").style.transform = `translateY(${-scroll}px)`;
+  const pk = p(t, 33.4, 34.2);
+  S($("panel"), pk, `translateY(${(1 - pk) * 40}px)`);
+  S($("verdict"), p(t, 34.1, 34.8), `translateY(${(1 - p(t, 34.1, 34.9)) * 8}px)`);
+  const speak = [43.1, 44.3, 45.5];
+  for (let i = 0; i < 3; i++) {
+    const a = 34.8 + i * 0.75;
+    const sec = $("sec" + i);
+    S(sec, p(t, a, a + 0.4));
+    const bars = sec.querySelectorAll(".bar");
+    bars.forEach((b, j) => { b.style.transform = `scaleX(${q(t, a + 0.2 + j * 0.35, a + 0.7 + j * 0.35)})`; });
+    S(sec.querySelector(".rule"), win(t, speak[i], speak[i] + 1.3, 0.25, 0.3));
+  }
+  const rk = p(t, 40.4, 41.2);
+  S($("reader"), rk, `translateY(${(1 - rk) * 50}px)`);
+  const tp2 = 42.3;
+  S($("tap2"), win(t, tp2 - 0.45, tp2 + 0.55, 0.25, 0.3), `scale(${lerp(1.3, 0.85, p(t, tp2 - 0.45, tp2)) + p(t, tp2, tp2 + 0.5) * 0.6})`);
+  $("tap2").style.left = "247px"; $("tap2").style.top = "355px";
+  const on = t > tp2 + 0.05;
+  $("listen").style.background = (t > tp2 - 0.05 && t < tp2 + 0.25) ? "var(--dusk)" : "transparent";
+  $("listen").style.borderColor = on ? "var(--starlight)" : "var(--line)";
+  $("lA").textContent = on ? "Stop listening" : "Listen to this reading";
+  // Speaking: the avatar ring pulses and the sound waves breathe
+  for (let i = 0; i < 2; i++) {
+    const ph = ((t - tp2 + i * 0.6) % 1.2) / 1.2;
+    const live = on && t < 46.8 ? 1 : 0;
+    S($("p" + i), live * (1 - ph) * 0.9, `scale(${1 + ph * 0.45})`);
+  }
+  $("w1").style.opacity = on ? (0.5 + 0.5 * Math.sin(t * 9)).toFixed(2) : 1;
+  $("w2").style.opacity = on ? (0.5 + 0.5 * Math.sin(t * 9 - 1.2)).toFixed(2) : 1;
+  caption("c4", t, 33.5, 40.0);
+  caption("c5", t, 40.2, 46.9);
+
+  // Outro 47 to 56
+  const ox = [116, 222, 328];
+  for (let i = 0; i < 3; i++) {
+    const a = 47.5 + i * 0.3;
+    const k = p(t, a, a + 0.6);
+    const el = $("oc" + i);
+    el.style.left = ox[i] + "px";
+    S(el, clamp(k * 2.5), `translate(${(1 - k) * (222 - ox[i])}px, ${(1 - k) * 90}px) rotate(${(i - 1) * 5 * k}deg)`);
+    const lk = p(t, 48.9 + i * 0.2, 49.4 + i * 0.2);
+    S(el.querySelector(".pos"), lk, `translate(-50%, 0) rotate(${-(i - 1) * 5}deg)`);
+  }
+  S($("oWord"), p(t, 48.6, 49.3), `translateY(${(1 - p(t, 48.6, 49.4)) * 14}px)`);
+  S($("oTag"), p(t, 49.2, 49.9), `translateY(${(1 - p(t, 49.2, 50)) * 12}px)`);
+  const bk = p(t, 49.9, 50.6);
+  S($("oBtn"), bk, `translateY(${(1 - bk) * 14}px) scale(${1 + 0.025 * Math.sin(clamp((t - 51.2) / 1.2) * Math.PI)})`);
+  S($("oUrl"), p(t, 50.5, 51.1));
+  S($("oNote"), p(t, 50.9, 51.5));
+  S($("oFine"), p(t, 51.2, 51.8));
+
+  S($("fade"), Math.max(1 - p(t, 0, 0.9), q(t, DURATION - 0.9, DURATION)));
+};
+
+window.sceneReady = document.fonts.ready.then(() => Promise.all([...document.images].map((im) => im.complete ? 1 : new Promise((r) => { im.onload = im.onerror = r; })))).then(() => { window.render(0); return true; });
+</script>
+</body>
+</html>

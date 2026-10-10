@@ -185,3 +185,20 @@ Images are built by `python3 scripts/build-instagram.py` into `public/assets/ins
 | `post-launch-1080x1350.png`, `post-how-it-works-1080x1350.png`, `post-photo-tips-1080x1350.png` | 1080 x 1350 (4:5) | Same layout rules as sections 8 and 13. Copy keeps a 90px margin so the 3:4 profile-grid crop never cuts it. |
 
 Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower-case wordmark, no exclamation marks. The profile picture, posts and highlight use the card mark; posts still show the wheel at full strength and have not moved to the card trio layout in section 8.
+
+## 16. Explainer video (`public/assets/video/`, `.explainer` in `landing.css`, `public/js/video.js`)
+
+Built by `python3 scripts/build-video.py` (Playwright, ffmpeg, NumPy and SciPy). Do not edit the outputs by hand. The scene is `scripts/explainer/scene.html`, which links `public/css/tokens.css` and uses the site's fonts and tarot art, so the video changes with the design system. The score is `scripts/explainer/music.py`: original, synthesised from scratch, no samples or licensed audio.
+
+| File | Size | Notes |
+| --- | --- | --- |
+| `explainer-1080x1350.mp4` | 1080 x 1350 (4:5), 30 fps, 56s | H.264 high + AAC 160k, faststart. 4:5 so it fills a phone screen width without being taller than the viewport. |
+| `explainer-poster.jpg` | 1080 x 1350 | Frame at 4.6s: mark, eyebrow, wordmark, tagline. |
+
+**Running order (56s, never over 60s):** intro (card mark draws on in gold, eyebrow "Tarot spread readings", the wordmark letter by letter, tagline); title "Get your tarot spread read in three steps" with the three step tiles; a step bar (Photograph, Identify, Read) stays at the top for the steps; step one: cards dealt, a phone frames the spread, shutter, an optional question typed, "Read my cards" tapped; step two: the loading avatar and card-back ring, a gold scan line, cards flip to The Star, The Moon and The Sun (reversed), each ticked and named, then Past, Present, Future and "A three-card spread"; step three: the cards shrink to a header, the verdict and a section per position write in (lines, not words), then the reader panel, "Listen to this reading" tapped, the avatar ring pulses and the gold rule moves card to card; outro: the hero card trio on the faded wheel, wordmark, tagline, the one gold "Read my cards", the URL, "Free. No account. Your photo isn't saved." and "For entertainment only."
+
+**Rules:** one gold-filled action per frame (the "Read my cards" button). Captions are the site's voice (sentence case, Australian spelling, no exclamation marks) and carry the meaning, so it works with the sound off; there is no voiceover. Smallest text is 13px on a 540px-wide stage (about 9px on a 390px phone), used only for labels the captions repeat. Motion uses the site curve `cubic-bezier(0.2, 0.7, 0.2, 1)`. A night scrim sits behind intro and outro text so wheel lines never cross words. Music sits at about -17 LUFS, fades in over 1.2s and out over 2.6s, with chimes on the mark, shutter, card flips and taps.
+
+**On the homepage:** a "Watch" section between the hero and How it works. The video is never autoplayed (it has music). `preload="none"` so it costs nothing until tapped. With JavaScript, the whole poster is one tap target with a 5rem round play button below the wordmark (night fill, gold 2px edge, gold triangle, never a gold fill, so the page's primary action keeps that); the first tap plays with sound and switches to native controls. Without JavaScript, native controls show. `playsinline` keeps it in the page on iPhone. The figcaption describes the video for screen readers and people who cannot play it. Full width on mobile, max 26rem, beside the section head from 52rem.
+
+**Analytics:** GA4 `video_start` and `video_complete` with `video_title` = `explainer`.

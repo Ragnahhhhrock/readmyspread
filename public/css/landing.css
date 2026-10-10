@@ -178,3 +178,37 @@ body.landing { background: transparent; overflow-x: clip; }
   .wheel { animation: none; }
   .sky::after { animation: none; opacity: 0.8; }
 }
+
+/* ---------- Explainer video (DESIGN.md section 16) ---------- */
+.explainer { margin: 0; width: 100%; max-width: 26rem; display: grid; gap: var(--s-3); }
+.explainer__frame {
+  position: relative; aspect-ratio: 4 / 5; overflow: hidden;
+  border-radius: var(--r-panel); border: 1px solid var(--nebula); background: var(--night);
+  box-shadow: 0 1rem 2.5rem rgba(11, 16, 36, 0.6);
+}
+.explainer__video { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--night); }
+.explainer__video:focus-visible { outline-offset: -3px; }
+/* The whole poster is the tap target; the round button sits below the poster's wordmark. */
+.explainer__play {
+  position: absolute; inset: 0; display: grid; place-items: end center;
+  border: 0; padding: 0 0 13%; background: rgba(11, 16, 36, 0.18); cursor: pointer;
+  border-radius: var(--r-panel); color: var(--gold);
+}
+.explainer__play:focus-visible { outline-offset: -3px; }
+.explainer__icon {
+  display: grid; place-items: center; width: 5rem; height: 5rem; border-radius: 50%;
+  background: rgba(11, 16, 36, 0.86); border: 2px solid var(--gold);
+  box-shadow: 0 0.5rem 1.5rem rgba(11, 16, 36, 0.6);
+  transition: background var(--t-quick) var(--ease), transform var(--t-quick) var(--ease);
+}
+.explainer__icon svg { width: 1.75rem; height: 1.75rem; margin-left: 0.25rem; }
+.explainer__play:hover .explainer__icon { background: var(--dusk); }
+.explainer__play:active .explainer__icon { transform: scale(0.96); }
+.explainer__cap { color: var(--mist); font-size: var(--step-0); max-width: 26rem; }
+@media (min-width: 52rem) {
+  .watch { display: grid; grid-template-columns: 1fr 26rem; gap: var(--s-8); align-items: center; }
+  .watch .section__head { margin-bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .explainer__icon { transition: none; }
+}

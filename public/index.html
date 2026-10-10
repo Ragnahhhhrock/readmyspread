@@ -49,9 +49,9 @@
   <!-- Fonts and styles -->
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261010f">
-  <link rel="stylesheet" href="/css/components.css?v=20261010f">
-  <link rel="stylesheet" href="/css/landing.css?v=20261010f">
+  <link rel="stylesheet" href="/css/tokens.css?v=20261010g">
+  <link rel="stylesheet" href="/css/components.css?v=20261010g">
+  <link rel="stylesheet" href="/css/landing.css?v=20261010g">
 
   <script type="application/ld+json">
   {
@@ -68,9 +68,10 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" }
   }
   </script>
-  <script defer src="/js/analytics.js?v=20261010f"></script>
-  <script defer src="/js/menu.js?v=20261010f"></script>
-  <script defer src="/js/share.js?v=20261010f"></script>
+  <script defer src="/js/analytics.js?v=20261010g"></script>
+  <script defer src="/js/menu.js?v=20261010g"></script>
+  <script defer src="/js/share.js?v=20261010g"></script>
+  <script defer src="/js/video.js?v=20261010g"></script>
 </head>
 <body class="landing">
   <div class="sky" aria-hidden="true"></div>
@@ -126,6 +127,24 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="wide section watch" id="watch" aria-labelledby="watch-title">
+      <div class="section__head">
+        <p class="eyebrow">Watch</p>
+        <h2 id="watch-title">How to read your tarot spread, in under a minute.</h2>
+        <p>Lay out your cards, take a photo, and get a plain reading for each card in its place. You can listen to it too.</p>
+      </div>
+      <figure class="explainer">
+        <div class="explainer__frame">
+          <video class="explainer__video" controls playsinline preload="none" poster="/assets/video/explainer-poster.jpg" width="1080" height="1350" aria-describedby="watch-desc">
+            <source src="/assets/video/explainer-1080x1350.mp4" type="video/mp4">
+            <a href="/assets/video/explainer-1080x1350.mp4">Download the explainer video (MP4, 56 seconds)</a>
+          </video>
+          <button class="explainer__play" type="button" hidden aria-label="Play the explainer video, 56 seconds, with music"><span class="explainer__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.52.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></svg></span></button>
+        </div>
+        <figcaption class="explainer__cap" id="watch-desc">56 seconds, with music. Photograph your tarot spread and readmyspread names the spread and every card, including reversed ones, then reads each position. Tap Listen to hear the reading aloud.</figcaption>
+      </figure>
     </section>
 
     <section class="wide section" id="how" aria-labelledby="how-title">

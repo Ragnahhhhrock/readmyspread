@@ -22,6 +22,7 @@
 - `DESIGN.md`: the design system and style guide (colour, type, components, voice, share images).
 - Contact email: contact@readmyspread.com.
 - `public/js/share.js`, `scripts/sharebar.py`: share buttons (Threads, Facebook, Instagram) on every page. See DESIGN.md section 12.
+- `public/assets/video/`: the homepage explainer video, built by `python3 scripts/build-video.py` from `scripts/explainer/` (scene and synthesised music). See DESIGN.md section 16.
 - `scripts/build-wheel.py`: regenerates the zodiac wheel and star-field SVGs. `scripts/build-assets.py`: regenerates icons and social images.
 - `tests/`: `node tests/read.test.mjs` (API), `python3 tests/ui.test.py` (browser flow with a mocked API; serve `public/` on port 8766 first).
 
@@ -44,6 +45,7 @@ Also add a Cloudflare rate limiting rule on `/api/read` (Security, WAF) so a bot
 - `reading_completed`: a reading is shown (`spread`, `card_count`).
 - `reading_failed`: `reason` is `rate_limited`, `busy`, `server`, `no_cards`, `unreadable`.
 - `audio_started`: the audio version of a reading is started (`spread`).
+- `video_start`, `video_complete`: the homepage explainer video (`video_title` = `explainer`).
 - `share`: a share button is tapped (`method` is `threads`, `facebook` or `instagram`).
 - `donation`: sent by the Stripe webhook with `value` and `currency`. Mark it as a key event in GA.
 
