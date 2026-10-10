@@ -3,15 +3,15 @@
 Live reference: https://readmyspread.com/style-guide/ (built from the same tokens as the site).
 Contact: contact@readmyspread.com
 
-readmyspread reads tarot card spreads from a photo. The look is a generic astrological theme: a deep night sky, gold linework, soft violet. Calm and legible rather than mystical.
+readmyspread reads tarot card spreads from a photo. The look is a tarot theme on a deep night sky: gold linework, soft violet, and tarot card art (card backs, arcana faces, the four suits). The zodiac wheel stays only as a faded backdrop. Calm and legible rather than mystical.
 
 ## 1. Principles
 
 1. **Plain over mystical.** Clear reading, no act, no fog.
 2. **Legible first.** Every text pairing meets WCAG AA. Touch targets are at least 48px.
-3. **Tarot is always named.** Public copy, titles and share images say "tarot" or "tarot spread" so nobody has to guess what the site does.
+3. **Tarot is always named and always shown.** Public copy, titles and share images say "tarot" or "tarot spread", and the art uses cards, suits and card backs rather than star signs, so nobody has to guess what the site does.
 4. **One source of truth.** Tokens live in `public/css/tokens.css`. Change them there and nowhere else.
-5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file. A second change on the same day adds a letter (`?v=20261010c`). `js/audio.js` is imported by `js/app.js` with the same version.
+5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file. A second change on the same day adds a letter (`?v=20261010d`). `js/audio.js` is imported by `js/app.js` with the same version.
 6. **Mobile first.** Design and check at 390px wide before anything wider. Every control is a tap target of at least 48px and reads without zooming.
 
 ## 2. Colour (tokens in `public/css/tokens.css`)
@@ -61,8 +61,10 @@ Line heights: tight 1.05 (headings), UI 1.45, reading 1.55. Reading column is 36
 - **Buttons:** `.btn--primary` (gold fill, night text), `.btn--secondary` (outlined with `--line`), disabled uses nebula. One primary per screen.
 - **Header menu:** `.site-nav` with `.menu-btn` on mobile (panel opens under the header), items inline from 52rem. Every item, the `.menu-link` links and the "Read my cards" action, uses the same outlined `.btn--secondary` look: `--line` border, 8px radius, Hanken 600, 48px tall and full width in the mobile panel, 40px inline on wide screens. The current page uses a nebula fill.
 - **Fields:** `.field`, `.input` on dusk with a `--line` border, hint text in mist.
-- **Upload zone:** `.upload`, dusk panel, gold border, faint zodiac wheel.
+- **Upload zone:** `.upload`, dusk panel, gold border, the card back (`assets/tarot/card-back.svg`) at 10rem tall.
 - **Tarot card thumbnail:** `.tcard`, 7:12 face, gold border, 8px radius. Reversed cards rotate 180 degrees and are also labelled in text.
+- **Steps:** `.step` with a 3rem tarot icon (`.step__icon`): photograph, eye, card fan. No moon phases.
+- **Suits band:** `.suits` on the home page, four items (Wands, Cups, Swords, Pentacles), each a 2.25rem suit icon and a Cormorant italic label in mist. Two columns on mobile, four from 40rem. It replaces the old star-sign strip.
 - **Reading:** `.reading` in Cormorant at reading size, verdict in italic, one section per card position with a quiet divider.
 - **Status:** `.status` panel with a left rule; errors use gold, never red.
 - **Focus:** 3px violet outline, 3px offset, on every interactive element.
@@ -72,18 +74,24 @@ Line heights: tight 1.05 (headings), UI 1.45, reading 1.55. Reading column is 36
 
 ## 6. Motifs
 
-- Zodiac wheel (`assets/zodiac-wheel.svg`): twelve sign glyphs outlined from DejaVu Sans, so it looks the same everywhere.
-- Moon phases for the three steps; crescent and four-point star as the mark.
+Tarot first, astrology as backdrop. All art is original gold linework, never a published deck. Files live in `public/assets/tarot/` and are drawn by `scripts/build-tarot-proposal.py` (output in `docs/tarot-identity/assets/`; copy the ones in use).
+
+- **Card back** (`assets/tarot/card-back.svg`, 7:12): double gold frame, diamond lattice, a gold eye inside a four-point star in a dotted ring, corner stars. Used in the hero deal, the upload zone and the loading ring.
+- **Arcana faces** (`card-star.svg`, `card-moon.svg`, `card-sun.svg`): The Star XVII, The Moon XVIII, The Sun XIX. Each has a Roman numeral, a name in outlined Cormorant 600 caps, a double frame and corner stars. Numerals and names are decorative; the position labels carry the meaning.
+- **Suit icons** (`assets/tarot/icons/`): wands, cups, swords, pentacles on a 48px grid with a 1.5px gold stroke and round caps. Step icons use the same style: `photograph`, `third-eye`, `card-fan`.
+- **Zodiac wheel** (`assets/zodiac-wheel.svg`): twelve sign glyphs outlined from DejaVu Sans. Kept as the hero and share-image backdrop at 40% opacity in the hero, so the cards lead. It no longer appears in the loading screen or upload zone.
+- **Crescent and four-point star** as the mark. Moon phases are no longer used for the steps.
 - Star-field tiles (`assets/stars-a.svg`, `stars-b.svg`) with a slow twinkle.
 - Tarot card outlines (7:12, gold edge) for anything that stands in for a card.
-- **Hero card deal** (`.deal` in `landing.css`, inside `.hero__art`): three 7:12 cards laid out on the turning zodiac wheel with the labels "Past", "Present" and "Future". Cards are dusk with a 1.5px gold edge, an inset hairline and an 8px radius. The back is a dotted ring with a four-point star. The faces are original gold linework (crescent and star, four-point star, sun), not any published deck. Motion plays once, about 3s: cards deal in (480ms, staggered 360ms), flip face up, then the labels fade in. The resting state is the base style, so reduced motion, no motion and no JS all show the finished spread. Decorative, so `aria-hidden`. Labels sit on a night pill (Hanken 600, mist, step--1, caps) so the wheel lines never cross them.
+- **Hero card deal** (`.deal` in `landing.css`, inside `.hero__art`): three 7:12 cards on the faded turning zodiac wheel, labelled "Past", "Present" and "Future". Each card is the card back flipping to The Star, The Moon or The Sun (`.deal__side--art`: the SVG supplies the gold edge, hairline and corner stars, the side adds only a shadow). Motion plays once, about 3s: cards deal in (480ms, staggered 360ms), flip face up, then the labels fade in. The resting state is the base style, so reduced motion, no motion and no JS all show the finished spread. Decorative, so `aria-hidden`. Labels sit on a night pill (Hanken 600, mist, step--1, caps) so the wheel lines never cross them.
+- **Not adopted** (kept in `docs/tarot-identity/` for later): the card fan hero, the reader's table scene, the spread diagram with position badges.
 
 ## 7. Voice and copy
 
 Plain, warm, even-handed. No persona (the reader avatar in section 14 is a picture, not a character: no name, no backstory, no first-person voice), no jokes at the reader's expense. Australian spelling (recognises, colour). Sentence case headings. No exclamation marks.
 
 - **Tagline:** "Your tarot spread, read plainly."
-- **Eyebrow / category label:** "Tarot spread readings"
+- **Eyebrow / category label:** "Tarot spread readings" (also the home hero eyebrow)
 - **Primary action:** "Read my cards"
 - **Always say "tarot spread" (or "tarot card spread") in:** page titles, meta descriptions, share titles, the hero, the app tagline, and the first mention in any new page. On a screen already inside the reader, "your spread" is fine after the tarot context is set.
 - **Disclaimer (footer, every page):** "For entertainment only. Not medical, legal or financial advice." Readings never predict health, money or legal outcomes.
@@ -155,7 +163,7 @@ Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower
 **The avatar.** A calm head-and-shoulders figure in the site's gold linework: dusk sky with a nebula glow and a dotted ring, hair in night, shoulders in nebula, every outline in gold at 2px, the crescent and four-point star mark as a brooch. Closed eyes, a quiet mouth, no hood, crystal ball or props. No skin tone is used, so the figure is not tied to any one person. It is a picture, not a persona: no name, no backstory, no first-person lines. The reading text keeps the plain voice in section 7. `reader.svg` is hand-authored from tokens (hex values match `tokens.css`); alt text is empty where it sits beside text that says the same thing.
 
 **Where it appears**
-- **Loading screen:** 6rem avatar inside the 9rem zodiac wheel, which turns slowly. Decorative, so `aria-hidden`.
+- **Loading screen:** 5rem avatar inside a 10.5rem ring of three card backs (2rem wide), which turns slowly. Decorative, so `aria-hidden`.
 - **Reading screen:** `.reader` panel above the reading: 4.5rem avatar, "Prefer to listen?", one line of support, then the audio button.
 
 **Audio version.** Offered on every finished reading except the care screen. It uses the browser's own speech (`speechSynthesis`), so nothing is recorded, uploaded or stored and no new service is involved. The panel stays hidden where the browser cannot speak.

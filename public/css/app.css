@@ -25,10 +25,14 @@
 }
 .linklike:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: var(--r-ui); }
 
-/* Loading: the reader inside a slowly turning zodiac wheel. */
-.loading__figure { position: relative; width: 9rem; height: 9rem; display: grid; place-items: center; }
+/* Loading: the reader inside a slow ring of three card backs. */
+.loading__figure { position: relative; width: 10.5rem; height: 10.5rem; display: grid; place-items: center; }
 .loading__figure .loading__orbit { position: absolute; inset: 0; width: 100%; height: 100%; }
-.loading__figure .reader-avatar { position: relative; width: 6rem; height: 6rem; }
+.loading__orbit img {
+  position: absolute; left: 50%; top: 50%; width: 2rem; height: auto;
+  transform: translate(-50%, -50%) rotate(var(--a)) translateY(-3.6rem);
+}
+.loading__figure .reader-avatar { position: relative; width: 5rem; height: 5rem; }
 .loading[hidden] { display: none; }
 .loading p[aria-live] { min-height: 1.4em; }
 

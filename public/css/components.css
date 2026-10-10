@@ -142,7 +142,7 @@ textarea.input { min-height: 6rem; resize: vertical; }
   min-height: 29rem;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: var(--s-4);
   text-align: center;
-  background: var(--dusk) url("../assets/zodiac-wheel.svg") center 1.5rem / 10rem no-repeat;
+  background: var(--dusk) url("../assets/tarot/card-back.svg") center 1.5rem / auto 10rem no-repeat;
   border: 1px solid var(--gold);
   border-radius: var(--r-panel);
   isolation: isolate;

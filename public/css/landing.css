@@ -41,7 +41,7 @@ body.landing { background: transparent; overflow-x: clip; }
   content: ""; position: absolute; inset: 0; border-radius: 50%;
   background: radial-gradient(circle, rgba(120, 104, 255, 0.28) 0%, rgba(120, 104, 255, 0.08) 45%, transparent 70%);
 }
-.wheel { position: relative; width: 100%; height: 100%; animation: turn 240s linear infinite; }
+.wheel { position: relative; width: 100%; height: 100%; opacity: 0.4; animation: turn 240s linear infinite; } /* faded so the cards lead */
 @keyframes turn { to { transform: rotate(360deg); } }
 
 /* ---------- Three-card deal over the wheel ----------
@@ -75,6 +75,10 @@ body.landing { background: transparent; overflow-x: clip; }
   border: 1px solid rgba(226, 192, 113, 0.45); border-radius: 4px;
 }
 .deal__side svg { position: relative; width: 62%; height: auto; }
+/* Arcana art: the SVG carries its own gold edge, hairline and corner stars, so the side adds only the shadow. */
+.deal__side--art { background: none; border: 0; border-radius: 0; box-shadow: none; }
+.deal__side--art::before { content: none; }
+.deal__side--art img { position: relative; width: 100%; height: 100%; filter: drop-shadow(0 0.5rem 1rem rgba(11, 16, 36, 0.6)); }
 .deal__back { transform: rotateY(0deg); }
 .deal__face { transform: rotateY(180deg); }
 
@@ -121,7 +125,7 @@ body.landing { background: transparent; overflow-x: clip; }
   border: 1px solid var(--line-quiet);
   border-radius: var(--r-panel);
 }
-.step__moon { width: 3rem; height: 3rem; }
+.step__icon { width: 3rem; height: 3rem; }
 .step h3 { font-size: var(--step-2); }
 .step p { color: var(--mist); }
 .step__n { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
@@ -133,19 +137,20 @@ body.landing { background: transparent; overflow-x: clip; }
 .feature p { color: var(--mist); max-width: 28rem; }
 @media (min-width: 40rem) { .features { grid-template-columns: 1fr 1fr; } }
 
-/* ---------- Signs band ---------- */
-.signs {
+/* ---------- Suits band ---------- */
+.suits {
   border-block: 1px solid var(--line-quiet);
   padding-block: var(--s-5);
   background: rgba(11, 16, 36, 0.6);
 }
-.signs ul {
+.suits ul {
   list-style: none; margin: 0; padding: 0;
-  display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s-2) var(--s-5);
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3) var(--s-4);
   font-family: var(--font-display); font-style: italic; font-size: var(--step-1); color: var(--mist);
 }
-.signs li { position: relative; }
-.signs li + li::before { content: "\2726"; position: absolute; left: calc(var(--s-5) / -2 - 0.35em); font-style: normal; font-size: 0.6em; top: 0.55em; color: var(--gold); }
+.suits li { display: flex; align-items: center; justify-content: center; gap: var(--s-3); min-height: var(--tap); }
+.suits img { width: 2.25rem; height: 2.25rem; flex: none; }
+@media (min-width: 40rem) { .suits ul { grid-template-columns: repeat(4, 1fr); } }
 
 /* ---------- FAQ ---------- */
 .faq { display: grid; gap: 0; max-width: 44rem; }

@@ -13,11 +13,11 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261010c">
-  <link rel="stylesheet" href="/css/components.css?v=20261010c">
+  <link rel="stylesheet" href="/css/tokens.css?v=20261010d">
+  <link rel="stylesheet" href="/css/components.css?v=20261010d">
   <style>
-    .sg { max-width: 56rem; margin-inline: auto; padding: var(--s-6) var(--gutter) var(--s-8); display: grid; gap: var(--s-8); }
-    .sg section { display: grid; gap: var(--s-5); }
+    .sg { max-width: 56rem; margin-inline: auto; padding: var(--s-6) var(--gutter) var(--s-8); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
+    .sg section { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-5); }
     .sg h2 { font-size: var(--step-3); padding-top: var(--s-5); border-top: 1px solid var(--line-quiet); }
     .sg h3 { font-size: var(--step-2); }
     .sg .eyebrow { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
@@ -37,12 +37,13 @@
     .space i { display: block; height: 0.75rem; background: var(--gold); border-radius: 2px; }
     .share { display: grid; gap: var(--s-4); }
     .share img { width: 100%; height: auto; border-radius: var(--r-ui); border: 1px solid var(--line-quiet); }
+    .sg .tcard img { width: 100%; height: auto; }
     .dos { display: grid; gap: var(--s-4); }
     @media (min-width: 40rem) { .dos { grid-template-columns: 1fr 1fr; } }
     .dos ul { margin: var(--s-2) 0 0; padding-left: 1.2em; display: grid; gap: var(--s-2); color: var(--mist); }
   </style>
-  <script defer src="/js/analytics.js?v=20261010c"></script>
-  <script defer src="/js/share.js?v=20261010c"></script>
+  <script defer src="/js/analytics.js?v=20261010d"></script>
+  <script defer src="/js/share.js?v=20261010d"></script>
 </head>
 <body>
   <main class="sg">
@@ -135,14 +136,32 @@
         <li class="tcard"><div class="tcard__face">&#10022;</div><p class="tcard__name">Ace of Cups</p><p class="tcard__meta">Upright</p></li>
       </ul>
 
+      <h3>Tarot imagery</h3>
+      <p class="muted small">Original gold linework, never a published deck. The card back is used in the hero deal, the upload zone and the loading ring. Arcana faces carry a Roman numeral and a name. Suit icons use a 48px grid with a 1.5px stroke.</p>
+      <ul class="cards" style="max-width:32rem">
+        <li class="tcard"><img src="/assets/tarot/card-back.svg" alt="" width="140" height="240"><p class="tcard__name">Card back</p></li>
+        <li class="tcard"><img src="/assets/tarot/card-star.svg" alt="" width="140" height="240"><p class="tcard__name">The Star</p></li>
+        <li class="tcard"><img src="/assets/tarot/card-moon.svg" alt="" width="140" height="240"><p class="tcard__name">The Moon</p></li>
+        <li class="tcard"><img src="/assets/tarot/card-sun.svg" alt="" width="140" height="240"><p class="tcard__name">The Sun</p></li>
+      </ul>
+      <div class="row" aria-label="Suit and step icons">
+        <img src="/assets/tarot/icons/wands.svg" alt="Wands" width="48" height="48">
+        <img src="/assets/tarot/icons/cups.svg" alt="Cups" width="48" height="48">
+        <img src="/assets/tarot/icons/swords.svg" alt="Swords" width="48" height="48">
+        <img src="/assets/tarot/icons/pentacles.svg" alt="Pentacles" width="48" height="48">
+        <img src="/assets/tarot/icons/photograph.svg" alt="Photograph" width="48" height="48">
+        <img src="/assets/tarot/icons/third-eye.svg" alt="Identify" width="48" height="48">
+        <img src="/assets/tarot/icons/card-fan.svg" alt="Read" width="48" height="48">
+      </div>
+
       <h3>Hero card deal</h3>
-      <p class="muted small">Three tarot cards are dealt onto the turning zodiac wheel in the homepage hero, flip face up (crescent and star, four-point star, sun) and are labelled Past, Present and Future. It plays once in about three seconds and is decorative. Under reduced motion the finished spread is shown with no animation. Faces are original gold linework, never a published deck.</p>
+      <p class="muted small">Three tarot cards are dealt onto the faded, turning zodiac wheel in the homepage hero. Each is a card back that flips face up to The Star, The Moon or The Sun, and is labelled Past, Present and Future. It plays once in about three seconds and is decorative. Under reduced motion the finished spread is shown with no animation. Faces are original gold linework, never a published deck.</p>
 
       <h3>Detected spread</h3>
       <div class="detected" style="max-width:28rem"><p class="detected__spread">Three-card spread</p><p class="detected__count">3 cards found</p></div>
 
       <h3>Reader avatar and audio offer</h3>
-      <p class="muted small">The reader is a nameless figure in gold linework on the night sky, a calm illustration with no character voice. It appears inside the turning zodiac wheel while a reading is made, and on the reading screen beside the audio offer. The offer is one secondary button, 48px tall and full width on mobile, never gold. The avatar ring pulses while audio plays, and the card being read gets a gold rule. All motion stops under reduced motion.</p>
+      <p class="muted small">The reader is a nameless figure in gold linework on the night sky, a calm illustration with no character voice. It appears inside a slowly turning ring of three card backs while a reading is made, and on the reading screen beside the audio offer. The offer is one secondary button, 48px tall and full width on mobile, never gold. The avatar ring pulses while audio plays, and the card being read gets a gold rule. All motion stops under reduced motion.</p>
       <section class="reader" aria-labelledby="sg-reader-title">
         <div class="reader__head">
           <div class="reader__figure"><img class="reader-avatar" src="/assets/reader.svg" alt="" width="72" height="72"></div>
