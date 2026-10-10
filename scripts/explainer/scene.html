@@ -80,16 +80,16 @@
   #flash { inset: 0; background: var(--starlight); }
   #screen { inset: 0; background: var(--night); }
   #app { left: 16px; right: 16px; top: 34px; }
-  #app .ttl { font-family: var(--font-display); font-size: 22px; line-height: 1.1; margin-bottom: 10px; }
-  #shot { position: relative; height: 104px; border-radius: var(--r-card); border: 1.5px solid var(--gold); background: var(--dusk); overflow: hidden; }
-  #shot img { position: absolute; top: 16px; width: 40px; height: 69px; }
-  #app .lab { font-size: 13px; font-weight: 600; color: var(--starlight); margin: 14px 0 6px; }
-  #field { height: 42px; border-radius: var(--r-ui); border: 1.5px solid var(--line); background: var(--dusk);
-    font-size: 13.5px; display: flex; align-items: center; padding: 0 10px; white-space: nowrap; overflow: hidden; }
-  #caret { display: inline-block; width: 1.5px; height: 16px; background: var(--violet); margin-left: 1px; }
-  #go { position: relative; margin-top: 14px; height: 48px; border-radius: var(--r-ui); background: var(--gold); color: var(--night);
+  #app .ttl { font-family: var(--font-display); font-size: 20px; line-height: 1.1; margin-bottom: 8px; }
+  #shot { position: relative; height: 92px; border-radius: var(--r-card); border: 1.5px solid var(--gold); background: var(--dusk); overflow: hidden; }
+  #shot img { position: absolute; top: 11px; width: 40px; height: 69px; }
+  #app .lab { font-size: 13px; font-weight: 600; color: var(--starlight); margin: 10px 0 6px; }
+  .qp { height: 32px; margin-top: 6px; border-radius: 999px; border: 1px solid var(--line); background: var(--dusk);
+    font-size: 12px; font-weight: 500; display: flex; align-items: center; padding: 0 12px; white-space: nowrap; overflow: hidden; }
+  .qp.on { background: var(--gold); border-color: var(--gold); color: var(--night); font-weight: 600; }
+  #go { position: relative; margin-top: 12px; height: 48px; border-radius: var(--r-ui); background: var(--gold); color: var(--night);
     font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
-  #tap { width: 46px; height: 46px; border-radius: 50%; border: 2.5px solid var(--starlight); background: rgba(243,239,228,0.18); }
+  .tapring, #tap { width: 46px; height: 46px; border-radius: 50%; border: 2.5px solid var(--starlight); background: rgba(243,239,228,0.18); }
 
   /* Step two */
   #loader { left: 170px; top: 130px; width: 200px; height: 200px; }
@@ -195,20 +195,23 @@
         <div id="shutter" class="abs"></div>
       </div>
       <div id="app" class="abs">
-        <div class="ttl">Your tarot spread</div>
+        <div class="ttl">Is that your tarot spread?</div>
         <div id="shot">
           <img src="../../public/assets/tarot/card-back.svg" alt="" style="left:33px">
           <img src="../../public/assets/tarot/card-back.svg" alt="" style="left:79px">
           <img src="../../public/assets/tarot/card-back.svg" alt="" style="left:125px">
         </div>
-        <div class="lab">Your question (optional)</div>
-        <div id="field"><span id="typed"></span><span id="caret"></span></div>
+        <div class="lab">Ask a question</div>
+        <div class="qp" id="qp0">What should I do next?</div>
+        <div class="qp" id="qp1">What am I not seeing?</div>
+        <div class="qp" id="qp2">What's holding me back?</div>
         <div id="go">Read my cards</div>
       </div>
       <div id="flash" class="abs"></div>
       <div class="notch"></div>
     </div>
     <div id="tap" class="abs"></div>
+    <div id="tapQ" class="abs tapring"></div>
   </div>
 
   <!-- Step two: identify -->
@@ -250,7 +253,7 @@
 
   <!-- Captions -->
   <div class="cap abs" id="c0"><h2>Lay your cards flat and take a photo.</h2><p>Good light, with the whole spread in frame.</p></div>
-  <div class="cap abs" id="c1"><h2>Add a question if you like.</h2><p>Then tap <span style="color:var(--starlight);font-weight:600">Read my cards</span>.</p></div>
+  <div class="cap abs" id="c1"><h2>Pick a question if you like.</h2><p>Tap one of the set questions, then <span style="color:var(--starlight);font-weight:600">Read my cards</span>.</p></div>
   <div class="cap abs" id="c2"><h2>Every card is named, <em>reversed</em> ones too.</h2><p>Cards it can't make out are flagged, not guessed.</p></div>
   <div class="cap abs" id="c3"><h2>The spread is recognised.</h2><p>Single card, three-card, Celtic Cross and more.</p></div>
   <div class="cap abs" id="c4"><h2>Read it, card by card.</h2><p>A summary of the spread, then each card in its place.</p></div>
@@ -402,17 +405,18 @@ window.render = function (t) {
     S($("screen"), lerp(0.08, 1, p(t, shot + 0.25, shot + 0.6)));
     const ap = p(t, shot + 0.4, shot + 1.1);
     S($("app"), ap, `translateY(${(1 - ap) * 14}px)`);
-    // Typing the optional question
-    const msg = "What should I focus on?";
-    const n = Math.floor(clamp((t - 16.7) / 1.3) * msg.length);
-    $("typed").textContent = msg.slice(0, n);
-    $("caret").style.opacity = (t > 16.3 && t < 18.6 && (Math.floor(t * 2.6) % 2 === 0 || (t > 16.7 && t < 18.0))) ? 1 : 0;
-    $("field").style.borderColor = (t > 16.3 && t < 18.6) ? "var(--violet)" : "var(--line)";
+    // Choosing a set question: a tap on the first pill selects it
+    const tq = 17.4;
+    const qp0 = $("qp0");
+    qp0.classList.toggle("on", t > tq + 0.05);
+    qp0.style.transform = `scale(${1 - 0.03 * win(t, tq - 0.05, tq + 0.25, 0.05, 0.2)})`;
+    S($("tapQ"), win(t, tq - 0.45, tq + 0.55, 0.25, 0.3), `scale(${lerp(1.3, 0.85, p(t, tq - 0.45, tq)) + p(t, tq, tq + 0.5) * 0.6})`);
+    $("tapQ").style.left = "277px"; $("tapQ").style.top = "297px";
     // Tap the gold button
     const tp = 19.0;
     const tapO = win(t, tp - 0.45, tp + 0.55, 0.25, 0.3);
     S($("tap"), tapO, `translate(0,0) scale(${lerp(1.3, 0.85, p(t, tp - 0.45, tp)) + p(t, tp, tp + 0.5) * 0.6})`);
-    $("tap").style.left = "247px"; $("tap").style.top = "336px";
+    $("tap").style.left = "249px"; $("tap").style.top = "430px";
     $("go").style.transform = `scale(${1 - 0.04 * win(t, tp - 0.05, tp + 0.25, 0.05, 0.2)})`;
     $("go").style.background = (t > tp - 0.05 && t < tp + 0.25) ? "var(--gold-deep)" : "var(--gold)";
     // Leave: phone lifts away
