@@ -23,11 +23,10 @@ from sharebar import sharebar, share_text
 
 DEFAULT_OG = f"{SITE}/assets/og-image.png"
 DEFAULT_TW = f"{SITE}/assets/twitter-card.png"
-DEFAULT_ALT = "A gold zodiac wheel on a deep blue night sky beside the words readmyspread, tarot spread readings. Your tarot spread, read plainly."
+DEFAULT_ALT = "Three tarot cards, The Star, The Moon and The Sun, laid over a faded gold zodiac wheel beside the words readmyspread, tarot spread readings. Your tarot spread, read plainly."
 
-MARK = ('<svg class="wordmark__mark" viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="mk-nav"><rect width="64" height="64" fill="#fff"/>'
-        '<circle cx="41" cy="26" r="15" fill="#000"/></mask></defs><circle cx="30" cy="34" r="19" fill="#e2c071" mask="url(#mk-nav)"/>'
-        '<path d="M46 9l1.8 5.2L53 16l-5.2 1.8L46 23l-1.8-5.2L39 16l5.2-1.8Z" fill="#e2c071"/></svg>')
+from mark import mark_svg  # the tarot card mark, shared with the favicon and share images
+MARK = mark_svg("wordmark__mark")
 
 e = html.escape
 
@@ -85,13 +84,13 @@ def head(title, desc, path, *, og_type="website", og_img=DEFAULT_OG, tw_img=DEFA
 
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261010d">
-  <link rel="stylesheet" href="/css/components.css?v=20261010d">
-  <link rel="stylesheet" href="/css/landing.css?v=20261010d">
-  <link rel="stylesheet" href="/css/learn.css?v=20261010d">{ld}
-  <script defer src="/js/analytics.js?v=20261010d"></script>
-  <script defer src="/js/share.js?v=20261010d"></script>
-  <script defer src="/js/menu.js?v=20261010d"></script>{scripts}
+  <link rel="stylesheet" href="/css/tokens.css?v=20261010e">
+  <link rel="stylesheet" href="/css/components.css?v=20261010e">
+  <link rel="stylesheet" href="/css/landing.css?v=20261010e">
+  <link rel="stylesheet" href="/css/learn.css?v=20261010e">{ld}
+  <script defer src="/js/analytics.js?v=20261010e"></script>
+  <script defer src="/js/share.js?v=20261010e"></script>
+  <script defer src="/js/menu.js?v=20261010e"></script>{scripts}
 </head>
 <body class="landing">
   <div class="sky" aria-hidden="true"></div>
@@ -371,7 +370,7 @@ def main():
           "isPartOf": {"@type": "WebSite", "name": "readmyspread", "url": SITE + "/"}}
     d = PUB / "contact"
     (d / "sent").mkdir(parents=True, exist_ok=True)
-    page = head("Contact: questions about tarot spread readings", cdesc, "/contact/", jsonld=ld, scripts='\n  <script defer src="/js/contact.js?v=20261010d"></script>') + nav("contact")
+    page = head("Contact: questions about tarot spread readings", cdesc, "/contact/", jsonld=ld, scripts='\n  <script defer src="/js/contact.js?v=20261010e"></script>') + nav("contact")
     page += """
   <main id="main" class="col learn-main">
     <div class="page-head">

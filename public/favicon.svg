@@ -1,6 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs><mask id="m"><rect width="64" height="64" fill="#fff"/><circle cx="41" cy="26" r="15" fill="#000"/></mask></defs>
-  <rect width="64" height="64" rx="14" fill="#0B1024"/>
-  <circle cx="30" cy="35" r="19" fill="#E2C071" mask="url(#m)"/>
-  <path d="M46 9l1.8 5.2L53 16l-5.2 1.8L46 23l-1.8-5.2L39 16l5.2-1.8Z" fill="#E2C071"/>
+  <rect width="64" height="64" rx="14" fill="#0b1024"/>
+  <path fill="#e2c071" fill-rule="evenodd" d="M20.75 5H43.25A4.5 4.5 0 0 1 47.75 9.5V54.5A4.5 4.5 0 0 1 43.25 59H20.75A4.5 4.5 0 0 1 16.25 54.5V9.5A4.5 4.5 0 0 1 20.75 5ZM41.89 30.19A11.2 11.2 0 1 1 31.38 14.8A9.4 9.4 0 1 0 41.89 30.19ZM32 37.1L33.78 43.72L40.4 45.5L33.78 47.28L32 53.9L30.22 47.28L23.6 45.5L30.22 43.72Z"/>
 </svg>

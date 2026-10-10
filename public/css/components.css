@@ -68,7 +68,7 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--starlight);
   text-decoration: none;
 }
-.wordmark__mark { width: 1.9rem; height: 1.9rem; flex: none; }
+.wordmark__mark { width: 1.07rem; height: 1.9rem; flex: none; } /* the card mark is portrait, 36:64 */
 .wordmark--hero { font-size: var(--step-5); }
 
 /* ---------- Buttons ---------- */

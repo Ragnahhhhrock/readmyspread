@@ -11,7 +11,7 @@ readmyspread reads tarot card spreads from a photo. The look is a tarot theme on
 2. **Legible first.** Every text pairing meets WCAG AA. Touch targets are at least 48px.
 3. **Tarot is always named and always shown.** Public copy, titles and share images say "tarot" or "tarot spread", and the art uses cards, suits and card backs rather than star signs, so nobody has to guess what the site does.
 4. **One source of truth.** Tokens live in `public/css/tokens.css`. Change them there and nowhere else.
-5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file. A second change on the same day adds a letter (`?v=20261010d`). `js/audio.js` is imported by `js/app.js` with the same version.
+5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file. A second change on the same day adds a letter (`?v=20261010e`). `js/audio.js` is imported by `js/app.js` with the same version.
 6. **Mobile first.** Design and check at 390px wide before anything wider. Every control is a tap target of at least 48px and reads without zooming.
 
 ## 2. Colour (tokens in `public/css/tokens.css`)
@@ -57,7 +57,7 @@ Line heights: tight 1.05 (headings), UI 1.45, reading 1.55. Reading column is 36
 
 ## 5. Components (`public/css/components.css`)
 
-- **Wordmark:** crescent plus four-point star, then "readmyspread" in Cormorant 600, always lower case, one word.
+- **Logo and wordmark:** the card mark, then "readmyspread" in Cormorant 600, always lower case, one word. The mark is a gold 7:12 tarot card with a crescent and a four-point star cut out (one evenodd path, so the background shows through), drawn once in `scripts/mark.py`. It is portrait (viewBox 36 x 64): 1.07rem x 1.9rem in the header, 1.97rem x 3.5rem in the closing call. Gold only, never outlined, never on a gold surface.
 - **Buttons:** `.btn--primary` (gold fill, night text), `.btn--secondary` (outlined with `--line`), disabled uses nebula. One primary per screen.
 - **Header menu:** `.site-nav` with `.menu-btn` on mobile (panel opens under the header), items inline from 52rem. Every item, the `.menu-link` links and the "Read my cards" action, uses the same outlined `.btn--secondary` look: `--line` border, 8px radius, Hanken 600, 48px tall and full width in the mobile panel, 40px inline on wide screens. The current page uses a nebula fill.
 - **Fields:** `.field`, `.input` on dusk with a `--line` border, hint text in mist.
@@ -80,7 +80,7 @@ Tarot first, astrology as backdrop. All art is original gold linework, never a p
 - **Arcana faces** (`card-star.svg`, `card-moon.svg`, `card-sun.svg`): The Star XVII, The Moon XVIII, The Sun XIX. Each has a Roman numeral, a name in outlined Cormorant 600 caps, a double frame and corner stars. Numerals and names are decorative; the position labels carry the meaning.
 - **Suit icons** (`assets/tarot/icons/`): wands, cups, swords, pentacles on a 48px grid with a 1.5px gold stroke and round caps. Step icons use the same style: `photograph`, `third-eye`, `card-fan`.
 - **Zodiac wheel** (`assets/zodiac-wheel.svg`): twelve sign glyphs outlined from DejaVu Sans. Kept as the hero and share-image backdrop at 40% opacity in the hero, so the cards lead. It no longer appears in the loading screen or upload zone.
-- **Crescent and four-point star** as the mark. Moon phases are no longer used for the steps.
+- **The mark:** a gold tarot card with a crescent and four-point star cut out (section 5). Moon phases are no longer used for the steps.
 - Star-field tiles (`assets/stars-a.svg`, `stars-b.svg`) with a slow twinkle.
 - Tarot card outlines (7:12, gold edge) for anything that stands in for a card.
 - **Hero card deal** (`.deal` in `landing.css`, inside `.hero__art`): three 7:12 cards on the faded turning zodiac wheel, labelled "Past", "Present" and "Future". Each card is the card back flipping to The Star, The Moon or The Sun (`.deal__side--art`: the SVG supplies the gold edge, hairline and corner stars, the side adds only a shadow). Motion plays once, about 3s: cards deal in (480ms, staggered 360ms), flip face up, then the labels fade in. The resting state is the base style, so reduced motion, no motion and no JS all show the finished spread. Decorative, so `aria-hidden`. Labels sit on a night pill (Hanken 600, mist, step--1, caps) so the wheel lines never cross them.
@@ -107,11 +107,11 @@ Built by `python3 scripts/build-assets.py` (Playwright and Pillow). Do not edit 
 | `assets/twitter-card.png` | 1200 x 600 (2:1) | `twitter:image`, `twitter:card` = `summary_large_image` |
 | `assets/linkedin-card.png` | 1200 x 627 (1.91:1) | LinkedIn post image (attach to a post; not referenced by the site) |
 
-Layout (same on both): night sky with soft indigo and violet glows and the star field; zodiac wheel bleeding off the right edge; left column holds the eyebrow "Tarot spread readings" (Hanken 600, mist, tracked caps), the wordmark (Cormorant 600, starlight), the tagline (Cormorant italic, gold), one sentence of support (Hanken, mist), and the URL (Hanken 600, gold) bottom left. All text stays inside a 76px left margin and clear of the wheel, so it survives cropping. Keep alt text in the page head in step with the image copy.
+Layout (same on both): night sky with soft indigo and violet glows and the star field. The zodiac wheel is faded to 40% and bleeds off the right edge, with three arcana cards laid over it (The Star, The Moon, The Sun, 125px wide, turned -6, 0 and 6 degrees, face up, each labelled Past, Present or Future on a night pill in Hanken 600, mist, 19px, caps). The left column holds the card mark (72px tall) beside the eyebrow "Tarot spread readings" (Hanken 600, mist, tracked caps), then the wordmark (Cormorant 600, starlight), the tagline (Cormorant italic, gold), one sentence of support (Hanken, mist), and the URL (Hanken 600, gold) bottom left. All text stays inside a 76px left margin and clear of the cards (they start at x = 755), so it survives cropping. Keep alt text in the page head in step with the image copy.
 
 ## 9. Icons
 
-`favicon.svg` is the source. `build-assets.py` renders `favicon-32.png`, `favicon.ico`, `assets/apple-touch-icon.png`, `assets/icon-192.png` and `assets/icon-512.png`.
+The card mark in `scripts/mark.py` is the source. `build-assets.py` writes `favicon.svg` from it (the card on a night tile, 14px corners), then renders `favicon-32.png`, `favicon.ico`, `assets/apple-touch-icon.png`, `assets/icon-192.png` and `assets/icon-512.png`.
 
 ## 10. Checklist for a new page
 
@@ -156,11 +156,11 @@ Images are built by `python3 scripts/build-facebook.py` into `public/assets/face
 | `post-launch-1080x1350.png` | 1080 x 1350 (4:5) | Same layout rules as section 8, wheel bleeding off the right edge, copy clear of it. |
 | `post-how-it-works-1080x1350.png` | 1080 x 1350 (4:5) | `.row` panels on dusk, 20px radius, moon phases for the three steps. |
 
-Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower-case wordmark, no exclamation marks.
+Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower-case wordmark, no exclamation marks. The profile picture and posts use the card mark; the posts still show the wheel at full strength and have not moved to the card trio layout in section 8.
 
 ## 14. Reader avatar and audio version (`public/assets/reader.svg`, `.reader` in `components.css`, `public/js/audio.js`)
 
-**The avatar.** A calm head-and-shoulders figure in the site's gold linework: dusk sky with a nebula glow and a dotted ring, hair in night, shoulders in nebula, every outline in gold at 2px, the crescent and four-point star mark as a brooch. Closed eyes, a quiet mouth, no hood, crystal ball or props. No skin tone is used, so the figure is not tied to any one person. It is a picture, not a persona: no name, no backstory, no first-person lines. The reading text keeps the plain voice in section 7. `reader.svg` is hand-authored from tokens (hex values match `tokens.css`); alt text is empty where it sits beside text that says the same thing.
+**The avatar.** A calm head-and-shoulders figure in the site's gold linework: dusk sky with a nebula glow and a dotted ring, hair in night, shoulders in nebula, every outline in gold at 2px, the card mark as a brooch. Closed eyes, a quiet mouth, no hood, crystal ball or props. No skin tone is used, so the figure is not tied to any one person. It is a picture, not a persona: no name, no backstory, no first-person lines. The reading text keeps the plain voice in section 7. `reader.svg` is hand-authored from tokens (hex values match `tokens.css`); alt text is empty where it sits beside text that says the same thing.
 
 **Where it appears**
 - **Loading screen:** 5rem avatar inside a 10.5rem ring of three card backs (2rem wide), which turns slowly. Decorative, so `aria-hidden`.
@@ -184,4 +184,4 @@ Images are built by `python3 scripts/build-instagram.py` into `public/assets/ins
 | `highlight-*.png` (read, how-it-works, learn-tarot, privacy) | 1080 x 1920 (9:16) | No text: Instagram prints the highlight name. One gold motif inside the central 600px so the circular crop keeps it: tarot card outline, three moon phases, three-card fan, crescent and star inside a dotted ring. |
 | `post-launch-1080x1350.png`, `post-how-it-works-1080x1350.png`, `post-photo-tips-1080x1350.png` | 1080 x 1350 (4:5) | Same layout rules as sections 8 and 13. Copy keeps a 90px margin so the 3:4 profile-grid crop never cuts it. |
 
-Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower-case wordmark, no exclamation marks.
+Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower-case wordmark, no exclamation marks. The profile picture, posts and highlight use the card mark; posts still show the wheel at full strength and have not moved to the card trio layout in section 8.

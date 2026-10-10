@@ -13,8 +13,8 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261010d">
-  <link rel="stylesheet" href="/css/components.css?v=20261010d">
+  <link rel="stylesheet" href="/css/tokens.css?v=20261010e">
+  <link rel="stylesheet" href="/css/components.css?v=20261010e">
   <style>
     .sg { max-width: 56rem; margin-inline: auto; padding: var(--s-6) var(--gutter) var(--s-8); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
     .sg section { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-5); }
@@ -42,14 +42,14 @@
     @media (min-width: 40rem) { .dos { grid-template-columns: 1fr 1fr; } }
     .dos ul { margin: var(--s-2) 0 0; padding-left: 1.2em; display: grid; gap: var(--s-2); color: var(--mist); }
   </style>
-  <script defer src="/js/analytics.js?v=20261010d"></script>
-  <script defer src="/js/share.js?v=20261010d"></script>
+  <script defer src="/js/analytics.js?v=20261010e"></script>
+  <script defer src="/js/share.js?v=20261010e"></script>
 </head>
 <body>
   <main class="sg">
     <header class="stack">
       <a class="wordmark" href="/" aria-label="readmyspread, home">
-        <svg class="wordmark__mark" viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="mk-sg"><rect width="64" height="64" fill="#fff"/><circle cx="41" cy="26" r="15" fill="#000"/></mask></defs><circle cx="30" cy="34" r="19" fill="#e2c071" mask="url(#mk-sg)"/><path d="M46 9l1.8 5.2L53 16l-5.2 1.8L46 23l-1.8-5.2L39 16l5.2-1.8Z" fill="#e2c071"/></svg>
+        <svg class="wordmark__mark" viewBox="14 0 36 64" aria-hidden="true"><path fill="#e2c071" fill-rule="evenodd" d="M20.75 5H43.25A4.5 4.5 0 0 1 47.75 9.5V54.5A4.5 4.5 0 0 1 43.25 59H20.75A4.5 4.5 0 0 1 16.25 54.5V9.5A4.5 4.5 0 0 1 20.75 5ZM41.89 30.19A11.2 11.2 0 1 1 31.38 14.8A9.4 9.4 0 1 0 41.89 30.19ZM32 37.1L33.78 43.72L40.4 45.5L33.78 47.28L32 53.9L30.22 47.28L23.6 45.5L30.22 43.72Z"/></svg>
         readmyspread
       </a>
       <p class="eyebrow">Design system and style guide</p>
@@ -154,6 +154,16 @@
         <img src="/assets/tarot/icons/card-fan.svg" alt="Read" width="48" height="48">
       </div>
 
+      <h3>Logo and favicon</h3>
+      <p class="muted small">The mark is a gold tarot card (7:12) with a crescent and a four-point star cut out, so the background shows through. It sits beside the lower-case wordmark in the header and above the closing call. The favicon and app icons put the same card on a night tile with 14px corners.</p>
+      <div class="row" style="align-items:flex-end">
+        <svg viewBox="14 0 36 64" width="36" height="64" aria-hidden="true"><path fill="#e2c071" fill-rule="evenodd" d="M20.75 5H43.25A4.5 4.5 0 0 1 47.75 9.5V54.5A4.5 4.5 0 0 1 43.25 59H20.75A4.5 4.5 0 0 1 16.25 54.5V9.5A4.5 4.5 0 0 1 20.75 5ZM41.89 30.19A11.2 11.2 0 1 1 31.38 14.8A9.4 9.4 0 1 0 41.89 30.19ZM32 37.1L33.78 43.72L40.4 45.5L33.78 47.28L32 53.9L30.22 47.28L23.6 45.5L30.22 43.72Z"/></svg>
+        <svg viewBox="14 0 36 64" width="18" height="32" aria-hidden="true"><path fill="#e2c071" fill-rule="evenodd" d="M20.75 5H43.25A4.5 4.5 0 0 1 47.75 9.5V54.5A4.5 4.5 0 0 1 43.25 59H20.75A4.5 4.5 0 0 1 16.25 54.5V9.5A4.5 4.5 0 0 1 20.75 5ZM41.89 30.19A11.2 11.2 0 1 1 31.38 14.8A9.4 9.4 0 1 0 41.89 30.19ZM32 37.1L33.78 43.72L40.4 45.5L33.78 47.28L32 53.9L30.22 47.28L23.6 45.5L30.22 43.72Z"/></svg>
+        <img src="/favicon.svg" alt="Favicon: the card mark on a night tile" width="64" height="64">
+        <img src="/favicon.svg" alt="" width="32" height="32">
+        <img src="/favicon.svg" alt="" width="16" height="16">
+      </div>
+
       <h3>Hero card deal</h3>
       <p class="muted small">Three tarot cards are dealt onto the faded, turning zodiac wheel in the homepage hero. Each is a card back that flips face up to The Star, The Moon or The Sun, and is labelled Past, Present and Future. It plays once in about three seconds and is decorative. Under reduced motion the finished spread is shown with no animation. Faces are original gold linework, never a published deck.</p>
 
@@ -207,10 +217,10 @@
       <h2 id="sh-h">Share images</h2>
       <p class="muted">Built by <code>python3 scripts/build-assets.py</code>. Do not edit the PNGs by hand.</p>
       <div class="share">
-        <div><img src="/assets/og-image.png" width="1200" height="630" alt="Open Graph image: readmyspread, tarot spread readings, with a gold zodiac wheel on a night sky"><p class="small muted">Open Graph, 1200 x 630 (1.91:1)</p></div>
-        <div><img src="/assets/twitter-card.png" width="1200" height="600" alt="Twitter card image: readmyspread, tarot spread readings, with a gold zodiac wheel on a night sky"><p class="small muted">Twitter / X summary_large_image, 1200 x 600 (2:1)</p></div>
+        <div><img src="/assets/og-image.png" width="1200" height="630" alt="Open Graph image: readmyspread, tarot spread readings, with three tarot cards on a faded gold zodiac wheel on a night sky"><p class="small muted">Open Graph, 1200 x 630 (1.91:1)</p></div>
+        <div><img src="/assets/twitter-card.png" width="1200" height="600" alt="Twitter card image: readmyspread, tarot spread readings, with three tarot cards on a faded gold zodiac wheel on a night sky"><p class="small muted">Twitter / X summary_large_image, 1200 x 600 (2:1)</p></div>
       </div>
-      <p class="muted small">Both use the eyebrow "Tarot spread readings", the wordmark, the tagline in gold italic, one support line and the URL, with the wheel bleeding off the right edge. Text stays inside a 76px left margin.</p>
+      <p class="muted small">Both use the card mark beside the eyebrow "Tarot spread readings", the wordmark, the tagline in gold italic, one support line and the URL. On the right, three arcana cards (The Star, The Moon, The Sun, labelled Past, Present, Future) sit over the zodiac wheel, which is faded to 40% and bleeds off the edge. Text stays inside a 76px left margin and clear of the cards.</p>
     </section>
 
     <section id="contact" aria-labelledby="ct-h">

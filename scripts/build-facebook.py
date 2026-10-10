@@ -23,12 +23,8 @@ STARS_B = (PUB / "assets" / "stars-b.svg").as_uri()
 NIGHT, DUSK, NEBULA = "#0b1024", "#141a38", "#232b55"
 STARLIGHT, MIST, GOLD, LINE = "#f3efe4", "#aeb4d3", "#e2c071", "#6b74a8"
 
-MARK = (
-    '<svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="mk{n}"><rect width="64" height="64" fill="#fff"/>'
-    '<circle cx="41" cy="26" r="15" fill="#000"/></mask></defs>'
-    f'<circle cx="30" cy="34" r="19" fill="{GOLD}" mask="url(#mk{{n}})"/>'
-    f'<path d="M46 9l1.8 5.2L53 16l-5.2 1.8L46 23l-1.8-5.2L39 16l5.2-1.8Z" fill="{GOLD}"/></svg>'
-)
+from mark import mark_svg  # the tarot card mark, shared with the favicon and share images
+MARK = mark_svg("mark")
 
 BASE = """<!doctype html><meta charset="utf-8"><style>
 @font-face {{ font-family: "Cormorant Garamond"; src: url("{fonts}/cormorant-garamond-latin-400-italic.woff2"); font-style: italic; font-weight: 400; }}
