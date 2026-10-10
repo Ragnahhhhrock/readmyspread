@@ -125,6 +125,7 @@ body.landing { background: transparent; overflow-x: clip; }
   border: 1px solid var(--line-quiet);
   border-radius: var(--r-panel);
 }
+.step__art { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; border-radius: 20px; }
 .step__icon { width: 3rem; height: 3rem; }
 .step h3 { font-size: var(--step-2); }
 .step p { color: var(--mist); }

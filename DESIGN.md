@@ -63,7 +63,7 @@ Line heights: tight 1.05 (headings), UI 1.45, reading 1.55. Reading column is 36
 - **Fields:** `.field`, `.input` on dusk with a `--line` border, hint text in mist.
 - **Upload zone:** `.upload`, dusk panel, gold border, the card back (`assets/tarot/card-back.svg`) at 10rem tall.
 - **Tarot card thumbnail:** `.tcard`, 7:12 face, gold border, 8px radius. Reversed cards rotate 180 degrees and are also labelled in text.
-- **Steps:** `.step` with a 3rem tarot icon (`.step__icon`): photograph, eye, card fan. No moon phases.
+- **Steps:** `.step` with a 3rem tarot icon (`.step__icon`): photograph, eye, card fan. No moon phases. Above each icon sits a 16:10 illustration (`.step__art`, 20px radius, full width) from `assets/tarot/steps/`: `step-photograph.svg` (cards beside a phone), `step-identify.svg` (cards marked found, one reversed), `step-read.svg` (card, reading lines, speaker). Dusk panel, gold 2px linework, no text inside the art, so it needs no translation or font loading. Alt text describes the picture.
 - **Suits band:** `.suits` on the home page, four items (Wands, Cups, Swords, Pentacles), each a 2.25rem suit icon and a Cormorant italic label in mist. Two columns on mobile, four from 40rem. It replaces the old star-sign strip.
 - **Reading:** `.reading` in Cormorant at reading size, verdict in italic, one section per card position with a quiet divider.
 - **Status:** `.status` panel with a left rule; errors use gold, never red.
