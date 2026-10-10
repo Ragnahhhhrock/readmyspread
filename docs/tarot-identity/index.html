@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tarot identity proposals | readmyspread</title>
+  <meta name="description" content="Four ways to adjust the readmyspread design system so it reads as a tarot spread reading app, with tarot card, suit and reader artwork.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0b1024">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="../../public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../public/css/tokens.css">
+  <link rel="stylesheet" href="../../public/css/components.css">
+  <style>
+    /* Proposal page. Tokens only, no raw colours. Mobile first: one column, 48px targets. */
+    .tp { max-width: 48rem; margin-inline: auto; padding: var(--s-5) var(--gutter) var(--s-8); display: grid; gap: var(--s-8); }
+    .tp img { height: auto; }
+    .tp section { display: grid; gap: var(--s-5); }
+    .tp h2 { font-size: var(--step-3); padding-top: var(--s-5); border-top: 1px solid var(--line-quiet); }
+    .tp h3 { font-size: var(--step-2); }
+    .tp .eyebrow { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+    .tp code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.875em; color: var(--mist); overflow-wrap: anywhere; }
+    .lede { font-family: var(--font-display); font-size: var(--step-1); line-height: 1.45; max-width: 34rem; }
+    .copy { color: var(--mist); max-width: 36rem; }
+    .copy strong { color: var(--starlight); }
+
+    /* Jump links: 48px tap targets, same look as the site's chips */
+    .jump { display: flex; flex-wrap: wrap; gap: var(--s-2); list-style: none; margin: 0; padding: 0; }
+    .jump a {
+      display: inline-flex; align-items: center; min-height: var(--tap);
+      padding: var(--s-2) var(--s-4); background: var(--dusk); color: var(--starlight);
+      border: 1px solid var(--line); border-radius: 999px; text-decoration: none;
+      font: 500 var(--step-0)/1.2 var(--font-ui);
+    }
+    .jump a:hover { border-color: var(--starlight); }
+
+    /* Mock screens */
+    .mock { margin: 0; display: grid; gap: var(--s-3); }
+    .screen {
+      background: var(--night); border: 1px solid var(--line); border-radius: var(--r-panel);
+      padding: var(--s-5); display: grid; gap: var(--s-4); overflow: hidden;
+      width: 100%; max-width: 24.5rem; margin-inline: auto;
+    }
+    .mock figcaption { color: var(--mist); font-size: var(--step--1); max-width: 36rem; margin-inline: auto; width: 100%; }
+    .screen__title { font-family: var(--font-display); font-size: var(--step-3); line-height: var(--lh-tight); text-wrap: balance; }
+    .screen__title em { font-style: italic; color: var(--gold); }
+    .screen .btn { width: 100%; }
+    .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3); list-style: none; margin: 0; padding: 0; }
+    .trio li { display: grid; gap: var(--s-2); justify-items: center; }
+    .tag {
+      background: var(--night); color: var(--mist); border: 1px solid var(--line-quiet); border-radius: 999px;
+      padding: var(--s-1) var(--s-3); font-size: var(--step--1); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .glow { position: relative; display: grid; place-items: center; }
+    .glow::before { content: ""; position: absolute; inset: 8% 0; border-radius: 50%; background: radial-gradient(circle, var(--nebula) 0%, transparent 68%); }
+    .glow img { position: relative; }
+    .flat { margin-inline: calc(var(--s-5) * -1); margin-top: calc(var(--s-5) * -1); }
+    .flat img { width: 100%; height: auto; }
+
+    /* Steps and suits strip, as they would look with the new icons */
+    .ministeps { display: grid; gap: var(--s-4); list-style: none; margin: 0; padding: 0; }
+    .ministeps li { display: grid; grid-template-columns: 3rem 1fr; gap: var(--s-4); align-items: start; }
+    .ministeps img { width: 3rem; height: 3rem; }
+    .ministeps h4 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-2); line-height: 1.1; margin: 0; }
+    .ministeps p { color: var(--mist); font-size: var(--step--1); }
+    .suits { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); list-style: none; margin: 0; padding: 0; }
+    .suits li { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3); border: 1px solid var(--line-quiet); border-radius: var(--r-ui); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: var(--step--1); color: var(--mist); }
+    .suits img { width: 2rem; height: 2rem; flex: none; }
+
+    /* Proposed component: position badge for the spread-diagram direction */
+    .pos { display: inline-grid; place-items: center; flex: none; width: 2rem; height: 2rem; border-radius: 50%; border: 1.5px solid var(--gold); font-size: var(--step--1); font-weight: 600; }
+    .reading__position .pos { align-self: center; }
+
+    /* Libraries */
+    .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr)); gap: var(--s-3); list-style: none; margin: 0; padding: 0; }
+    .icons li { display: grid; justify-items: center; gap: var(--s-2); padding: var(--s-4) var(--s-2); background: var(--dusk); border-radius: var(--r-ui); text-align: center; font-size: var(--step--1); color: var(--mist); line-height: 1.25; }
+    .icons img { width: 3rem; height: 3rem; }
+    .cards .tcard img { width: 100%; height: auto; }
+    .tcard__name { font-size: var(--step--1); }
+
+    /* Option blocks */
+    .option { display: grid; gap: var(--s-5); }
+    .facts { display: grid; gap: var(--s-2); margin: 0; padding-left: 1.2em; color: var(--mist); max-width: 36rem; }
+    .facts strong { color: var(--starlight); }
+    .meta { display: flex; flex-wrap: wrap; gap: var(--s-2); list-style: none; margin: 0; padding: 0; }
+    .meta li { padding: var(--s-1) var(--s-3); border: 1px solid var(--line-quiet); border-radius: 999px; font-size: var(--step--1); color: var(--mist); }
+    .panel { background: var(--dusk); border-radius: var(--r-panel); padding: var(--s-5); display: grid; gap: var(--s-3); }
+    .tp footer a { display: inline-flex; align-items: center; min-height: var(--tap); }
+    .tp footer { border-top: 1px solid var(--line-quiet); padding-top: var(--s-5); color: var(--mist); font-size: var(--step--1); display: grid; gap: var(--s-2); }
+
+    @media (min-width: 40rem) {
+      .ministeps { grid-template-columns: repeat(3, 1fr); }
+      .ministeps li { grid-template-columns: 1fr; }
+      .suits { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <main class="tp">
+    <header class="stack">
+      <p class="eyebrow">Design proposal</p>
+      <h1>Making it plain that this is tarot.</h1>
+      <p class="lede">Today the site leans on a zodiac wheel, moon phases and a strip of star signs, so it can read as astrology. These four directions move the look towards tarot cards, suits and the reader.</p>
+      <p class="copy">Nothing here is live. Every picture is original gold linework on the existing colours, type and spacing, and none copies a published deck. Pick a direction and it goes into <code>DESIGN.md</code>, the CSS and the site.</p>
+      <nav aria-label="Sections">
+        <ul class="jump">
+          <li><a href="#why">Why</a></li>
+          <li><a href="#base">Base</a></li>
+          <li><a href="#a">A</a></li>
+          <li><a href="#b">B</a></li>
+          <li><a href="#c">C</a></li>
+          <li><a href="#d">D</a></li>
+          <li><a href="#library">Icons</a></li>
+          <li><a href="#pick">Pick</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="why" aria-labelledby="why-title">
+      <h2 id="why-title">Why it reads as astrology</h2>
+      <ul class="facts">
+        <li><strong>The hero art is a zodiac wheel.</strong> The three tarot cards sit on it and are small.</li>
+        <li><strong>The signs strip names all twelve zodiac signs</strong> and the three steps use moon phases.</li>
+        <li><strong>The reader and share images carry no cards.</strong> Nothing outside the hero says tarot without reading the words.</li>
+        <li><strong>The hero eyebrow says "Tarot, read plainly"</strong>, while the style guide says "Tarot spread readings". Aligning them is free.</li>
+      </ul>
+    </section>
+
+    <section id="base" class="option" aria-labelledby="base-title">
+      <h2 id="base-title">Base: do these in any direction</h2>
+      <p class="copy">Three small changes that make every page say tarot, whichever direction you choose.</p>
+
+      <h3>Card back as the brand pattern</h3>
+      <div class="screen" role="group" aria-label="Card back on the night sky">
+        <div class="glow"><img src="assets/card-back.svg" alt="A tarot card back: a gold eye inside a four-point star on a diamond lattice" width="140" height="240" style="width:9rem;height:auto"></div>
+      </div>
+      <p class="copy">Use it on the loading screen, the upload zone, social images and as the card back in the hero deal. An eye in a four-point star keeps the site mark in it.</p>
+
+      <h3>Tarot icons instead of moon phases</h3>
+      <div class="screen" role="group" aria-label="Three steps with tarot icons">
+        <ol class="ministeps">
+          <li><img src="assets/icons/photograph.svg" alt="" width="48" height="48"><div><h4>Photograph</h4><p>Lay the cards flat and take a photo.</p></div></li>
+          <li><img src="assets/icons/third-eye.svg" alt="" width="48" height="48"><div><h4>Identify</h4><p>Every card is named, upright or reversed.</p></div></li>
+          <li><img src="assets/icons/card-fan.svg" alt="" width="48" height="48"><div><h4>Read</h4><p>A reading for each card in its position.</p></div></li>
+        </ol>
+      </div>
+
+      <h3>Suits instead of star signs</h3>
+      <div class="screen" role="group" aria-label="Suits strip">
+        <ul class="suits">
+          <li><img src="assets/icons/wands.svg" alt="" width="32" height="32">Wands</li>
+          <li><img src="assets/icons/cups.svg" alt="" width="32" height="32">Cups</li>
+          <li><img src="assets/icons/swords.svg" alt="" width="32" height="32">Swords</li>
+          <li><img src="assets/icons/pentacles.svg" alt="" width="32" height="32">Pentacles</li>
+        </ul>
+      </div>
+      <p class="copy">This replaces the Aries to Pisces strip on the home page. The crescent and star stay as the mark.</p>
+    </section>
+
+    <section id="a" class="option" aria-labelledby="a-title">
+      <h2 id="a-title">A. Suits and arcana</h2>
+      <p class="copy"><strong>The smallest change.</strong> Keep the wheel but fade it, and give the dealt cards real tarot faces: a Roman numeral, a name and a double gold frame.</p>
+      <figure class="mock">
+        <div class="screen" aria-hidden="true">
+          <p class="eyebrow">Tarot spread readings</p>
+          <p class="screen__title">Lay out your tarot spread. Get a <em>clear</em> reading.</p>
+          <ul class="trio">
+            <li><img src="assets/card-star.svg" alt="" width="140" height="240"><span class="tag">Past</span></li>
+            <li><img src="assets/card-moon.svg" alt="" width="140" height="240"><span class="tag">Present</span></li>
+            <li><img src="assets/card-sun.svg" alt="" width="140" height="240"><span class="tag">Future</span></li>
+          </ul>
+          <div class="btn btn--primary">Read my cards</div>
+        </div>
+        <figcaption>Mock of the home screen at phone width. The Star, The Moon and The Sun are original drawings, not any published deck.</figcaption>
+      </figure>
+      <ul class="facts">
+        <li><strong>Motifs (section 6):</strong> hero cards gain numerals, names and ornate frames. Wheel opacity drops.</li>
+        <li><strong>Components (section 5):</strong> <code>.tcard</code> gets an optional numeral plate.</li>
+        <li><strong>Principles:</strong> none change.</li>
+      </ul>
+      <ul class="meta"><li>Effort: low</li><li>Risk: low</li><li>Keeps all principles</li></ul>
+    </section>
+
+    <section id="b" class="option" aria-labelledby="b-title">
+      <h2 id="b-title">B. The fan</h2>
+      <p class="copy"><strong>A clear break from astrology.</strong> Retire the zodiac wheel from the hero and fan a hand of cards in its place, with the card back used across the site.</p>
+      <figure class="mock">
+        <div class="screen" aria-hidden="true">
+          <p class="eyebrow">Tarot spread readings</p>
+          <p class="screen__title">Lay out your tarot spread. Get a <em>clear</em> reading.</p>
+          <div class="glow"><img src="assets/hero-card-fan.svg" alt="" width="360" height="372"></div>
+          <div class="btn btn--primary">Read my cards</div>
+        </div>
+        <figcaption>Mock of the home screen. The centre card is face up; the others show the card back.</figcaption>
+      </figure>
+      <ul class="facts">
+        <li><strong>Motifs (section 6):</strong> the zodiac wheel moves to the loading screen only, or goes. The fan replaces the hero deal.</li>
+        <li><strong>Share images (sections 8, 13, 15):</strong> the wheel bleeding off the edge becomes the fan. All build scripts need a rerun.</li>
+        <li><strong>Principles:</strong> section 1 and the "generic astrological theme" line in the intro are reworded.</li>
+      </ul>
+      <ul class="meta"><li>Effort: medium</li><li>Risk: low</li><li>Reruns share image builds</li></ul>
+    </section>
+
+    <section id="c" class="option" aria-labelledby="c-title">
+      <h2 id="c-title">C. The reader's table</h2>
+      <p class="copy"><strong>Puts the tarot reader in the picture.</strong> The reader sits at a table with a three-card spread, a deck and a candle. On the reading screen the avatar holds the cards.</p>
+      <figure class="mock">
+        <div class="screen" aria-hidden="true">
+          <div class="flat"><img src="assets/reader-table.svg" alt="" width="390" height="280"></div>
+          <p class="eyebrow">Tarot spread readings</p>
+          <p class="screen__title">Your tarot spread, read plainly.</p>
+          <section class="reader">
+            <div class="reader__head">
+              <div class="reader__figure"><img class="reader-avatar" src="assets/reader-with-cards.svg" alt="" width="72" height="72"></div>
+              <div>
+                <p class="reader__title">Prefer to listen?</p>
+                <p class="reader__note">Hear this tarot spread reading read aloud.</p>
+              </div>
+            </div>
+            <div class="btn btn--secondary">Listen to this reading</div>
+          </section>
+        </div>
+        <figcaption>Mock of the home hero and the audio panel on the reading screen, using the existing <code>.reader</code> component.</figcaption>
+      </figure>
+      <ul class="facts">
+        <li><strong>Avatar (section 14):</strong> adds a fan of three cards and a single star above the brow. Still no name, backstory or first-person voice.</li>
+        <li><strong>Motifs (section 6):</strong> adds the table scene, candle and deck. No crystal ball, hands over a ball or hood.</li>
+        <li><strong>Principles:</strong> section 14 "no props" becomes "cards and a deck only". Plain voice is unchanged.</li>
+      </ul>
+      <ul class="meta"><li>Effort: medium</li><li>Risk: medium</li><li>Relaxes one rule</li></ul>
+    </section>
+
+    <section id="d" class="option" aria-labelledby="d-title">
+      <h2 id="d-title">D. The spread diagram</h2>
+      <p class="copy"><strong>Built on the word "spread".</strong> A Celtic Cross layout becomes the hero, and every reading shows numbered positions that match the diagram.</p>
+      <figure class="mock">
+        <div class="screen" aria-hidden="true">
+          <p class="eyebrow">Tarot spread readings</p>
+          <p class="screen__title">Every card, in its place.</p>
+          <div class="glow"><img src="assets/spread-celtic-cross.svg" alt="" width="300" height="300" style="width:80%;height:auto"></div>
+          <div class="reading">
+            <div class="reading__position"><span class="pos">1</span><h3>The heart of it</h3><span class="where">Position 1</span></div>
+            <div class="reading__position"><span class="pos">2</span><h3>What crosses it</h3><span class="where">Position 2</span></div>
+          </div>
+        </div>
+        <figcaption>Mock of the hero and the start of a reading. Position badges are a gold ring, so gold stays reserved for the one primary action.</figcaption>
+      </figure>
+      <ul class="facts">
+        <li><strong>Components (section 5):</strong> adds <code>.pos</code>, a 2rem ring badge, to <code>.reading__position</code>.</li>
+        <li><strong>Motifs (section 6):</strong> spread layouts (three-card, Celtic Cross) join the wheel and cards.</li>
+        <li><strong>Principles:</strong> none change.</li>
+      </ul>
+      <ul class="meta"><li>Effort: medium</li><li>Risk: low</li><li>Needs a spread layout per spread</li></ul>
+    </section>
+
+    <section id="library" aria-labelledby="lib-title">
+      <h2 id="lib-title">The artwork</h2>
+      <p class="copy">Fifteen icons on a 48px grid with a 1.5px gold stroke, matching the hero card faces. Cards are 7:12 with the gold edge, hairline and 8px radius from the design system.</p>
+      <ul class="icons">
+        <li><img src="assets/icons/wands.svg" alt="" width="48" height="48">Wands</li>
+        <li><img src="assets/icons/cups.svg" alt="" width="48" height="48">Cups</li>
+        <li><img src="assets/icons/swords.svg" alt="" width="48" height="48">Swords</li>
+        <li><img src="assets/icons/pentacles.svg" alt="" width="48" height="48">Pentacles</li>
+        <li><img src="assets/icons/tarot-card.svg" alt="" width="48" height="48">Tarot card</li>
+        <li><img src="assets/icons/card-fan.svg" alt="" width="48" height="48">Card fan</li>
+        <li><img src="assets/icons/deck.svg" alt="" width="48" height="48">Deck</li>
+        <li><img src="assets/icons/third-eye.svg" alt="" width="48" height="48">Eye</li>
+        <li><img src="assets/icons/spread-three.svg" alt="" width="48" height="48">Three-card spread</li>
+        <li><img src="assets/icons/spread-celtic.svg" alt="" width="48" height="48">Celtic Cross</li>
+        <li><img src="assets/icons/photograph.svg" alt="" width="48" height="48">Photograph</li>
+        <li><img src="assets/icons/listen.svg" alt="" width="48" height="48">Listen</li>
+        <li><img src="assets/icons/reader.svg" alt="" width="48" height="48">Reader</li>
+        <li><img src="assets/icons/candle.svg" alt="" width="48" height="48">Candle</li>
+        <li><img src="assets/icons/crescent-star.svg" alt="" width="48" height="48">Site mark</li>
+      </ul>
+      <ul class="cards">
+        <li class="tcard"><img src="assets/card-back.svg" alt="" width="140" height="240"><span class="tcard__name">Card back</span></li>
+        <li class="tcard"><img src="assets/card-star.svg" alt="" width="140" height="240"><span class="tcard__name">The Star</span></li>
+        <li class="tcard"><img src="assets/card-moon.svg" alt="" width="140" height="240"><span class="tcard__name">The Moon</span></li>
+        <li class="tcard"><img src="assets/card-sun.svg" alt="" width="140" height="240"><span class="tcard__name">The Sun</span></li>
+        <li class="tcard"><img src="assets/card-ace-wands.svg" alt="" width="140" height="240"><span class="tcard__name">Ace of Wands</span></li>
+        <li class="tcard"><img src="assets/card-ace-cups.svg" alt="" width="140" height="240"><span class="tcard__name">Ace of Cups</span></li>
+        <li class="tcard"><img src="assets/card-ace-swords.svg" alt="" width="140" height="240"><span class="tcard__name">Ace of Swords</span></li>
+        <li class="tcard"><img src="assets/card-ace-pentacles.svg" alt="" width="140" height="240"><span class="tcard__name">Ace of Pentacles</span></li>
+      </ul>
+      <div class="panel">
+        <h3>Reader</h3>
+        <p class="copy">Today's avatar, then the same figure holding cards.</p>
+        <div style="display:flex;gap:var(--s-4);flex-wrap:wrap">
+          <img src="../../public/assets/reader.svg" alt="The current reader avatar: a calm figure in gold linework" width="96" height="96" style="width:6rem;height:6rem">
+          <img src="assets/reader-with-cards.svg" alt="The reader holding three tarot cards" width="96" height="96" style="width:6rem;height:6rem">
+        </div>
+      </div>
+    </section>
+
+    <section id="pick" aria-labelledby="pick-title">
+      <h2 id="pick-title">What I would pick</h2>
+      <p class="copy"><strong>Base plus A first</strong>: it is quick, reversible and fixes the signs strip, the steps and the hero cards. Then <strong>C for the reader</strong>, since you want tarot readers visible. B and D suit a bigger rebrand.</p>
+      <ul class="facts">
+        <li>The directions combine. Base, A and C fit together without conflict.</li>
+        <li>On approval I update <code>DESIGN.md</code>, the CSS and pages, rebuild the share, Facebook and Instagram images, bump the asset version and push to GitHub.</li>
+        <li>Regenerate the artwork any time with <code>python3 scripts/build-tarot-proposal.py</code>.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>For entertainment only. Not medical, legal or financial advice.</p>
+      <p>Proposal for readmyspread, tarot spread readings. Contact <a href="mailto:contact@readmyspread.com">contact@readmyspread.com</a></p>
+    </footer>
+  </main>
+</body>
+</html>
