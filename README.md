@@ -36,7 +36,7 @@ Connect this repo to a Pages project named `readmyspread` with:
 - Environment variable (secret): `mal-api-key` (`ANTHROPIC_API_KEY` also accepted)
 - Optional: `ANTHROPIC_MODEL` (default `claude-sonnet-5-5`)
 - Optional but recommended: a KV namespace bound as `RATE` (caps readings per visitor per day and in total; see `functions/api/read.js`)
-- KV namespace bound as `STATS` for the homepage running totals (without it, `RATE` is used if bound; with neither, the strip stays hidden)
+- KV namespace `readmyspread-stats` bound as `STATS` in `wrangler.toml` for the homepage running totals (without it, `RATE` is used if bound; with neither, the strip stays hidden)
 - Custom domains: `readmyspread.com` and `www.readmyspread.com`
 
 Also add a Cloudflare rate limiting rule on `/api/read` (Security, WAF) so a bot can't run up the API bill.
