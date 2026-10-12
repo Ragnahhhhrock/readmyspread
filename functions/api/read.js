@@ -1,13 +1,17 @@
 // POST /api/read
 // Body: { image: <base64, no prefix>, mediaType: "image/jpeg", question?: string }
-// Returns the spread, the cards and the reading as JSON. Nothing is stored.
+// Returns the spread, the cards and the reading as JSON. Nothing about the reading is stored;
+// a finished reading only adds to the running totals in /api/stats (counts, no content).
 //
 // Environment:
 //   mal-api-key  (secret, required; ANTHROPIC_API_KEY also accepted)
 //   ANTHROPIC_MODEL    (optional, default below)
 //   RATE               (optional KV namespace binding; enables per-visitor and daily caps)
+//   STATS              (optional KV namespace binding; running totals for the homepage, see stats.js)
 //   DAILY_PER_VISITOR  (optional, default 8)
 //   DAILY_GLOBAL       (optional, default 400)
+
+import { recordReading } from "./stats.js";
 
 const DEFAULT_MODEL = "claude-sonnet-5-5";
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
@@ -168,7 +172,7 @@ export function cleanResult(input) {
   };
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, waitUntil }) {
   if (!originAllowed(request)) return json({ error: "forbidden" }, 403);
   const apiKey = env["mal-api-key"] || env.ANTHROPIC_API_KEY;
   if (!apiKey) return json({ error: "not_configured" }, 503);
@@ -245,7 +249,13 @@ export async function onRequestPost({ request, env }) {
   const block = (data.content || []).find((b) => b.type === "tool_use" && b.name === TOOL.name);
   if (!block) return json({ error: "upstream_error" }, 502);
 
-  return json(cleanResult(block.input));
+  const result = cleanResult(block.input);
+  if (result.status === "ok" && !result.needs_care) {
+    const counted = recordReading(env, { asked: Boolean(question), cardCount: result.cards.length });
+    if (typeof waitUntil === "function") waitUntil(counted);
+    else await counted;
+  }
+  return json(result);
 }
 
 export function onRequest() {

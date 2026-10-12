@@ -70,6 +70,7 @@ Line heights: tight 1.05 (headings), UI 1.45, reading 1.55. Reading column is 36
 - **Focus:** 3px violet outline, 3px offset, on every interactive element.
 - **Reader and audio offer:** `.reader`, see section 14.
 - **Share bar:** `.sharebar`, see section 12.
+- **Social proof strip:** `.stats`, see section 17.
 - **Tip panel:** `.tip`, dusk panel with 20px radius, Cormorant heading (step-2), mist copy, one full-width `.btn--primary` (the only gold action on the result screen) linking to the Stripe payment link in a new tab, with a mist step--1 note. No embedded third-party widgets: they cannot follow the design system.
 
 ## 6. Motifs
@@ -202,3 +203,13 @@ Built by `python3 scripts/build-video.py` (Playwright, ffmpeg, NumPy and SciPy).
 **On the homepage:** in the hero, in place of the old card deal: below the hero text on mobile (full width, max 26rem), the right-hand column from 52rem (`.hero__video`, with a soft violet halo behind the frame). A short visible caption ("Watch how it works. 56 seconds, with music.", step--1, mist, centred) and a fuller visually hidden description linked by `aria-describedby`. The video is never autoplayed (it has music). `preload="none"` so it costs nothing until tapped. With JavaScript, the whole poster is one tap target with a 5rem round play button below the wordmark (night fill, gold 2px edge, gold triangle, never a gold fill, so the hero's "Read my cards" keeps that); the first tap plays with sound and switches to native controls. Without JavaScript, native controls show. `playsinline` keeps it in the page on iPhone.
 
 **Analytics:** GA4 `video_start` and `video_complete` with `video_title` = `explainer`.
+
+## 17. Social proof strip (`.stats` in `landing.css`, `public/js/stats.js`, `functions/api/stats.js`)
+
+Running totals on the homepage, directly under the hero: **Tarot readings given**, **Questions answered**, **Cards identified**.
+
+- **Layout:** full-width band like the suits band (night at 60%, quiet border above and below). Three across at every width, so it stays one short band on a 390px phone. Number first in Cormorant 600, gold, lining tabular numerals (step-2 on mobile, step-3 from 40rem); label below in Hanken, mist (step--1, step-0 from 40rem). One mist step--1 note: "Running totals, updated as readings happen." Marked up as a `dl` with a visually hidden `h2`. Not interactive, so no tap targets.
+- **Numbers:** en-AU grouping (12,483); compact from a million (1.2M).
+- **What counts:** a reading counts when it is shown (status ok, not the care screen, not no-cards or unreadable). Questions answered counts those with a set question. Cards identified adds the cards named in each. Only the three totals are kept, in the `STATS` KV namespace (falls back to `RATE`), never the photo, question, reading or anything about the visitor.
+- **Updates:** `/api/read` adds to the totals after each reading. The page fetches `/api/stats` on load, then every 60 seconds while visible and again when the tab comes back; changed numbers count up over 900ms (instant under `prefers-reduced-motion`). KV is eventually consistent, so a new reading can take about a minute to appear.
+- **Hidden** without JavaScript, when the binding is missing, or until there is at least one reading, so it never shows a zero.

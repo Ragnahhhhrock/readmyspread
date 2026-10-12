@@ -49,9 +49,9 @@
   <!-- Fonts and styles -->
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261010g">
-  <link rel="stylesheet" href="/css/components.css?v=20261010g">
-  <link rel="stylesheet" href="/css/landing.css?v=20261010g">
+  <link rel="stylesheet" href="/css/tokens.css?v=20261012">
+  <link rel="stylesheet" href="/css/components.css?v=20261012">
+  <link rel="stylesheet" href="/css/landing.css?v=20261012">
 
   <script type="application/ld+json">
   {
@@ -68,10 +68,11 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" }
   }
   </script>
-  <script defer src="/js/analytics.js?v=20261010g"></script>
-  <script defer src="/js/menu.js?v=20261010g"></script>
-  <script defer src="/js/share.js?v=20261010g"></script>
-  <script defer src="/js/video.js?v=20261010g"></script>
+  <script defer src="/js/analytics.js?v=20261012"></script>
+  <script defer src="/js/menu.js?v=20261012"></script>
+  <script defer src="/js/share.js?v=20261012"></script>
+  <script defer src="/js/video.js?v=20261012"></script>
+  <script defer src="/js/stats.js?v=20261012"></script>
 </head>
 <body class="landing">
   <div class="sky" aria-hidden="true"></div>
@@ -111,6 +112,18 @@
         </div>
         <figcaption class="explainer__cap"><span aria-hidden="true">Watch how it works. 56 seconds, with music.</span><span class="visually-hidden" id="watch-desc">A 56-second video with music: photograph your tarot spread, pick a question if you like, and readmyspread names the spread and every card, including reversed ones, then reads each position. You can listen to the reading too.</span></figcaption>
       </figure>
+    </section>
+
+    <section class="stats" aria-labelledby="stats-title" hidden>
+      <div class="wide">
+        <h2 class="visually-hidden" id="stats-title">readmyspread so far</h2>
+        <dl class="stats__list">
+          <div class="stat"><dt>Tarot readings given</dt><dd data-stat="readings">0</dd></div>
+          <div class="stat"><dt>Questions answered</dt><dd data-stat="questions">0</dd></div>
+          <div class="stat"><dt>Cards identified</dt><dd data-stat="cards">0</dd></div>
+        </dl>
+        <p class="stats__note">Running totals, updated as readings happen.</p>
+      </div>
     </section>
 
     <section class="wide section" id="how" aria-labelledby="how-title">
