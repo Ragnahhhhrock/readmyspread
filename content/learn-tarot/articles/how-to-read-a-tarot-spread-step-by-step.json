@@ -1,0 +1,11 @@
+{
+  "description": "A four-step method for reading any tarot spread: set the question, check the positions, read each card, then read the whole tarot spread together.",
+  "lede": "Read a tarot spread in a set order, one step at a time, and even a large layout stays manageable.",
+  "figures": {
+    "steps": {
+      "file": "how-to-read-a-tarot-spread-step-by-step-steps.png",
+      "alt": "Four numbered panels in a row under the heading Reading a tarot spread in four steps. 1, Start with the question. 2, Check the positions. 3, Read card by card. 4, Read the whole spread. Arrows lead from each panel to the next.",
+      "caption": "Four steps for reading any tarot spread: the question first, then the positions, then each card, then the spread as a whole."
+    }
+  }
+}

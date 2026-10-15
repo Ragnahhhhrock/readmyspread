@@ -1,0 +1,11 @@
+{
+  "description": "Reversed tarot cards explained: what upright and reversed mean, three ways to read a reversed card in a tarot spread, and when to skip reversals.",
+  "lede": "A reversed card is one that lands upside down in your tarot spread. You can read it as a twist on the card's theme, or leave reversals out entirely.",
+  "figures": {
+    "upright-reversed": {
+      "file": "reversed-tarot-cards-and-how-to-read-them-upright-reversed.png",
+      "alt": "Two panels side by side under the heading Upright and reversed. The left panel shows a gold-edged tarot card the right way up, labelled Upright, the card faces you the right way up. The right panel shows the same card turned upside down, labelled Reversed, the card turns up upside down.",
+      "caption": "An upright card faces you the right way up. A reversed card has turned up upside down."
+    }
+  }
+}

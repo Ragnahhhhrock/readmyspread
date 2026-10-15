@@ -158,6 +158,92 @@ FIGURES = {
 }
 
 
+# ---- articles 3 to 7
+def _title(text):
+    return f'<div class="abs disp" style="left:0;width:1600px;text-align:center;top:46px;font-size:60px;font-weight:600">{text}</div>'
+
+
+def fig_read_steps():
+    css = ".c{position:absolute;text-align:center}.h{font-family:'Cormorant Garamond';font-weight:600;font-size:46px;line-height:1.05}.d{font-size:28px;line-height:1.4;color:var(--mist)}"
+    body = _title("Reading a tarot spread in four steps")
+    steps = [("Start with the question", "Decide what you want to think about before any card is turned."),
+             ("Check the positions", "Each position has a job, such as past, present or advice."),
+             ("Read card by card", "Say what each card shows, then what it means in its position."),
+             ("Read the whole spread", "Look for repeats, patterns and how the cards answer each other.")]
+    for i, (h, d) in enumerate(steps):
+        x = 55 + i * 375
+        body += f'<div class="panel" style="left:{x}px;top:210px;width:340px;height:520px"></div>'
+        body += f'<div class="num" style="left:{x + 138}px;top:250px">{i + 1}</div>'
+        body += f'<div class="c h" style="left:{x + 20}px;width:300px;top:350px">{h}</div>'
+        body += f'<div class="c d" style="left:{x + 24}px;width:292px;top:490px">{d}</div>'
+        if i < 3:
+            body += f'<svg class="abs" style="left:{x + 342}px;top:455px;width:30px;height:30px" viewBox="0 0 24 24"><path d="M3 12h16M13 6l6 6-6 6" fill="none" stroke="#e2c071" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    return page(1600, 900, css, body)
+
+
+def fig_same_card_positions():
+    css = ".c{position:absolute;text-align:center}.h{font-family:'Cormorant Garamond';font-weight:600;font-size:44px}.d{font-size:28px;line-height:1.4;color:var(--mist)}"
+    body = _title("One card, three positions")
+    items = [("Past", "What led here?"), ("Present", "What is happening now?"), ("Advice", "What could help?")]
+    for i, (h, d) in enumerate(items):
+        x = 70 + i * 500
+        body += f'<div class="panel" style="left:{x}px;top:170px;width:460px;height:640px"></div>'
+        body += card(x + 230 - 112, 205, 384)
+        body += f'<div class="c h gold" style="left:{x}px;width:460px;top:612px">{h}</div>'
+        body += f'<div class="c d" style="left:{x + 30}px;width:400px;top:680px">{d}</div>'
+    body += '<div class="abs mist" style="left:0;width:1600px;text-align:center;top:832px;font-size:28px">The same card is read against a different question in each place.</div>'
+    return page(1600, 900, css, body)
+
+
+def fig_upright_reversed():
+    css = ".c{position:absolute;text-align:center}.h{font-family:'Cormorant Garamond';font-weight:600;font-size:54px}.d{font-size:30px;line-height:1.4;color:var(--mist)}"
+    body = _title("Upright and reversed")
+    for i, (h, d, rev) in enumerate([("Upright", "The card faces you the right way up.", False), ("Reversed", "The card turns up upside down.", True)]):
+        x = 80 + i * 760
+        body += f'<div class="panel" style="left:{x}px;top:170px;width:680px;height:640px"></div>'
+        body += card(x + 340 - 130, 210, 440, rev=rev)
+        body += f'<div class="c h gold" style="left:{x}px;width:680px;top:672px">{h}</div>'
+        body += f'<div class="c d" style="left:{x + 40}px;width:600px;top:742px">{d}</div>'
+    return page(1600, 900, css, body)
+
+
+def fig_arcana():
+    css = ".c{position:absolute;text-align:center}.big{font-family:'Cormorant Garamond';font-weight:600;font-size:60px;color:var(--gold);line-height:1}.lab{font-size:30px;font-weight:600}.sub{font-size:27px;line-height:1.4;color:var(--mist)}"
+    body = _title("The 78 tarot cards")
+    body += '<div class="panel" style="left:70px;top:160px;width:520px;height:660px"></div><div class="panel" style="left:630px;top:160px;width:900px;height:660px"></div>'
+    for k in range(3):
+        body += card(196 + k * 22, 200 + k * 8, 300)
+    body += '<div class="c big" style="left:70px;width:520px;top:540px">22</div><div class="c lab" style="left:70px;width:520px;top:612px">Major arcana</div>'
+    body += '<div class="c sub" style="left:100px;width:460px;top:660px">The Fool to The World. Big themes and turning points.</div>'
+    for i, nm in enumerate(["Wands", "Cups", "Swords", "Pentacles"]):
+        x = 678 + i * 210
+        body += card(x, 200, 300)
+        body += f'<div class="c lab" style="left:{x - 14}px;width:{175 + 28}px;top:512px">{nm}</div>'
+    body += '<div class="c big" style="left:630px;width:900px;top:560px">56</div><div class="c lab" style="left:630px;width:900px;top:632px">Minor arcana</div>'
+    body += '<div class="c sub" style="left:700px;width:760px;top:680px">Four suits of 14 cards. Everyday events, moods and choices.</div>'
+    return page(1600, 900, css, body)
+
+
+def fig_one_card_layout():
+    css = ".c{position:absolute}.q{font-family:'Cormorant Garamond';font-style:italic;font-size:44px;line-height:1.25;color:var(--gold)}.d{font-size:30px;line-height:1.4;color:var(--mist)}"
+    body = _title("A one-card tarot spread")
+    body += card(240, 230, 560)
+    body += '<div class="num" style="left:371px;top:150px">1</div>'
+    body += '<div class="c q" style="left:760px;top:250px;width:760px">What should I keep in mind today?</div>'
+    body += '<div class="c d" style="left:760px;top:400px;width:740px">One question, one position, one card. Read the card, then ask what it says about the question.</div>'
+    body += '<div class="c d" style="left:760px;top:560px;width:740px">Good for a daily check-in or a quick thought.</div>'
+    return page(1600, 900, css, body)
+
+
+FIGURES.update({
+    "how-to-read-a-tarot-spread-step-by-step-steps": fig_read_steps,
+    "tarot-card-positions-and-what-they-change-same-card": fig_same_card_positions,
+    "reversed-tarot-cards-and-how-to-read-them-upright-reversed": fig_upright_reversed,
+    "major-and-minor-arcana-in-tarot-explained-arcana": fig_arcana,
+    "the-one-card-tarot-spread-layout": fig_one_card_layout,
+})
+
+
 # ---------------------------------------------------------------- share images
 SHARE = """<!doctype html><meta charset="utf-8"><style>
 @font-face {{ font-family: "Cormorant Garamond"; src: url("{fonts}/cormorant-garamond-latin-400-italic.woff2"); font-style: italic; font-weight: 400; }}

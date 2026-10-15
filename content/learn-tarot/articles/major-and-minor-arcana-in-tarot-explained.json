@@ -1,0 +1,11 @@
+{
+  "description": "The 78 tarot cards explained: 22 major arcana for big themes and 56 minor arcana in four suits, and how each group reads in a tarot spread.",
+  "lede": "A tarot deck has 78 cards: 22 major arcana for big themes and 56 minor arcana for everyday life.",
+  "figures": {
+    "arcana": {
+      "file": "major-and-minor-arcana-in-tarot-explained-arcana.png",
+      "alt": "Two panels under the heading The 78 tarot cards. The left panel shows a stack of three cards with 22, Major arcana, The Fool to The World, big themes and turning points. The right panel shows four cards labelled Wands, Cups, Swords and Pentacles with 56, Minor arcana, four suits of 14 cards, everyday events, moods and choices.",
+      "caption": "The 78 cards split into 22 major arcana and 56 minor arcana in four suits."
+    }
+  }
+}

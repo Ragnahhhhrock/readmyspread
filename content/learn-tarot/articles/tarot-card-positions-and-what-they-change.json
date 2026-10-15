@@ -1,0 +1,11 @@
+{
+  "description": "In a tarot spread, each position asks its own question. See how the same card changes meaning from past to present to advice, and how to read by position.",
+  "lede": "Where a card lands in a tarot spread decides which question it answers, so the same card can read differently each time.",
+  "figures": {
+    "same-card": {
+      "file": "tarot-card-positions-and-what-they-change-same-card.png",
+      "alt": "Three identical gold-edged tarot cards in three panels under the heading One card, three positions. The panels are labelled Past, what led here; Present, what is happening now; and Advice, what could help.",
+      "caption": "The same card in three positions. Each position asks a different question, so the card is read three different ways."
+    }
+  }
+}
