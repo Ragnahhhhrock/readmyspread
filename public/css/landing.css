@@ -168,6 +168,17 @@ body.landing { background: transparent; overflow-x: clip; }
 }
 .stat dt { font-size: var(--step--1); line-height: 1.3; color: var(--mist); }
 .stats__note { margin-top: var(--s-4); text-align: center; font-size: var(--step--1); color: var(--mist); }
+/* Load-in (js/stats.js adds .is-in when the band is on screen): each stat rises in, staggered,
+   while its number counts up. Without .is-in the stats wait unseen; reduced motion skips it. */
+.stats:not(.is-in) .stat { opacity: 0; transform: translateY(0.75rem); }
+.stats.is-in .stat {
+  transition: opacity var(--t-reveal) var(--ease), transform var(--t-reveal) var(--ease);
+}
+.stats.is-in .stat:nth-child(2) { transition-delay: 150ms; }
+.stats.is-in .stat:nth-child(3) { transition-delay: 300ms; }
+@media (prefers-reduced-motion: reduce) {
+  .stats:not(.is-in) .stat, .stats.is-in .stat { opacity: 1; transform: none; transition: none; }
+}
 @media (min-width: 40rem) {
   .stats__list { gap: var(--s-5); }
   .stat dd { font-size: var(--step-3); }
