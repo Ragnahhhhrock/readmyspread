@@ -1,0 +1,11 @@
+{
+  "description": "How the six-card two-path decision tarot spread compares two options side by side, with each position explained and tips for reading the pairs.",
+  "lede": "The two-path decision tarot spread compares two options by asking what each offers and what each asks of you. It does not choose for you.",
+  "figures": {
+    "layout": {
+      "file": "the-two-path-decision-tarot-spread-layout.png",
+      "alt": "Six numbered tarot cards for a two-path decision. Card 1, The situation, is at the top centre. Path A is the left column: 2 Path A offers and 3 Path A asks. Path B is the right column: 4 Path B offers and 5 Path B asks. Card 6, Advice, is at the bottom centre.",
+      "caption": "Each path gets an offer and an ask, so the two options can be compared side by side before the advice card at the bottom."
+    }
+  }
+}

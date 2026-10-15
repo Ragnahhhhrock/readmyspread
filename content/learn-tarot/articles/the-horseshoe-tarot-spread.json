@@ -1,0 +1,11 @@
+{
+  "description": "How the seven-card horseshoe tarot spread works: its positions from past to likely outcome, a worked example and tips for reading the arch.",
+  "lede": "The horseshoe tarot spread arranges seven cards in an arch. It looks at the past, the present, hidden influences, you, others, advice and a likely direction.",
+  "figures": {
+    "layout": {
+      "file": "the-horseshoe-tarot-spread-layout.png",
+      "alt": "Seven numbered tarot cards arranged in an arch like a horseshoe, from lower left to lower right: 1 Past, 2 Present, 3 Hidden influences, 4 You, 5 Others, 6 Advice, 7 Outcome.",
+      "caption": "The arch rises to the hidden, personal and relational cards at the top, then comes down to advice and a likely outcome."
+    }
+  }
+}

@@ -244,6 +244,287 @@ FIGURES.update({
 })
 
 
+# ---- articles 8 to 41: spread layouts, card faces and reference figures
+import math
+ICONS = (PUB / "assets" / "tarot" / "icons")
+
+
+def pcard(cx, cy, h, num=None, label="", fs=28, rot=0, lw=None, top_label=False):
+    """A numbered position card centred on cx, cy with its label beneath."""
+    w = round(h * 7 / 12)
+    inner = f'<span class="disp gold" style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%){' rotate(' + str(-rot) + 'deg)' if rot else ''};text-align:center;font-size:{max(26, round(h * .3))}px;font-weight:600;line-height:1">{num}</span>' if num is not None else STAR
+    css_rot = f"transform:rotate({rot}deg);" if rot else ""
+    out = f'<div class="card" style="left:{cx - w / 2:.0f}px;top:{cy - h / 2:.0f}px;height:{h}px;width:{w}px;{css_rot}">{inner}</div>'
+    if label:
+        lw = lw or max(w + 120, 220)
+        out += f'<div class="abs" style="left:{cx - lw / 2:.0f}px;width:{lw}px;top:{cy + h / 2 + 10:.0f}px;text-align:center;font-size:{fs}px;font-weight:600;line-height:1.15">{label}</div>'
+    return out
+
+
+def spread_fig(title, items, h, fs=28, note="", lw=None):
+    body = _title(title)
+    for it in items:
+        n, label, cx, cy = it[:4]
+        rot = it[4] if len(it) > 4 else 0
+        body += pcard(cx, cy, h, n, label, fs, rot, lw)
+    if note:
+        body += f'<div class="abs mist" style="left:0;width:1600px;text-align:center;bottom:28px;font-size:28px">{note}</div>'
+    return page(1600, 900, "", body)
+
+
+def fig_three_layout():
+    return spread_fig("A three-card tarot spread: past, present, next",
+                      [(1, "Past", 400, 430), (2, "Present", 800, 430), (3, "Next", 1200, 430)], 440, 40)
+
+
+def fig_three_two_ways():
+    items = [(1, "Past", 400, 270), (2, "Present", 800, 270), (3, "Next", 1200, 270),
+             (1, "Situation", 400, 680), (2, "Action", 800, 680), (3, "Outcome", 1200, 680)]
+    return spread_fig("Two ways to read three cards", items, 220, 30)
+
+
+CELTIC = ["Heart of the matter", "Crossing", "Foundation", "Recent past", "Crown", "Near future", "You", "Surroundings", "Hopes and fears", "Outcome"]
+
+
+def _celtic(title):
+    body = _title(title)
+    h = 190
+    pos = [(1, 460, 470, 0), (3, 460, 690, 0), (4, 300, 470, 0), (5, 460, 250, 0), (6, 620, 470, 0)]
+    for n, x, y, r in pos:
+        body += pcard(x, y, h, None if n == 1 else n)
+    body += '<div class="abs disp gold" style="left:420px;width:80px;text-align:center;top:384px;font-size:56px;font-weight:600;line-height:1">1</div>'
+    body += pcard(460, 470, 110, 2, rot=90)  # laid across the first card
+    for k, y in zip([7, 8, 9, 10], [740, 570, 400, 230]):
+        body += pcard(860, y, 150, k)
+    body += '<div class="panel" style="left:1020px;top:150px;width:520px;height:700px"></div>'
+    for i, nm in enumerate(CELTIC):
+        y = 180 + i * 66
+        body += f'<div class="abs gold disp" style="left:1050px;top:{y}px;width:60px;font-size:38px;font-weight:600;text-align:right">{i + 1}</div><div class="abs" style="left:1130px;top:{y + 8}px;font-size:30px;font-weight:600">{nm}</div>'
+    return page(1600, 900, "", body)
+
+
+def fig_celtic_layout():
+    return _celtic("The Celtic Cross tarot spread")
+
+
+def fig_celtic_numbered():
+    return _celtic("Celtic Cross positions, numbered one to ten")
+
+
+def fig_horseshoe():
+    names = ["Past", "Present", "Hidden influences", "You", "Others and surroundings", "Advice", "Likely outcome"]
+    pts = [(190, 250), (330, 440), (530, 580), (800, 640), (1070, 580), (1270, 440), (1410, 250)]
+    return spread_fig("A horseshoe tarot spread", [(i + 1, names[i], pts[i][0], pts[i][1]) for i in range(7)], 190, 27, lw=250)
+
+
+def fig_relationship():
+    items = [(1, "You", 400, 455), (2, "The other person", 1200, 455), (3, "The connection", 800, 455),
+             (4, "What brings you together", 800, 235), (5, "What is challenging", 800, 675),
+             (6, "What could help", 400, 675), (7, "Where it may head", 1200, 675)]
+    return spread_fig("A relationship tarot spread", items, 160, 26, lw=300)
+
+
+def fig_two_path():
+    items = [(1, "The situation", 800, 235), (2, "Path A offers", 430, 470), (3, "Path A asks", 430, 710),
+             (4, "Path B offers", 1170, 470), (5, "Path B asks", 1170, 710), (6, "Advice", 800, 710)]
+    return spread_fig("A two-path decision tarot spread", items, 170, 28, lw=280)
+
+
+def fig_yes_no():
+    return spread_fig("A yes or no tarot spread",
+                      [(1, "The case for yes", 400, 430), (2, "The case against", 800, 430), (3, "What tips the balance", 1200, 430)], 400, 36, lw=380)
+
+
+def fig_year():
+    body = _title("A year-ahead tarot spread")
+    body += pcard(800, 235, 170, 1, "Theme", 28)
+    mon = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    for i, m in enumerate(mon):
+        cx = 200 + (i % 6) * 240
+        cy = 480 if i < 6 else 720
+        body += pcard(cx, cy, 150, None, m, 28)
+    return page(1600, 900, "", body)
+
+
+def fig_twelve():
+    names = ["Self", "Money and values", "Communication", "Home and roots", "Creativity and play", "Daily routines", "Partnerships",
+             "Shared resources and change", "Learning and travel", "Work and public life", "Friends and community", "Rest and the unseen"]
+    body = _title("A twelve-house tarot spread")
+    for i, nm in enumerate(names):
+        phi = math.pi - i * math.pi / 6
+        body += pcard(800 + 640 * math.cos(phi), 500 + 262 * math.sin(phi), 100, i + 1)
+        col, row = divmod(i, 6)
+        x = 395 + col * 420
+        y = 330 + row * 56
+        body += f'<div class="abs gold disp" style="left:{x}px;top:{y - 4}px;width:50px;text-align:right;font-size:34px;font-weight:600">{i + 1}</div><div class="abs" style="left:{x + 66}px;top:{y + 2}px;font-size:26px;font-weight:600">{nm}</div>'
+    return page(1600, 900, "", body)
+
+
+def fig_tree():
+    names = ["Crown", "Wisdom", "Understanding", "Mercy", "Severity", "Beauty", "Victory", "Glory", "Foundation", "Kingdom"]
+    pts = [(800, 185), (1060, 290), (540, 290), (1060, 455), (540, 455), (800, 372), (1060, 630), (540, 630), (800, 625), (800, 790)]
+    body = _title("A Tree of Life tarot spread")
+    for i, (x, y) in enumerate(pts):
+        body += pcard(x, y, 100, i + 1, names[i], 26, lw=230)
+    return page(1600, 900, "", body)
+
+
+def fig_moon():
+    names = ["New moon", "Waxing crescent", "First quarter", "Waxing gibbous", "Full moon", "Waning gibbous", "Last quarter", "Waning crescent"]
+    body = _title("A moon phase tarot spread")
+    for i, nm in enumerate(names):
+        phi = -math.pi / 2 + i * math.pi / 4
+        body += pcard(800 + 560 * math.cos(phi), 470 + 255 * math.sin(phi), 130, i + 1, nm, 26, lw=230)
+    return page(1600, 900, "", body)
+
+
+def fig_pyramid():
+    items = [(1, "What is happening", 450, 690), (2, "What is in the way", 800, 690), (3, "What helps", 1150, 690),
+             (4, "What you can do", 625, 455), (5, "What to let go", 975, 455), (6, "Likely direction", 800, 220)]
+    return spread_fig("A pyramid tarot spread", items, 160, 28, lw=320)
+
+
+def fig_mbs():
+    items = [(3, "Spirit", 800, 250), (1, "Mind", 520, 620), (2, "Body", 1080, 620)]
+    return spread_fig("A mind, body and spirit tarot spread", items, 230, 34)
+
+
+def faces_fig(title, cards):
+    """cards: list of (top text, name, suit or None). Original linework faces, name beneath."""
+    n = len(cards)
+    w = min(250, int((1500 - (n - 1) * 30) / n))
+    h = round(w * 12 / 7)
+    gap = 30
+    x0 = (1600 - (n * w + (n - 1) * gap)) / 2
+    y0 = 170 + max(0, (560 - h) / 2)
+    body = _title(title)
+    for i, (top, name, suit) in enumerate(cards):
+        x = x0 + i * (w + gap)
+        glyph = (f'<img src="{(ICONS / (suit + ".svg")).as_uri()}" style="position:absolute;left:50%;top:50%;width:56%;transform:translate(-50%,-50%)">'
+                 if suit else STAR)
+        tfs = 44 if len(top) <= 3 else 30
+        body += (f'<div class="card" style="left:{x:.0f}px;top:{y0:.0f}px;width:{w}px;height:{h}px">'
+                 f'<div class="disp gold" style="position:absolute;left:0;right:0;top:20px;text-align:center;font-size:{tfs}px;font-weight:600;line-height:1.1">{top}</div>{glyph}'
+                 f'<div class="gold" style="position:absolute;left:0;right:0;bottom:24px;text-align:center"><svg viewBox="0 0 24 24" style="position:static;transform:none;width:26px;transform:none;height:26px"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6Z" fill="none" stroke="#e2c071" stroke-width="1.4"/></svg></div></div>')
+        body += f'<div class="abs" style="left:{x - 20:.0f}px;width:{w + 40}px;top:{y0 + h + 18:.0f}px;text-align:center;font-size:{28 if n <= 5 else 25}px;font-weight:600;line-height:1.15">{name}</div>'
+    return page(1600, 900, "", body)
+
+
+def _roman(n):
+    return ["0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI"][n]
+
+
+def _majors(title, names_nums):
+    return lambda: faces_fig(title, [(_roman(n), nm, None) for n, nm in names_nums])
+
+
+def _suit_cards(suit, ranks):
+    sn = suit.capitalize()
+    out = []
+    for r in ranks:
+        top = {"Page": "Page", "Knight": "Knight", "Queen": "Queen", "King": "King"}.get(r, r)
+        nm = f"{r} of {sn}"
+        out.append((top, nm, suit))
+    return out
+
+
+def _suit(title, suit, ranks):
+    return lambda: faces_fig(title, _suit_cards(suit, ranks))
+
+
+def fig_suits():
+    css = ".c{position:absolute;text-align:center}.h{font-family:'Cormorant Garamond';font-weight:600;font-size:52px}.el{font-size:28px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}.d{font-size:28px;line-height:1.4;color:var(--mist)}"
+    body = _title("The four tarot suits")
+    data = [("wands", "Wands", "Fire", "Energy and action"), ("cups", "Cups", "Water", "Feelings and relationships"),
+            ("swords", "Swords", "Air", "Thought and communication"), ("pentacles", "Pentacles", "Earth", "Work and the practical world")]
+    for i, (ic, nm, el, th) in enumerate(data):
+        x = 55 + i * 375
+        body += f'<div class="panel" style="left:{x}px;top:170px;width:340px;height:620px"></div>'
+        body += f'<img class="abs" src="{(ICONS / (ic + ".svg")).as_uri()}" style="left:{x + 90}px;top:215px;width:160px;height:160px">'
+        body += f'<div class="c h" style="left:{x}px;width:340px;top:410px">{nm}</div><div class="c el" style="left:{x}px;width:340px;top:490px">{el}</div><div class="c d" style="left:{x + 30}px;width:280px;top:550px">{th}</div>'
+    return page(1600, 900, css, body)
+
+
+def fig_numbers():
+    css = ".c{position:absolute;text-align:center}.big{font-family:'Cormorant Garamond';font-weight:600;font-size:60px;color:var(--gold);line-height:1;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1}.nm{font-size:26px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mist)}.d{font-size:28px;line-height:1.3}"
+    body = _title("Numbers across the four tarot suits")
+    data = [("Ace", "Beginnings"), ("Two", "Balance and choice"), ("Three", "Growth and teamwork"), ("Four", "Stability and pause"), ("Five", "Conflict and change"),
+            ("Six", "Harmony and movement"), ("Seven", "Reflection and challenge"), ("Eight", "Skill and momentum"), ("Nine", "Resilience and near completion"), ("Ten", "Completion and overload")]
+    for i, (nm, kw) in enumerate(data):
+        x = 50 + (i % 5) * 302
+        y = 170 + (i // 5) * 340
+        lab = "A" if i == 0 else str(i + 1) if i < 9 else "10"
+        lab = {"A": "1"}.get(lab, lab)
+        body += f'<div class="panel" style="left:{x}px;top:{y}px;width:276px;height:310px"></div>'
+        body += f'<div class="c big" style="left:{x}px;width:276px;top:{y + 36}px">{lab}</div><div class="c nm" style="left:{x}px;width:276px;top:{y + 118}px">{nm}</div><div class="c d" style="left:{x + 20}px;width:236px;top:{y + 170}px">{kw}</div>'
+    return page(1600, 900, css, body)
+
+
+def fig_do_dont():
+    css = ".h{position:absolute;font-family:'Cormorant Garamond';font-weight:600;font-size:56px}.li{position:absolute;font-size:32px;line-height:1.3;width:560px}"
+    body = _title("Photographing your tarot spread")
+    cols = [("Do", True, ["Even, soft light", "Shoot from directly above", "Keep the whole spread in frame", "Leave cards clear of each other", "Use a plain background"]),
+            ("Don't", False, ["Harsh shadows or glare", "A tilted angle", "Cards cut off or overlapping", "A cluttered background"])]
+    for i, (hd, ok, items) in enumerate(cols):
+        x = 80 + i * 760
+        body += f'<div class="panel" style="left:{x}px;top:170px;width:680px;height:640px"></div><div class="h gold" style="left:{x + 50}px;top:200px">{hd}</div>'
+        for j, t in enumerate(items):
+            y = 310 + j * 94
+            mark = ('<path d="M4 12.5l5 5 11-11" fill="none" stroke="#e2c071" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>' if ok
+                    else '<path d="M6 6l12 12M18 6L6 18" fill="none" stroke="#aeb4d3" stroke-width="2.6" stroke-linecap="round"/>')
+            body += f'<svg class="abs" style="left:{x + 50}px;top:{y + 4}px;width:40px;height:40px" viewBox="0 0 24 24">{mark}</svg><div class="li" style="left:{x + 112}px;top:{y}px">{t}</div>'
+    return page(1600, 900, css, body)
+
+
+def fig_terms():
+    css = ".h{position:absolute;font-family:'Cormorant Garamond';font-weight:600;font-size:50px;color:var(--gold)}.d{position:absolute;font-size:29px;line-height:1.35;color:var(--starlight);width:420px}"
+    body = _title("Tarot terms at a glance")
+    terms = [("Spread", "A layout of cards where each place has a meaning."), ("Position", "The meaning of one place in a spread."),
+             ("Arcana", "The two groups of cards: 22 major and 56 minor."), ("Court card", "A Page, Knight, Queen or King."),
+             ("Upright", "A card facing you the right way up."), ("Reversed", "A card turned upside down.")]
+    for i, (t, d) in enumerate(terms):
+        x = 55 + (i % 3) * 512
+        y = 170 + (i // 3) * 340
+        body += f'<div class="panel" style="left:{x}px;top:{y}px;width:480px;height:310px"></div><div class="h" style="left:{x + 30}px;top:{y + 34}px">{t}</div><div class="d" style="left:{x + 30}px;top:{y + 130}px">{d}</div>'
+    return page(1600, 900, css, body)
+
+
+_M = _majors
+FIGURES.update({
+    "the-three-card-tarot-spread-layout": fig_three_layout,
+    "the-three-card-tarot-spread-two-ways": fig_three_two_ways,
+    "the-celtic-cross-tarot-spread-explained-layout": fig_celtic_layout,
+    "celtic-cross-tarot-spread-positions-one-by-one-numbered": fig_celtic_numbered,
+    "the-fool-to-the-hierophant-tarot-card-meanings-faces": _M("The Fool to The Hierophant", [(0, "The Fool"), (1, "The Magician"), (2, "The High Priestess"), (3, "The Empress"), (4, "The Emperor"), (5, "The Hierophant")]),
+    "the-horseshoe-tarot-spread-layout": fig_horseshoe,
+    "the-relationship-tarot-spread-layout": fig_relationship,
+    "the-lovers-to-the-hermit-tarot-card-meanings-faces": _M("The Lovers to The Hermit", [(6, "The Lovers"), (7, "The Chariot"), (8, "Strength"), (9, "The Hermit")]),
+    "the-two-path-decision-tarot-spread-layout": fig_two_path,
+    "the-yes-or-no-tarot-spread-layout": fig_yes_no,
+    "the-wheel-of-fortune-to-temperance-tarot-card-meanings-faces": _M("Wheel of Fortune to Temperance", [(10, "Wheel of Fortune"), (11, "Justice"), (12, "The Hanged Man"), (13, "Death"), (14, "Temperance")]),
+    "the-year-ahead-tarot-spread-layout": fig_year,
+    "the-astrological-twelve-house-tarot-spread-layout": fig_twelve,
+    "the-devil-to-the-moon-tarot-card-meanings-faces": _M("The Devil to The Moon", [(15, "The Devil"), (16, "The Tower"), (17, "The Star"), (18, "The Moon")]),
+    "the-tree-of-life-tarot-spread-layout": fig_tree,
+    "the-moon-phase-tarot-spread-layout": fig_moon,
+    "the-sun-to-the-world-tarot-card-meanings-faces": _M("The Sun to The World", [(19, "The Sun"), (20, "Judgement"), (21, "The World")]),
+    "the-pyramid-tarot-spread-layout": fig_pyramid,
+    "the-mind-body-and-spirit-tarot-spread-layout": fig_mbs,
+    "the-four-tarot-suits-and-their-elements-suits": fig_suits,
+    "numbers-in-tarot-and-what-they-signal-numbers": fig_numbers,
+    "how-to-photograph-your-tarot-spread-for-a-reading-do-dont": fig_do_dont,
+    "tarot-terms-glossary-spreads-cards-and-jargon-terms": fig_terms,
+})
+_LOW = ["Ace", "2", "3", "4", "5"]
+_HIGH = ["6", "7", "8", "9", "10"]
+_COURT = ["Page", "Knight", "Queen", "King"]
+for _suit_name in ["wands", "cups", "swords", "pentacles"]:
+    _cap = _suit_name.capitalize()
+    FIGURES[f"{_suit_name}-in-tarot-ace-to-five-meanings-faces"] = _suit(f"Ace to Five of {_cap}", _suit_name, _LOW)
+    FIGURES[f"{_suit_name}-in-tarot-six-to-ten-meanings-faces"] = _suit(f"Six to Ten of {_cap}", _suit_name, _HIGH)
+    FIGURES[f"{_suit_name}-in-tarot-court-card-meanings-faces"] = _suit(f"Court cards of {_cap}", _suit_name, _COURT)
+
+
 # ---------------------------------------------------------------- share images
 SHARE = """<!doctype html><meta charset="utf-8"><style>
 @font-face {{ font-family: "Cormorant Garamond"; src: url("{fonts}/cormorant-garamond-latin-400-italic.woff2"); font-style: italic; font-weight: 400; }}

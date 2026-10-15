@@ -1,0 +1,11 @@
+{
+  "description": "The four tarot suits explained: wands, cups, swords and pentacles, their elements and themes, and how the suits can shape what you notice in a spread.",
+  "lede": "A tarot deck has four suits, each linked to an element and an area of life. Knowing them helps you read a spread at a glance.",
+  "figures": {
+    "suits": {
+      "file": "the-four-tarot-suits-and-their-elements-suits.png",
+      "alt": "Four panels, one per tarot suit, each with a gold suit icon, the suit name, its element and its themes. Wands: fire, energy and action. Cups: water, feelings and relationships. Swords: air, thought and communication. Pentacles: earth, work and the practical world.",
+      "caption": "Each suit pairs an element with an area of life. Conventions vary slightly between decks."
+    }
+  }
+}

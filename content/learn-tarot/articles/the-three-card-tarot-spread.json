@@ -1,0 +1,16 @@
+{
+  "description": "How the three-card tarot spread works: past, present, next and situation, action, outcome, with a method for reading the story across the cards.",
+  "lede": "The three-card tarot spread is a flexible layout that can tell a story over time or frame a choice. Here are two ways to read it.",
+  "figures": {
+    "layout": {
+      "file": "the-three-card-tarot-spread-layout.png",
+      "alt": "Three gold-edged tarot cards in a row, numbered 1, 2 and 3 and labelled Past, Present and Next, under the title A three-card tarot spread, past, present, next.",
+      "caption": "Read left to right: what shaped the situation, where it stands now and where it may head."
+    },
+    "two-ways": {
+      "file": "the-three-card-tarot-spread-two-ways.png",
+      "alt": "Two rows of three numbered tarot cards. The top row is labelled Past, Present and Next. The bottom row is labelled Situation, Action and Outcome.",
+      "caption": "The same three places can tell a story over time or frame a choice. Pick the frame that suits your question before you draw."
+    }
+  }
+}

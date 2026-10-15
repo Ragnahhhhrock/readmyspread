@@ -1,0 +1,11 @@
+{
+  "description": "How to use a yes or no tarot spread: frame the question, read three cards as a case for, a case against and a tipping point, and keep the choice yours.",
+  "lede": "The yes or no tarot spread uses three cards to weigh a decision rather than predict it. It sets out the case for, the case against, and what might tip the balance.",
+  "figures": {
+    "layout": {
+      "file": "the-yes-or-no-tarot-spread-layout.png",
+      "alt": "Three gold-edged tarot cards in a row, numbered 1, 2 and 3, labelled from left to right: The case for yes, The case against, and What tips the balance. The heading reads A yes or no tarot spread.",
+      "caption": "Three cards weigh a question: one for, one against, and a third for what tips the balance. It reads as a way to think a choice through, not a prediction."
+    }
+  }
+}

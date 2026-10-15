@@ -1,0 +1,11 @@
+{
+  "description": "Tarot card meanings for the Wheel of Fortune, Justice, The Hanged Man, Death and Temperance (X to XIV), upright and reversed, with spread reading notes.",
+  "lede": "Major arcana X to XIV cover turning points, fairness, pause, endings and balance. Here is what each tarot card traditionally means, upright and reversed.",
+  "figures": {
+    "faces": {
+      "file": "the-wheel-of-fortune-to-temperance-tarot-card-meanings-faces.png",
+      "alt": "Five original gold-linework tarot card faces in a row: The Wheel of Fortune X, Justice XI, The Hanged Man XII, Death XIII and Temperance XIV. Each shows its Roman numeral at the top and its name at the bottom with a four-point star, with no scenes or published art.",
+      "caption": "Major arcana X to XIV in order. The numbers follow the Rider-Waite-Smith deck, where Justice is XI."
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "How to lay out and read a year-ahead tarot spread: one theme card and twelve monthly cards, with tips for reading patterns and using it as a reflection tool.",
+  "lede": "The year-ahead tarot spread uses a theme card plus one card for each month. It works best as a prompt for planning and reflection, not as a forecast.",
+  "figures": {
+    "layout": {
+      "file": "the-year-ahead-tarot-spread-layout.png",
+      "alt": "Thirteen gold-edged tarot cards under the heading A year-ahead tarot spread. One card numbered 1 and labelled Theme sits at the top centre. Below it are two rows of six cards: January to June on the upper row and July to December on the lower row, each labelled Jan to Dec.",
+      "caption": "One theme card sits above twelve monthly cards, January to June on the upper row and July to December below. Read the theme first, then the months in order."
+    }
+  }
+}

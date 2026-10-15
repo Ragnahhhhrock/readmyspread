@@ -1,0 +1,11 @@
+{
+  "description": "How the six-card pyramid tarot spread works: what each position means, how to lay it out, how to read the layers, and a worked example.",
+  "lede": "The pyramid tarot spread builds from a base of three cards to a single card at the top. It suits questions about what to do next.",
+  "figures": {
+    "layout": {
+      "file": "the-pyramid-tarot-spread-layout.png",
+      "alt": "A pyramid tarot spread of six numbered cards. The bottom row, left to right, has card 1 What is happening, card 2 What is in the way and card 3 What helps. The middle row has card 4 What you can do and card 5 What to let go. Card 6 Likely direction sits alone at the top.",
+      "caption": "Read the base row left to right, then the middle row, then the top card. Each row narrows toward the likely direction."
+    }
+  }
+}

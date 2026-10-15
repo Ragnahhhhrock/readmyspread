@@ -1,0 +1,11 @@
+{
+  "description": "Tarot card meanings for The Fool, The Magician, The High Priestess, The Empress, The Emperor and The Hierophant, upright and reversed.",
+  "lede": "The first six major arcana cards, from The Fool (0) to The Hierophant (V), with upright meanings and a short note on reversals.",
+  "figures": {
+    "faces": {
+      "file": "the-fool-to-the-hierophant-tarot-card-meanings-faces.png",
+      "alt": "Six original gold-linework tarot card faces in order: The Fool (0), The Magician (I), The High Priestess (II), The Empress (III), The Emperor (IV) and The Hierophant (V). Each shows its Roman numeral on top and its name at the bottom with a four-point star, with no scenes.",
+      "caption": "The six cards covered here, in order. Card faces are original linework, not a published deck."
+    }
+  }
+}

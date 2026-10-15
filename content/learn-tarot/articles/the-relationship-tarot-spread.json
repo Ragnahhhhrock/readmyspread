@@ -1,0 +1,11 @@
+{
+  "description": "How the seven-card relationship tarot spread works for partners, family, friends or colleagues, with each position explained and tips for balanced reading.",
+  "lede": "The relationship tarot spread uses seven cards to look at two people and the connection between them. It suits any kind of relationship, not just romantic ones.",
+  "figures": {
+    "layout": {
+      "file": "the-relationship-tarot-spread-layout.png",
+      "alt": "Seven numbered tarot cards for a relationship spread: 1 You on the left, 2 The other person on the right, 3 Connection in the centre between them, 4 Brings you together above the centre, 5 Challenge below the centre, and a lower row with 6 Could help on the left and 7 Where it may head on the right.",
+      "caption": "Each person has a card, with the connection between them in the centre and what draws them together and tests them above and below."
+    }
+  }
+}

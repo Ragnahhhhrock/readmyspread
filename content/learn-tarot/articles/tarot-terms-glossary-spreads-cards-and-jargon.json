@@ -1,0 +1,11 @@
+{
+  "description": "A plain-English tarot glossary: spread, position, arcana, court card, upright, reversed and other common tarot terms, with notes where readers and decks differ.",
+  "lede": "This glossary defines the words you will meet most often when learning tarot, from spread and position to arcana, court cards, upright and reversed.",
+  "figures": {
+    "terms": {
+      "file": "tarot-terms-glossary-spreads-cards-and-jargon-terms.png",
+      "alt": "Six tiles, each with a one-line definition: Spread, a layout of cards where each place has a meaning; Position, the meaning of a place in a spread; Arcana, the major and minor groups of tarot cards; Court card, a Page, Knight, Queen or King; Upright, a card facing you the right way up; Reversed, a card turned upside down.",
+      "caption": "The six tiles cover the words you are most likely to meet first. Learn these and most tarot guides become easier to follow."
+    }
+  }
+}

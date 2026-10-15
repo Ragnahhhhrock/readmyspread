@@ -1,0 +1,11 @@
+{
+  "description": "Numbers in tarot, Ace to Ten: what each number tends to signal across the four suits, and how to combine a number with a suit to read an unfamiliar card.",
+  "lede": "Each number from Ace to Ten carries a theme that repeats in every tarot suit. Knowing them helps you read a minor arcana card you have not met before.",
+  "figures": {
+    "numbers": {
+      "file": "numbers-in-tarot-and-what-they-signal-numbers.png",
+      "alt": "Ten tiles in order, Ace to Ten, each with its keywords: Ace, beginnings; Two, balance and choice; Three, growth and teamwork; Four, stability and pause; Five, conflict and change; Six, harmony and movement; Seven, reflection and challenge; Eight, skill and momentum; Nine, resilience and near completion; Ten, completion and overload.",
+      "caption": "The same ten themes apply in all four suits. Combine the number with the suit to get a first reading of any minor arcana card."
+    }
+  }
+}

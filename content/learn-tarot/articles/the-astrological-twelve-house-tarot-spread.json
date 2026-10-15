@@ -1,0 +1,11 @@
+{
+  "description": "A guide to the twelve-house tarot spread: how the wheel layout works, what each of the twelve positions covers, and how to read it without astrology.",
+  "lede": "The twelve-house tarot spread places twelve cards in a ring, one for each area of life. It borrows astrology's structure but needs no knowledge of astrology.",
+  "figures": {
+    "layout": {
+      "file": "the-astrological-twelve-house-tarot-spread-layout.png",
+      "alt": "Twelve small gold-edged tarot cards arranged in a ring under the heading A twelve-house tarot spread, numbered 1 to 12 anticlockwise from the left. A list in the centre names each house: 1 Self, 2 Money and values, 3 Communication, 4 Home and roots, 5 Creativity and play, 6 Daily routines, 7 Partnerships, 8 Shared resources and change, 9 Learning and travel, 10 Work and public life, 11 Friends and community, 12 Rest and the unseen.",
+      "caption": "Twelve cards form a wheel, each standing for one area of life. Read around the ring, then look at the whole circle."
+    }
+  }
+}
