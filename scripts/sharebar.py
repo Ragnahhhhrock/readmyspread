@@ -1,8 +1,10 @@
 """Share bar markup, shared by scripts/build-learn.py and any hand-written page.
 
 Three buttons only: Threads, Facebook, Instagram. No Telegram. See DESIGN.md section 12.
-All three are plain new-tab links that work without JavaScript. Instagram has no web share
-link, so it opens Instagram's messages page (the app on phones) and public/js/share.js copies the link.
+All three are plain new-tab links that work without JavaScript. On devices with a share sheet,
+public/js/share.js opens it for Facebook and Instagram, because their web links only open the app and
+drop the page address. Instagram has no web share link, so without a sheet it opens Instagram's messages
+page and share.js copies the link.
 """
 import html
 from urllib.parse import quote

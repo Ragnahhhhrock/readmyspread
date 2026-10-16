@@ -165,4 +165,26 @@ with sync_playwright() as pw:
     assert "copied" in pg2.inner_text("#screen-result .sharebar__note")
     pg2.screenshot(path=str(SHOTS / "ok-result-share.png"), full_page=True)
     assert not errs2, errs2; b2.close(); b.close()
+
+    # phones: Facebook and Instagram open the device share sheet with the page address, Threads stays a plain link
+    SHARE = "window.__shared = []; navigator.share = (d) => { window.__shared.push(d); return Promise.resolve(); };"
+    b3, pg3, _, errs3 = run(pw, (200, OK), init=SHARE)
+    pg3.wait_for_selector("#screen-result:not([hidden])")
+    for m in ["facebook", "instagram"]:
+        pg3.click(f"#screen-result [data-share='{m}']"); pg3.wait_for_timeout(150)
+        assert len(pg3.context.pages) == 1, m + " opened a tab instead of the share sheet"
+    shared = pg3.evaluate("window.__shared")
+    assert len(shared) == 2 and all(d["url"] == "https://readmyspread.com/read/" and d["text"] for d in shared), shared
+    with pg3.context.expect_page() as popup:
+        pg3.click("#screen-result [data-share='threads']")
+    popup.value.close()
+    assert len(pg3.evaluate("window.__shared")) == 2, "Threads should stay a plain link"
+    assert not errs3, errs3; b3.close()
+    # closing the sheet does nothing: no tab, no note
+    CANCEL = "navigator.share = () => Promise.reject(new DOMException('cancelled', 'AbortError'));"
+    b4, pg4, _, errs4 = run(pw, (200, OK), init=CANCEL)
+    pg4.wait_for_selector("#screen-result:not([hidden])")
+    pg4.click("#screen-result [data-share='facebook']"); pg4.wait_for_timeout(200)
+    assert len(pg4.context.pages) == 1 and not pg4.is_visible("#screen-result .sharebar__note")
+    assert not errs4, errs4; b4.close()
 print("ui tests passed")
