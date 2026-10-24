@@ -168,12 +168,14 @@ Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower
 - **Loading screen:** 5rem avatar inside a 10.5rem ring of three card backs (2rem wide), which turns slowly. Decorative, so `aria-hidden`.
 - **Reading screen:** `.reader` panel above the reading: 4.5rem avatar, "Prefer to listen?", one line of support, then the audio button.
 
-**Audio version.** Offered on every finished reading except the care screen. It uses the browser's own speech (`speechSynthesis`), so nothing is recorded, uploaded or stored and no new service is involved. The panel stays hidden where the browser cannot speak.
+**Audio version.** Offered on every finished reading except the care screen. The voice is a female ElevenLabs voice (Lily, warm and calm, British English; ElevenLabs has no stock Australian female voice). The browser sends each part of the reading to `/api/speak` (`functions/api/speak.js`), which holds the ElevenLabs key and returns the audio. Nothing is recorded or stored by readmyspread, and the privacy page says the reading text goes to ElevenLabs. If the voice service can't be reached or isn't set up, the device's own voice (`speechSynthesis`) reads it instead. The panel is shown wherever either can play.
 - **Button:** one `.btn--secondary`, full width, 48px, speaker icon. Label "Listen to this reading", then "Stop listening" while playing. Never gold, because the page's one primary action keeps that.
-- **Voice:** Australian English first, then other English, preferring on-device voices. Rate 0.95. Spoken text is the spread name and verdict, each card and position with its text, then the closing line.
-- **While playing:** the avatar ring pulses (`.reader--speaking`), the card being read gets a gold left rule (`.is-speaking`), and the note under the button says "Reading aloud." The status line is `aria-live="polite"`.
+- **Voice:** ElevenLabs Lily, model `eleven_flash_v2_5`, stability 0.6, speed 0.95, set in `speak.js` and overridable with `ELEVENLABS_VOICE_ID` and `ELEVENLABS_MODEL`. Fallback device voice: Australian English first, then other English, preferring on-device voices, rate 0.95. Spoken text is the spread name and verdict, each card and position with its text, then the closing line. Each part is fetched as its own clip, and the next one loads while the current one plays. The audio element is unlocked inside the tap so iPhone allows it.
+- **Note under the button:** "Voiced by ElevenLabs. Only the reading text is sent, and readmyspread doesn't save audio." With the device voice: "Read aloud by your device. readmyspread doesn't record or save audio." While playing: "Reading aloud."
+- **While playing:** the avatar ring pulses (`.reader--speaking`), the card being read gets a gold left rule (`.is-speaking`), and the status line is `aria-live="polite"`.
 - **Stops:** on Stop, on "Read another spread", on leaving the page.
-- **Failure:** "Audio isn't working on this device. You can still read it here."
+- **Failure:** only when neither voice can play: "Audio isn't working on this device. You can still read it here."
+- **Limits:** one request is at most 1,200 characters. With the `RATE` KV binding, 40 requests per visitor and 1,500 in total per day (`DAILY_AUDIO_PER_VISITOR`, `DAILY_AUDIO_GLOBAL`).
 - **Analytics:** GA4 `audio_started` with `spread`. Never the reading text.
 
 ## 15. Instagram profile

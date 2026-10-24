@@ -35,6 +35,7 @@ Connect this repo to a Pages project named `readmyspread` with:
 - Build output directory: `public`
 - Environment variable (secret): `mal-api-key` (`ANTHROPIC_API_KEY` also accepted)
 - Optional: `ANTHROPIC_MODEL` (default `claude-sonnet-5-5`)
+- Environment variable (secret) for the audio reader: `ELEVENLABS_API_KEY`. Optional: `ELEVENLABS_VOICE_ID` (default Lily, `pFZP5JQG7iQjIQuC4Bku`) and `ELEVENLABS_MODEL` (default `eleven_flash_v2_5`). Without the key the audio reader uses the device's own voice. See `functions/api/speak.js` and DESIGN.md section 14.
 - Optional but recommended: a KV namespace bound as `RATE` (caps readings per visitor per day and in total; see `functions/api/read.js`)
 - KV namespace `readmyspread-stats` bound as `STATS` in `wrangler.toml` for the homepage running totals (without it, `RATE` is used if bound; with neither, the strip stays hidden)
 - Custom domains: `readmyspread.com` and `www.readmyspread.com`
@@ -59,4 +60,4 @@ The reading screen has a native tip panel (`.tip` in `public/read/index.html`, s
 
 ## Local preview
 
-`cd public && python3 -m http.server 8000`, then open http://localhost:8000/. The reading API needs `wrangler pages dev public` and a `mal-api-key` in `.dev.vars`.
+`cd public && python3 -m http.server 8000`, then open http://localhost:8000/. The reading API needs `wrangler pages dev public` and a `mal-api-key` (plus `ELEVENLABS_API_KEY` for the audio voice) in `.dev.vars`.

@@ -6,6 +6,7 @@
 Needs: playwright with Chromium. Screenshots go to .scratch/shots (git-ignored).
 """
 import json
+import struct
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
@@ -25,13 +26,29 @@ OK = {"status": "ok", "needs_care": False, "spread": {"name": "Three-card spread
               {"card": "The Tower, reversed", "position": "Future", "text": "A change is being resisted or delayed, and the pressure is likely to build until it is faced."}],
  "close": "What would you let go of first?"}
 
-def run(pw, reply, shot=None, init=None):
+def wav(ms=120, rate=8000):
+    """A tiny silent WAV, so the page has real audio to play without a network call."""
+    n = rate * ms // 1000
+    return b"RIFF" + struct.pack("<I", 36 + n) + b"WAVEfmt " + struct.pack("<IHHIIHH", 16, 1, 1, rate, rate, 1, 8) + b"data" + struct.pack("<I", n) + b"\x80" * n
+
+def real(errs):
+    """Console errors minus the browser's note about the expected 503 from an unconfigured /api/speak."""
+    return [e for e in errs if "status of 503" not in e]
+
+NO_VOICE = (503, "application/json", b'{"error":"not_configured"}')  # /api/speak not set up: the page falls back to the device voice
+
+def run(pw, reply, shot=None, init=None, speak=NO_VOICE):
     b = pw.chromium.launch(); ctx = b.new_context(viewport={"width": 390, "height": 844})
     if init: ctx.add_init_script(init)
     pg = ctx.new_page()
     errs = []; pg.on("console", lambda m: errs.append(m.text) if m.type == "error" else None)
     pg.on("pageerror", lambda e: errs.append(str(e)))
-    sent = {}
+    sent = {"speak": []}
+    def handle_speak(route):
+        sent["speak"].append(json.loads(route.request.post_data)["text"])
+        status, ctype, body = speak
+        route.fulfill(status=status, content_type=ctype, body=body)
+    pg.route("**/api/speak", handle_speak)
     def handle(route):
         sent["body"] = json.loads(route.request.post_data)
         status, body = reply
@@ -124,11 +141,32 @@ with sync_playwright() as pw:
     c0 = pg.evaluate("window.__cancelled"); btn.click(); pg.wait_for_timeout(100)
     assert pg.evaluate("window.__cancelled") > c0 and "Listen to this reading" in btn.inner_text() and pg.locator(".is-speaking").count() == 0
     n = len(pg.evaluate("window.__spoken")); pg.wait_for_timeout(300); assert len(pg.evaluate("window.__spoken")) == n, "kept speaking after stop"
-    assert not errs, errs; b.close()
-    # browsers that cannot speak do not see the offer
+    assert not real(errs), errs; b.close()
+    # ElevenLabs voice: each part is fetched in order from /api/speak, played, and the device voice stays quiet
+    b, pg, sent, errs = run(pw, (200, OK), init=SPEECH, speak=(200, "audio/wav", wav()))
+    pg.wait_for_selector("#screen-result:not([hidden])")
+    btn = pg.locator("#btn-listen"); btn.click(); pg.wait_for_timeout(250)
+    assert "Stop listening" in btn.inner_text() and pg.locator(".is-speaking").count() == 1
+    assert "Reading aloud" in pg.inner_text("#listen-note")
+    pg.wait_for_function("document.getElementById('listen-label').textContent === 'Listen to this reading'", timeout=8000)
+    assert sent["speak"][0].startswith("Three-card spread. A spread about loss") and sent["speak"][-1] == "What would you let go of first?"
+    assert any(t.startswith("The Moon, Present.") for t in sent["speak"]) and len(sent["speak"]) == 5, sent["speak"]
+    assert pg.evaluate("window.__spoken.length") == 0, "device voice should stay quiet when the voice service works"
+    assert "Voiced by ElevenLabs" in pg.inner_text("#listen-note") and pg.locator(".is-speaking").count() == 0
+    # stop mid-reading ends playback and asks for nothing further
+    btn.click(); pg.wait_for_timeout(100); btn.click(); pg.wait_for_timeout(100)
+    n = len(sent["speak"]); pg.wait_for_timeout(600); assert len(sent["speak"]) == n, "kept fetching after stop"
+    assert "Listen to this reading" in btn.inner_text() and not real(errs), errs; b.close()
+    # the voice service is not set up and the device cannot speak: the offer shows, and says so plainly when tapped
     b, pg, _, errs = run(pw, (200, OK), init="delete window.speechSynthesis;")
+    pg.wait_for_selector("#screen-result:not([hidden])"); assert pg.is_visible("#reader") and pg.is_visible("#res-reading")
+    pg.click("#btn-listen"); pg.wait_for_timeout(400)
+    assert "Audio isn't working" in pg.inner_text("#listen-note") and "Listen to this reading" in pg.inner_text("#btn-listen")
+    b.close()
+    # no audio support at all: no offer
+    b, pg, _, errs = run(pw, (200, OK), init="delete window.speechSynthesis; window.Audio = undefined;")
     pg.wait_for_selector("#screen-result:not([hidden])"); assert not pg.is_visible("#reader") and pg.is_visible("#res-reading")
-    assert not errs, errs; b.close()
+    assert not real(errs), errs; b.close()
     # care screen never offers audio
     b, pg, _, _ = run(pw, (200, {"status": "ok", "needs_care": True, "verdict": "Let's put the cards down."}), init=SPEECH)
     pg.wait_for_selector("#screen-result:not([hidden])"); assert not pg.is_visible("#reader"); b.close()

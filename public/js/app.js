@@ -1,7 +1,7 @@
 // readmyspread front end. No dependencies, no storage, no tracking.
 // Photos are resized in the browser, sent to /api/read, and never saved.
 
-import { canSpeak, speak, stop as stopSpeech } from "/js/audio.js?v=20261017";
+import { canSpeak, speak, stop as stopSpeech } from "/js/audio.js?v=20261024";
 
 const $ = (id) => document.getElementById(id);
 
@@ -226,7 +226,7 @@ function render(data) {
   void reading.offsetWidth; // restart the reveal
   reading.classList.add("reading-reveal");
 
-  // Offer the reading as audio where the browser can speak it.
+  // Offer the reading as audio (ElevenLabs voice, or the device voice as a fallback).
   setListening(false);
   $("reader").hidden = !canSpeak() || script.length === 0;
 
@@ -236,7 +236,8 @@ function render(data) {
 
 // ---------- Audio version ----------
 
-const LISTEN_NOTE = "Read aloud by your device. readmyspread doesn't record or save audio.";
+const LISTEN_NOTE = "Voiced by ElevenLabs. Only the reading text is sent, and readmyspread doesn't save audio.";
+const DEVICE_NOTE = "Read aloud by your device. readmyspread doesn't record or save audio.";
 let script = []; // [{ text, el }] for the reading on screen
 let listening = false;
 
@@ -262,7 +263,7 @@ function toggleListening() {
   setListening(true);
   speak(script, {
     onItem: mark,
-    onEnd: (failed) => setListening(false, failed ? "Audio isn't working on this device. You can still read it here." : LISTEN_NOTE)
+    onEnd: (failed, usedDevice) => setListening(false, failed ? "Audio isn't working on this device. You can still read it here." : usedDevice ? DEVICE_NOTE : LISTEN_NOTE)
   });
 }
 
