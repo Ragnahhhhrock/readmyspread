@@ -15,6 +15,7 @@ let current = null; // device utterance, kept so the browser doesn't collect it 
 let player = null; // the one audio element for the voice service
 let playerUrl = null;
 let controller = null;
+let serviceDown = false; // /api/speak isn't set up or failed: go straight to the device voice, inside the tap
 
 export function canSpeak() {
   return streaming || device;
@@ -40,6 +41,16 @@ function chunk(text, max = 220) {
   }
   if (line.trim()) out.push(line.trim());
   return out;
+}
+
+// Phones only let speech start from a tap. A silent utterance inside the tap unlocks it,
+// so the device voice still works after the voice service has been tried.
+function prime() {
+  try {
+    const u = new SpeechSynthesisUtterance(" ");
+    u.volume = 0;
+    speechSynthesis.speak(u);
+  } catch {}
 }
 
 function speakOnDevice(items, from, id, { onItem, onEnd }) {
@@ -106,7 +117,8 @@ export function speak(items, hooks) {
   const { onItem, onEnd } = hooks;
   stop();
   const id = session;
-  if (!streaming) return speakOnDevice(items, 0, id, hooks);
+  if (device) prime(); // unlock the device voice inside the tap, in case we fall back to it later
+  if (!streaming || serviceDown) return speakOnDevice(items, 0, id, hooks);
 
   const audio = new Audio();
   audio.preload = "auto";
@@ -125,6 +137,7 @@ export function speak(items, hooks) {
 
   const fallBack = (from) => {
     if (id !== session) return;
+    serviceDown = true;
     dropClips();
     release();
     speakOnDevice(items, from, id, hooks);

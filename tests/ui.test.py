@@ -112,7 +112,7 @@ with sync_playwright() as pw:
     window.__spoken = []; window.__cancelled = 0; window.__delay = 30;
     const synth = {
       getVoices: () => [{ lang: 'en-US', localService: true, name: 'US' }, { lang: 'en-AU', localService: true, name: 'AU' }],
-      speak(u) { window.__spoken.push({ text: u.text, lang: u.lang, voice: u.voice && u.voice.lang }); setTimeout(() => u.onend && u.onend({}), window.__delay); },
+      speak(u) { if (!u.text.trim()) return; /* the silent unlock utterance */ window.__spoken.push({ text: u.text, lang: u.lang, voice: u.voice && u.voice.lang }); setTimeout(() => u.onend && u.onend({}), window.__delay); },
       cancel() { window.__cancelled++; }
     };
     Object.defineProperty(window, 'speechSynthesis', { value: synth, configurable: true });
