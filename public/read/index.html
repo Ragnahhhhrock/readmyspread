@@ -20,12 +20,12 @@
 
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261024c">
-  <link rel="stylesheet" href="/css/components.css?v=20261024c">
-  <link rel="stylesheet" href="/css/app.css?v=20261024c">
-  <script type="module" src="/js/app.js?v=20261024c"></script>
-  <script defer src="/js/analytics.js?v=20261024c"></script>
-  <script defer src="/js/share.js?v=20261024c"></script>
+  <link rel="stylesheet" href="/css/tokens.css?v=20261024d">
+  <link rel="stylesheet" href="/css/components.css?v=20261024d">
+  <link rel="stylesheet" href="/css/app.css?v=20261024d">
+  <script type="module" src="/js/app.js?v=20261024d"></script>
+  <script defer src="/js/analytics.js?v=20261024d"></script>
+  <script defer src="/js/share.js?v=20261024d"></script>
 </head>
 <body>
   <div class="wrap app">
@@ -95,6 +95,14 @@
             <h2 class="display-italic" tabindex="-1" style="font-size:var(--step-2)">Reading your tarot spread</h2>
             <p class="muted small" id="loading-line" aria-live="polite">Looking over your layout.</p>
           </div>
+          <div class="progress" id="loading-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Step 1 of 4: Looking over your layout.">
+            <div class="progress__track"><div class="progress__fill" id="loading-fill"></div></div>
+            <p class="progress__step" id="loading-step" aria-hidden="true">Step 1 of 4</p>
+          </div>
+          <button class="btn btn--secondary btn--music js-music" type="button" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+            <span class="js-music-label">Pause calming music</span>
+          </button>
         </div>
       </section>
 
@@ -130,6 +138,13 @@
             </button>
             <p class="reader__note" id="listen-note" role="status" aria-live="polite">Voiced by ElevenLabs. Only the reading text is sent, and readmyspread doesn't save audio.</p>
           </section>
+          <div class="music" id="res-music">
+            <button class="btn btn--secondary btn--music js-music" type="button" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+              <span class="js-music-label">Pause calming music</span>
+            </button>
+            <p class="reader__note">Calm ambient music, made on your device while you read.</p>
+          </div>
           <article class="reading stack-lg" id="res-reading" aria-label="Your reading"></article>
           <section class="sharebar" aria-labelledby="share-title-result" data-share-url="https://readmyspread.com/read/" data-share-text="I had my tarot spread read plainly on readmyspread.">
             <h2 class="sharebar__title" id="share-title-result">Share readmyspread</h2>

@@ -13,8 +13,8 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261024c">
-  <link rel="stylesheet" href="/css/components.css?v=20261024c">
+  <link rel="stylesheet" href="/css/tokens.css?v=20261024d">
+  <link rel="stylesheet" href="/css/components.css?v=20261024d">
   <style>
     .sg { max-width: 56rem; margin-inline: auto; padding: var(--s-6) var(--gutter) var(--s-8); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
     .sg section { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-5); }
@@ -42,8 +42,8 @@
     @media (min-width: 40rem) { .dos { grid-template-columns: 1fr 1fr; } }
     .dos ul { margin: var(--s-2) 0 0; padding-left: 1.2em; display: grid; gap: var(--s-2); color: var(--mist); }
   </style>
-  <script defer src="/js/analytics.js?v=20261024c"></script>
-  <script defer src="/js/share.js?v=20261024c"></script>
+  <script defer src="/js/analytics.js?v=20261024d"></script>
+  <script defer src="/js/share.js?v=20261024d"></script>
 </head>
 <body>
   <main class="sg">
@@ -186,6 +186,19 @@
         </button>
         <p class="reader__note">Voiced by ElevenLabs. Only the reading text is sent, and readmyspread doesn't save audio.</p>
       </section>
+
+      <h3>Progress bar and calming music</h3>
+      <p class="muted small">The progress bar sits on the loading screen under the reading line: a 0.75rem nebula track with a line border, a gold fill, and a "Step 1 of 4" caption. It eases toward the end while the reading is made and fills when it arrives. The calming music is original ambient sound made in the browser. Its toggle is one secondary button, 48px tall and full width on mobile, never gold. The music drops while the reading is read aloud and stops when the person leaves the reading.</p>
+      <div class="loading" style="justify-items:start;text-align:left;padding-inline:0">
+        <div class="progress" role="progressbar" aria-label="Reading progress example" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="Step 3 of 4: Reading the positions.">
+          <div class="progress__track"><div class="progress__fill" style="--p:0.5"></div></div>
+          <p class="progress__step" aria-hidden="true">Step 3 of 4</p>
+        </div>
+        <button class="btn btn--secondary btn--music" type="button" style="max-width:20rem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+          <span>Pause calming music</span>
+        </button>
+      </div>
 
       <h3>Share bar</h3>
       <p class="muted small">On every page, including reading results. Threads, Facebook and Instagram only, as secondary buttons: stacked and full width on mobile, three across from 40rem. Each is a 48px tap target. Never a second primary button.</p>

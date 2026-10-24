@@ -1,7 +1,8 @@
 // readmyspread front end. No dependencies, no storage, no tracking.
 // Photos are resized in the browser, sent to /api/read, and never saved.
 
-import { canSpeak, speak, stop as stopSpeech } from "/js/audio.js?v=20261024c";
+import { canSpeak, speak, stop as stopSpeech } from "/js/audio.js?v=20261024d";
+import { canPlayMusic, startMusic, stopMusic, duckMusic } from "/js/music.js?v=20261024d";
 
 const $ = (id) => document.getElementById(id);
 
@@ -47,6 +48,7 @@ function showError(kind) {
   const [title, body] = ERRORS[kind] || ERRORS.server;
   $("error-title").textContent = title;
   $("error-body").textContent = body;
+  endMusic();
   show("error");
 }
 
@@ -112,19 +114,66 @@ async function onPicked(input) {
 
 // ---------- Reading ----------
 
+// The reading has no real progress signal, so the bar eases toward 94% over the four stages
+// and jumps to 100% when the reading arrives. It never runs backwards or stalls at 100%.
+const PROGRESS_MAX = 94;
+const PROGRESS_PACE = 15000; // ms: about two thirds of the way after this long
+let loadingStart = 0;
+
+function setProgress(percent, stage) {
+  $("loading-fill").style.setProperty("--p", String(percent / 100));
+  const bar = $("loading-progress");
+  bar.setAttribute("aria-valuenow", String(Math.round(percent)));
+  bar.setAttribute("aria-valuetext", `Step ${stage + 1} of ${LOADING_LINES.length}: ${LOADING_LINES[stage]}`);
+  $("loading-step").textContent = `Step ${stage + 1} of ${LOADING_LINES.length}`;
+}
+
+function tickLoading() {
+  const percent = PROGRESS_MAX * (1 - Math.exp(-(Date.now() - loadingStart) / PROGRESS_PACE));
+  const stage = Math.min(LOADING_LINES.length - 1, Math.floor(percent / (PROGRESS_MAX / LOADING_LINES.length)));
+  $("loading-line").textContent = LOADING_LINES[stage];
+  setProgress(percent, stage);
+}
+
 function startLoading() {
   show("loading");
-  let i = 0;
-  $("loading-line").textContent = LOADING_LINES[0];
-  loadingTimer = setInterval(() => {
-    i = (i + 1) % LOADING_LINES.length;
-    $("loading-line").textContent = LOADING_LINES[i];
-  }, 3200);
+  loadingStart = Date.now();
+  tickLoading();
+  loadingTimer = setInterval(tickLoading, 250);
 }
 
 function stopLoading() {
   clearInterval(loadingTimer);
   loadingTimer = null;
+}
+
+// Fill the bar, then let the person see it finish before the reading appears.
+function finishLoading() {
+  const last = LOADING_LINES.length - 1;
+  $("loading-line").textContent = LOADING_LINES[last];
+  setProgress(100, last);
+  return new Promise((resolve) => setTimeout(resolve, 450));
+}
+
+// ---------- Calming music ----------
+
+let musicWanted = true; // the person's choice for this visit; nothing is stored
+
+function syncMusic() {
+  for (const btn of document.querySelectorAll(".js-music")) {
+    btn.hidden = !canPlayMusic();
+    btn.querySelector(".js-music-label").textContent = musicWanted ? "Pause calming music" : "Play calming music";
+  }
+}
+
+function endMusic() {
+  stopMusic();
+}
+
+function toggleMusic() {
+  musicWanted = !musicWanted;
+  if (musicWanted) startMusic(); else stopMusic();
+  syncMusic();
 }
 
 function track(name, params) {
@@ -134,6 +183,8 @@ function track(name, params) {
 async function read() {
   if (!photo) return;
   track("image_submitted", { has_question: $("question").value.trim() ? 1 : 0 });
+  if (musicWanted) startMusic(); // inside the tap, so phones allow the sound
+  syncMusic();
   startLoading();
   controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 70000);
@@ -153,6 +204,7 @@ async function read() {
     }
     if (!res.ok) return track("reading_failed", { reason: "server" }), showError("server");
     const data = await res.json();
+    await finishLoading();
     render(data);
   } catch (err) {
     stopLoading();
@@ -172,6 +224,7 @@ function render(data) {
   const body = $("res-body");
 
   if (data.needs_care) {
+    endMusic();
     care.hidden = false;
     $("res-care-msg").textContent = data.verdict || "Let's put the cards down for a moment. You matter more than the reading.";
     body.hidden = true;
@@ -248,6 +301,7 @@ function mark(index) {
 
 function setListening(on, note = LISTEN_NOTE) {
   listening = on;
+  duckMusic(on);
   $("reader").classList.toggle("reader--speaking", on);
   $("listen-label").textContent = on ? "Stop listening" : "Listen to this reading";
   $("listen-note").textContent = on ? "Reading aloud." : note;
@@ -281,6 +335,7 @@ function reset() {
   stopLoading();
   stopSpeech();
   setListening(false);
+  endMusic();
   if (photo) URL.revokeObjectURL(photo.objectUrl);
   photo = null;
   setQuestion("");
@@ -305,6 +360,8 @@ $("btn-again").addEventListener("click", reset);
 $("btn-error-retry").addEventListener("click", reset);
 $("btn-care-again").addEventListener("click", reset);
 $("btn-listen").addEventListener("click", toggleListening);
-window.addEventListener("pagehide", stopSpeech);
+for (const btn of document.querySelectorAll(".js-music")) btn.addEventListener("click", toggleMusic);
+window.addEventListener("pagehide", () => { stopSpeech(); stopMusic({ immediate: true }); });
+syncMusic();
 
 show("home", false);

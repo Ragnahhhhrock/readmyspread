@@ -11,7 +11,7 @@ readmyspread reads tarot card spreads from a photo. The look is a tarot theme on
 2. **Legible first.** Every text pairing meets WCAG AA. Touch targets are at least 48px.
 3. **Tarot is always named and always shown.** Public copy, titles and share images say "tarot" or "tarot spread", and the art uses cards, suits and card backs rather than star signs, so nobody has to guess what the site does.
 4. **One source of truth.** Tokens live in `public/css/tokens.css`. Change them there and nowhere else.
-5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file. A second change on the same day adds a letter (`?v=20261010e`). `js/audio.js` is imported by `js/app.js` with the same version.
+5. **Bump the asset version.** CSS and JS links carry `?v=YYYYMMDD`. Change it on every page and in `scripts/build-learn.py` whenever a stylesheet or script changes, so phones fetch the new file. A second change on the same day adds a letter (`?v=20261010e`). `js/audio.js` and `js/music.js` are imported by `js/app.js` with the same version.
 6. **Mobile first.** Design and check at 390px wide before anything wider. Every control is a tap target of at least 48px and reads without zooming.
 
 ## 2. Colour (tokens in `public/css/tokens.css`)
@@ -216,3 +216,18 @@ Running totals on the homepage, directly under the hero: **Tarot readings given*
 - **What counts:** a reading counts when it is shown (status ok, not the care screen, not no-cards or unreadable). Questions answered counts those with a set question. Cards identified adds the cards named in each. Only the three totals are kept, in the `STATS` KV namespace (falls back to `RATE`), never the photo, question, reading or anything about the visitor.
 - **Updates:** `/api/read` adds to the totals after each reading. The page fetches `/api/stats` on load, then every 60 seconds while visible and again when the tab comes back; changed numbers count up over 900ms (instant under `prefers-reduced-motion`). **On page load** the stats wait until the band is 40% on screen, then each rises 0.75rem and fades in (480ms reveal, site curve) while its number counts up from zero over 1400ms, ease-out, staggered 150ms left to right; no motion under `prefers-reduced-motion`. KV is eventually consistent, so a new reading can take about a minute to appear.
 - **Hidden** without JavaScript, when the binding is missing, or until there is at least one reading, so it never shows a zero.
+
+## 18. Progress bar and calming music (`.progress` and `.btn--music` in `components.css`, `public/js/music.js`)
+
+**Progress bar.** On the loading screen, under the reading line, so a reading that takes a while never looks stuck.
+- **Look:** a 0.75rem track in nebula with a 1px `--line` border (so the edge meets 3:1 on night), 8px radius, max 20rem wide and centred. The fill is gold: the loading screen has no primary action, so gold is free here. A mist step--1 caption under it reads "Step 1 of 4" to "Step 4 of 4", matching the four loading lines.
+- **Behaviour:** the reading has no real progress signal, so the fill eases toward 94% (about two thirds of the way after 15 seconds), never runs backwards, and jumps to 100% when the reading arrives. The result shows 450ms later so the finish is seen. The fill moves with `transform: scaleX()` over 400ms on the site curve.
+- **Accessibility:** `role="progressbar"` with `aria-valuenow` and an `aria-valuetext` of "Step 2 of 4: Identifying each card." The existing polite live line announces each stage; the bar itself is not live, so it doesn't chatter.
+- **Reduced motion:** the fill still updates but without the transition.
+
+**Calming music.** Plays while a reading is made and while it is on screen, and stops on "Read another spread", on an error, on the care screen and when the page is left.
+- **Source:** original and synthesised in the browser with the Web Audio API (`music.js`). A slow, breathing pad of five sine and triangle voices through a gently moving low-pass filter and a soft echo, drifting through four chords in D major (Dmaj9, Bm7/D, Gmaj9, A add4) every 22 seconds. No samples, no licensed audio, no network request, nothing stored.
+- **Level:** master 0.2, fades in over 2.5s and out over 1.2s. While the audio version reads the reading aloud, the music drops to 35% so the voice stays clear.
+- **Start:** inside the "Read my cards" tap, because phones only allow sound after a tap. It is on by default for the visit; the choice is kept in memory only, never stored.
+- **Toggle:** one `.btn--secondary.btn--music` with a music note icon, 48px tall and full width (max 20rem on the loading screen). Label "Pause calming music" or "Play calming music". Never gold. It appears on the loading screen and above the reading, with the note "Calm ambient music, made on your device while you read." It is hidden where the device has no Web Audio.
+- **Background:** the music pauses when the tab is hidden and resumes when it returns.

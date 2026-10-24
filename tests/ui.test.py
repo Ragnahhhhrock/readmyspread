@@ -171,6 +171,54 @@ with sync_playwright() as pw:
     b, pg, _, _ = run(pw, (200, {"status": "ok", "needs_care": True, "verdict": "Let's put the cards down."}), init=SPEECH)
     pg.wait_for_selector("#screen-result:not([hidden])"); assert not pg.is_visible("#reader"); b.close()
 
+    # progress bar and calming music (DESIGN.md section 18): the reading takes a moment, so the bar and the music toggle show on the loading screen
+    SLOW = "const f = window.fetch.bind(window); window.fetch = (u, o) => String(u).includes('/api/read') ? new Promise((r) => setTimeout(r, 1800)).then(() => f(u, o)) : f(u, o);"
+    MUSIC = SLOW + """
+    window.__music = { resumed: 0, suspended: 0 };
+    const AC = window.AudioContext;
+    const resume = AC.prototype.resume, suspend = AC.prototype.suspend;
+    AC.prototype.resume = function () { window.__music.resumed++; return resume.call(this); };
+    AC.prototype.suspend = function () { window.__music.suspended++; return suspend.call(this); };
+    """
+    b, pg, _, errs = run(pw, (200, OK), init=MUSIC)
+    assert pg.is_visible("#screen-loading"), "loading screen should show while the reading is made"
+    bar = pg.locator("#loading-progress")
+    assert bar.get_attribute("role") == "progressbar" and bar.get_attribute("aria-valuemin") == "0" and bar.get_attribute("aria-valuemax") == "100"
+    first = int(bar.get_attribute("aria-valuenow"))
+    assert 1 <= first < 94, first
+    assert "Step" in pg.inner_text("#loading-step") and ": " in bar.get_attribute("aria-valuetext")
+    assert pg.locator("#loading-progress .progress__track").bounding_box()["height"] >= 10
+    assert pg.evaluate("document.documentElement.scrollWidth") == 390
+    music = pg.locator("#screen-loading .js-music")
+    assert music.is_visible() and music.bounding_box()["height"] >= 47.5, "music toggle needs a 48px tap target"
+    assert "btn--secondary" in music.get_attribute("class") and "btn--primary" not in music.get_attribute("class")
+    assert "Pause calming music" in music.inner_text()
+    assert pg.evaluate("window.__music.resumed") >= 1, "music should start inside the Read my cards tap"
+    pg.screenshot(path=str(SHOTS / "loading-progress.png"), full_page=True)
+    pg.wait_for_timeout(600); assert int(bar.get_attribute("aria-valuenow")) > first, "bar should keep moving"
+    pg.wait_for_selector("#screen-result:not([hidden])", timeout=8000)
+    assert bar.get_attribute("aria-valuenow") == "100", "bar should finish before the reading shows"
+    toggle = pg.locator("#res-music .js-music")
+    assert toggle.is_visible() and toggle.bounding_box()["height"] >= 47.5 and "Pause calming music" in toggle.inner_text()
+    pg.screenshot(path=str(SHOTS / "ok-result-music.png"), full_page=True)
+    toggle.click(); pg.wait_for_timeout(2000)
+    assert "Play calming music" in toggle.inner_text() and pg.evaluate("window.__music.suspended") >= 1, "pausing should fade out and suspend"
+    r = pg.evaluate("window.__music.resumed"); toggle.click(); pg.wait_for_timeout(200)
+    assert "Pause calming music" in toggle.inner_text() and pg.evaluate("window.__music.resumed") > r, "playing again should resume"
+    pg.click("#btn-again"); pg.wait_for_timeout(2000)
+    assert pg.is_visible("#screen-home") and pg.evaluate("window.__music.suspended") >= 2, "music should stop when the reader starts again"
+    assert not errs, errs; b.close()
+    # the care screen never plays music
+    b, pg, _, errs = run(pw, (200, {"status": "ok", "needs_care": True, "verdict": "Let's put the cards down."}), init=MUSIC)
+    pg.wait_for_selector("#screen-result:not([hidden])", timeout=8000); pg.wait_for_timeout(2000)
+    assert pg.evaluate("window.__music.suspended") >= 1 and not pg.is_visible("#res-music"), "no music on the care screen"
+    assert not errs, errs; b.close()
+    # no Web Audio: no music toggle, and the reading still works
+    b, pg, _, errs = run(pw, (200, OK), init="delete window.AudioContext; delete window.webkitAudioContext;")
+    pg.wait_for_selector("#screen-result:not([hidden])", timeout=8000)
+    assert pg.locator(".js-music:visible").count() == 0 and pg.is_visible("#res-reading")
+    assert not errs, errs; b.close()
+
     # share bars: every page has Threads, Facebook and Instagram, no Telegram, 48px taps, no overflow on mobile
     PAGES = ["/", "/read/", "/privacy/", "/style-guide/", "/about-tarot/", "/learn-tarot/", "/learn-tarot/what-is-a-tarot-spread/"] + \
         ["/learn-tarot/category/" + c + "/" for c in ["tarot-basics", "tarot-spreads", "tarot-history", "reading-tips", "major-arcana", "minor-arcana"]]
