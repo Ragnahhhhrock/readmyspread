@@ -58,4 +58,9 @@ assert.equal((await onRequestPost({ request: mk({ text: "Two." }), env: capped }
 assert.equal((await onRequestPost({ request: mk({ text: "Three." }), env: capped })).status, 429);
 assert.ok([...RATE.m.keys()].every((k) => !k.includes("unknown") || k.startsWith("ag:")), "visitor key is hashed");
 
+// the CSP must allow blob: media, or the browser refuses to play the audio it just downloaded
+import { readFileSync } from "node:fs";
+const csp = readFileSync(new URL("../public/_headers", import.meta.url), "utf8").match(/Content-Security-Policy: (.*)/)[1];
+assert.match(csp, /media-src [^;]*'self'[^;]*blob:/, "media-src must allow blob:");
+
 console.log("speak tests passed");

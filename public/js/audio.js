@@ -6,9 +6,18 @@
 const device = typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
 const streaming = typeof window !== "undefined" && typeof Audio !== "undefined" && typeof fetch === "function";
 
-// A one-sample silent WAV. Playing it inside the tap unlocks the audio element on iPhone,
+// A one-sample silent WAV (turned into a blob: URL when used, because the site's CSP allows media from 'self' and blob: only). Playing it inside the tap unlocks the audio element on iPhone,
 // so the voice can start after the network round trip.
-const SILENT = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=";
+const SILENT_WAV = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=";
+
+let silent = null;
+function silentUrl() {
+  if (!silent) {
+    const bin = atob(SILENT_WAV.split(",")[1]);
+    silent = URL.createObjectURL(new Blob([Uint8Array.from(bin, (c) => c.charCodeAt(0))], { type: "audio/wav" }));
+  }
+  return silent;
+}
 
 let session = 0;
 let current = null; // device utterance, kept so the browser doesn't collect it mid-speech
@@ -122,7 +131,7 @@ export function speak(items, hooks) {
 
   const audio = new Audio();
   audio.preload = "auto";
-  audio.src = SILENT;
+  audio.src = silentUrl();
   audio.play().catch(() => {}); // unlocks the element on iPhone; the real clip replaces it
   player = audio;
   controller = new AbortController();
