@@ -36,7 +36,7 @@ jobs:
       - name: Install tools
         run: |
           sudo apt-get update -y && sudo apt-get install -y ffmpeg
-          pip install numpy scipy pillow playwright requests
+          pip install numpy scipy pillow playwright requests piper-tts
           playwright install --with-deps chromium
 
       - name: Release articles that are due
@@ -44,8 +44,6 @@ jobs:
 
       - name: Build videos for published articles that have none
         env:
-          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-          ELEVENLABS_VOICE_ID: ${{ vars.ELEVENLABS_VOICE_ID }}
         run: python3 scripts/build-article-video.py --live --missing --limit "${{ inputs.limit || 3 }}"
 
       - name: Embed the videos in their articles

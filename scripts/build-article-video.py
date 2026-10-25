@@ -2,11 +2,11 @@
 
     python3 scripts/build-article-video.py --live --missing            # every published article that has no video yet
     python3 scripts/build-article-video.py the-one-card-tarot-spread   # one article, rebuilt
-    options: --limit N  --voice auto|elevenlabs|endpoint|none  --now ISO  --keep-frames
+    options: --limit N  --voice local|none  --now ISO  --keep-frames
 
 For each article it:
   1. writes the script (scripts/video_story.py), from the article's own text;
-  2. voices each scene with the ElevenLabs voice the site already uses (Lily, the same settings as functions/api/speak.js);
+  2. voices each scene with a free, offline text-to-speech voice (Piper, en_GB Jenny; no account or API key);
   3. times every scene to its voiceover, renders the scene (scripts/explainer/article-scene.html) frame by frame in
      headless Chromium at 1080 x 1920, and mixes the voice over a quiet original bed (scripts/explainer/bed.py);
   4. writes, from that one render:
@@ -17,9 +17,7 @@ For each article it:
      public/assets/video/social/<slug>.mp4      9:16, 1080 x 1920, for Instagram Reels, TikTok and YouTube Shorts
      content/learn-tarot/videos/<slug>.json     script, timings and file names (read by build-learn.py and post-social.py)
 
-Voice: ELEVENLABS_API_KEY (and optionally ELEVENLABS_VOICE_ID, ELEVENLABS_MODEL) calls ElevenLabs directly. Without a key it
-falls back to the site's own /api/speak, which holds the same key (it has daily caps, so a large backlog is built over
-several runs: the run stops cleanly when the endpoint says it is busy and the next run carries on). --voice none renders
+Voice: Piper (pip install piper-tts), the model is fetched once into .scratch/piper. --voice none renders
 with music only and estimated timings, for layout checks.
 
 Only articles whose publish time has passed are built, so nothing scheduled ever reaches public/.
@@ -65,9 +63,10 @@ LEAD = {"hook": 1.2, "point": 0.6, "cta": 0.7}
 TAIL = {"hook": 0.7, "point": 0.7, "cta": 2.6}
 SITE = "https://readmyspread.com"
 
-DEFAULT_VOICE_ID = "pFZP5JQG7iQjIQuC4Bku"   # Lily, as functions/api/speak.js
-DEFAULT_MODEL = "eleven_flash_v2_5"
-VOICE_SETTINGS = {"stability": 0.6, "similarity_boost": 0.75, "style": 0, "use_speaker_boost": True, "speed": 0.95}
+PIPER_VOICE = "en_GB-jenny_dioco-medium"
+PIPER_URL = "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_GB/jenny_dioco/medium"
+PIPER_DIR = ROOT / ".scratch" / "piper"
+LENGTH_SCALE = 1.08                # a little slower than the default, easier to follow
 
 
 class Busy(Exception):
@@ -80,35 +79,34 @@ def run(cmd, **kw):
 
 # ----------------------------------------------------------------------------------------------------------------- voice
 def voice_mode(requested):
-    if requested != "auto":
-        return requested
-    return "elevenlabs" if os.environ.get("ELEVENLABS_API_KEY") else "endpoint"
+    return requested
+
+
+def voice_model():
+    """Fetches (once) the Piper voice used for every video and returns the path of its .onnx file."""
+    onnx = PIPER_DIR / f"{PIPER_VOICE}.onnx"
+    for f in (onnx.name, onnx.name + ".json"):
+        dest = PIPER_DIR / f
+        if not dest.exists() or dest.stat().st_size < 1000:
+            PIPER_DIR.mkdir(parents=True, exist_ok=True)
+            r = requests.get(f"{PIPER_URL}/{f}", timeout=300)
+            if r.status_code != 200:
+                raise SystemExit(f"could not fetch the voice file {f}: {r.status_code}")
+            dest.write_bytes(r.content)
+    return onnx
 
 
 def clip_for(text, mode):
-    """Returns the path of an mp3 for `text`, from the cache or the voice service."""
-    voice = os.environ.get("ELEVENLABS_VOICE_ID") or DEFAULT_VOICE_ID
-    model = os.environ.get("ELEVENLABS_MODEL") or DEFAULT_MODEL
-    key = hashlib.sha1(f"{text}|{voice}|{model}|{json.dumps(VOICE_SETTINGS, sort_keys=True)}".encode()).hexdigest()[:20]
+    """Returns the path of a wav for `text`, from the cache or the local Piper voice (no account, key or network call per clip)."""
+    key = hashlib.sha1(f"{text}|{PIPER_VOICE}|{LENGTH_SCALE}".encode()).hexdigest()[:20]
     SCRATCH.mkdir(parents=True, exist_ok=True)
-    path = SCRATCH / f"{key}.mp3"
+    path = SCRATCH / f"{key}.wav"
     if path.exists() and path.stat().st_size > 500:
         return path
-    if mode == "elevenlabs":
-        r = requests.post(
-            f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128",
-            headers={"xi-api-key": os.environ["ELEVENLABS_API_KEY"], "content-type": "application/json", "accept": "audio/mpeg"},
-            json={"text": text, "model_id": model, "voice_settings": VOICE_SETTINGS}, timeout=90)
-        if r.status_code == 429:
-            raise Busy("ElevenLabs rate limit")
-    else:
-        r = requests.post(f"{SITE}/api/speak", json={"text": text},
-                          headers={"user-agent": "readmyspread-video/1.0", "content-type": "application/json"}, timeout=90)
-        if r.status_code in (429, 503):
-            raise Busy(f"/api/speak says {r.status_code}")
-    if r.status_code != 200 or len(r.content) < 500:
-        raise SystemExit(f"voice request failed: {r.status_code} {r.text[:200]}")
-    path.write_bytes(r.content)
+    run([sys.executable, "-m", "piper", "-m", str(voice_model()), "-f", str(path), "--length-scale", str(LENGTH_SCALE)],
+        input=text.encode(), capture_output=True)
+    if not path.exists() or path.stat().st_size < 500:
+        raise SystemExit("the voice produced no audio")
     return path
 
 
@@ -119,7 +117,7 @@ def duration_of(path):
 
 
 def decode(path):
-    """mp3 to mono float32 at 48 kHz."""
+    """audio to mono float32 at 48 kHz."""
     raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"],
                          capture_output=True, check=True).stdout
     return np.frombuffer(raw, dtype=np.float32)
@@ -300,7 +298,7 @@ def build(slug, mode, keep_frames=False):
         "poster": f"/assets/video/learn/{slug}.jpg",
         "captions": f"/assets/video/learn/{slug}.vtt",
         "social": f"/assets/video/social/{slug}.mp4",
-        "voice": "none" if mode == "none" else "ElevenLabs",
+        "voice": "none" if mode == "none" else "Piper (en_GB Jenny)",
         "thumbnail_ms": int((scenes[0]["start"] + 3.2) * 1000),
     }
     (STORIES / f"{slug}.json").write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
@@ -313,7 +311,7 @@ def main():
     ap.add_argument("--live", action="store_true", help="all published articles")
     ap.add_argument("--missing", action="store_true", help="only those without a video yet")
     ap.add_argument("--limit", type=int, default=0, help="build at most N articles in this run")
-    ap.add_argument("--voice", default="auto", choices=["auto", "elevenlabs", "endpoint", "none"])
+    ap.add_argument("--voice", default="local", choices=["local", "none"])
     ap.add_argument("--now", help="ISO time to treat as now")
     ap.add_argument("--keep-frames", action="store_true")
     args = ap.parse_args()

@@ -1,0 +1,66 @@
+{
+  "slug": "what-is-a-tarot-spread",
+  "title": "What is a tarot spread?",
+  "category": "Tarot basics",
+  "description": "A tarot spread is a layout where each card position has its own meaning. Learn how spreads work and how they differ from a single draw.",
+  "figure": "what-is-a-tarot-spread-positions.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "What is a tarot spread?",
+      "caption": "A tarot spread is a set of cards laid out in a pattern, where each position in the pattern asks its own question.",
+      "vo": "A tarot spread is a set of cards laid out in a pattern, where each position in the pattern asks its own question.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 8.305,
+      "end": 9.005
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Cards, positions and a question",
+      "caption": "A tarot spread has three parts. There are the cards themselves, which come from a 78-card deck.",
+      "vo": "Cards, positions and a question. A tarot spread has three parts. There are the cards themselves, which come from a 78-card deck.",
+      "visual": "figure",
+      "start": 9.005,
+      "voStart": 9.605,
+      "voEnd": 17.616,
+      "end": 18.316
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "How a spread differs from a single draw",
+      "caption": "Drawing one card is the simplest way to use tarot. You ask a question, turn over a card and think about what it suggests.",
+      "vo": "How a spread differs from a single draw. Drawing one card is the simplest way to use tarot. You ask a question, turn over a card and think about what it suggests.",
+      "visual": "backs",
+      "start": 18.316,
+      "voStart": 18.916,
+      "voEnd": 28.97,
+      "end": 29.67
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 29.67,
+      "voStart": 30.37,
+      "voEnd": 37.266,
+      "end": 39.866
+    }
+  ],
+  "locked": false,
+  "duration": 39.866,
+  "video": {
+    "seconds": 40,
+    "embed": "/assets/video/learn/what-is-a-tarot-spread.mp4",
+    "poster": "/assets/video/learn/what-is-a-tarot-spread.jpg",
+    "captions": "/assets/video/learn/what-is-a-tarot-spread.vtt",
+    "social": "/assets/video/social/what-is-a-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
