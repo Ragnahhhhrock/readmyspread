@@ -1,0 +1,66 @@
+{
+  "slug": "how-to-read-a-tarot-spread-step-by-step",
+  "title": "How to read a tarot spread, step by step",
+  "category": "Reading tips",
+  "description": "A four-step method for reading any tarot spread: set the question, check the positions, read each card, then read the whole tarot spread together.",
+  "figure": "how-to-read-a-tarot-spread-step-by-step-steps.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "How to read a tarot spread, step by step",
+      "caption": "Read a tarot spread in a set order, one step at a time, and even a large layout stays manageable.",
+      "vo": "Read a tarot spread in a set order, one step at a time, and even a large layout stays manageable.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 7.876,
+      "end": 8.576
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Step 1: start with the question",
+      "caption": "Before you turn a card, decide what you want to think about.",
+      "vo": "Step one: start with the question. Before you turn a card, decide what you want to think about.",
+      "visual": "figure",
+      "start": 8.576,
+      "voStart": 9.176,
+      "voEnd": 14.609,
+      "end": 15.309
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Step 2: check the positions",
+      "caption": "Look at the layout before you look at the pictures. Each position has a job. In a three-card spread, the positions might be past, present and next.",
+      "vo": "Step two: check the positions. Look at the layout before you look at the pictures. Each position has a job. In a three-card spread, the positions might be past, present and next.",
+      "visual": "backs",
+      "start": 15.309,
+      "voStart": 15.909,
+      "voEnd": 25.986,
+      "end": 26.686
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 26.686,
+      "voStart": 27.386,
+      "voEnd": 34.41,
+      "end": 37.01
+    }
+  ],
+  "locked": false,
+  "duration": 37.01,
+  "video": {
+    "seconds": 37,
+    "embed": "/assets/video/learn/how-to-read-a-tarot-spread-step-by-step.mp4",
+    "poster": "/assets/video/learn/how-to-read-a-tarot-spread-step-by-step.jpg",
+    "captions": "/assets/video/learn/how-to-read-a-tarot-spread-step-by-step.vtt",
+    "social": "/assets/video/social/how-to-read-a-tarot-spread-step-by-step.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}

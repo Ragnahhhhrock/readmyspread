@@ -1,0 +1,66 @@
+{
+  "slug": "a-short-history-of-tarot-where-the-cards-came-from",
+  "title": "A short history of tarot: where the cards came from",
+  "category": "Tarot history",
+  "description": "How tarot grew from a fifteenth-century Italian card game into the deck used for tarot spread readings, from Visconti-Sforza to Rider-Waite-Smith.",
+  "figure": "a-short-history-of-tarot-where-the-cards-came-from-timeline.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "A short history of tarot: where the cards came from",
+      "caption": "Tarot began as a card game in northern Italy. Its use for reading came centuries later.",
+      "vo": "Tarot began as a card game in northern Italy. Its use for reading came centuries later.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 6.459,
+      "end": 7.159
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "A card game in northern Italy, 1440s",
+      "caption": "The earliest known tarot cards were made in northern Italy in the 1440s, in cities including Milan, Ferrara and Florence.",
+      "vo": "A card game in northern Italy, 1440s. The earliest known tarot cards were made in northern Italy in the 1440s, in cities including Milan, Ferrara and Florence.",
+      "visual": "figure",
+      "start": 7.159,
+      "voStart": 7.759,
+      "voEnd": 21.854,
+      "end": 22.554
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "From trionfi to tarocchi, 1500s to 1700s",
+      "caption": "By the early 1500s the name tarocchi was in use, and the game spread across Italy and into France and central Europe.",
+      "vo": "From trionfi to tarocchi, 1500s to 1700s. By the early 1500s the name tarocchi was in use, and the game spread across Italy and into France and central Europe.",
+      "visual": "backs",
+      "start": 22.554,
+      "voStart": 23.154,
+      "voEnd": 37.516,
+      "end": 38.216
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 38.216,
+      "voStart": 38.916,
+      "voEnd": 45.94,
+      "end": 48.54
+    }
+  ],
+  "locked": false,
+  "duration": 48.54,
+  "video": {
+    "seconds": 49,
+    "embed": "/assets/video/learn/a-short-history-of-tarot-where-the-cards-came-from.mp4",
+    "poster": "/assets/video/learn/a-short-history-of-tarot-where-the-cards-came-from.jpg",
+    "captions": "/assets/video/learn/a-short-history-of-tarot-where-the-cards-came-from.vtt",
+    "social": "/assets/video/social/a-short-history-of-tarot-where-the-cards-came-from.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}

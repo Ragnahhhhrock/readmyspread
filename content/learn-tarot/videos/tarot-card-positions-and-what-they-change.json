@@ -1,0 +1,66 @@
+{
+  "slug": "tarot-card-positions-and-what-they-change",
+  "title": "Tarot card positions and what they change",
+  "category": "Tarot basics",
+  "description": "In a tarot spread, each position asks its own question. See how the same card changes meaning from past to present to advice, and how to read by position.",
+  "figure": "tarot-card-positions-and-what-they-change-same-card.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Tarot card positions and what they change",
+      "caption": "Where a card lands in a tarot spread decides which question it answers, so the same card can read differently each time.",
+      "vo": "Where a card lands in a tarot spread decides which question it answers, so the same card can read differently each time.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.025,
+      "end": 9.725
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "What a position is",
+      "caption": "A position is a named place in a spread. A three-card spread might have positions called past, present and next.",
+      "vo": "What a position is. A position is a named place in a spread. A three-card spread might have positions called past, present and next.",
+      "visual": "figure",
+      "start": 9.725,
+      "voStart": 10.325,
+      "voEnd": 18.603,
+      "end": 19.303
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "One card, three positions",
+      "caption": "Take the Three of Swords, a card showing a heart pierced by three blades. Its general sense is sorrow or a painful truth.",
+      "vo": "One card, three positions. Take the Three of Swords, a card showing a heart pierced by three blades. Its general sense is sorrow or a painful truth.",
+      "visual": "backs",
+      "start": 19.303,
+      "voStart": 19.903,
+      "voEnd": 29.168,
+      "end": 29.868
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 29.868,
+      "voStart": 30.568,
+      "voEnd": 37.592,
+      "end": 40.192
+    }
+  ],
+  "locked": false,
+  "duration": 40.192,
+  "video": {
+    "seconds": 40,
+    "embed": "/assets/video/learn/tarot-card-positions-and-what-they-change.mp4",
+    "poster": "/assets/video/learn/tarot-card-positions-and-what-they-change.jpg",
+    "captions": "/assets/video/learn/tarot-card-positions-and-what-they-change.vtt",
+    "social": "/assets/video/social/tarot-card-positions-and-what-they-change.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
