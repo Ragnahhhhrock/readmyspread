@@ -1,0 +1,66 @@
+{
+  "slug": "the-three-card-tarot-spread",
+  "title": "The three-card tarot spread",
+  "category": "Tarot spreads",
+  "description": "How the three-card tarot spread works: past, present, next and situation, action, outcome, with a method for reading the story across the cards.",
+  "figure": "the-three-card-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The three-card tarot spread",
+      "caption": "The three-card tarot spread is a flexible layout that can tell a story over time or frame a choice. Here are two ways to read it.",
+      "vo": "The three-card tarot spread is a flexible layout that can tell a story over time or frame a choice. Here are two ways to read it.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.466,
+      "end": 10.166
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "The classic frame: past, present, next",
+      "caption": "The most familiar version reads left to right. Card 1 is the past, card 2 is the present and card 3 is what comes next.",
+      "vo": "The classic frame: past, present, next. The most familiar version reads left to right. Card 1 is the past, card 2 is the present and card 3 is what comes next.",
+      "visual": "figure",
+      "start": 10.166,
+      "voStart": 10.766,
+      "voEnd": 20.843,
+      "end": 21.543
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "A second frame: situation, action, outcome",
+      "caption": "The same three places can ask different questions.",
+      "vo": "A second frame: situation, action, outcome. The same three places can ask different questions.",
+      "visual": "backs",
+      "start": 21.543,
+      "voStart": 22.143,
+      "voEnd": 28.18,
+      "end": 28.88
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 28.88,
+      "voStart": 29.58,
+      "voEnd": 36.732,
+      "end": 39.332
+    }
+  ],
+  "locked": false,
+  "duration": 39.332,
+  "video": {
+    "seconds": 39,
+    "embed": "/assets/video/learn/the-three-card-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-three-card-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-three-card-tarot-spread.vtt",
+    "social": "/assets/video/social/the-three-card-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}

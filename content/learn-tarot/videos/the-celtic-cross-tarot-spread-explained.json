@@ -1,0 +1,66 @@
+{
+  "slug": "the-celtic-cross-tarot-spread-explained",
+  "title": "The Celtic Cross tarot spread explained",
+  "category": "Tarot spreads",
+  "description": "The Celtic Cross tarot spread explained: its ten cards, the cross and the staff, how the two halves work and when this spread suits a question.",
+  "figure": "the-celtic-cross-tarot-spread-explained-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The Celtic Cross tarot spread explained",
+      "caption": "The Celtic Cross is a ten-card tarot spread that looks at one situation from many sides. Here is how the cross and the staff fit together.",
+      "vo": "The Celtic Cross is a ten-card tarot spread that looks at one situation from many sides. Here is how the cross and the staff fit together.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.966,
+      "end": 10.666
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "The shape of the spread",
+      "caption": "The layout has two parts. Six cards form a cross on the left. Four cards form a vertical staff on the right.",
+      "vo": "The shape of the spread. The layout has two parts. Six cards form a cross on the left. Four cards form a vertical staff on the right.",
+      "visual": "figure",
+      "start": 10.666,
+      "voStart": 11.266,
+      "voEnd": 19.01,
+      "end": 19.71
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "What the two halves do",
+      "caption": "A helpful way to think about it: the cross describes the situation, and the staff describes you and what surrounds you.",
+      "vo": "What the two halves do. A helpful way to think about it: the cross describes the situation, and the staff describes you and what surrounds you.",
+      "visual": "backs",
+      "start": 19.71,
+      "voStart": 20.31,
+      "voEnd": 29.017,
+      "end": 29.717
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 29.717,
+      "voStart": 30.417,
+      "voEnd": 37.569,
+      "end": 40.169
+    }
+  ],
+  "locked": false,
+  "duration": 40.169,
+  "video": {
+    "seconds": 40,
+    "embed": "/assets/video/learn/the-celtic-cross-tarot-spread-explained.mp4",
+    "poster": "/assets/video/learn/the-celtic-cross-tarot-spread-explained.jpg",
+    "captions": "/assets/video/learn/the-celtic-cross-tarot-spread-explained.vtt",
+    "social": "/assets/video/social/the-celtic-cross-tarot-spread-explained.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "slug": "celtic-cross-tarot-spread-positions-one-by-one",
+  "title": "Celtic Cross tarot spread positions, one by one",
+  "category": "Tarot spreads",
+  "description": "What each of the ten Celtic Cross tarot spread positions asks, from the heart of the matter to the outcome, with practical reading tips.",
+  "figure": "celtic-cross-tarot-spread-positions-one-by-one-numbered.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Celtic Cross tarot spread positions, one by one",
+      "caption": "Each of the ten Celtic Cross positions asks a different question. This guide goes through them in order, with a tip for each.",
+      "vo": "Each of the ten Celtic Cross positions asks a different question. This guide goes through them in order, with a tip for each.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 8.526,
+      "end": 9.226
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "The cross: cards 1 to 6",
+      "caption": "The centre card names what the situation is really about. Read it as the core theme, not the whole story.",
+      "vo": "The cross: cards 1 to 6. The centre card names what the situation is really about. Read it as the core theme, not the whole story.",
+      "visual": "figure",
+      "start": 9.226,
+      "voStart": 9.826,
+      "voEnd": 17.721,
+      "end": 18.421
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "The staff: cards 7 to 10",
+      "caption": "The bottom card of the staff is about how you are meeting the situation: your attitude, stance or habits.",
+      "vo": "The staff: cards 7 to 10. The bottom card of the staff is about how you are meeting the situation: your attitude, stance or habits.",
+      "visual": "backs",
+      "start": 18.421,
+      "voStart": 19.021,
+      "voEnd": 27.043,
+      "end": 27.743
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 27.743,
+      "voStart": 28.443,
+      "voEnd": 35.595,
+      "end": 38.195
+    }
+  ],
+  "locked": false,
+  "duration": 38.195,
+  "video": {
+    "seconds": 38,
+    "embed": "/assets/video/learn/celtic-cross-tarot-spread-positions-one-by-one.mp4",
+    "poster": "/assets/video/learn/celtic-cross-tarot-spread-positions-one-by-one.jpg",
+    "captions": "/assets/video/learn/celtic-cross-tarot-spread-positions-one-by-one.vtt",
+    "social": "/assets/video/social/celtic-cross-tarot-spread-positions-one-by-one.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
