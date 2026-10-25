@@ -1,0 +1,66 @@
+{
+  "slug": "major-and-minor-arcana-in-tarot-explained",
+  "title": "Major and minor arcana in tarot, explained",
+  "category": "Tarot basics",
+  "description": "The 78 tarot cards explained: 22 major arcana for big themes and 56 minor arcana in four suits, and how each group reads in a tarot spread.",
+  "figure": "major-and-minor-arcana-in-tarot-explained-arcana.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Major and minor arcana in tarot, explained",
+      "caption": "A tarot deck has 78 cards: 22 major arcana for big themes and 56 minor arcana for everyday life.",
+      "vo": "A tarot deck has 78 cards: 22 major arcana for big themes and 56 minor arcana for everyday life.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.966,
+      "end": 10.666
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "The major arcana: 22 cards",
+      "caption": "The major arcana are 22 cards numbered from 0 to 21. They begin with The Fool, numbered 0, and end with The World, numbered 21.",
+      "vo": "The major arcana: 22 cards. The major arcana are 22 cards numbered from 0 to 21. They begin with The Fool, numbered 0, and end with The World, numbered 21.",
+      "visual": "figure",
+      "start": 10.666,
+      "voStart": 11.266,
+      "voEnd": 23.41,
+      "end": 24.11
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "The minor arcana: 56 cards",
+      "caption": "The minor arcana are the 56 cards that look most like a regular playing deck.",
+      "vo": "The minor arcana: 56 cards. The minor arcana are the 56 cards that look most like a regular playing deck.",
+      "visual": "backs",
+      "start": 24.11,
+      "voStart": 24.71,
+      "voEnd": 33.023,
+      "end": 33.723
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 33.723,
+      "voStart": 34.423,
+      "voEnd": 41.54,
+      "end": 44.14
+    }
+  ],
+  "locked": false,
+  "duration": 44.14,
+  "video": {
+    "seconds": 44,
+    "embed": "/assets/video/learn/major-and-minor-arcana-in-tarot-explained.mp4",
+    "poster": "/assets/video/learn/major-and-minor-arcana-in-tarot-explained.jpg",
+    "captions": "/assets/video/learn/major-and-minor-arcana-in-tarot-explained.vtt",
+    "social": "/assets/video/social/major-and-minor-arcana-in-tarot-explained.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}

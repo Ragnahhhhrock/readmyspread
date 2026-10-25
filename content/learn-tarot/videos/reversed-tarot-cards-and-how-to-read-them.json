@@ -1,0 +1,66 @@
+{
+  "slug": "reversed-tarot-cards-and-how-to-read-them",
+  "title": "Reversed tarot cards and how to read them",
+  "category": "Tarot basics",
+  "description": "Reversed tarot cards explained: what upright and reversed mean, three ways to read a reversed card in a tarot spread, and when to skip reversals.",
+  "figure": "reversed-tarot-cards-and-how-to-read-them-upright-reversed.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Reversed tarot cards and how to read them",
+      "caption": "A reversed card is one that lands upside down in your tarot spread. You can read it as a twist on the card's theme, or leave reversals out entirely.",
+      "vo": "A reversed card is one that lands upside down in your tarot spread. You can read it as a twist on the card's theme, or leave reversals out entirely.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.664,
+      "end": 10.364
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Upright and reversed",
+      "caption": "A card is upright when it faces you the right way up as you read it, and reversed when it is turned the other way.",
+      "vo": "Upright and reversed. A card is upright when it faces you the right way up as you read it, and reversed when it is turned the other way.",
+      "visual": "figure",
+      "start": 10.364,
+      "voStart": 10.964,
+      "voEnd": 18.487,
+      "end": 19.187
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Three ways to read a reversed card",
+      "caption": "There is no single rule, and different readers handle reversals differently. Here are the three approaches you will meet most often.",
+      "vo": "Three ways to read a reversed card. There is no single rule, and different readers handle reversals differently. Here are the three approaches you will meet most often.",
+      "visual": "backs",
+      "start": 19.187,
+      "voStart": 19.787,
+      "voEnd": 28.785,
+      "end": 29.485
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 29.485,
+      "voStart": 30.185,
+      "voEnd": 37.302,
+      "end": 39.902
+    }
+  ],
+  "locked": false,
+  "duration": 39.902,
+  "video": {
+    "seconds": 40,
+    "embed": "/assets/video/learn/reversed-tarot-cards-and-how-to-read-them.mp4",
+    "poster": "/assets/video/learn/reversed-tarot-cards-and-how-to-read-them.jpg",
+    "captions": "/assets/video/learn/reversed-tarot-cards-and-how-to-read-them.vtt",
+    "social": "/assets/video/social/reversed-tarot-cards-and-how-to-read-them.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}

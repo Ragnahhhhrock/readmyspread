@@ -1,0 +1,66 @@
+{
+  "slug": "the-one-card-tarot-spread",
+  "title": "The one-card tarot spread",
+  "category": "Tarot spreads",
+  "description": "How the one-card tarot spread works: how to lay it out, which questions suit it, a worked example, and when a single card is enough.",
+  "figure": "the-one-card-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The one-card tarot spread",
+      "caption": "The one-card tarot spread is one question and one card. It is the quickest way to start reading tarot.",
+      "vo": "The one-card tarot spread is one question and one card. It is the quickest way to start reading tarot.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 7.562,
+      "end": 8.262
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "How the one-card spread works",
+      "caption": "You shuffle the deck while holding a question in mind, then turn over a single card. The card's position is the question itself, so there is nothing else to remember.",
+      "vo": "How the one-card spread works. You shuffle the deck while holding a question in mind, then turn over a single card. The card's position is the question itself, so there is nothing else to remember.",
+      "visual": "figure",
+      "start": 8.262,
+      "voStart": 8.862,
+      "voEnd": 19.926,
+      "end": 20.626
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "How to lay it out",
+      "caption": "Choose a question, shuffle, draw one card, then read it.",
+      "vo": "How to lay it out. Choose a question, shuffle, draw one card, then read it.",
+      "visual": "backs",
+      "start": 20.626,
+      "voStart": 21.226,
+      "voEnd": 26.067,
+      "end": 26.767
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 26.767,
+      "voStart": 27.467,
+      "voEnd": 34.584,
+      "end": 37.184
+    }
+  ],
+  "locked": false,
+  "duration": 37.184,
+  "video": {
+    "seconds": 37,
+    "embed": "/assets/video/learn/the-one-card-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-one-card-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-one-card-tarot-spread.vtt",
+    "social": "/assets/video/social/the-one-card-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
