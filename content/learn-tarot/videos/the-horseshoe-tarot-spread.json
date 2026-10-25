@@ -1,0 +1,66 @@
+{
+  "slug": "the-horseshoe-tarot-spread",
+  "title": "The horseshoe tarot spread",
+  "category": "Tarot spreads",
+  "description": "How the seven-card horseshoe tarot spread works: its positions from past to likely outcome, a worked example and tips for reading the arch.",
+  "figure": "the-horseshoe-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The horseshoe tarot spread",
+      "caption": "The horseshoe tarot spread arranges seven cards in an arch. It looks at the past, the present, hidden influences, you, others, advice and a likely direction.",
+      "vo": "The horseshoe tarot spread arranges seven cards in an arch. It looks at the past, the present, hidden influences, you, others, advice and a likely direction.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 11.15,
+      "end": 11.85
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "The seven positions",
+      "caption": "Cards are laid from left to right along the arch, so the first card sits at the lower left and the seventh at the lower right.",
+      "vo": "The seven positions. Cards are laid from left to right along the arch, so the first card sits at the lower left and the seventh at the lower right.",
+      "visual": "figure",
+      "start": 11.85,
+      "voStart": 12.45,
+      "voEnd": 21.61,
+      "end": 22.31
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "How the arch reads",
+      "caption": "The shape helps with interpretation. The first two cards set the scene.",
+      "vo": "How the arch reads. The shape helps with interpretation. The first two cards set the scene.",
+      "visual": "backs",
+      "start": 22.31,
+      "voStart": 22.91,
+      "voEnd": 28.123,
+      "end": 28.823
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 28.823,
+      "voStart": 29.523,
+      "voEnd": 36.849,
+      "end": 39.449
+    }
+  ],
+  "locked": false,
+  "duration": 39.449,
+  "video": {
+    "seconds": 39,
+    "embed": "/assets/video/learn/the-horseshoe-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-horseshoe-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-horseshoe-tarot-spread.vtt",
+    "social": "/assets/video/social/the-horseshoe-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}

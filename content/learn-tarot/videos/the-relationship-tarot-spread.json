@@ -1,0 +1,66 @@
+{
+  "slug": "the-relationship-tarot-spread",
+  "title": "The relationship tarot spread",
+  "category": "Tarot spreads",
+  "description": "How the seven-card relationship tarot spread works for partners, family, friends or colleagues, with each position explained and tips for balanced reading.",
+  "figure": "the-relationship-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The relationship tarot spread",
+      "caption": "The relationship tarot spread uses seven cards to look at two people and the connection between them. It suits any kind of relationship, not just romantic ones.",
+      "vo": "The relationship tarot spread uses seven cards to look at two people and the connection between them. It suits any kind of relationship, not just romantic ones.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 10.743,
+      "end": 11.443
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "The seven positions",
+      "caption": "You, the other person, the connection between you, what brings you together, then what is challenging.",
+      "vo": "The seven positions. You, the other person, the connection between you, what brings you together, then what is challenging.",
+      "visual": "figure",
+      "start": 11.443,
+      "voStart": 12.043,
+      "voEnd": 19.206,
+      "end": 19.906
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "The layout",
+      "caption": "Card 1 sits on the left and card 2 on the right, facing each other. Card 3 goes in the centre between them.",
+      "vo": "The layout. Card 1 sits on the left and card 2 on the right, facing each other. Card 3 goes in the centre between them.",
+      "visual": "backs",
+      "start": 19.906,
+      "voStart": 20.506,
+      "voEnd": 28.099,
+      "end": 28.799
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 28.799,
+      "voStart": 29.499,
+      "voEnd": 36.825,
+      "end": 39.425
+    }
+  ],
+  "locked": false,
+  "duration": 39.425,
+  "video": {
+    "seconds": 39,
+    "embed": "/assets/video/learn/the-relationship-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-relationship-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-relationship-tarot-spread.vtt",
+    "social": "/assets/video/social/the-relationship-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "slug": "the-fool-to-the-hierophant-tarot-card-meanings",
+  "title": "The Fool to the Hierophant: tarot card meanings",
+  "category": "Major arcana",
+  "description": "Tarot card meanings for The Fool, The Magician, The High Priestess, The Empress, The Emperor and The Hierophant, upright and reversed.",
+  "figure": "the-fool-to-the-hierophant-tarot-card-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The Fool to the Hierophant: tarot card meanings",
+      "caption": "The first six major arcana cards, from The Fool to The Hierophant, with upright meanings and a short note on reversals.",
+      "vo": "The first six major arcana cards, from The Fool to The Hierophant, with upright meanings and a short note on reversals.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.176,
+      "end": 9.876
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 4,
+      "headline": "The Fool",
+      "caption": "Keywords: new beginnings, trust, openness, risk. The Fool stands at the start, number zero, about to step forward.",
+      "vo": "The Fool stands for new beginnings, trust, openness and risk.",
+      "visual": "figure",
+      "start": 9.876,
+      "voStart": 10.476,
+      "voEnd": 14.574,
+      "end": 15.274
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 4,
+      "headline": "The Magician",
+      "caption": "Keywords: skill, focus, resourcefulness, action. The Magician has what is needed on the table in front of them.",
+      "vo": "The Magician stands for skill, focus, resourcefulness and action.",
+      "visual": "backs",
+      "start": 15.274,
+      "voStart": 15.874,
+      "voEnd": 20.309,
+      "end": 21.009
+    },
+    {
+      "kind": "point",
+      "n": 3,
+      "of": 4,
+      "headline": "The High Priestess",
+      "caption": "Keywords: intuition, stillness, the unspoken, inner knowing. This card invites you to listen before acting and to notice what is not being said.",
+      "vo": "The High Priestess stands for intuition, stillness, the unspoken and inner knowing.",
+      "visual": "faces",
+      "start": 21.009,
+      "voStart": 21.609,
+      "voEnd": 26.822,
+      "end": 27.522
+    },
+    {
+      "kind": "point",
+      "n": 4,
+      "of": 4,
+      "headline": "The Empress",
+      "caption": "Keywords: nurture, abundance, creativity, comfort. The Empress is associated with growth, care and the senses. It often relates to creating conditions in which something can thrive.",
+      "vo": "The Empress stands for nurture, abundance, creativity and comfort.",
+      "visual": "faces",
+      "start": 27.522,
+      "voStart": 28.122,
+      "voEnd": 32.812,
+      "end": 33.512
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 33.512,
+      "voStart": 34.212,
+      "voEnd": 41.538,
+      "end": 44.138
+    }
+  ],
+  "locked": false,
+  "duration": 44.138,
+  "video": {
+    "seconds": 44,
+    "embed": "/assets/video/learn/the-fool-to-the-hierophant-tarot-card-meanings.mp4",
+    "poster": "/assets/video/learn/the-fool-to-the-hierophant-tarot-card-meanings.jpg",
+    "captions": "/assets/video/learn/the-fool-to-the-hierophant-tarot-card-meanings.vtt",
+    "social": "/assets/video/social/the-fool-to-the-hierophant-tarot-card-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
