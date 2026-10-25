@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>readmyspread article video scene</title>
+<!-- Rendered frame by frame by scripts/build-article-video.py (DESIGN.md section 19). Tokens and fonts come from the site,
+     so the video follows the design system. The stage is 9:16 (540 x 960, drawn at 2x). All text and art sit inside #safe,
+     the central 4:5 band (540 x 675), so the same render crops to 4:5 for the article page and clears the app overlays
+     that Instagram, TikTok and YouTube draw at the top and bottom of a vertical video. -->
+<link rel="stylesheet" href="../../public/css/tokens.css">
+<style>
+  html, body { margin: 0; background: var(--night); }
+  #stage {
+    position: relative; width: 540px; height: 960px; overflow: hidden;
+    font-family: var(--font-ui); color: var(--starlight);
+    background:
+      radial-gradient(620px 420px at 90% 4%, rgba(46, 56, 150, 0.55) 0%, transparent 62%),
+      radial-gradient(540px 400px at -8% 96%, rgba(70, 44, 140, 0.4) 0%, transparent 60%),
+      var(--night);
+    -webkit-font-smoothing: antialiased;
+  }
+  .abs { position: absolute; }
+  .stars { position: absolute; inset: -40px; background-size: 240px 240px; }
+  #starsA { background-image: url("../../public/assets/stars-a.svg"); }
+  #starsB { background-image: url("../../public/assets/stars-b.svg"); }
+  #wheel { left: 20px; top: 230px; width: 500px; height: 500px; }
+  #scrim { left: -60px; right: -60px; top: 330px; height: 300px; background: radial-gradient(closest-side, rgba(11,16,36,0.9), rgba(11,16,36,0.65) 58%, transparent); }
+  #safe { position: absolute; left: 0; top: 142.5px; width: 540px; height: 675px; }
+  img { display: block; }
+  .disp { font-family: var(--font-display); }
+  .eyebrow { font-size: 15px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+
+  .scene { position: absolute; inset: 0; }
+  .col { position: absolute; left: 34px; right: 34px; top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+  /* Hook */
+  .hook .col { justify-content: center; gap: 18px; padding-bottom: 12px; }
+  .hook .glow { position: absolute; left: 170px; top: 62px; width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(226,192,113,0.28), transparent); }
+  .hook svg.mark { width: 48px; height: 85px; position: relative; }
+  .hook h1 { margin: 0; font-family: var(--font-display); font-weight: 400; line-height: 1.04; text-wrap: balance; }
+  .hook .lede { margin: 6px 0 0; font-size: 22px; line-height: 1.4; color: var(--mist); text-wrap: balance; max-width: 440px; }
+  .hook .meta { margin-top: 10px; font-size: 16px; font-weight: 600; letter-spacing: 0.02em; color: var(--starlight); }
+
+  /* Point */
+  .point .col { justify-content: flex-start; padding-top: 30px; gap: 0; }
+  .point .tag { font-size: 14px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); height: 20px; }
+  .point .vis { position: relative; width: 460px; height: 250px; margin-top: 14px; flex: none; }
+  .point h2 { margin: 22px 0 0; font-family: var(--font-display); font-weight: 400; line-height: 1.06; text-wrap: balance; }
+  .point p { margin: 12px 0 0; font-size: 22px; line-height: 1.4; color: var(--mist); text-wrap: balance; }
+  .fig { position: absolute; inset: 0; overflow: hidden; border-radius: var(--r-panel); border: 1px solid var(--nebula); background: var(--dusk); }
+  .fig img { width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; }
+  .tc { position: absolute; top: 42px; width: 96px; height: 165px; perspective: 700px; }
+  .flip { position: absolute; inset: 0; transform-style: preserve-3d; }
+  .side { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .side img { width: 100%; height: 100%; filter: drop-shadow(0 10px 16px rgba(11,16,36,0.65)); }
+  .face { transform: rotateY(180deg); }
+  .suit { position: absolute; left: 155px; top: 25px; width: 150px; height: 150px; }
+  .suit img { position: absolute; left: 20px; top: 20px; width: 110px; height: 110px; }
+  .suit svg { position: absolute; inset: 0; }
+  .orbit { position: absolute; inset: 0; }
+  .orbit img { position: absolute; width: 22px; height: 38px; }
+
+  /* Call to action */
+  .cta .col { justify-content: center; gap: 0; padding-bottom: 6px; }
+  .cta .trio { position: relative; width: 340px; height: 150px; flex: none; }
+  .cta .trio .oc { position: absolute; top: 0; width: 86px; height: 148px; }
+  .cta .trio .oc img { width: 100%; height: 100%; filter: drop-shadow(0 10px 16px rgba(11,16,36,0.65)); }
+  .cta h2 { margin: 22px 0 0; font-family: var(--font-display); font-weight: 400; font-size: 42px; line-height: 1.05; text-wrap: balance; }
+  .cta p { margin: 10px 0 0; font-size: 21px; line-height: 1.4; color: var(--mist); text-wrap: balance; }
+  .cta .btn { margin-top: 24px; width: 300px; height: 60px; border-radius: var(--r-ui); background: var(--gold); color: var(--night);
+    font-size: 21px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+  .cta .url { margin-top: 18px; font-size: 24px; font-weight: 600; letter-spacing: 0.02em; color: var(--starlight); }
+  .cta .note { margin-top: 8px; font-size: 17px; color: var(--mist); }
+  .cta .fine { margin-top: 6px; font-size: 15px; color: var(--mist); }
+  #fade { inset: 0; background: var(--night); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="stars" id="starsA"></div>
+  <div class="stars" id="starsB"></div>
+  <img id="wheel" class="abs" src="../../public/assets/zodiac-wheel.svg" alt="">
+  <div id="scrim" class="abs"></div>
+  <div id="safe"></div>
+  <div id="fade" class="abs"></div>
+</div>
+
+<script>
+const MARK = '<svg class="mark" viewBox="14 0 36 64"><path class="markPath" fill="#e2c071" stroke="#e2c071" stroke-width="0.7" fill-rule="evenodd" d="M20.75 5H43.25A4.5 4.5 0 0 1 47.75 9.5V54.5A4.5 4.5 0 0 1 43.25 59H20.75A4.5 4.5 0 0 1 16.25 54.5V9.5A4.5 4.5 0 0 1 20.75 5ZM41.89 30.19A11.2 11.2 0 1 1 31.38 14.8A9.4 9.4 0 1 0 41.89 30.19ZM32 37.1L33.78 43.72L40.4 45.5L33.78 47.28L32 53.9L30.22 47.28L23.6 45.5L30.22 43.72Z"/></svg>';
+const ASSET = "../../public/assets/tarot/";
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+// The site's motion curve: cubic-bezier(0.2, 0.7, 0.2, 1)
+function bezier(x1, y1, x2, y2) {
+  const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+  const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+  return (x) => {
+    if (x <= 0) return 0; if (x >= 1) return 1;
+    let t = x;
+    for (let i = 0; i < 10; i++) {
+      const xt = ((ax * t + bx) * t + cx) * t - x;
+      const d = (3 * ax * t + 2 * bx) * t + cx;
+      if (Math.abs(xt) < 1e-6 || Math.abs(d) < 1e-6) break;
+      t = clamp(t - xt / d);
+    }
+    return ((ay * t + by) * t + cy) * t;
+  };
+}
+const E = bezier(0.2, 0.7, 0.2, 1);
+const IO = bezier(0.45, 0, 0.25, 1);
+const p = (t, a, b) => E(clamp((t - a) / (b - a)));
+const q = (t, a, b) => IO(clamp((t - a) / (b - a)));
+function S(el, o, tr) {
+  el.style.opacity = o.toFixed(4);
+  el.style.visibility = o <= 0.001 ? "hidden" : "visible";
+  if (tr !== undefined) el.style.transform = tr;
+}
+// Rise-and-fade for one element, `delay` seconds after the scene starts
+const rise = (el, t, t0, delay, dist = 16, dur = 0.7) => S(el, p(t, t0 + delay, t0 + delay + dur), `translateY(${(1 - p(t, t0 + delay, t0 + delay + dur)) * dist}px)`);
+
+// Shrinks a text block until it fits the room it has, so a long heading or line never runs off the safe area.
+function fit(el, max, min, limit) {
+  let size = max;
+  el.style.fontSize = size + "px";
+  while (el.parentElement.scrollHeight > limit && size > min) { size -= 1; el.style.fontSize = size + "px"; }
+}
+
+let STORY = null, SCENES = [];
+
+function visual(kind, story) {
+  if (kind === "figure") {
+    return `<div class="fig"><img src="../../content/learn-tarot/images/${story.figure}" alt=""></div>`;
+  }
+  if (kind.startsWith("suit:")) {
+    const suit = kind.slice(5);
+    const orbit = [0, 1, 2].map(() => `<img src="${ASSET}card-back.svg" alt="">`).join("");
+    return `<div class="suit"><svg viewBox="0 0 150 150"><circle cx="75" cy="75" r="72" fill="none" stroke="#e2c071" stroke-width="1.5" stroke-dasharray="2 7" stroke-linecap="round"/></svg><img src="${ASSET}icons/${suit}.svg" alt=""></div><div class="orbit" style="left:155px;top:25px;width:150px;height:150px">${orbit}</div>`;
+  }
+  const faces = ["card-star", "card-moon", "card-sun"];
+  return [0, 1, 2].map((i) => {
+    const face = kind === "faces" ? `<div class="side face"><img src="${ASSET}${faces[i]}.svg" alt=""></div>` : "";
+    return `<div class="tc" style="left:${74 + i * 118}px"><div class="flip"><div class="side"><img src="${ASSET}card-back.svg" alt=""></div>${face}</div></div>`;
+  }).join("");
+}
+
+window.setStory = function (story) {
+  STORY = story;
+  const safe = $("safe");
+  safe.innerHTML = "";
+  SCENES = story.scenes.map((sc, i) => {
+    const el = document.createElement("div");
+    el.className = "scene " + sc.kind;
+    let html = "";
+    if (sc.kind === "hook") {
+      const len = sc.headline.length;
+      html = `<div class="glow"></div><div class="col">${MARK}<div class="eyebrow">Learn tarot · ${esc(story.category)}</div><h1 class="t">${esc(sc.headline)}</h1><p class="lede">${esc(sc.caption)}</p></div>`;
+    } else if (sc.kind === "point") {
+      html = `<div class="col"><div class="tag">${sc.n} of ${sc.of}</div><div class="vis">${visual(sc.visual, story)}</div><h2 class="t">${esc(sc.headline)}</h2><p class="c">${esc(sc.caption)}</p></div>`;
+    } else {
+      html = `<div class="col"><div class="trio"><div class="oc" style="left:12px"><img src="${ASSET}card-star.svg" alt=""></div><div class="oc" style="left:127px"><img src="${ASSET}card-moon.svg" alt=""></div><div class="oc" style="left:242px"><img src="${ASSET}card-sun.svg" alt=""></div></div><h2>${esc(sc.headline)}</h2><p>${esc(sc.caption)}</p><div class="btn">Read my cards</div><div class="url">readmyspread.com</div><div class="note">Free. No account. Your photo isn't saved.</div><div class="fine">For entertainment only.</div></div>`;
+    }
+    el.innerHTML = html;
+    safe.appendChild(el);
+    return { sc, el, i };
+  });
+  // Fit text once the fonts are in
+  return document.fonts.ready.then(() => {
+    SCENES.forEach(({ sc, el }) => {
+      const col = el.querySelector(".col");
+      if (sc.kind === "hook") {
+        const h1 = el.querySelector("h1");
+        const max = sc.headline.length <= 26 ? 64 : sc.headline.length <= 44 ? 54 : 46;
+        h1.style.fontSize = max + "px";
+        let size = max;
+        while (col.scrollHeight > 640 && size > 30) { size -= 1; h1.style.fontSize = size + "px"; }
+        col.querySelectorAll(".markPath").forEach((m) => { m.dataset.len = m.getTotalLength(); m.style.strokeDasharray = m.dataset.len; });
+      } else if (sc.kind === "point") {
+        const h2 = el.querySelector("h2"), c = el.querySelector("p");
+        h2.style.fontSize = "40px"; c.style.fontSize = "22px";
+        let hs = 40, cs = 22;
+        while (col.scrollHeight > 650 && (hs > 28 || cs > 17)) {
+          if (hs > 28) hs -= 1;
+          if (cs > 17 && col.scrollHeight > 650 && hs <= 34) cs -= 1;
+          h2.style.fontSize = hs + "px"; c.style.fontSize = cs + "px";
+        }
+        el.querySelectorAll(".orbit img").forEach((im) => (im.style.opacity = 1));
+      }
+    });
+    return Promise.all([...document.images].map((im) => (im.decode ? im.decode().catch(() => {}) : Promise.resolve())));
+  });
+};
+
+// ---------------------------------------------------------------------------------------------------------------------
+// render(t): t in seconds. Each scene carries start and end (set by build-article-video.py from the voiceover lengths).
+window.render = function (t) {
+  const total = STORY.duration;
+  // Sky: slow drift only, so the encode stays small
+  $("starsA").style.opacity = 0.85;
+  $("starsA").style.transform = `translate(${-t * 0.5}px, ${-t * 0.2}px)`;
+  $("starsB").style.opacity = (0.55 + 0.35 * Math.sin(t * 0.9)).toFixed(3);
+  $("starsB").style.transform = `translate(${-t * 0.9}px, ${-t * 0.3}px)`;
+
+  const first = SCENES[0], last = SCENES[SCENES.length - 1];
+  // The zodiac wheel stays a faded backdrop: stronger behind the hook and the call to action, quiet behind the points
+  let wo = 0.32 * p(t, 0, 1.4);
+  wo = lerp(wo, 0.09, q(t, first.sc.end - 0.5, first.sc.end + 0.3));
+  wo = lerp(wo, 0.32, q(t, last.sc.start - 0.3, last.sc.start + 0.5));
+  S($("wheel"), wo, `rotate(${t * 2.0}deg)`);
+  const scrim = Math.max(1 - q(t, first.sc.end - 0.5, first.sc.end + 0.3), q(t, last.sc.start - 0.3, last.sc.start + 0.5));
+  S($("scrim"), scrim);
+
+  SCENES.forEach(({ sc, el }) => {
+    const a = sc.start, b = sc.end;
+    const o = (t < a - 0.01 || t > b + 0.01) ? 0 : Math.min(p(t, a, a + 0.5), 1 - q(t, b - 0.4, b));
+    // The very first scene starts fully drawn in; the last holds until the fade at the end
+    const o2 = el === first.el ? Math.min(1 - q(t, b - 0.4, b), p(t, a, a + 0.35)) : el === last.el ? Math.min(p(t, a, a + 0.5), 1) : o;
+    S(el, (t < a - 0.01 || t > b + 0.01) ? 0 : o2);
+    if (o2 <= 0.001) return;
+    const col = el.querySelector(".col");
+    const kids = [...col.children];
+    if (sc.kind === "hook") {
+      const path = el.querySelector(".markPath"), len = +path.dataset.len;
+      path.style.strokeDashoffset = (len * (1 - q(t, a + 0.15, a + 1.4))).toFixed(2);
+      path.style.fillOpacity = p(t, a + 1.0, a + 1.8).toFixed(3);
+      S(el.querySelector(".glow"), 0.4 + 0.6 * p(t, a + 0.4, a + 1.8) * (0.85 + 0.15 * Math.sin(t * 2)));
+      kids.forEach((k, i) => i > 0 && rise(k, t, a, 0.9 + (i - 1) * 0.45, 14));
+    } else if (sc.kind === "point") {
+      kids.forEach((k, i) => rise(k, t, a, i * 0.3, 16));
+      const vis = el.querySelector(".vis");
+      const dt = t - a;
+      vis.querySelectorAll(".tc").forEach((card, i) => {
+        const flip = card.querySelector(".flip");
+        const fa = 0.55 + i * 0.32;
+        const k = q(dt, fa, fa + 0.7);
+        flip.style.transform = `rotateY(${k * 180}deg)`;
+        card.style.transform = `translateY(${Math.sin(dt * 1.3 + i) * 3}px) rotate(${(i - 1) * 3}deg)`;
+      });
+      const fig = vis.querySelector(".fig img");
+      if (fig) fig.style.transform = `scale(${1 + 0.06 * clamp(dt / (b - a))})`;
+      const orbit = vis.querySelector(".orbit");
+      if (orbit) {
+        [...orbit.children].forEach((im, i) => {
+          const ang = dt * 0.9 + i * (Math.PI * 2 / 3);
+          const r = 96;
+          im.style.left = (75 + Math.cos(ang) * r - 11) + "px";
+          im.style.top = (75 + Math.sin(ang) * r - 19) + "px";
+          im.style.transform = `rotate(${ang * 57.3 + 90}deg)`;
+        });
+        S(orbit, p(t, a, a + 0.8));
+      }
+    } else {
+      const trio = el.querySelector(".trio");
+      kids.forEach((k, i) => i > 0 && rise(k, t, a, 0.5 + (i - 1) * 0.28, 14));
+      trio.querySelectorAll(".oc").forEach((c, i) => {
+        const k = p(t, a + i * 0.15, a + 0.8 + i * 0.15);
+        S(c, k, `translateY(${(1 - k) * 30}px) rotate(${(i - 1) * 6 * k}deg)`);
+      });
+      S(trio, 1);
+      // One quiet pulse on the button
+      const btn = el.querySelector(".btn");
+      btn.style.transform = `scale(${1 + 0.025 * Math.max(0, Math.sin((t - a - 2.2) * 2.4)) * (t > a + 2.2 ? 1 : 0)})`;
+    }
+  });
+  // Fade to night at the very end
+  S($("fade"), q(t, total - 0.7, total));
+};
+window.sceneReady = Promise.resolve(true);
+</script>
+</body>
+</html>

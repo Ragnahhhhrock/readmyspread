@@ -84,3 +84,6 @@
 .trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 #form-status { max-width: 36rem; }
 #form-status p { color: var(--mist); }
+
+/* ---------- Article video (DESIGN.md section 19). Uses the .explainer component from landing.css ---------- */
+.article__video { justify-self: start; }

@@ -1,0 +1,78 @@
+# Explainer video for every Learn tarot article: build, embed, publish, then queue on Instagram, TikTok and YouTube
+# through Buffer. See DESIGN.md section 19 and docs/social-automation.md for the one-time setup (repository secrets).
+name: Learn tarot videos
+
+on:
+  schedule:
+    - cron: "17 * * * *"          # hourly; does nothing when there is nothing new
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Most videos to build in this run"
+        default: "3"
+      dry_run:
+        description: "Show the Buffer posts without queuing them"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: learn-videos
+  cancel-in-progress: false
+
+jobs:
+  videos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install tools
+        run: |
+          sudo apt-get update -y && sudo apt-get install -y ffmpeg
+          pip install numpy scipy pillow playwright requests
+          playwright install --with-deps chromium
+
+      - name: Release articles that are due
+        run: python3 scripts/build-learn.py
+
+      - name: Build videos for published articles that have none
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ vars.ELEVENLABS_VOICE_ID }}
+        run: python3 scripts/build-article-video.py --live --missing --limit "${{ inputs.limit || 3 }}"
+
+      - name: Embed the videos in their articles
+        run: python3 scripts/build-learn.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "readmyspread bot"
+          git config user.email "contact@readmyspread.com"
+          git add -A public content
+          if git diff --cached --quiet; then echo "nothing to commit"; else
+            git commit -m "Add explainer videos and embed them in their Learn tarot articles"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
+      - name: Queue the videos in Buffer
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          BUFFER_ORGANIZATION_ID: ${{ vars.BUFFER_ORGANIZATION_ID }}
+        run: python3 scripts/post-social.py ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Record what was queued
+        run: |
+          git add -A content
+          if git diff --cached --quiet; then echo "nothing new queued"; else
+            git commit -m "Record Learn tarot videos queued in Buffer"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

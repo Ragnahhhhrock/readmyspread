@@ -84,13 +84,13 @@ def head(title, desc, path, *, og_type="website", og_img=DEFAULT_OG, tw_img=DEFA
 
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261024d">
-  <link rel="stylesheet" href="/css/components.css?v=20261024d">
-  <link rel="stylesheet" href="/css/landing.css?v=20261024d">
-  <link rel="stylesheet" href="/css/learn.css?v=20261024d">{ld}
-  <script defer src="/js/analytics.js?v=20261024d"></script>
-  <script defer src="/js/share.js?v=20261024d"></script>
-  <script defer src="/js/menu.js?v=20261024d"></script>{scripts}
+  <link rel="stylesheet" href="/css/tokens.css?v=20261025">
+  <link rel="stylesheet" href="/css/components.css?v=20261025">
+  <link rel="stylesheet" href="/css/landing.css?v=20261025">
+  <link rel="stylesheet" href="/css/learn.css?v=20261025">{ld}
+  <script defer src="/js/analytics.js?v=20261025"></script>
+  <script defer src="/js/share.js?v=20261025"></script>
+  <script defer src="/js/menu.js?v=20261025"></script>{scripts}
 </head>
 <body class="landing">
   <div class="sky" aria-hidden="true"></div>
@@ -169,6 +169,36 @@ def post_card(a, catname):
             f'<h2><a href="/learn-tarot/{a["slug"]}/">{e(a["title"])}</a></h2>'
             f'<p>{e(a["description"])}</p>'
             f'<p class="post__date"><time datetime="{a["publish"]}">{long_date(a["publish"])}</time></p></li>')
+
+
+def video_info(slug):
+    """The article's explainer video (DESIGN.md section 19), or None if it has not been built yet."""
+    f = CONTENT / "videos" / f"{slug}.json"
+    if not f.exists():
+        return None
+    v = json.loads(f.read_text())
+    meta = v.get("video")
+    if not meta or not (PUB / meta["embed"].lstrip("/")).exists():
+        return None
+    v["transcript"] = " ".join(sc["vo"] for sc in v["scenes"]).replace("read my spread dot com", "readmyspread.com")
+    return v
+
+
+def video_block(v, slug):
+    m = v["video"]
+    secs = m["seconds"]
+    return f"""
+    <figure class="explainer article__video" data-video-title="{slug}">
+      <div class="explainer__frame">
+        <video class="explainer__video" controls playsinline preload="none" poster="{m["poster"]}" width="720" height="900" aria-describedby="watch-desc">
+          <source src="{m["embed"]}" type="video/mp4">
+          <track kind="captions" src="{m["captions"]}" srclang="en-AU" label="English">
+          <a href="{m["embed"]}">Download the video (MP4, {secs} seconds)</a>
+        </video>
+        <button class="explainer__play" type="button" hidden aria-label="Play the video, {secs} seconds, with voiceover"><span class="explainer__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.52.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></svg></span></button>
+      </div>
+      <figcaption class="explainer__cap"><span aria-hidden="true">Watch the summary. {secs} seconds, with voiceover.</span><span class="visually-hidden" id="watch-desc">A {secs}-second video with voiceover and captions. {e(v["transcript"])}</span></figcaption>
+    </figure>"""
 
 
 def guard_links(body, live_slugs):
@@ -294,13 +324,20 @@ def main():
                   {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
                   {"@type": "ListItem", "position": 2, "name": "Learn tarot", "item": SITE + "/learn-tarot/"},
                   {"@type": "ListItem", "position": 3, "name": a["title"], "item": f"{SITE}/learn-tarot/{slug}/"}]}]
+        vid = video_info(slug)
+        if vid:
+            m = vid["video"]
+            ld.append({"@context": "https://schema.org", "@type": "VideoObject", "name": a["title"], "description": a["description"],
+                       "thumbnailUrl": SITE + m["poster"], "contentUrl": SITE + m["embed"], "uploadDate": a["publish"],
+                       "duration": f"PT{m['seconds']}S", "inLanguage": "en-AU"})
+        vscripts = f'\n  <script defer src="/js/video.js?v=20261025"></script>' if vid else ""
         cat_chips = '<ul class="chips" aria-label="Categories">' + "".join(
             f'<li><a class="chip" href="/learn-tarot/category/{c}/">{e(catname[c])}</a></li>' for c in a["categories"]) + "</ul>"
         more = [x for x in live if x["slug"] != slug and set(x["categories"]) & set(a["categories"])][:3]
         more_html = ""
         if more:
             more_html = '<section aria-labelledby="more-title" class="article__foot"><h2 id="more-title">More to read</h2><ul class="posts">' + "".join(post_card(x, catname) for x in more) + "</ul></section>"
-        page = head(a["title"], a["description"], f"/learn-tarot/{slug}/", og_type="article", og_img=og, tw_img=tw, img_alt=alt, extra=extra, jsonld=ld) + nav("learn")
+        page = head(a["title"], a["description"], f"/learn-tarot/{slug}/", og_type="article", og_img=og, tw_img=tw, img_alt=alt, extra=extra, jsonld=ld, scripts=vscripts) + nav("learn")
         page += f"""
   <main id="main" class="col learn-main">
     <article class="article">
@@ -310,7 +347,7 @@ def main():
         <h1>{e(a["title"])}</h1>
         <p class="article__lede">{e(a["lede"])}</p>
         <p class="article__meta"><span>By readmyspread</span><span><time datetime="{a["publish"]}">{long_date(a["publish"])}</time></span></p>
-      </header>
+      </header>{video_block(vid, slug) if vid else ""}
       <div class="prose">
 {body}
       </div>
@@ -371,7 +408,7 @@ def main():
           "isPartOf": {"@type": "WebSite", "name": "readmyspread", "url": SITE + "/"}}
     d = PUB / "contact"
     (d / "sent").mkdir(parents=True, exist_ok=True)
-    page = head("Contact: questions about tarot spread readings", cdesc, "/contact/", jsonld=ld, scripts='\n  <script defer src="/js/contact.js?v=20261024d"></script>') + nav("contact")
+    page = head("Contact: questions about tarot spread readings", cdesc, "/contact/", jsonld=ld, scripts='\n  <script defer src="/js/contact.js?v=20261025"></script>') + nav("contact")
     page += """
   <main id="main" class="col learn-main">
     <div class="page-head">

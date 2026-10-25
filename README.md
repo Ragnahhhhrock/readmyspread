@@ -24,6 +24,8 @@
 - Contact email: contact@readmyspread.com.
 - `public/js/share.js`, `scripts/sharebar.py`: share buttons (Threads, Facebook, Instagram) on every page. See DESIGN.md section 12.
 - `public/assets/video/`: the homepage explainer video, built by `python3 scripts/build-video.py` from `scripts/explainer/` (scene and synthesised music). See DESIGN.md section 16.
+- `scripts/build-article-video.py`, `scripts/video_story.py`, `scripts/explainer/article-scene.html`, `scripts/explainer/bed.py`: the explainer video for every Learn tarot article (4:5 for the article page in `public/assets/video/learn/`, 9:16 for social in `public/assets/video/social/`). `scripts/post-social.py` queues them on Instagram, TikTok and YouTube through Buffer. `.github/workflows/learn-videos.yml` runs it hourly. See DESIGN.md section 19 and `docs/social-automation.md`.
+- `scripts/build-youtube.py`: YouTube channel images (DESIGN.md section 20, `docs/youtube-setup.md`).
 - `scripts/build-wheel.py`: regenerates the zodiac wheel and star-field SVGs. `scripts/build-assets.py`: regenerates icons and social images.
 - `tests/`: `npm test` (API, stats and other functions), `python3 tests/ui.test.py` (browser flow with a mocked API; serve `public/` on port 8766 first).
 

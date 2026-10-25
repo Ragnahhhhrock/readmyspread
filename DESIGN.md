@@ -231,3 +231,42 @@ Running totals on the homepage, directly under the hero: **Tarot readings given*
 - **Start:** inside the "Read my cards" tap, because phones only allow sound after a tap. It is on by default for the visit; the choice is kept in memory only, never stored.
 - **Toggle:** one `.btn--secondary.btn--music` with a music note icon, 48px tall and full width (max 20rem on the loading screen). Label "Pause calming music" or "Play calming music". Never gold. It appears on the loading screen and above the reading, with the note "Calm ambient music, made on your device while you read." It is hidden where the device has no Web Audio.
 - **Background:** the music pauses when the tab is hidden and resumes when it returns.
+
+## 19. Learn tarot article videos (`public/assets/video/learn/`, `.explainer` and `.article__video`, `scripts/build-article-video.py`)
+
+Every published Learn tarot article gets a short video, made automatically from the article itself and never by hand. Run `python3 scripts/build-article-video.py --live --missing` (the GitHub workflow `learn-videos.yml` does it hourly). Outputs are rebuilt, not edited.
+
+| File | Size | Notes |
+| --- | --- | --- |
+| `assets/video/learn/<slug>.mp4` | 720 x 900 (4:5), 24 fps | The article page. H.264 + AAC, faststart, about 1.5 MB. |
+| `assets/video/learn/<slug>.jpg` | 720 x 900 | Poster, taken once the hook is fully on screen (3.2s in). |
+| `assets/video/learn/<slug>.vtt` | captions | `<track kind="captions">`, off by default because the video also carries on-screen text. |
+| `assets/video/social/<slug>.mp4` | 1080 x 1920 (9:16), 24 fps | Instagram Reels, TikTok, YouTube Shorts, queued through Buffer (`scripts/post-social.py`). |
+| `content/learn-tarot/videos/<slug>.json` | script and timings | Set `"locked": true` to stop it being regenerated and hand-edit the script. |
+
+**One render, two shapes.** The scene (`scripts/explainer/article-scene.html`) is drawn 9:16, and everything that matters sits in the central 4:5 band (540 x 675 of 540 x 960). The article video is that band cropped out, and the vertical version keeps the same band clear of the app overlays social apps draw at the top and bottom. Do not put copy outside the band.
+
+**Running order (never over 60 seconds, usually 40 to 50):** hook (card mark draws on, eyebrow "Learn tarot" and the category, the article title, the article's own lede); up to four key points (an "n of N" tag, then a 16:10 visual, the section heading and one or two sentences from that section); call to action (the three arcana cards, "Have a tarot spread in front of you?", the one gold "Read my cards", the URL, "Free. No account. Your photo isn't saved.", "For entertainment only."). The key-point visual is the article's own figure for the first point, then arcana faces flipping, card backs, or the suit icon for suit articles. Wheel faded to 32% behind the hook and call to action and 9% behind the points. No gold fills except the call to action's button.
+
+**Script.** Built by `scripts/video_story.py` from the article text only: sentences are taken from the article, never invented. Sections such as "Where to go next" are skipped, card sections read "The Lovers stands for choice, values and union", and a line that points to another article is dropped. Spoken forms: "readmyspread.com" is read "read my spread dot com", "Step 1" as "Step one", bracketed asides are removed. Captions and the VTT show the site name as written.
+
+**Voice.** The same ElevenLabs voice as the audio reader (section 14): Lily, model `eleven_flash_v2_5`, stability 0.6, speed 0.95, with `ELEVENLABS_VOICE_ID` and `ELEVENLABS_MODEL` as overrides. Each scene is voiced as its own clip, and the scene lasts as long as its clip plus a short lead and tail, so picture and voice never drift. Without `ELEVENLABS_API_KEY` the builder uses the site's `/api/speak`, which holds the same key. The voice is described as AI in every post caption, and TikTok posts are flagged as AI-generated.
+
+**Sound.** Voice at about -16 LUFS over a quiet original bed (`scripts/explainer/bed.py`: the homepage score's D major pad and bells, synthesised, ducked under the voice). No samples or licensed audio.
+
+**On the article page.** A `.explainer.article__video` figure between the article header and the text, using the homepage component (section 16): 4:5 frame, poster as one tap target with the 5rem round play button, native controls after the first tap, `preload="none"`, `playsinline`. Caption "Watch the summary. N seconds, with voiceover.", with the full transcript visually hidden and linked by `aria-describedby`. `VideoObject` JSON-LD is added to the article. GA4 `video_start` and `video_complete` carry `video_title` = the article slug (`data-video-title`). An article only shows a video once its file exists, so nothing breaks while a backlog is being built.
+
+**Only published articles.** A video is built only after its article's publish time, so scheduled articles never reach `public/`.
+
+**Social posting.** `scripts/post-social.py` queues each new vertical video on every connected channel with Buffer's next-slot queue: Instagram as a Reel, TikTok, YouTube as a Short (title `<article title> | Learn tarot #Shorts`, category Education, public). Captions follow the voice rules in section 7: the article title and description, the article link, "Narrated with an AI voice. For entertainment only.", and `#tarot #tarotspread #tarotreading #learntarot`. At most two articles a day, oldest first, tracked in `content/learn-tarot/videos/posted.json`. Setup is in `docs/social-automation.md`.
+
+## 20. YouTube channel
+
+Channel: Read my Spread - Tarot readings (https://www.youtube.com/@readmyspread; the handle is `@readmyspread` as created). Images are built by `python3 scripts/build-youtube.py` into `public/assets/youtube/` (do not edit by hand). Copy and the setup checklist are in `docs/youtube-setup.md`. The homepage footer links to the channel beside Facebook and Instagram.
+
+| File | Size | Notes |
+| --- | --- | --- |
+| `profile-800.png` | 800 x 800 | Mark only, inside the central 60% so the circular crop never clips it. |
+| `banner-2560x1440.png` | 2560 x 1440 | All copy inside the central 1546 x 423 band that phones and computers show: eyebrow, wordmark, tagline, URL. |
+
+Same tokens, fonts and voice as the site: eyebrow "Tarot spread readings", lower-case wordmark, no exclamation marks.
