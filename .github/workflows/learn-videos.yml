@@ -43,7 +43,6 @@ jobs:
         run: python3 scripts/build-learn.py
 
       - name: Build videos for published articles that have none
-        env:
         run: python3 scripts/build-article-video.py --live --missing --limit "${{ inputs.limit || 3 }}"
 
       - name: Embed the videos in their articles
