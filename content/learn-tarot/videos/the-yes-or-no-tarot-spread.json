@@ -1,0 +1,66 @@
+{
+  "slug": "the-yes-or-no-tarot-spread",
+  "title": "The yes or no tarot spread",
+  "category": "Tarot spreads",
+  "description": "How to use a yes or no tarot spread: frame the question, read three cards as a case for, a case against and a tipping point, and keep the choice yours.",
+  "figure": "the-yes-or-no-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The yes or no tarot spread",
+      "caption": "The yes or no tarot spread uses three cards to weigh a decision rather than predict it. It sets out the case for, the case against, and what might tip the balance.",
+      "vo": "The yes or no tarot spread uses three cards to weigh a decision rather than predict it. It sets out the case for, the case against, and what might tip the balance.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 11.37,
+      "end": 12.07
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "What the cards can and can't answer",
+      "caption": "Tarot has no way of knowing what will happen, so a card cannot tell you whether you will get the job or whether a plan will work out.",
+      "vo": "What the cards can and can't answer. Tarot has no way of knowing what will happen, so a card cannot tell you whether you will get the job or whether a plan will work out.",
+      "visual": "figure",
+      "start": 12.07,
+      "voStart": 12.67,
+      "voEnd": 22.167,
+      "end": 22.867
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "The three positions",
+      "caption": "The case for yes, the case against, then what tips the balance.",
+      "vo": "The three positions. The case for yes, the case against, then what tips the balance.",
+      "visual": "backs",
+      "start": 22.867,
+      "voStart": 23.467,
+      "voEnd": 28.134,
+      "end": 28.834
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 28.834,
+      "voStart": 29.534,
+      "voEnd": 36.918,
+      "end": 39.518
+    }
+  ],
+  "locked": false,
+  "duration": 39.518,
+  "video": {
+    "seconds": 40,
+    "embed": "/assets/video/learn/the-yes-or-no-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-yes-or-no-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-yes-or-no-tarot-spread.vtt",
+    "social": "/assets/video/social/the-yes-or-no-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}

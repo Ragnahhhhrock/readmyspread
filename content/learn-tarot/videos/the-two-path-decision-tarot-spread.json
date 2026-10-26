@@ -1,0 +1,66 @@
+{
+  "slug": "the-two-path-decision-tarot-spread",
+  "title": "The two-path decision tarot spread",
+  "category": "Tarot spreads",
+  "description": "How the six-card two-path decision tarot spread compares two options side by side, with each position explained and tips for reading the pairs.",
+  "figure": "the-two-path-decision-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The two-path decision tarot spread",
+      "caption": "The two-path decision tarot spread compares two options by asking what each offers and what each asks of you. It does not choose for you.",
+      "vo": "The two-path decision tarot spread compares two options by asking what each offers and what each asks of you. It does not choose for you.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 10.442,
+      "end": 11.142
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "The six positions",
+      "caption": "The situation, what path A offers, what path A asks of you, what path B offers, then what path B asks of you.",
+      "vo": "The six positions. The situation, what path A offers, what path A asks of you, what path B offers, then what path B asks of you.",
+      "visual": "figure",
+      "start": 11.142,
+      "voStart": 11.742,
+      "voEnd": 20.879,
+      "end": 21.579
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "How to set it up",
+      "caption": "Before you shuffle, name the two paths in plain words and write them down, for example \"stay in my current role\" and \"apply for the new job\".",
+      "vo": "How to set it up. Before you shuffle, name the two paths in plain words and write them down, for example \"stay in my current role\" and \"apply for the new job\".",
+      "visual": "backs",
+      "start": 21.579,
+      "voStart": 22.179,
+      "voEnd": 32.152,
+      "end": 32.852
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 32.852,
+      "voStart": 33.552,
+      "voEnd": 40.936,
+      "end": 43.536
+    }
+  ],
+  "locked": false,
+  "duration": 43.536,
+  "video": {
+    "seconds": 44,
+    "embed": "/assets/video/learn/the-two-path-decision-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-two-path-decision-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-two-path-decision-tarot-spread.vtt",
+    "social": "/assets/video/social/the-two-path-decision-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}

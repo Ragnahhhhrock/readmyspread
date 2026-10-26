@@ -1,0 +1,92 @@
+{
+  "slug": "the-lovers-to-the-hermit-tarot-card-meanings",
+  "title": "The Lovers to the Hermit: tarot card meanings",
+  "category": "Major arcana",
+  "description": "Tarot card meanings for The Lovers, The Chariot, Strength and The Hermit, upright and reversed, with practical notes for reading them in a spread.",
+  "figure": "the-lovers-to-the-hermit-tarot-card-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The Lovers to the Hermit: tarot card meanings",
+      "caption": "Four major arcana cards, from The Lovers to The Hermit, with upright meanings, reversals and a tip for each.",
+      "vo": "Four major arcana cards, from The Lovers to The Hermit, with upright meanings, reversals and a tip for each.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 8.189,
+      "end": 8.889
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 4,
+      "headline": "The Lovers",
+      "caption": "Keywords: choice, values, union, alignment. In the RWS version, two figures stand beneath an angel.",
+      "vo": "The Lovers stands for choice, values, union and alignment.",
+      "visual": "figure",
+      "start": 8.889,
+      "voStart": 9.489,
+      "voEnd": 13.251,
+      "end": 13.951
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 4,
+      "headline": "The Chariot",
+      "caption": "Keywords: drive, determination, direction, control.",
+      "vo": "The Chariot stands for drive, determination, direction and control.",
+      "visual": "backs",
+      "start": 13.951,
+      "voStart": 14.551,
+      "voEnd": 19.044,
+      "end": 19.744
+    },
+    {
+      "kind": "point",
+      "n": 3,
+      "of": 4,
+      "headline": "Strength",
+      "caption": "Keywords: courage, patience, compassion, inner strength. The image shows a woman calmly holding the mouth of a lion.",
+      "vo": "Strength stands for courage, patience, compassion and inner strength.",
+      "visual": "faces",
+      "start": 19.744,
+      "voStart": 20.344,
+      "voEnd": 24.106,
+      "end": 24.806
+    },
+    {
+      "kind": "point",
+      "n": 4,
+      "of": 4,
+      "headline": "The Hermit",
+      "caption": "Keywords: solitude, reflection, guidance, inner search. A robed figure stands on a height, holding a lantern and staff.",
+      "vo": "The Hermit stands for solitude, reflection, guidance and inner search.",
+      "visual": "faces",
+      "start": 24.806,
+      "voStart": 25.406,
+      "voEnd": 29.667,
+      "end": 30.367
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 30.367,
+      "voStart": 31.067,
+      "voEnd": 38.451,
+      "end": 41.051
+    }
+  ],
+  "locked": false,
+  "duration": 41.051,
+  "video": {
+    "seconds": 41,
+    "embed": "/assets/video/learn/the-lovers-to-the-hermit-tarot-card-meanings.mp4",
+    "poster": "/assets/video/learn/the-lovers-to-the-hermit-tarot-card-meanings.jpg",
+    "captions": "/assets/video/learn/the-lovers-to-the-hermit-tarot-card-meanings.vtt",
+    "social": "/assets/video/social/the-lovers-to-the-hermit-tarot-card-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
