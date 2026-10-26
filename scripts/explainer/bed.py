@@ -37,6 +37,9 @@ def make_bed(duration, out_path, seed="readmyspread", cues=(), level_db=-24.0):
     def env(n, a, r):
         e = np.ones(n)
         na, nr = int(a * SR), int(r * SR)
+        if na + nr > n:  # short note: scale fades to fit
+            k = n / (na + nr)
+            na, nr = int(na * k), int(nr * k)
         if na: e[:na] = np.sin(np.linspace(0, np.pi / 2, na)) ** 2
         if nr: e[-nr:] *= np.cos(np.linspace(0, np.pi / 2, nr)) ** 2
         return e
@@ -117,7 +120,7 @@ def make_bed(duration, out_path, seed="readmyspread", cues=(), level_db=-24.0):
     hp = butter(2, 35, btype="high", fs=SR, output="sos")
     outL, outR = sosfilt(hp, outL), sosfilt(hp, outR)
     fade = np.ones(n_total)
-    fi, fo = int(1.0 * SR), int(min(2.4, duration / 3) * SR)
+    fi, fo = int(min(1.0, duration / 3) * SR), int(min(2.4, duration / 3) * SR)
     fade[:fi] = np.linspace(0, 1, fi) ** 2
     fade[-fo:] = np.linspace(1, 0, fo) ** 1.6
     st = np.stack([outL * fade, outR * fade], axis=1)
