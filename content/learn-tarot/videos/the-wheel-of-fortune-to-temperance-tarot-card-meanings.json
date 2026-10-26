@@ -1,0 +1,66 @@
+{
+  "slug": "the-wheel-of-fortune-to-temperance-tarot-card-meanings",
+  "title": "The Wheel of Fortune to Temperance: tarot card meanings",
+  "category": "Major arcana",
+  "description": "Tarot card meanings for the Wheel of Fortune, Justice, The Hanged Man, Death and Temperance (X to XIV), upright and reversed, with spread reading notes.",
+  "figure": "the-wheel-of-fortune-to-temperance-tarot-card-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The Wheel of Fortune to Temperance: tarot card meanings",
+      "caption": "Major arcana X to XIV cover turning points, fairness, pause, endings and balance. Here is what each tarot card traditionally means, upright and reversed.",
+      "vo": "Major arcana X to XIV cover turning points, fairness, pause, endings and balance. Here is what each tarot card traditionally means, upright and reversed.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 12.195,
+      "end": 12.895
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "The Wheel of Fortune",
+      "caption": "The RWS card shows a large wheel in the sky, with a sphinx on top and four winged figures in the corners.",
+      "vo": "The Wheel of Fortune. The RWS card shows a large wheel in the sky, with a sphinx on top and four winged figures in the corners.",
+      "visual": "figure",
+      "start": 12.895,
+      "voStart": 13.495,
+      "voEnd": 21.657,
+      "end": 22.357
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Justice",
+      "caption": "A seated figure holds scales in one hand and a raised sword in the other. Fairness, truth, cause and effect, accountability.",
+      "vo": "Justice. A seated figure holds scales in one hand and a raised sword in the other. Fairness, truth, cause and effect, accountability.",
+      "visual": "backs",
+      "start": 22.357,
+      "voStart": 22.957,
+      "voEnd": 31.966,
+      "end": 32.666
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 32.666,
+      "voStart": 33.366,
+      "voEnd": 40.576,
+      "end": 43.176
+    }
+  ],
+  "locked": false,
+  "duration": 43.176,
+  "video": {
+    "seconds": 43,
+    "embed": "/assets/video/learn/the-wheel-of-fortune-to-temperance-tarot-card-meanings.mp4",
+    "poster": "/assets/video/learn/the-wheel-of-fortune-to-temperance-tarot-card-meanings.jpg",
+    "captions": "/assets/video/learn/the-wheel-of-fortune-to-temperance-tarot-card-meanings.vtt",
+    "social": "/assets/video/social/the-wheel-of-fortune-to-temperance-tarot-card-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
