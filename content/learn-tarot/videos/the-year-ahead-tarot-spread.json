@@ -1,0 +1,66 @@
+{
+  "slug": "the-year-ahead-tarot-spread",
+  "title": "The year-ahead tarot spread",
+  "category": "Tarot spreads",
+  "description": "How to lay out and read a year-ahead tarot spread: one theme card and twelve monthly cards, with tips for reading patterns and using it as a reflection tool.",
+  "figure": "the-year-ahead-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The year-ahead tarot spread",
+      "caption": "The year-ahead tarot spread uses a theme card plus one card for each month. It works best as a prompt for planning and reflection, not as a forecast.",
+      "vo": "The year-ahead tarot spread uses a theme card plus one card for each month. It works best as a prompt for planning and reflection, not as a forecast.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 10.523,
+      "end": 11.223
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "How the layout works",
+      "caption": "Place the first card at the top centre. This is your theme card, a lens for the whole year.",
+      "vo": "How the layout works. Place the first card at the top centre. This is your theme card, a lens for the whole year.",
+      "visual": "figure",
+      "start": 11.223,
+      "voStart": 11.823,
+      "voEnd": 18.104,
+      "end": 18.804
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Preparing the question",
+      "caption": "A broad question is fine here, because the spread already provides structure.",
+      "vo": "Preparing the question. A broad question is fine here, because the spread already provides structure.",
+      "visual": "backs",
+      "start": 18.804,
+      "voStart": 19.404,
+      "voEnd": 25.163,
+      "end": 25.863
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 25.863,
+      "voStart": 26.563,
+      "voEnd": 33.715,
+      "end": 36.315
+    }
+  ],
+  "locked": false,
+  "duration": 36.315,
+  "video": {
+    "seconds": 36,
+    "embed": "/assets/video/learn/the-year-ahead-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-year-ahead-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-year-ahead-tarot-spread.vtt",
+    "social": "/assets/video/social/the-year-ahead-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
