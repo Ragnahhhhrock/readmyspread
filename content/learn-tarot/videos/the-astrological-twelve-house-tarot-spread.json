@@ -1,0 +1,79 @@
+{
+  "slug": "the-astrological-twelve-house-tarot-spread",
+  "title": "The astrological twelve-house tarot spread",
+  "category": "Tarot spreads",
+  "description": "A guide to the twelve-house tarot spread: how the wheel layout works, what each of the twelve positions covers, and how to read it without astrology.",
+  "figure": "the-astrological-twelve-house-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The astrological twelve-house tarot spread",
+      "caption": "The twelve-house tarot spread places twelve cards in a ring, one for each area of life. It borrows astrology's structure but needs no knowledge of astrology.",
+      "vo": "The twelve-house tarot spread places twelve cards in a ring, one for each area of life. It borrows astrology's structure but needs no knowledge of astrology.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 11.208,
+      "end": 11.908
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 3,
+      "headline": "Where the layout comes from",
+      "caption": "In astrology, a birth chart is a circle divided into twelve sections called houses, each associated with a theme such as home, work or relationships.",
+      "vo": "Where the layout comes from. In astrology, a birth chart is a circle divided into twelve sections called houses, each associated with a theme such as home, work or relationships.",
+      "visual": "figure",
+      "start": 11.908,
+      "voStart": 12.508,
+      "voEnd": 23.7,
+      "end": 24.4
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 3,
+      "headline": "The twelve positions",
+      "caption": "Self, money and values, communication, home and roots, then creativity and play.",
+      "vo": "The twelve positions. Self, money and values, communication, home and roots, then creativity and play.",
+      "visual": "backs",
+      "start": 24.4,
+      "voStart": 25.0,
+      "voEnd": 32.674,
+      "end": 33.374
+    },
+    {
+      "kind": "point",
+      "n": 3,
+      "of": 3,
+      "headline": "Reading the wheel",
+      "caption": "Start by reading each card against its house, and keep it brief.",
+      "vo": "Reading the wheel. Start by reading each card against its house, and keep it brief.",
+      "visual": "faces",
+      "start": 33.374,
+      "voStart": 33.974,
+      "voEnd": 38.688,
+      "end": 39.388
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 39.388,
+      "voStart": 40.088,
+      "voEnd": 46.973,
+      "end": 49.573
+    }
+  ],
+  "locked": false,
+  "duration": 49.573,
+  "video": {
+    "seconds": 50,
+    "embed": "/assets/video/learn/the-astrological-twelve-house-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-astrological-twelve-house-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-astrological-twelve-house-tarot-spread.vtt",
+    "social": "/assets/video/social/the-astrological-twelve-house-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
