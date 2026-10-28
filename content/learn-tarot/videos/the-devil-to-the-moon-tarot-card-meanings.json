@@ -1,0 +1,79 @@
+{
+  "slug": "the-devil-to-the-moon-tarot-card-meanings",
+  "title": "The Devil to the Moon: tarot card meanings",
+  "category": "Major arcana",
+  "description": "Tarot card meanings for The Devil, The Tower, The Star and The Moon (XV to XVIII), upright and reversed, with tips for reading these cards in a spread.",
+  "figure": "the-devil-to-the-moon-tarot-card-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The Devil to the Moon: tarot card meanings",
+      "caption": "Major arcana XV to XVIII cover attachment, upheaval, hope and uncertainty. Here is what each tarot card traditionally means, upright and reversed.",
+      "vo": "Major arcana XV to XVIII cover attachment, upheaval, hope and uncertainty. Here is what each tarot card traditionally means, upright and reversed.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 11.185,
+      "end": 11.885
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 3,
+      "headline": "The Devil",
+      "caption": "Two small figures are chained loosely to a horned figure on a pedestal. Attachment, constraint, temptation, the shadow side.",
+      "vo": "The Devil. Two small figures are chained loosely to a horned figure on a pedestal. Attachment, constraint, temptation, the shadow side.",
+      "visual": "figure",
+      "start": 11.885,
+      "voStart": 12.485,
+      "voEnd": 20.589,
+      "end": 21.289
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 3,
+      "headline": "The Tower",
+      "caption": "Lightning strikes a tall tower, and figures fall from it. Upheaval, sudden change, revelation, structures giving way.",
+      "vo": "The Tower. Lightning strikes a tall tower, and figures fall from it. Upheaval, sudden change, revelation, structures giving way.",
+      "visual": "backs",
+      "start": 21.289,
+      "voStart": 21.889,
+      "voEnd": 30.004,
+      "end": 30.704
+    },
+    {
+      "kind": "point",
+      "n": 3,
+      "of": 3,
+      "headline": "The Star",
+      "caption": "A figure kneels at a pool, pouring water onto the land and into the pool, under a large star surrounded by smaller ones.",
+      "vo": "The Star. A figure kneels at a pool, pouring water onto the land and into the pool, under a large star surrounded by smaller ones.",
+      "visual": "faces",
+      "start": 30.704,
+      "voStart": 31.304,
+      "voEnd": 39.512,
+      "end": 40.212
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 40.212,
+      "voStart": 40.912,
+      "voEnd": 48.11,
+      "end": 50.71
+    }
+  ],
+  "locked": false,
+  "duration": 50.71,
+  "video": {
+    "seconds": 51,
+    "embed": "/assets/video/learn/the-devil-to-the-moon-tarot-card-meanings.mp4",
+    "poster": "/assets/video/learn/the-devil-to-the-moon-tarot-card-meanings.jpg",
+    "captions": "/assets/video/learn/the-devil-to-the-moon-tarot-card-meanings.vtt",
+    "social": "/assets/video/social/the-devil-to-the-moon-tarot-card-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
