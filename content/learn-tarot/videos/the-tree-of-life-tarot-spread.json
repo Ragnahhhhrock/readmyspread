@@ -1,0 +1,66 @@
+{
+  "slug": "the-tree-of-life-tarot-spread",
+  "title": "The Tree of Life tarot spread",
+  "category": "Tarot spreads",
+  "description": "How the Tree of Life tarot spread works: ten cards on the Kabbalistic tree, what each position asks, and how to read it without studying Kabbalah.",
+  "figure": "the-tree-of-life-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The Tree of Life tarot spread",
+      "caption": "The Tree of Life tarot spread arranges ten cards on the Kabbalistic tree. Each position becomes a plain question, read from the practical present up to the highest aim.",
+      "vo": "The Tree of Life tarot spread arranges ten cards on the Kabbalistic tree. Each position becomes a plain question, read from the practical present up to the highest aim.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 11.08,
+      "end": 11.78
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "How the cards are laid out",
+      "caption": "The tree has three vertical columns. Card 1 sits at the top centre, with 2 on the upper right and 3 on the upper left.",
+      "vo": "How the cards are laid out. The tree has three vertical columns. Card 1 sits at the top centre, with 2 on the upper right and 3 on the upper left.",
+      "visual": "figure",
+      "start": 11.78,
+      "voStart": 12.38,
+      "voEnd": 21.146,
+      "end": 21.846
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "The ten positions",
+      "caption": "Each position carries a traditional Hebrew name, shown in brackets. The names are optional, and the questions are what you read from.",
+      "vo": "The ten positions. Each position carries a traditional Hebrew name, shown in brackets. The names are optional, and the questions are what you read from.",
+      "visual": "backs",
+      "start": 21.846,
+      "voStart": 22.446,
+      "voEnd": 31.676,
+      "end": 32.376
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 32.376,
+      "voStart": 33.076,
+      "voEnd": 40.205,
+      "end": 42.805
+    }
+  ],
+  "locked": false,
+  "duration": 42.805,
+  "video": {
+    "seconds": 43,
+    "embed": "/assets/video/learn/the-tree-of-life-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-tree-of-life-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-tree-of-life-tarot-spread.vtt",
+    "social": "/assets/video/social/the-tree-of-life-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
