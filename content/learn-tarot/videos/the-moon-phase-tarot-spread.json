@@ -1,0 +1,79 @@
+{
+  "slug": "the-moon-phase-tarot-spread",
+  "title": "The moon phase tarot spread",
+  "category": "Tarot spreads",
+  "description": "How to use the moon phase tarot spread: eight cards for the lunar cycle, what each phase asks, and how to read it in one sitting or across a month.",
+  "figure": "the-moon-phase-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The moon phase tarot spread",
+      "caption": "The moon phase tarot spread uses eight cards, one for each phase of the lunar cycle. The phases work as a metaphor for starting, building, seeing and releasing.",
+      "vo": "The moon phase tarot spread uses eight cards, one for each phase of the lunar cycle. The phases work as a metaphor for starting, building, seeing and releasing.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 11.266,
+      "end": 11.966
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 3,
+      "headline": "The eight positions",
+      "caption": "New moon, waxing crescent, first quarter, waxing gibbous, then full moon.",
+      "vo": "The eight positions. New moon, waxing crescent, first quarter, waxing gibbous, then full moon.",
+      "visual": "figure",
+      "start": 11.966,
+      "voStart": 12.566,
+      "voEnd": 18.208,
+      "end": 18.908
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 3,
+      "headline": "Laying it in a ring",
+      "caption": "Place the cards in a circle, with the new moon at the top and the rest following clockwise, like a moon calendar.",
+      "vo": "Laying it in a ring. Place the cards in a circle, with the new moon at the top and the rest following clockwise, like a moon calendar.",
+      "visual": "backs",
+      "start": 18.908,
+      "voStart": 19.508,
+      "voEnd": 27.089,
+      "end": 27.789
+    },
+    {
+      "kind": "point",
+      "n": 3,
+      "of": 3,
+      "headline": "Using it in a single sitting",
+      "caption": "Most people lay the full spread in one session.",
+      "vo": "Using it in a single sitting. Most people lay the full spread in one session.",
+      "visual": "faces",
+      "start": 27.789,
+      "voStart": 28.389,
+      "voEnd": 32.592,
+      "end": 33.292
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 33.292,
+      "voStart": 33.992,
+      "voEnd": 41.097,
+      "end": 43.697
+    }
+  ],
+  "locked": false,
+  "duration": 43.697,
+  "video": {
+    "seconds": 44,
+    "embed": "/assets/video/learn/the-moon-phase-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-moon-phase-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-moon-phase-tarot-spread.vtt",
+    "social": "/assets/video/social/the-moon-phase-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
