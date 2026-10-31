@@ -1,0 +1,66 @@
+{
+  "slug": "the-sun-to-the-world-tarot-card-meanings",
+  "title": "The Sun to the World: tarot card meanings",
+  "category": "Major arcana",
+  "description": "Tarot card meanings for The Sun, Judgement and The World (XIX to XXI), upright and reversed, with notes on reading the final major arcana cards in a spread.",
+  "figure": "the-sun-to-the-world-tarot-card-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The Sun to the World: tarot card meanings",
+      "caption": "Major arcana XIX to XXI cover clarity, calling and completion. Here is what each tarot card traditionally means, upright and reversed.",
+      "vo": "Major arcana XIX to XXI cover clarity, calling and completion. Here is what each tarot card traditionally means, upright and reversed.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 10.314,
+      "end": 11.014
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "The Sun",
+      "caption": "A child rides a white horse beneath a bright sun, with sunflowers behind a wall. Joy, vitality, clarity, optimism.",
+      "vo": "The Sun. A child rides a white horse beneath a bright sun, with sunflowers behind a wall. Joy, vitality, clarity, optimism.",
+      "visual": "figure",
+      "start": 11.014,
+      "voStart": 11.614,
+      "voEnd": 19.811,
+      "end": 20.511
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Judgement",
+      "caption": "An angel sounds a trumpet while figures rise from their coffins with arms open. Reflection, reckoning, calling, forgiveness, renewal.",
+      "vo": "Judgement. An angel sounds a trumpet while figures rise from their coffins with arms open. Reflection, reckoning, calling, forgiveness, renewal.",
+      "visual": "backs",
+      "start": 20.511,
+      "voStart": 21.111,
+      "voEnd": 30.202,
+      "end": 30.902
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 30.902,
+      "voStart": 31.602,
+      "voEnd": 38.893,
+      "end": 41.493
+    }
+  ],
+  "locked": false,
+  "duration": 41.493,
+  "video": {
+    "seconds": 41,
+    "embed": "/assets/video/learn/the-sun-to-the-world-tarot-card-meanings.mp4",
+    "poster": "/assets/video/learn/the-sun-to-the-world-tarot-card-meanings.jpg",
+    "captions": "/assets/video/learn/the-sun-to-the-world-tarot-card-meanings.vtt",
+    "social": "/assets/video/social/the-sun-to-the-world-tarot-card-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
