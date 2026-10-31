@@ -63,11 +63,27 @@
     },
     "counted": true
   },
+  "the-horseshoe-tarot-spread": {
+    "at": "2026-10-31T00:46:32+00:00",
+    "channels": {
+      "instagram": "6ae53a691891472093a7a423",
+      "youtube": "6ae53a69ceb491e585ccae45"
+    },
+    "counted": true
+  },
   "the-one-card-tarot-spread": {
     "at": "2026-10-28T05:37:45+00:00",
     "channels": {
       "instagram": "6ae18a3ab1bf2d292db7cce4",
       "youtube": "6ae18a3a1aac2b225f7e450b"
+    },
+    "counted": true
+  },
+  "the-relationship-tarot-spread": {
+    "at": "2026-10-31T00:46:34+00:00",
+    "channels": {
+      "instagram": "6ae53a6ba1145743497a9002",
+      "youtube": "6ae53a6b1891472093a7a44e"
     },
     "counted": true
   },
