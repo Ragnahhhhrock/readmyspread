@@ -1,0 +1,66 @@
+{
+  "slug": "the-mind-body-and-spirit-tarot-spread",
+  "title": "The mind, body and spirit tarot spread",
+  "category": "Tarot spreads",
+  "description": "How the three-card mind, body and spirit tarot spread works: what each position means, how to lay it out, and how to use it as a gentle regular check-in.",
+  "figure": "the-mind-body-and-spirit-tarot-spread-layout.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The mind, body and spirit tarot spread",
+      "caption": "The mind, body and spirit tarot spread is a three-card check-in on your thoughts, your daily energy and your sense of meaning. It is for reflection, not health advice.",
+      "vo": "The mind, body and spirit tarot spread is a three-card check-in on your thoughts, your daily energy and your sense of meaning. It is for reflection, not health advice.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 12.044,
+      "end": 12.744
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "The three positions",
+      "caption": "Mind, body, then spirit.",
+      "vo": "The three positions. Mind, body, then spirit.",
+      "visual": "figure",
+      "start": 12.744,
+      "voStart": 13.344,
+      "voEnd": 16.374,
+      "end": 17.074
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "How to lay it out",
+      "caption": "Arrange the cards in a triangle. Place card 1, Mind, at the lower left and card 2, Body, at the lower right.",
+      "vo": "How to lay it out. Arrange the cards in a triangle. Place card 1, Mind, at the lower left and card 2, Body, at the lower right.",
+      "visual": "backs",
+      "start": 17.074,
+      "voStart": 17.674,
+      "voEnd": 26.207,
+      "end": 26.907
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 26.907,
+      "voStart": 27.607,
+      "voEnd": 34.457,
+      "end": 37.057
+    }
+  ],
+  "locked": false,
+  "duration": 37.057,
+  "video": {
+    "seconds": 37,
+    "embed": "/assets/video/learn/the-mind-body-and-spirit-tarot-spread.mp4",
+    "poster": "/assets/video/learn/the-mind-body-and-spirit-tarot-spread.jpg",
+    "captions": "/assets/video/learn/the-mind-body-and-spirit-tarot-spread.vtt",
+    "social": "/assets/video/social/the-mind-body-and-spirit-tarot-spread.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
