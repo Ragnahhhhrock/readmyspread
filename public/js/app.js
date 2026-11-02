@@ -1,8 +1,8 @@
 // readmyspread front end. No dependencies, no storage, no tracking.
 // Photos are resized in the browser, sent to /api/read, and never saved.
 
-import { canSpeak, speak, stop as stopSpeech } from "/js/audio.js?v=20261025";
-import { canPlayMusic, startMusic, stopMusic, duckMusic } from "/js/music.js?v=20261025";
+import { canSpeak, speak, stop as stopSpeech } from "/js/audio.js?v=20261102";
+import { canPlayMusic, startMusic, stopMusic, duckMusic } from "/js/music.js?v=20261102";
 
 const $ = (id) => document.getElementById(id);
 

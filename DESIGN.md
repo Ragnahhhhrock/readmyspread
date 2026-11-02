@@ -134,6 +134,8 @@ Generated, not hand-written: `python3 scripts/build-learn.py` builds `/learn-tar
 - **Every article has:** title and meta description naming tarot, canonical URL, `og:` and `twitter:` tags with alt text, Article and BreadcrumbList JSON-LD, one `h1`, category chips, the standard footer.
 - **Publishing:** `content/learn-tarot/schedule.json` holds one article per day at a randomised time. Articles not yet due are not written to `public/`. Links to articles that are not live are rendered as plain text.
 
+Pagination: the hub and each category list 10 articles per page (`PER_PAGE` in `scripts/build-learn.py`). Later pages live at `.../page/N/`, with `rel=prev/next`, a `.pager` (Newer / Page N of M / Older, 48px targets) and sitemap entries.
+
 ## 12. Share bar (`.sharebar`, `public/js/share.js`, `scripts/sharebar.py`)
 
 On every page, including the reading result screen. Threads, Facebook and Instagram only. No Telegram, and no other networks, unless this section changes first.

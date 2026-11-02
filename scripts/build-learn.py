@@ -84,13 +84,13 @@ def head(title, desc, path, *, og_type="website", og_img=DEFAULT_OG, tw_img=DEFA
 
   <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css?v=20261025">
-  <link rel="stylesheet" href="/css/components.css?v=20261025">
-  <link rel="stylesheet" href="/css/landing.css?v=20261025">
-  <link rel="stylesheet" href="/css/learn.css?v=20261025">{ld}
-  <script defer src="/js/analytics.js?v=20261025"></script>
-  <script defer src="/js/share.js?v=20261025"></script>
-  <script defer src="/js/menu.js?v=20261025"></script>{scripts}
+  <link rel="stylesheet" href="/css/tokens.css?v=20261102">
+  <link rel="stylesheet" href="/css/components.css?v=20261102">
+  <link rel="stylesheet" href="/css/landing.css?v=20261102">
+  <link rel="stylesheet" href="/css/learn.css?v=20261102">{ld}
+  <script defer src="/js/analytics.js?v=20261102"></script>
+  <script defer src="/js/share.js?v=20261102"></script>
+  <script defer src="/js/menu.js?v=20261102"></script>{scripts}
 </head>
 <body class="landing">
   <div class="sky" aria-hidden="true"></div>
@@ -169,6 +169,39 @@ def post_card(a, catname):
             f'<h2><a href="/learn-tarot/{a["slug"]}/">{e(a["title"])}</a></h2>'
             f'<p>{e(a["description"])}</p>'
             f'<p class="post__date"><time datetime="{a["publish"]}">{long_date(a["publish"])}</time></p></li>')
+
+
+PER_PAGE = 10
+
+
+def paginate(items):
+    """Split items into pages of PER_PAGE (always at least one page)."""
+    return [items[i:i + PER_PAGE] for i in range(0, len(items), PER_PAGE)] or [[]]
+
+
+def page_path(base, n):
+    return base if n == 1 else f"{base}page/{n}/"
+
+
+def pager(base, n, total):
+    """Prev / Next links with the page position. Empty when there is only one page."""
+    if total < 2:
+        return ""
+    def link(label, target, rel):
+        return f'<a class="pager__link" rel="{rel}" href="{page_path(base, target)}">{label}</a>'
+    prev = link("&larr; Newer", n - 1, "prev") if n > 1 else '<span class="pager__link pager__link--off" aria-hidden="true">&larr; Newer</span>'
+    nxt = link("Older &rarr;", n + 1, "next") if n < total else '<span class="pager__link pager__link--off" aria-hidden="true">Older &rarr;</span>'
+    return (f'<nav class="pager" aria-label="Pagination">{prev}'
+            f'<p class="pager__pos">Page {n} of {total}</p>{nxt}</nav>')
+
+
+def rel_links(base, n, total):
+    out = ""
+    if n > 1:
+        out += f'\n  <link rel="prev" href="{SITE}{page_path(base, n - 1)}">'
+    if n < total:
+        out += f'\n  <link rel="next" href="{SITE}{page_path(base, n + 1)}">'
+    return out
 
 
 def video_info(slug):
@@ -256,8 +289,11 @@ def main():
     desc = "Plain guides to tarot spreads and the cards: how each spread works, what the cards mean and where tarot comes from. New articles most days."
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Learn tarot", "url": f"{SITE}/learn-tarot/", "description": desc, "inLanguage": "en-AU",
           "isPartOf": {"@type": "WebSite", "name": "readmyspread", "url": SITE + "/"}}
-    page = head("Learn tarot: tarot spreads and card meanings", desc, "/learn-tarot/", jsonld=ld) + nav("learn")
-    page += f"""
+    hub_pages = paginate(live)
+    for n, chunk in enumerate(hub_pages, 1):
+        suffix = f" (page {n})" if n > 1 else ""
+        page = head(f"Learn tarot: tarot spreads and card meanings{suffix}", desc, page_path("/learn-tarot/", n), jsonld=ld, extra=rel_links("/learn-tarot/", n, len(hub_pages))) + nav("learn")
+        page += f"""
   <main id="main" class="col learn-main">
     <div class="page-head">
       {crumbs([("Home", "/"), ("Learn tarot", None)])}
@@ -266,11 +302,14 @@ def main():
       <p class="lede">Guides to every tarot spread, the cards and where tarot comes from. A new article most days. New to tarot? Start with <a href="/about-tarot/">About tarot</a>.</p>
     </div>
     {chips(cats, counts)}
-    <ul class="posts">{"".join(post_card(a, catname) for a in live)}</ul>
-    {share("/learn-tarot/", "Learn tarot: tarot spreads and card meanings")}
+    <ul class="posts">{"".join(post_card(a, catname) for a in chunk)}</ul>
+    {pager("/learn-tarot/", n, len(hub_pages))}
+    {share(page_path("/learn-tarot/", n), "Learn tarot: tarot spreads and card meanings")}
   </main>
 """ + FOOT
-    (out / "index.html").write_text(page)
+        dest = out if n == 1 else out / "page" / str(n)
+        dest.mkdir(parents=True, exist_ok=True)
+        (dest / "index.html").write_text(page)
 
     # ---------------- categories
     for c in cats:
@@ -280,9 +319,13 @@ def main():
         cdesc = f"{c['description']} Part of the readmyspread guide to tarot spread readings."
         robots = "index, follow, max-image-preview:large" if items else "noindex, follow"
         ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": c["name"], "url": f"{SITE}/learn-tarot/category/{c['slug']}/", "description": cdesc, "inLanguage": "en-AU"}
-        body_list = f'<ul class="posts">{"".join(post_card(a, catname) for a in items)}</ul>' if items else '<p class="empty">Articles in this category are on the way. New ones are published most days.</p>'
-        page = head(f"{c['name']}: learn tarot", cdesc, f"/learn-tarot/category/{c['slug']}/", jsonld=ld, robots=robots) + nav("learn")
-        page += f"""
+        base = f"/learn-tarot/category/{c['slug']}/"
+        cat_pages = paginate(items)
+        for n, chunk in enumerate(cat_pages, 1):
+            suffix = f" (page {n})" if n > 1 else ""
+            body_list = f'<ul class="posts">{"".join(post_card(a, catname) for a in chunk)}</ul>' if items else '<p class="empty">Articles in this category are on the way. New ones are published most days.</p>'
+            page = head(f"{c['name']}: learn tarot{suffix}", cdesc, page_path(base, n), jsonld=ld, robots=robots, extra=rel_links(base, n, len(cat_pages))) + nav("learn")
+            page += f"""
   <main id="main" class="col learn-main">
     <div class="page-head">
       {crumbs([("Home", "/"), ("Learn tarot", "/learn-tarot/"), (c["name"], None)])}
@@ -292,10 +335,13 @@ def main():
     </div>
     {chips(cats, counts, c["slug"])}
     {body_list}
-    {share(f"/learn-tarot/category/{c['slug']}/", f"{c['name']}: learn tarot")}
+    {pager(base, n, len(cat_pages))}
+    {share(page_path(base, n), f"{c['name']}: learn tarot")}
   </main>
 """ + FOOT
-        (d / "index.html").write_text(page)
+            dest = d if n == 1 else d / "page" / str(n)
+            dest.mkdir(parents=True, exist_ok=True)
+            (dest / "index.html").write_text(page)
 
     # ---------------- articles
     for a in live:
@@ -330,7 +376,7 @@ def main():
             ld.append({"@context": "https://schema.org", "@type": "VideoObject", "name": a["title"], "description": a["description"],
                        "thumbnailUrl": SITE + m["poster"], "contentUrl": SITE + m["embed"], "uploadDate": a["publish"],
                        "duration": f"PT{m['seconds']}S", "inLanguage": "en-AU"})
-        vscripts = f'\n  <script defer src="/js/video.js?v=20261025"></script>' if vid else ""
+        vscripts = f'\n  <script defer src="/js/video.js?v=20261102"></script>' if vid else ""
         cat_chips = '<ul class="chips" aria-label="Categories">' + "".join(
             f'<li><a class="chip" href="/learn-tarot/category/{c}/">{e(catname[c])}</a></li>' for c in a["categories"]) + "</ul>"
         more = [x for x in live if x["slug"] != slug and set(x["categories"]) & set(a["categories"])][:3]
@@ -408,7 +454,7 @@ def main():
           "isPartOf": {"@type": "WebSite", "name": "readmyspread", "url": SITE + "/"}}
     d = PUB / "contact"
     (d / "sent").mkdir(parents=True, exist_ok=True)
-    page = head("Contact: questions about tarot spread readings", cdesc, "/contact/", jsonld=ld, scripts='\n  <script defer src="/js/contact.js?v=20261025"></script>') + nav("contact")
+    page = head("Contact: questions about tarot spread readings", cdesc, "/contact/", jsonld=ld, scripts='\n  <script defer src="/js/contact.js?v=20261102"></script>') + nav("contact")
     page += """
   <main id="main" class="col learn-main">
     <div class="page-head">
@@ -461,11 +507,14 @@ def main():
     # ---------------- sitemap
     urls = [("/", None), ("/read/", None), ("/privacy/", None), ("/about-tarot/", None), ("/contact/", None)]
     latest = live[0]["publish"] if live else None
-    urls.append(("/learn-tarot/", latest))
+    for n in range(1, len(hub_pages) + 1):
+        urls.append((page_path("/learn-tarot/", n), latest))
     for c in cats:
         if counts[c["slug"]]:
             last = next(a["publish"] for a in live if c["slug"] in a["categories"])
-            urls.append((f"/learn-tarot/category/{c['slug']}/", last))
+            base = f"/learn-tarot/category/{c['slug']}/"
+            for n in range(1, len(paginate([a for a in live if c["slug"] in a["categories"]])) + 1):
+                urls.append((page_path(base, n), last))
     for a in live:
         urls.append((f"/learn-tarot/{a['slug']}/", a["publish"]))
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
