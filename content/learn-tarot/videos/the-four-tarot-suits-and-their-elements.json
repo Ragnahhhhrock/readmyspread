@@ -1,0 +1,66 @@
+{
+  "slug": "the-four-tarot-suits-and-their-elements",
+  "title": "The four tarot suits and their elements",
+  "category": "Tarot basics",
+  "description": "The four tarot suits explained: wands, cups, swords and pentacles, their elements and themes, and how the suits can shape what you notice in a spread.",
+  "figure": "the-four-tarot-suits-and-their-elements-suits.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "The four tarot suits and their elements",
+      "caption": "A tarot deck has four suits, each linked to an element and an area of life. Knowing them helps you read a spread at a glance.",
+      "vo": "A tarot deck has four suits, each linked to an element and an area of life. Knowing them helps you read a spread at a glance.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 8.886,
+      "end": 9.586
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Wands: fire",
+      "caption": "Wands are linked with fire, and with energy, drive and action. Wands cards often speak about enthusiasm, ambition, creativity and the way you spend your effort.",
+      "vo": "Wands: fire. Wands are linked with fire, and with energy, drive and action. Wands cards often speak about enthusiasm, ambition, creativity and the way you spend your effort.",
+      "visual": "figure",
+      "start": 9.586,
+      "voStart": 10.186,
+      "voEnd": 22.585,
+      "end": 23.285
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Cups: water",
+      "caption": "Cups belong to water, and to feelings and relationships. They cover love, friendship, family, intuition, nostalgia and emotional life in general.",
+      "vo": "Cups: water. Cups belong to water, and to feelings and relationships. They cover love, friendship, family, intuition, nostalgia and emotional life in general.",
+      "visual": "backs",
+      "start": 23.285,
+      "voStart": 23.885,
+      "voEnd": 34.508,
+      "end": 35.208
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 35.208,
+      "voStart": 35.908,
+      "voEnd": 43.037,
+      "end": 45.637
+    }
+  ],
+  "locked": false,
+  "duration": 45.637,
+  "video": {
+    "seconds": 46,
+    "embed": "/assets/video/learn/the-four-tarot-suits-and-their-elements.mp4",
+    "poster": "/assets/video/learn/the-four-tarot-suits-and-their-elements.jpg",
+    "captions": "/assets/video/learn/the-four-tarot-suits-and-their-elements.vtt",
+    "social": "/assets/video/social/the-four-tarot-suits-and-their-elements.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
