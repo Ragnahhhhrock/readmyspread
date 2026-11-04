@@ -1,0 +1,66 @@
+{
+  "slug": "wands-in-tarot-ace-to-five-meanings",
+  "title": "Wands in tarot: Ace to Five meanings",
+  "category": "Minor arcana",
+  "description": "Ace to Five of Wands in tarot: upright and reversed meanings for each card, how they form a story, and how to use them in a tarot spread.",
+  "figure": "wands-in-tarot-ace-to-five-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Wands in tarot: Ace to Five meanings",
+      "caption": "The Ace to Five of Wands cover the start of a venture, from the first spark to the friction that follows. Each card has an upright and a reversed meaning.",
+      "vo": "The Ace to Five of Wands cover the start of a venture, from the first spark to the friction that follows. Each card has an upright and a reversed meaning.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.478,
+      "end": 10.178
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Ace of Wands",
+      "caption": "Beginnings, inspiration, a spark. In the RWS image a hand emerges from a cloud holding a sprouting wand.",
+      "vo": "Ace of Wands. Beginnings, inspiration, a spark. In the RWS image a hand emerges from a cloud holding a sprouting wand.",
+      "visual": "suit:wands",
+      "start": 10.178,
+      "voStart": 10.778,
+      "voEnd": 18.487,
+      "end": 19.187
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Two of Wands",
+      "caption": "Planning, choice, looking ahead. A figure stands on a battlement holding a small globe, with a wand at either side.",
+      "vo": "Two of Wands. Planning, choice, looking ahead. A figure stands on a battlement holding a small globe, with a wand at either side.",
+      "visual": "faces",
+      "start": 19.187,
+      "voStart": 19.787,
+      "voEnd": 27.624,
+      "end": 28.324
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 28.324,
+      "voStart": 29.024,
+      "voEnd": 36.118,
+      "end": 38.718
+    }
+  ],
+  "locked": false,
+  "duration": 38.718,
+  "video": {
+    "seconds": 39,
+    "embed": "/assets/video/learn/wands-in-tarot-ace-to-five-meanings.mp4",
+    "poster": "/assets/video/learn/wands-in-tarot-ace-to-five-meanings.jpg",
+    "captions": "/assets/video/learn/wands-in-tarot-ace-to-five-meanings.vtt",
+    "social": "/assets/video/social/wands-in-tarot-ace-to-five-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
