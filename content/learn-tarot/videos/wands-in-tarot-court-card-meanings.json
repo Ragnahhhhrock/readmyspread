@@ -1,0 +1,66 @@
+{
+  "slug": "wands-in-tarot-court-card-meanings",
+  "title": "Wands in tarot: court card meanings",
+  "category": "Minor arcana",
+  "description": "Page, Knight, Queen and King of Wands in tarot: upright and reversed meanings, and how to read court cards as people, parts of yourself or approaches.",
+  "figure": "wands-in-tarot-court-card-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Wands in tarot: court card meanings",
+      "caption": "The Page, Knight, Queen and King of Wands bring the energy of fire to a tarot spread. Court cards can be people, parts of yourself or ways of approaching a situation.",
+      "vo": "The Page, Knight, Queen and King of Wands bring the energy of fire to a tarot spread. Court cards can be people, parts of yourself or ways of approaching a situation.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 11.475,
+      "end": 12.175
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Page of Wands",
+      "caption": "Curiosity, enthusiasm, new ideas. The Page stands in a desert landscape and looks closely at the wand held in one hand.",
+      "vo": "Page of Wands. Curiosity, enthusiasm, new ideas. The Page stands in a desert landscape and looks closely at the wand held in one hand.",
+      "visual": "suit:wands",
+      "start": 12.175,
+      "voStart": 12.775,
+      "voEnd": 21.517,
+      "end": 22.217
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Knight of Wands",
+      "caption": "Passion, speed, adventure. The Knight rides a rearing horse, armour covered with a pattern, wand held high.",
+      "vo": "Knight of Wands. Passion, speed, adventure. The Knight rides a rearing horse, armour covered with a pattern, wand held high.",
+      "visual": "faces",
+      "start": 22.217,
+      "voStart": 22.817,
+      "voEnd": 30.422,
+      "end": 31.122
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 31.122,
+      "voStart": 31.822,
+      "voEnd": 38.892,
+      "end": 41.492
+    }
+  ],
+  "locked": false,
+  "duration": 41.492,
+  "video": {
+    "seconds": 41,
+    "embed": "/assets/video/learn/wands-in-tarot-court-card-meanings.mp4",
+    "poster": "/assets/video/learn/wands-in-tarot-court-card-meanings.jpg",
+    "captions": "/assets/video/learn/wands-in-tarot-court-card-meanings.vtt",
+    "social": "/assets/video/social/wands-in-tarot-court-card-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
