@@ -1,0 +1,66 @@
+{
+  "slug": "cups-in-tarot-ace-to-five-meanings",
+  "title": "Cups in tarot: Ace to Five meanings",
+  "category": "Minor arcana",
+  "description": "Ace to Five of Cups in tarot: upright and reversed meanings for each card, how they form an emotional story, and how to use them in a tarot spread.",
+  "figure": "cups-in-tarot-ace-to-five-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Cups in tarot: Ace to Five meanings",
+      "caption": "The Ace to Five of Cups follow feelings from an opening of the heart to loss and reappraisal. Each card has an upright and a reversed meaning.",
+      "vo": "The Ace to Five of Cups follow feelings from an opening of the heart to loss and reappraisal. Each card has an upright and a reversed meaning.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.466,
+      "end": 10.166
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Ace of Cups",
+      "caption": "New feeling, openness, emotional beginnings. A hand reaches from a cloud holding a cup that overflows with water, with a dove above it.",
+      "vo": "Ace of Cups. New feeling, openness, emotional beginnings. A hand reaches from a cloud holding a cup that overflows with water, with a dove above it.",
+      "visual": "suit:cups",
+      "start": 10.166,
+      "voStart": 10.766,
+      "voEnd": 19.868,
+      "end": 20.568
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Two of Cups",
+      "caption": "Partnership, mutual respect, connection. Two figures exchange cups, and above them hovers a winged lion's head over a staff.",
+      "vo": "Two of Cups. Partnership, mutual respect, connection. Two figures exchange cups, and above them hovers a winged lion's head over a staff.",
+      "visual": "faces",
+      "start": 20.568,
+      "voStart": 21.168,
+      "voEnd": 29.04,
+      "end": 29.74
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 29.74,
+      "voStart": 30.44,
+      "voEnd": 37.661,
+      "end": 40.261
+    }
+  ],
+  "locked": false,
+  "duration": 40.261,
+  "video": {
+    "seconds": 40,
+    "embed": "/assets/video/learn/cups-in-tarot-ace-to-five-meanings.mp4",
+    "poster": "/assets/video/learn/cups-in-tarot-ace-to-five-meanings.jpg",
+    "captions": "/assets/video/learn/cups-in-tarot-ace-to-five-meanings.vtt",
+    "social": "/assets/video/social/cups-in-tarot-ace-to-five-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
