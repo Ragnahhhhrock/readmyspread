@@ -1,0 +1,66 @@
+{
+  "slug": "cups-in-tarot-six-to-ten-meanings",
+  "title": "Cups in tarot: Six to Ten meanings",
+  "category": "Minor arcana",
+  "description": "Six to Ten of Cups in tarot: upright and reversed meanings, from nostalgia and choice to contentment and belonging, with notes for your tarot spread.",
+  "figure": "cups-in-tarot-six-to-ten-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Cups in tarot: Six to Ten meanings",
+      "caption": "The Six to Ten of Cups move from memory and daydreams to contentment and belonging. Each card has an upright and a reversed meaning.",
+      "vo": "The Six to Ten of Cups move from memory and daydreams to contentment and belonging. Each card has an upright and a reversed meaning.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 8.479,
+      "end": 9.179
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Six of Cups",
+      "caption": "Nostalgia, innocence, kindness. Two children in a courtyard share cups filled with flowers.",
+      "vo": "Six of Cups. Nostalgia, innocence, kindness. Two children in a courtyard share cups filled with flowers.",
+      "visual": "suit:cups",
+      "start": 9.179,
+      "voStart": 9.779,
+      "voEnd": 15.781,
+      "end": 16.481
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Seven of Cups",
+      "caption": "Options, imagination, daydreams. A silhouetted figure faces a cloud holding seven cups, each containing something different, such as a castle, jewels or a dragon.",
+      "vo": "Seven of Cups. Options, imagination, daydreams. A silhouetted figure faces a cloud holding seven cups, each containing something different, such as a castle, jewels or a dragon.",
+      "visual": "faces",
+      "start": 16.481,
+      "voStart": 17.081,
+      "voEnd": 28.912,
+      "end": 29.612
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 29.612,
+      "voStart": 30.312,
+      "voEnd": 37.359,
+      "end": 39.959
+    }
+  ],
+  "locked": false,
+  "duration": 39.959,
+  "video": {
+    "seconds": 40,
+    "embed": "/assets/video/learn/cups-in-tarot-six-to-ten-meanings.mp4",
+    "poster": "/assets/video/learn/cups-in-tarot-six-to-ten-meanings.jpg",
+    "captions": "/assets/video/learn/cups-in-tarot-six-to-ten-meanings.vtt",
+    "social": "/assets/video/social/cups-in-tarot-six-to-ten-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
