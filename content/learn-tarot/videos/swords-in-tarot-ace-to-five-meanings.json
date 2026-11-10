@@ -1,0 +1,79 @@
+{
+  "slug": "swords-in-tarot-ace-to-five-meanings",
+  "title": "Swords in tarot: Ace to Five meanings",
+  "category": "Minor arcana",
+  "description": "Ace to Five of Swords in tarot: upright and reversed meanings for each card, how they form a story of thought and strain, and how to use them in a spread.",
+  "figure": "swords-in-tarot-ace-to-five-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Swords in tarot: Ace to Five meanings",
+      "caption": "The Ace to Five of Swords run from clear thinking into strain, rest and conflict. Each card has an upright and a reversed meaning.",
+      "vo": "The Ace to Five of Swords run from clear thinking into strain, rest and conflict. Each card has an upright and a reversed meaning.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.443,
+      "end": 10.143
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 3,
+      "headline": "Ace of Swords",
+      "caption": "Clarity, truth, a breakthrough in thinking. A hand from a cloud holds an upright sword topped with a crown and wreath.",
+      "vo": "Ace of Swords. Clarity, truth, a breakthrough in thinking. A hand from a cloud holds an upright sword topped with a crown and wreath.",
+      "visual": "suit:swords",
+      "start": 10.143,
+      "voStart": 10.743,
+      "voEnd": 17.813,
+      "end": 18.513
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 3,
+      "headline": "Two of Swords",
+      "caption": "Stalemate, difficult choice, avoidance. A blindfolded figure sits with two swords crossed over the chest, in front of a calm sea.",
+      "vo": "Two of Swords. Stalemate, difficult choice, avoidance. A blindfolded figure sits with two swords crossed over the chest, in front of a calm sea.",
+      "visual": "faces",
+      "start": 18.513,
+      "voStart": 19.113,
+      "voEnd": 27.948,
+      "end": 28.648
+    },
+    {
+      "kind": "point",
+      "n": 3,
+      "of": 3,
+      "headline": "Three of Swords",
+      "caption": "Heartache, sorrow, honest pain. Three swords pierce a heart against a rainy sky.",
+      "vo": "Three of Swords. Heartache, sorrow, honest pain. Three swords pierce a heart against a rainy sky.",
+      "visual": "suit:swords",
+      "start": 28.648,
+      "voStart": 29.248,
+      "voEnd": 34.786,
+      "end": 35.486
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 35.486,
+      "voStart": 36.186,
+      "voEnd": 43.315,
+      "end": 45.915
+    }
+  ],
+  "locked": false,
+  "duration": 45.915,
+  "video": {
+    "seconds": 46,
+    "embed": "/assets/video/learn/swords-in-tarot-ace-to-five-meanings.mp4",
+    "poster": "/assets/video/learn/swords-in-tarot-ace-to-five-meanings.jpg",
+    "captions": "/assets/video/learn/swords-in-tarot-ace-to-five-meanings.vtt",
+    "social": "/assets/video/social/swords-in-tarot-ace-to-five-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
