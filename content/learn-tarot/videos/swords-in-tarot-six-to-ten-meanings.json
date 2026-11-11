@@ -1,0 +1,66 @@
+{
+  "slug": "swords-in-tarot-six-to-ten-meanings",
+  "title": "Swords in tarot: Six to Ten meanings",
+  "category": "Minor arcana",
+  "description": "The Six to Ten of Swords in tarot: upright and reversed meanings for transition, strategy, feeling trapped, anxiety and endings, as prompts for reflection.",
+  "figure": "swords-in-tarot-six-to-ten-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Swords in tarot: Six to Ten meanings",
+      "caption": "The Six to Ten of Swords carry the suit of thought through transition, secrecy, feeling trapped, worry and the end of a hard stretch.",
+      "vo": "The Six to Ten of Swords carry the suit of thought through transition, secrecy, feeling trapped, worry and the end of a hard stretch.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 8.677,
+      "end": 9.377
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Six of Swords",
+      "caption": "Transition, moving on, leaving rough waters. In RWS, a ferryman poles a boat carrying a covered figure and a child across water, with six swords standing upright in the boat.",
+      "vo": "Six of Swords. Transition, moving on, leaving rough waters. In RWS, a ferryman poles a boat carrying a covered figure and a child across water, with six swords standing upright in the boat.",
+      "visual": "suit:swords",
+      "start": 9.377,
+      "voStart": 9.977,
+      "voEnd": 22.713,
+      "end": 23.413
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Seven of Swords",
+      "caption": "Strategy, stealth, acting alone. A figure tiptoes away from a camp carrying five swords and leaving two behind.",
+      "vo": "Seven of Swords. Strategy, stealth, acting alone. A figure tiptoes away from a camp carrying five swords and leaving two behind.",
+      "visual": "faces",
+      "start": 23.413,
+      "voStart": 24.013,
+      "voEnd": 31.966,
+      "end": 32.666
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 32.666,
+      "voStart": 33.366,
+      "voEnd": 40.599,
+      "end": 43.199
+    }
+  ],
+  "locked": false,
+  "duration": 43.199,
+  "video": {
+    "seconds": 43,
+    "embed": "/assets/video/learn/swords-in-tarot-six-to-ten-meanings.mp4",
+    "poster": "/assets/video/learn/swords-in-tarot-six-to-ten-meanings.jpg",
+    "captions": "/assets/video/learn/swords-in-tarot-six-to-ten-meanings.vtt",
+    "social": "/assets/video/social/swords-in-tarot-six-to-ten-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
