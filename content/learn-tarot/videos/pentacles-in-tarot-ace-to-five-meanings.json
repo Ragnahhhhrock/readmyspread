@@ -1,0 +1,66 @@
+{
+  "slug": "pentacles-in-tarot-ace-to-five-meanings",
+  "title": "Pentacles in tarot: Ace to Five meanings",
+  "category": "Minor arcana",
+  "description": "The Ace to Five of Pentacles in tarot: upright and reversed meanings for opportunity, balance, teamwork, security and hardship, as prompts for reflection.",
+  "figure": "pentacles-in-tarot-ace-to-five-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Pentacles in tarot: Ace to Five meanings",
+      "caption": "The Ace to Five of Pentacles trace the practical side of life from a first opportunity through balance, craft and security to a time of scarcity.",
+      "vo": "The Ace to Five of Pentacles trace the practical side of life from a first opportunity through balance, craft and security to a time of scarcity.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 10.534,
+      "end": 11.234
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Ace of Pentacles",
+      "caption": "Opportunity, a fresh start, groundedness. A hand emerges from a cloud offering a single pentacle above a garden.",
+      "vo": "Ace of Pentacles. Opportunity, a fresh start, groundedness. A hand emerges from a cloud offering a single pentacle above a garden.",
+      "visual": "suit:pentacles",
+      "start": 11.234,
+      "voStart": 11.834,
+      "voEnd": 19.856,
+      "end": 20.556
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Two of Pentacles",
+      "caption": "Balance, juggling, adaptability. A figure juggles two pentacles linked by an infinity-shaped loop while ships ride waves behind.",
+      "vo": "Two of Pentacles. Balance, juggling, adaptability. A figure juggles two pentacles linked by an infinity-shaped loop while ships ride waves behind.",
+      "visual": "faces",
+      "start": 20.556,
+      "voStart": 21.156,
+      "voEnd": 30.456,
+      "end": 31.156
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 31.156,
+      "voStart": 31.856,
+      "voEnd": 39.089,
+      "end": 41.689
+    }
+  ],
+  "locked": false,
+  "duration": 41.689,
+  "video": {
+    "seconds": 42,
+    "embed": "/assets/video/learn/pentacles-in-tarot-ace-to-five-meanings.mp4",
+    "poster": "/assets/video/learn/pentacles-in-tarot-ace-to-five-meanings.jpg",
+    "captions": "/assets/video/learn/pentacles-in-tarot-ace-to-five-meanings.vtt",
+    "social": "/assets/video/social/pentacles-in-tarot-ace-to-five-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
