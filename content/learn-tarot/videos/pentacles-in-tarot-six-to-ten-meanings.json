@@ -1,0 +1,79 @@
+{
+  "slug": "pentacles-in-tarot-six-to-ten-meanings",
+  "title": "Pentacles in tarot: Six to Ten meanings",
+  "category": "Minor arcana",
+  "description": "The Six to Ten of Pentacles in tarot: upright and reversed meanings for generosity, patience, craft, self-sufficiency and legacy, as prompts for reflection.",
+  "figure": "pentacles-in-tarot-six-to-ten-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Pentacles in tarot: Six to Ten meanings",
+      "caption": "The Six to Ten of Pentacles cover giving, patience, skill, comfort and legacy, the steadier and more settled half of the earth suit.",
+      "vo": "The Six to Ten of Pentacles cover giving, patience, skill, comfort and legacy, the steadier and more settled half of the earth suit.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.757,
+      "end": 10.457
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 3,
+      "headline": "Six of Pentacles",
+      "caption": "Generosity, giving and receiving, fairness. A well-dressed figure holds scales and gives coins to two kneeling people.",
+      "vo": "Six of Pentacles. Generosity, giving and receiving, fairness. A well-dressed figure holds scales and gives coins to two kneeling people.",
+      "visual": "suit:pentacles",
+      "start": 10.457,
+      "voStart": 11.057,
+      "voEnd": 19.172,
+      "end": 19.872
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 3,
+      "headline": "Seven of Pentacles",
+      "caption": "Patience, assessment, long-term effort. A gardener leans on a hoe and looks at a bush heavy with pentacles.",
+      "vo": "Seven of Pentacles. Patience, assessment, long-term effort. A gardener leans on a hoe and looks at a bush heavy with pentacles.",
+      "visual": "faces",
+      "start": 19.872,
+      "voStart": 20.472,
+      "voEnd": 28.448,
+      "end": 29.148
+    },
+    {
+      "kind": "point",
+      "n": 3,
+      "of": 3,
+      "headline": "Eight of Pentacles",
+      "caption": "Diligence, craftsmanship, learning a skill. A craftsperson sits at a bench, carving pentacles one by one, with finished ones on display.",
+      "vo": "Eight of Pentacles. Diligence, craftsmanship, learning a skill. A craftsperson sits at a bench, carving pentacles one by one, with finished ones on display.",
+      "visual": "suit:pentacles",
+      "start": 29.148,
+      "voStart": 29.748,
+      "voEnd": 39.408,
+      "end": 40.108
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 40.108,
+      "voStart": 40.808,
+      "voEnd": 48.169,
+      "end": 50.769
+    }
+  ],
+  "locked": false,
+  "duration": 50.769,
+  "video": {
+    "seconds": 51,
+    "embed": "/assets/video/learn/pentacles-in-tarot-six-to-ten-meanings.mp4",
+    "poster": "/assets/video/learn/pentacles-in-tarot-six-to-ten-meanings.jpg",
+    "captions": "/assets/video/learn/pentacles-in-tarot-six-to-ten-meanings.vtt",
+    "social": "/assets/video/social/pentacles-in-tarot-six-to-ten-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
