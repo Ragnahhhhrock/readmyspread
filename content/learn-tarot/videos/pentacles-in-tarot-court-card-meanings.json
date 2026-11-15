@@ -1,0 +1,66 @@
+{
+  "slug": "pentacles-in-tarot-court-card-meanings",
+  "title": "Pentacles in tarot: court card meanings",
+  "category": "Minor arcana",
+  "description": "The Page, Knight, Queen and King of Pentacles in tarot: upright and reversed meanings, and how court cards can be people, aspects of yourself or approaches.",
+  "figure": "pentacles-in-tarot-court-card-meanings-faces.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Pentacles in tarot: court card meanings",
+      "caption": "The Pentacles court cards show four practical temperaments, from the learning Page to the experienced King. They can be people, parts of you or approaches.",
+      "vo": "The Pentacles court cards show four practical temperaments, from the learning Page to the experienced King. They can be people, parts of you or approaches.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 9.896,
+      "end": 10.596
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 2,
+      "headline": "Page of Pentacles",
+      "caption": "Study, curiosity about the practical, a first step. The Page stands in a green field, gazing at a single pentacle held carefully.",
+      "vo": "Page of Pentacles. Study, curiosity about the practical, a first step. The Page stands in a green field, gazing at a single pentacle held carefully.",
+      "visual": "suit:pentacles",
+      "start": 10.596,
+      "voStart": 11.196,
+      "voEnd": 19.869,
+      "end": 20.569
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 2,
+      "headline": "Knight of Pentacles",
+      "caption": "Reliability, patience, steady progress. The Knight is usually shown on a still horse, holding a pentacle and looking at it closely.",
+      "vo": "Knight of Pentacles. Reliability, patience, steady progress. The Knight is usually shown on a still horse, holding a pentacle and looking at it closely.",
+      "visual": "faces",
+      "start": 20.569,
+      "voStart": 21.169,
+      "voEnd": 30.689,
+      "end": 31.389
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 31.389,
+      "voStart": 32.089,
+      "voEnd": 39.276,
+      "end": 41.876
+    }
+  ],
+  "locked": false,
+  "duration": 41.876,
+  "video": {
+    "seconds": 42,
+    "embed": "/assets/video/learn/pentacles-in-tarot-court-card-meanings.mp4",
+    "poster": "/assets/video/learn/pentacles-in-tarot-court-card-meanings.jpg",
+    "captions": "/assets/video/learn/pentacles-in-tarot-court-card-meanings.vtt",
+    "social": "/assets/video/social/pentacles-in-tarot-court-card-meanings.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
