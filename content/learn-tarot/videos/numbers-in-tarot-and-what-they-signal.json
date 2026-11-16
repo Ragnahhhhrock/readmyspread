@@ -1,0 +1,79 @@
+{
+  "slug": "numbers-in-tarot-and-what-they-signal",
+  "title": "Numbers in tarot and what they signal",
+  "category": "Minor arcana",
+  "description": "Numbers in tarot, Ace to Ten: what each number tends to signal across the four suits, and how to combine a number with a suit to read an unfamiliar card.",
+  "figure": "numbers-in-tarot-and-what-they-signal-numbers.png",
+  "scenes": [
+    {
+      "kind": "hook",
+      "headline": "Numbers in tarot and what they signal",
+      "caption": "Each number from Ace to Ten carries a theme that repeats in every tarot suit. Knowing them helps you read a minor arcana card you have not met before.",
+      "vo": "Each number from Ace to Ten carries a theme that repeats in every tarot suit. Knowing them helps you read a minor arcana card you have not met before.",
+      "start": 0.0,
+      "voStart": 1.2,
+      "voEnd": 10.604,
+      "end": 11.304
+    },
+    {
+      "kind": "point",
+      "n": 1,
+      "of": 3,
+      "headline": "The ten numbers",
+      "caption": "Ace: beginnings, two: balance and choice, three: growth and teamwork, four: stability and pause, then five: conflict and change.",
+      "vo": "The ten numbers. Ace: beginnings, two: balance and choice, three: growth and teamwork, four: stability and pause, then five: conflict and change.",
+      "visual": "figure",
+      "start": 11.304,
+      "voStart": 11.904,
+      "voEnd": 21.413,
+      "end": 22.113
+    },
+    {
+      "kind": "point",
+      "n": 2,
+      "of": 3,
+      "headline": "Reading number and suit together",
+      "caption": "The number is the plot and the suit is the setting.",
+      "vo": "Reading number and suit together. The number is the plot and the suit is the setting.",
+      "visual": "backs",
+      "start": 22.113,
+      "voStart": 22.713,
+      "voEnd": 27.055,
+      "end": 27.755
+    },
+    {
+      "kind": "point",
+      "n": 3,
+      "of": 3,
+      "headline": "A simple arc",
+      "caption": "Many readers see the numbers as a small journey.",
+      "vo": "A simple arc. Many readers see the numbers as a small journey.",
+      "visual": "faces",
+      "start": 27.755,
+      "voStart": 28.355,
+      "voEnd": 32.442,
+      "end": 33.142
+    },
+    {
+      "kind": "cta",
+      "headline": "Have a tarot spread in front of you?",
+      "caption": "Photograph it and get a clear reading, card by card.",
+      "vo": "Have a tarot spread in front of you? Photograph it at read my spread dot com, and get a clear reading, card by card.",
+      "start": 33.142,
+      "voStart": 33.842,
+      "voEnd": 41.156,
+      "end": 43.756
+    }
+  ],
+  "locked": false,
+  "duration": 43.756,
+  "video": {
+    "seconds": 44,
+    "embed": "/assets/video/learn/numbers-in-tarot-and-what-they-signal.mp4",
+    "poster": "/assets/video/learn/numbers-in-tarot-and-what-they-signal.jpg",
+    "captions": "/assets/video/learn/numbers-in-tarot-and-what-they-signal.vtt",
+    "social": "/assets/video/social/numbers-in-tarot-and-what-they-signal.mp4",
+    "voice": "Piper (en_GB Jenny)",
+    "thumbnail_ms": 3200
+  }
+}
