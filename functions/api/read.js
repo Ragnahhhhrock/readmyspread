@@ -6,7 +6,7 @@
 // Environment:
 //   mal-api-key  (secret, required; ANTHROPIC_API_KEY also accepted)
 //   ANTHROPIC_MODEL    (optional, default below)
-//   RATE               (optional KV namespace binding; enables per-visitor and daily caps)
+//   RATE               (optional KV namespace binding for the per-visitor and daily caps; falls back to STATS)
 //   STATS              (optional KV namespace binding; running totals for the homepage, see stats.js)
 //   DAILY_PER_VISITOR  (optional, default 8)
 //   DAILY_GLOBAL       (optional, default 400)
@@ -120,17 +120,18 @@ async function sha(text) {
 
 // Optional caps. Without a KV binding this is skipped (add a Cloudflare rate-limiting rule instead).
 async function overLimit(request, env) {
-  if (!env.RATE) return false;
+  const kv = env.RATE || env.STATS; // fall back to the STATS namespace so the caps are always on
+  if (!kv) return false;
   const day = new Date().toISOString().slice(0, 10);
   const ip = request.headers.get("cf-connecting-ip") || "unknown";
   const perVisitor = Number(env.DAILY_PER_VISITOR || 8);
   const perDay = Number(env.DAILY_GLOBAL || 400);
   const vKey = `v:${day}:${await sha(ip)}`;
   const gKey = `g:${day}`;
-  const [v, g] = await Promise.all([env.RATE.get(vKey), env.RATE.get(gKey)]);
+  const [v, g] = await Promise.all([kv.get(vKey), kv.get(gKey)]);
   if (Number(v || 0) >= perVisitor || Number(g || 0) >= perDay) return true;
   const ttl = { expirationTtl: 60 * 60 * 36 };
-  await Promise.all([env.RATE.put(vKey, String(Number(v || 0) + 1), ttl), env.RATE.put(gKey, String(Number(g || 0) + 1), ttl)]);
+  await Promise.all([kv.put(vKey, String(Number(v || 0) + 1), ttl), kv.put(gKey, String(Number(g || 0) + 1), ttl)]);
   return false;
 }
 
