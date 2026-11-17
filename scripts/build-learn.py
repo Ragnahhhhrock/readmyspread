@@ -138,7 +138,6 @@ FOOT = """
     <div class="wide">
       <p>For entertainment only. Not medical, legal or financial advice.</p>
       <p><a href="/read/">Read my cards</a> &nbsp; <a href="/learn-tarot/">Learn tarot</a> &nbsp; <a href="/about-tarot/">About tarot</a> &nbsp; <a href="/contact/">Contact</a> &nbsp; <a href="/privacy/">Privacy</a></p>
-      <p><a href="mailto:contact@readmyspread.com">contact@readmyspread.com</a></p>
       <p>Another <a href="https://malgordon.com/">Mal Gordon</a> creation</p>
     </div>
   </footer>
@@ -485,7 +484,7 @@ def main():
       </div>
       <div class="trap" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
       <button class="btn btn--primary btn--block" type="submit" id="contact-send">Send message</button>
-      <p class="muted small">Your message is emailed to contact@readmyspread.com. See the <a href="/privacy/">privacy page</a>. Prefer email? Write to <a href="mailto:contact@readmyspread.com">contact@readmyspread.com</a>.</p>
+      <p class="muted small">Your message is emailed to us. See the <a href="/privacy/">privacy page</a>.</p>
     </form>
   </main>
 """ + FOOT

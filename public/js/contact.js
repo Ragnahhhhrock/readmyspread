@@ -4,7 +4,6 @@
   if (!form) return;
   var status = document.getElementById("form-status");
   var btn = document.getElementById("contact-send");
-  var MAIL = "contact@readmyspread.com";
 
   function show(title, text, isError) {
     status.className = "status" + (isError ? " status--error" : "");
@@ -50,11 +49,11 @@
           if (first) first.focus();
           return;
         }
-        var msg = res.body.error === "rate_limited" ? "You have sent a few messages today. Please try again tomorrow, or email " + MAIL + "."
-          : "Your message was not sent. Please try again, or email " + MAIL + ".";
+        var msg = res.body.error === "rate_limited" ? "You have sent a few messages today. Please try again tomorrow."
+          : "Your message was not sent. Please try again in a little while.";
         show("Message not sent", msg, true);
       })
-      .catch(function () { show("Message not sent", "Check your connection and try again, or email " + MAIL + ".", true); })
+      .catch(function () { show("Message not sent", "Check your connection and try again.", true); })
       .then(function () { btn.disabled = false; btn.textContent = "Send message"; });
   });
 })();
